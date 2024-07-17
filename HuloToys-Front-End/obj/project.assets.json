@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\PROJECT\\HULOTOYS\\HuloToys-Front-End\\HuloToys-Front-End\\HuloToys-Front-End.csproj",
+      "projectUniqueName": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\HuloToys-Front-End\\HuloToys-Front-End.csproj",
       "projectName": "HuloToys-Front-End",
-      "projectPath": "F:\\PROJECT\\HULOTOYS\\HuloToys-Front-End\\HuloToys-Front-End\\HuloToys-Front-End.csproj",
+      "projectPath": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\HuloToys-Front-End\\HuloToys-Front-End.csproj",
       "packagesPath": "C:\\Users\\cuong\\.nuget\\packages\\",
-      "outputPath": "F:\\PROJECT\\HULOTOYS\\HuloToys-Front-End\\HuloToys-Front-End\\obj\\",
+      "outputPath": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\HuloToys-Front-End\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
