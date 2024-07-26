@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HuloToys-Front-End")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5072ac81af52557822fec64138fdfa34d99cfc29")]
 [assembly: System.Reflection.AssemblyProductAttribute("HuloToys-Front-End")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HuloToys-Front-End")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
