@@ -1,0 +1,51 @@
+pipeline{
+    agent any 
+    stages{
+        stage('Cloning'){
+            steps{
+                git credentialsId: 'x-tech', url: 'https://github.com/xtechvn/HuloToys-Font-End.git', branch: 'master'
+            }
+        }
+        stage('Restore Packages'){
+            steps{
+                bat 'dotnet restore .\\HuloToys-Front-End\\HuloToys-Front-End.csproj'
+            }
+        }
+        stage('Clean'){
+            steps{
+                bat 'dotnet clean .\\HuloToys-Front-End\\HuloToys-Front-End.csproj --configuration Release'
+            }
+        }
+        stage('Build'){
+            steps{
+                bat 'dotnet build .\\HuloToys-Front-End\\HuloToys-Front-End.csproj --configuration Release'
+           }
+        }
+        stage('Map drive folder share from server 42') {
+            steps {
+                script {
+                    // Kiểm tra xem ổ đĩa Z đã được map hay chưa
+                    def driveExists = bat(script: 'net use | findstr /C:"E:"', returnStatus: true) == 0
+                    if (driveExists) {
+                        echo 'Ổ đĩa E đã được map.'
+                    } else {
+                        bat 'net use E: \\\\10.0.101.154\\Hulotoys/hulotoy-front-end /USER:administrator Adavigo@202311231648'
+                    }
+                }
+            }
+        }
+        stage('Publish'){
+            steps{
+                bat 'del E:\\web.config'
+                bat 'dotnet publish .\\HuloToys-Front-End\\HuloToys-Front-End.csproj --configuration Release'
+            }
+        }
+       
+        stage('copy to server 103.163.216.42 - Mount E:/Hulotoys/hulotoy-front-end'){
+            steps{
+                 bat 'xcopy .\\HuloToys-Front-End\\bin\\Release\\net7.0\\publish E:\\hulotoy-front-end /e /y /i /r'
+            }
+        }
+        
+    }
+}
