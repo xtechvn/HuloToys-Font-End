@@ -7,22 +7,33 @@
     <link rel="stylesheet" href="/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="/css/jquery-ui.css">
     <link rel="stylesheet" href="/css/main.min.css">
+    <link rel="stylesheet" href="/custom/site.css">
     <title>@ViewData["Title"]</title>
 
 </head>
 <body>
     <partial name="_Header" />
+    <partial name="_Login" />
 
     <section id="main">
         @RenderBody()
     </section>
     <partial name="_Footer" />
-
     <button class="backToTopBtn"></button>
+
+
+
     <script src="/js/jquery.min.js"></script>
     <script src="/js/swiper-bundle.min.js"></script>
     <script src="/js/jquery-ui.js"></script>
     <script src="/js/common.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+
+    <script src="/modules/global.js"></script>
+    <script src="/modules/constants.js"></script>
+    <script src="/modules/services.js"></script>
+    <!-- Modules-->
+    <script src="/modules/account.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 

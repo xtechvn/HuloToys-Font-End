@@ -8,19 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\modules\**" />
-    <Content Remove="wwwroot\modules\**" />
-    <EmbeddedResource Remove="wwwroot\modules\**" />
-    <None Remove="wwwroot\modules\**" />
+    <Folder Include="Utilities\Common\" />
+    <Folder Include="FilterAttribute\" />
+    <Folder Include="Utilities\Lib\" />
+    <Folder Include="ViewComponents\Home\" />
+    <Folder Include="Views\Client\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utilities\Common\" />
-    <Folder Include="FilterAttribute\" />
-    <Folder Include="Utilities\Contants\" />
-    <Folder Include="Utilities\Lib\" />
-    <Folder Include="ViewComponents\Home\" />
-    <Folder Include="wwwroot\images\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>
