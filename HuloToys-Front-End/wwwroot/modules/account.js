@@ -120,14 +120,14 @@ var account = {
             success = false
 
         }
-        if (!success) return success
+        //if (!success) return success
         element = $('#dangnhap .password input')
         if (element.val() == undefined || element.val().trim() == '') {
             element.closest('.form-group').find('.err').show()
             success = false
 
         }
-        if (!success) return success
+        //if (!success) return success
 
         return success
     },
@@ -141,9 +141,14 @@ var account = {
             success = false
 
         }
-        if (!success) return success
+        //if (!success) return success
         element = $('#dangky .email input') 
-        if (element.val() != undefined && element.val().trim() != '') {
+        if (element.val() == undefined || element.val().trim() == '') {
+            element.closest('.form-group').find('.err').show()
+            success = false
+
+        }
+        else if (element.val() != undefined && element.val().trim() != '') {
             var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
             if (!pattern.test(element.val())) {
                 element.closest('.form-group').find('.err').html(NOTIFICATION_MESSAGE.EmailInCorrect)
@@ -151,7 +156,7 @@ var account = {
                 success = false
             }
         }
-        if (!success) return success
+        //if (!success) return success
 
         element = $('#dangky .tel input') 
         if (element.val() == undefined || element.val().trim() == '') {
@@ -167,7 +172,7 @@ var account = {
                 success = false
             }
         }
-        if (!success) return success
+        //if (!success) return success
 
         element = $('#dangky .register-password input')
         if (element.val() == undefined || element.val().trim() == '') {
@@ -179,7 +184,7 @@ var account = {
             element.closest('.form-group').find('.err').show()
             success = false
         }
-        if (!success) return success
+        //if (!success) return success
 
         element = $('#dangky .confirm-password input')
         if (element.val() == undefined || element.val().trim() == '') {
@@ -191,7 +196,7 @@ var account = {
             element.closest('.form-group').find('.err').show()
             success = false
         }
-        if (!success) return success
+        //if (!success) return success
         return success
     }
 }
