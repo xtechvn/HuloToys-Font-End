@@ -1,9 +1,9 @@
-﻿
-var _new_html = '<a href="{link}">{title}</a>';
-$(document).ready(function () {
+﻿$(document).ready(function () {
     _load_new_date.loadnew()
 
 })
+var _new_html = '<a href="{link}">{title}</a>';
+
 var _load_new_date = {
     loadnew: function () {
         $.ajax({
