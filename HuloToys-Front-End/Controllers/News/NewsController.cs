@@ -1,7 +1,9 @@
 ﻿using HuloToys_Front_End.Controllers.Client.Business;
 using HuloToys_Front_End.Controllers.News.Business;
 using HuloToys_Front_End.Models.News;
+using HuloToys_Front_End.Utilities.Contants;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,8 +32,9 @@ namespace HuloToys_Front_End.Controllers.News
         }
         public async Task<IActionResult> NewsByTag(GetListByCategoryIdRequest requestObj)
         {
-
+            ViewBag.skip = requestObj.skip;
             var data = await _newServices.getListArticleByCategoryIdOrderByDate(requestObj);
+            
             return PartialView(data);
         }
         public async Task<IActionResult> NewsPinned(GetListByCategoryIdRequest requestObj)
@@ -58,6 +61,19 @@ namespace HuloToys_Front_End.Controllers.News
             response.Details = details;
             response.MostViewedArticles = mostViewedArticles;
             return View(response);
+        }
+        public async Task<IActionResult> GetNewsByDate()
+        {
+            var requestObj = new GetListByCategoryIdRequest();
+            requestObj.category_id = 1;
+            requestObj.skip = 1;
+            requestObj.take = 1;
+            var data = await _newServices.getListArticleByCategoryIdOrderByDatePinned(requestObj);
+            return Ok(new
+            {
+                status = (int)ResponseType.SUCCESS,
+                data = data[0],
+            });
         }
     }
 }

@@ -1,20 +1,21 @@
 ﻿$(document).ready(function () {
     account.Initialization()
-  
+    _load_new_date.loadnew();
+
 })
 
 var account = {
     Initialization: function () {
         account.RenderHTML()
         account.DynamicBind()
-       
+
     },
     RenderHTML: function () {
         $('.err').hide()
         var usr = global_service.CheckLogin()
         if (usr) {
             $('#client-account-name').html(usr.name)
-            $('#client-account-name').closest('a').attr('href','/account')
+            $('#client-account-name').closest('a').attr('href', '/account')
         }
         $('#dangky .email input').addClass('no-requirement')
     },
@@ -114,7 +115,7 @@ var account = {
     },
     ValidateLogin: function () {
         var success = true
-        var element = $('#dangnhap .user input') 
+        var element = $('#dangnhap .user input')
         if (element.val() == undefined || element.val().trim() == '') {
             element.closest('.form-group').find('.err').show()
             success = false
@@ -135,14 +136,14 @@ var account = {
         var password_length = 6
 
         var success = true
-        var element = $('#dangky .user input') 
+        var element = $('#dangky .user input')
         if (element.val() == undefined || element.val().trim() == '') {
             element.closest('.form-group').find('.err').show()
             success = false
 
         }
         //if (!success) return success
-        element = $('#dangky .email input') 
+        element = $('#dangky .email input')
         if (element.val() == undefined || element.val().trim() == '') {
             element.closest('.form-group').find('.err').show()
             success = false
@@ -158,7 +159,7 @@ var account = {
         }
         //if (!success) return success
 
-        element = $('#dangky .tel input') 
+        element = $('#dangky .tel input')
         if (element.val() == undefined || element.val().trim() == '') {
             element.closest('.form-group').find('.err').show()
             success = false
@@ -199,4 +200,20 @@ var account = {
         //if (!success) return success
         return success
     }
+}
+var _new_html = '<a href="{link}">{title}</a>';
+var _load_new_date = {
+    loadnew:function () {
+        $.ajax({
+            url: "/News/GetNewsByDate",
+            type: 'post',
+            data: {},
+            success: function (result) {
+                if (result.status == 0 && result.data != null) {
+                    $('#New_newDate').html(_new_html.replace('{link}', "/News/NewsDetails/" + result.data.id).replace('{title}', result.data.title))
+                }
+            },
+
+        });
+}
 }

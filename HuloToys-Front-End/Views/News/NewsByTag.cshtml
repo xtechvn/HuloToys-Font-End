@@ -14,8 +14,6 @@
                     </div>
                     <div class="right-content">
                         <div class="flex-cat">
-                            <a href="/News/NewsDetails/@item.id" class="cat-tag cat-dochoi">Đồ chơi</a>
-                            <a href="/News/NewsDetails/@item.id" class="cat-tag cat-goiy">Gợi ý </a>
                             <span class="time">
                                 <i class="icon icon-time"></i>
                                 @item.publish_date.ToString("dd/MM/yyyy")
@@ -34,17 +32,24 @@
                 </div>
             </div>
         }
-    </div>
-    <div class="wrap-paging">
+    </div><div class="wrap-paging">
         
-        <ul class="pagination" style="justify-content: center !important;">
-            <li class="page first"><a onclick="_new.paging(1);" href=""><i class="icon icon-page-first"></i></a></li>
-            @for (int i = 1; i <= Model[0].total_page; i++)
-            {
-                <li class="page paging_@i"><a onclick="_new.paging(@i);" href="">1</a></li>
-            }
-            <li class="page last"><a onclick="_new.paging(@Model[0].total_page)" href=""><i class="icon icon-page-last"></i></a></li>
-        </ul>
+              <ul class="pagination" style="justify-content: center !important;">
+                  <li class="page first"><a onclick="_new.paging(1);" href="javascripts:;"><i class="icon icon-page-first"></i></a></li>
+                  @if (Model[0].total_page <= 1)
+                  {
+                      <li class="page paging_1"><a onclick="_new.paging(1);" href="javascripts:;">1</a></li>
+                  }
+                  else
+                  {
+                      @for (int i = 1; i <= Model[0].total_page; i++)
+                      {
+                          <li class="page paging_@i"><a onclick="_new.paging(@i);" href="javascripts:;">@i</a></li>
+                      }
+                  }
+
+                  <li class="page last"><a onclick="_new.paging(@Model[0].total_page)" href="javascripts:;"><i class="icon icon-page-last"></i></a></li>
+              </ul>
     </div>
 
 }
