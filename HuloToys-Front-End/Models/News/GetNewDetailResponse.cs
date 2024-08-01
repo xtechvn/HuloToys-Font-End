@@ -1,6 +1,6 @@
 ﻿namespace HuloToys_Front_End.Models.News
 {
-    public class GetNewDetailResponse
+    public class GetNewDetailResponse: ArticleResponse
     {
         public int status { get; set; }
         public int articleType { get; set; }

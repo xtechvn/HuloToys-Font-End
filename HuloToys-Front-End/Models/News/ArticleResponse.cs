@@ -13,5 +13,8 @@
         public string image { get; set; }
         public DateTime publish_date { get; set; }
         public int? position { get; set; }
+        public int? total_item { get; set; }
+        public int? total_page{ get; set; }
+
     }
 }

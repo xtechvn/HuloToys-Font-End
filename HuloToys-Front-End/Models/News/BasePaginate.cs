@@ -2,7 +2,7 @@
 {
     public class BasePaginate
     {
-        public int page { get; set; }
-        public int size { get; set; }
+        public int skip { get; set; }
+        public int take { get; set; }
     }
 }

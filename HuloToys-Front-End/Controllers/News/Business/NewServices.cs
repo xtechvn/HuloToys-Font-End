@@ -30,7 +30,7 @@ namespace HuloToys_Front_End.Controllers.News.Business
                 if (status == (int)ResponseType.SUCCESS)
                 {
                   
-                    var data = JsonConvert.DeserializeObject<List<GetCategoryResponse>>(jsonData["data"].ToString());
+                    var data = JsonConvert.DeserializeObject<List<GetCategoryResponse>>(jsonData["categories"].ToString());
 
                     return data;
                 }
@@ -42,18 +42,27 @@ namespace HuloToys_Front_End.Controllers.News.Business
             }
             return null;
         }
-        public async Task<List<ArticleResponse>> GetNewsByTag(GetListByCategoryIdRequest requestObj)
+        public async Task<List<ArticleResponse>> getListArticleByCategoryIdOrderByDate(GetListByCategoryIdRequest requestObj)
         {
             try
             {
               
-                var result = await POST(_configuration["API:get_list_new_by_tag"], requestObj);
+                var result = await POST(_configuration["API:get_list_by_categoryid_order"], requestObj);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
 
                 if (status == (int)ResponseType.SUCCESS)
                 {
-                    return JsonConvert.DeserializeObject<List<ArticleResponse>>(jsonData["data"].ToString());
+                    var data= JsonConvert.DeserializeObject<List<ArticleResponse>>(jsonData["data_list"].ToString());
+                   if(data.Count > 0)
+                    {
+                        var total_item = int.Parse(jsonData["total_item"].ToString());
+                        var total_page = int.Parse(jsonData["total_page"].ToString());
+                        data[0].total_item = total_item;
+                        data[0].total_page = total_page;
+                    }
+                    
+                    return data;
                 }
             }
             catch
@@ -62,7 +71,26 @@ namespace HuloToys_Front_End.Controllers.News.Business
             return null;
 
         }
+        public async Task<List<ArticleResponse>> getListArticleByCategoryIdOrderByDatePinned(GetListByCategoryIdRequest requestObj)
+        {
+            try
+            {
 
+                var result = await POST(_configuration["API:get_list_by_categoryid_order"], requestObj);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<List<ArticleResponse>>(jsonData["pinned"].ToString());
+                }
+            }
+            catch
+            {
+            }
+            return null;
+
+        }
         public async Task<GetNewDetailResponse> GetNewsDetail(GetNewDetailRequest requestObj)
         {
             try

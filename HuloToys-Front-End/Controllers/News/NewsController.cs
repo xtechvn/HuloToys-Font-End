@@ -23,15 +23,22 @@ namespace HuloToys_Front_End.Controllers.News
         {
             return View();
         }
-        public async Task<IActionResult> NewsCategory()
+        public async Task<IActionResult> NewsCategory(GetListByCategoryIdRequest requestObj)
         {
             var data = await _newServices.GetNewsCategory();
             return PartialView(data);
         }
         public async Task<IActionResult> NewsByTag(GetListByCategoryIdRequest requestObj)
         {
+
+            var data = await _newServices.getListArticleByCategoryIdOrderByDate(requestObj);
+            return PartialView(data);
+        }
+        public async Task<IActionResult> NewsPinned(GetListByCategoryIdRequest requestObj)
+        {
            
-            var data = await _newServices.GetNewsByTag(requestObj);
+            var data = await _newServices.getListArticleByCategoryIdOrderByDatePinned(requestObj);
+
             return PartialView(data);
         }
         public async Task<IActionResult> NewsMostViewedArticle(GetListByCategoryIdRequest requestObj)
@@ -40,7 +47,7 @@ namespace HuloToys_Front_End.Controllers.News
             var data = await _newServices.GetMostViewedArticles();
             return PartialView(data);
         }
-        public async Task<IActionResult> NewsDetails(string slug, string id)
+        public async Task<IActionResult> NewsDetails(string id)
         {
             GetNewDetailRequest request = new GetNewDetailRequest();
             request.article_id = long.Parse(id);

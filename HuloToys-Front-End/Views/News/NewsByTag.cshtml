@@ -1,37 +1,53 @@
 ﻿@using HuloToys_Front_End.Models.News;
 @model List<ArticleResponse>
-@if(Model != null)
+@if (Model != null)
 {
-    foreach(var item in Model)
-    {
-        <div class="item-news">
-            <div class="box-news">
-                <div class="thumb-art">
-                    <div class="thumb thumb-news">
-                        <a href="/News/NewsDetails/@item.id"><img src="@item.image_11" alt=""> </a>
+    <div class="list-news">
+        @foreach (var item in Model)
+        {
+            <div class="item-news">
+                <div class="box-news">
+                    <div class="thumb-art">
+                        <div class="thumb thumb-news">
+                            <a href="/News/NewsDetails/@item.id"><img src="@item.image_11" alt=""> </a>
+                        </div>
                     </div>
-                </div>
-                <div class="right-content">
-                    <div class="flex-cat">
-                        <a href="/News/NewsDetails/@item.id" class="cat-tag cat-dochoi">Đồ chơi</a>
-                        <a href="/News/NewsDetails/@item.id" class="cat-tag cat-goiy">Gợi ý </a>
-                        <span class="time">
-                            <i class="icon icon-time"></i>
-                           @item.publish_date.ToString("dd/MM/yyyy")
-                        </span>
+                    <div class="right-content">
+                        <div class="flex-cat">
+                            <a href="/News/NewsDetails/@item.id" class="cat-tag cat-dochoi">Đồ chơi</a>
+                            <a href="/News/NewsDetails/@item.id" class="cat-tag cat-goiy">Gợi ý </a>
+                            <span class="time">
+                                <i class="icon icon-time"></i>
+                                @item.publish_date.ToString("dd/MM/yyyy")
+                            </span>
+                        </div>
+                        <h2 class="title-news">
+                            <a href="/News/NewsDetails/@item.id">
+                                @item.title
+                            </a>
+                        </h2>
+                        <p class="description">
+                            @item.lead
+                        </p>
+                        <a href="/News/NewsDetails/@item.id" class="xemthem">Đọc tiếp</a>
                     </div>
-                    <h2 class="title-news">
-                        <a href="/News/NewsDetails/@item.id">
-                           @item.title
-                        </a>
-                    </h2>
-                    <p class="description">
-                        @item.lead
-                    </p>
-                    <a href="/News/NewsDetails/@item.id" class="xemthem">Đọc tiếp</a>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
+    <div class="wrap-paging">
+        
+        <ul class="pagination">
+            <li class="page first"><a href=""><i class="icon icon-page-first"></i></a></li>
+            <li class="page previous disabled"><a href=""><i class="icon icon-page-previous"></i></a></li>
+            <li class="page active"><a href="">1</a></li>
+            <li class="page"><a href="">2</a></li>
+            <li class="page"><a href="">...</a></li>
+            <li class="page"><a href="">3</a></li>
+            <li class="page next"><a href=""><i class="icon icon-page-next"></i></a></li>
+            <li class="page last"><a href=""><i class="icon icon-page-last"></i></a></li>
+        </ul>
+    </div>
+
 }
 
