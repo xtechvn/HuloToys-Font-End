@@ -45,12 +45,30 @@
                     </div>
                     <a href="javascript:;" class="forgot-pass">Quên mật khẩu?</a>
                 </div>
+                <div id="register-detail" data-type="1"></div>
                 <button id="btn-client-login" class="btn-submit ">Đăng nhập</button>
                 <div class="orther-login"><span>Hoặc đăng nhập bằng</span></div>
-                <div class="flex-social">
-                    <a href="javascript:;" class="btn btn-login-fb">Đăng nhập bằng Facebook</a>
+                <div class="flex-social" style="grid-template-columns:auto;">
+                    <a href="javascript:;" class="btn btn-login-fb" style="display:none;">Đăng nhập bằng Facebook</a>
                     <a href="javascript:;" class="btn btn-login-gg ">Đăng nhập bằng Google</a>
+                    <div id="g_id_onload" style="display:none;"
+                         data-client_id="65575993345-u9qk911fs77lls8tgmn2c3gjk04lg78c.apps.googleusercontent.com"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="GoogleSignIn"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin" style="display:none;"
+                         data-type="standard"
+                         data-shape="pill"
+                         data-theme="filled_black"
+                         data-text="signin_with"
+                         data-size="large"
+                         data-logo_alignment="left">
+                    </div>
                 </div>
+                <div id="fb-root" style="display:none;"></div>
+                <div class="fb-login-button" style="display:none;" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="false" data-use-continue-as="false"></div>
             </ul>
         </div>
     </div>

@@ -14,3 +14,15 @@ var NOTIFICATION_MESSAGE = {
     PasswordConfirmNotEqual:'Xác nhận mật khẩu và mật khẩu không khớp',
     EmptyField:'Vui lòng không để trống'
 }
+var THIRDPARTY_CONSTANTS = {
+    Facebook: {
+        AppId: '406702408540759',
+        Version:'v20.0'
+    },
+    GSI: {
+        ClientID:'65575993345-u9qk911fs77lls8tgmn2c3gjk04lg78c.apps.googleusercontent.com'
+    }
+}
+var HTML_CONSTANTS = {
+    GoogleAccountNotRegistered : '<span class="err err-gg-account" style=" width: 100%; text-align: -webkit-center; ">Tài khoản Google chưa được đăng ký, vui lòng điền đầy đủ thông tin và nhấn tạo tài khoản</span>'
+}
