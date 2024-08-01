@@ -7,53 +7,51 @@
 }
 @if (details != null)
 {
-    
 
-<section class="section-news section-news-detail">
-    <div class="container">
-        <div class="wrap-news">
-            <div class="content">
-                <div class="thumb-art">
-                    <div class="thumb thumb-news">
-                        <a href=""><img src="@details.image_11" alt=""> </a>
+
+    <section class="section-news section-news-detail">
+        <div class="container">
+            <div class="wrap-news">
+                <div class="content">
+                    <div class="thumb-art">
+                        <div class="thumb thumb-news">
+                            <a href=""><img src="@details.image_11" alt=""> </a>
+                        </div>
                     </div>
-                </div>
-                <div class="flex-cat">
-                    
-                </div>
-                <h1 class="title-news"> @details.title</h1>
-                <div class="details">
-                    <p>
+                    <div class="flex-cat">
 
-                        @Html.Raw(details.body)
-                    </p>
+                    </div>
+                    <h1 class="title-news"> @details.title</h1>
+                    <div class="details">
+                        <p>
 
-                </div>
-            </div>
-            <div class="siderbar-news">
-                <div class="box-side">
-                    <h3 class="title">
-                        XEM NHIỀU NHẤT
-                    </h3>
-                    <div class="list-news" id="Most_Viewed_Article">
+                            @Html.Raw(details.body)
+                        </p>
 
                     </div>
                 </div>
-                <div class="box-side">
-                    <h3 class="title">
-                        SẢN PHẨM KHUYẾN MÃI
-                    </h3>
-                    <div class="list-product" id="list_new_Sale">
+                <div class="siderbar-news">
+                    <div class="box-side">
+                        <h3 class="title">
+                            XEM NHIỀU NHẤT
+                        </h3>
+                        <div class="list-news" id="Most_Viewed_Article">
 
+                        </div>
+                    </div>
+                    <div class="box-side">
+                        <h3 class="title">
+                            SẢN PHẨM KHUYẾN MÃI
+                        </h3>
+                        <div class="list-product" id="list_new_Sale">
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-@section scripts {
+    </section>
     <script type="text/javascript" src="~/modules/new.js"></script>
-}
 }
 @* @section HeadMeta
     {
