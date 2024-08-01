@@ -2,6 +2,7 @@
     _new.Initialization()
 
 })
+let category_id = 1;
 var _new = {
     Initialization: function () {
         _new.NewsCategory();
@@ -46,6 +47,9 @@ var _new = {
         });
     },
     getNewsByTag: function (page, size, category_id) {
+        
+        $(".page").removeClass("active") 
+        category_id = category_id;
         var requestObj = {
             skip: page,
             take: size,
@@ -58,6 +62,7 @@ var _new = {
             success: function (data) {
                
                 $("#section-article-paginate").html(data);
+                $(".paging_" + page).addClass("active") 
             },
            
         });
@@ -95,5 +100,9 @@ var _new = {
             },
 
         });
+    },
+    paging: function (page) {
+
+        _new.getNewsByTag(page, 10, category_id)
     },
 }

@@ -5,6 +5,10 @@
     var details = Model.Details;
     var mostViewedArticles = Model.MostViewedArticles;
 }
+@if (details != null)
+{
+    
+
 <section class="section-news section-news-detail">
     <div class="container">
         <div class="wrap-news">
@@ -51,7 +55,7 @@
 @section scripts {
     <script type="text/javascript" src="~/modules/new.js"></script>
 }
-
+}
 @* @section HeadMeta
     {
         <meta property="og:image" content="@details.image_169">

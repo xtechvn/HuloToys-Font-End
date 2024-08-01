@@ -38,14 +38,12 @@
     <div class="wrap-paging">
         
         <ul class="pagination">
-            <li class="page first"><a href=""><i class="icon icon-page-first"></i></a></li>
-            <li class="page previous disabled"><a href=""><i class="icon icon-page-previous"></i></a></li>
-            <li class="page active"><a href="">1</a></li>
-            <li class="page"><a href="">2</a></li>
-            <li class="page"><a href="">...</a></li>
-            <li class="page"><a href="">3</a></li>
-            <li class="page next"><a href=""><i class="icon icon-page-next"></i></a></li>
-            <li class="page last"><a href=""><i class="icon icon-page-last"></i></a></li>
+            <li class="page first"><a onclick="_new.paging(1);" href=""><i class="icon icon-page-first"></i></a></li>
+            @for (int i = 1; i <= Model[0].total_page; i++)
+            {
+                <li class="page paging_@i"><a onclick="_new.paging(@i);" href="">1</a></li>
+            }
+            <li class="page last"><a onclick="_new.paging(@Model[0].total_page)" href=""><i class="icon icon-page-last"></i></a></li>
         </ul>
     </div>
 
