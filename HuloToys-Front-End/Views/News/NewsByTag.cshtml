@@ -36,12 +36,9 @@
         
               <ul class="pagination" style="justify-content: center !important;">
                   <li class="page first"><a onclick="_new.paging(1);" href="javascripts:;"><i class="icon icon-page-first"></i></a></li>
-                  @if (Model[0].total_page <= 1)
+                  @if (Model[0].total_page > 1)
                   {
-                      <li class="page paging_1"><a onclick="_new.paging(1);" href="javascripts:;">1</a></li>
-                  }
-                  else
-                  {
+                   
                       @for (int i = 1; i <= Model[0].total_page; i++)
                       {
                           <li class="page paging_@i"><a onclick="_new.paging(@i);" href="javascripts:;">@i</a></li>
