@@ -10,7 +10,6 @@
   <ItemGroup>
     <Folder Include="Utilities\Common\" />
     <Folder Include="FilterAttribute\" />
-    <Folder Include="Utilities\Lib\" />
     <Folder Include="ViewComponents\Home\" />
     <Folder Include="Views\Client\" />
     <Folder Include="wwwroot\images\" />
