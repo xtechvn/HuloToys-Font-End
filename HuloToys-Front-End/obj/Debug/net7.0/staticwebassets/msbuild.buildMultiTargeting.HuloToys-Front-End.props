@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\HuloToys-Front-End.props" />
+</Project>

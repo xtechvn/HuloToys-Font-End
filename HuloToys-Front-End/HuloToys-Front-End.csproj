@@ -8,11 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Utilities\Common\" />
-    <Folder Include="FilterAttribute\" />
-    <Folder Include="Utilities\Contants\" />
-    <Folder Include="Utilities\Lib\" />
-    <Folder Include="ViewComponents\Home\" />
     <Folder Include="wwwroot\modules\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
