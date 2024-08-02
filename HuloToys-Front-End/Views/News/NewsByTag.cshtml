@@ -33,20 +33,21 @@
             </div>
         }
     </div><div class="wrap-paging">
-        
-              <ul class="pagination" style="justify-content: center !important;">
-                  <li class="page first"><a onclick="_new.paging(1);" href="javascripts:;"><i class="icon icon-page-first"></i></a></li>
-                  @if (Model[0].total_page > 1)
-                  {
-                   
-                      @for (int i = 1; i <= Model[0].total_page; i++)
-                      {
-                          <li class="page paging_@i"><a onclick="_new.paging(@i);" href="javascripts:;">@i</a></li>
-                      }
-                  }
 
-                  <li class="page last"><a onclick="_new.paging(@Model[0].total_page)" href="javascripts:;"><i class="icon icon-page-last"></i></a></li>
-              </ul>
+
+        @if (Model[0].total_page > 1)
+        {
+            <ul class="pagination" style="justify-content: center !important;">
+                <li class="page first"><a onclick="_new.paging(1);" href="javascripts:;"><i class="icon icon-page-first"></i></a></li>
+                @for (int i = 1; i <= Model[0].total_page; i++)
+                {
+                    <li class="page paging_@i"><a onclick="_new.paging(@i);" href="javascripts:;">@i</a></li>
+                }
+                <li class="page last"><a onclick="_new.paging(@Model[0].total_page)" href="javascripts:;"><i class="icon icon-page-last"></i></a></li>
+            </ul>
+        }
+
+
     </div>
 
 }
