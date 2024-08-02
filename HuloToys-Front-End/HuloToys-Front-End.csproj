@@ -8,22 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     <Folder Include="Utilities\Common\" />
     <Folder Include="FilterAttribute\" />
     <Folder Include="Utilities\Contants\" />
     <Folder Include="Utilities\Lib\" />
     <Folder Include="ViewComponents\Home\" />
->>>>>>> parent of 9cecfdc (add)
+
     <Folder Include="wwwroot\modules\" />
-=======
+
     <Folder Include="Utilities\Common\" />
     <Folder Include="FilterAttribute\" />
     <Folder Include="ViewComponents\Home\" />
     <Folder Include="Views\Client\" />
->>>>>>> 5ec1fc49328f1de8c9cfafac3cc6c9616cc9a73d
+
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
