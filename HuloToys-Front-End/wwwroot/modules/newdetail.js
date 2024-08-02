@@ -1,5 +1,5 @@
 ﻿$(document).ready(function() {
-    _new.Initialization()
+    _newdetail.Initialization()
 
 })
 var _newdetail = {
