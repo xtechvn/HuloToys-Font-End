@@ -69,14 +69,13 @@ namespace HuloToys_Front_End.Controllers.News
             response.MostViewedArticles = mostViewedArticles;
             return View(response);
         }
-        public async Task<IActionResult> GetNewsByDate(int Type)
+        public async Task<IActionResult> GetNewsByDate()
         {
             var requestObj = new GetListByCategoryIdRequest();
             requestObj.category_id = 10;
             requestObj.skip = 1;
             requestObj.take = 1;
             var data = await _newServices.getListArticleByCategoryIdOrderByDatePinned(requestObj);
-            data=data.Where(s=>s.position== Type).ToList();
             return Ok(new
             {
                 status = (int)ResponseType.SUCCESS,
