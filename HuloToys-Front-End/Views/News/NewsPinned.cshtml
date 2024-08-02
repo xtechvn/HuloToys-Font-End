@@ -1,31 +1,30 @@
 ﻿@using HuloToys_Front_End.Models.News;
-@model List<ArticleResponse>
+@model ArticleResponse
 @if (Model != null)
 {
-    foreach (var item in Model)
-    {
-        <div class="thumb-art">
-            <div class="thumb thumb-news">
-                <a href="/News/NewsDetails/@item.id"><img src="@item.image_11" alt=""> </a>
-            </div>
+
+    <div class="thumb-art">
+        <div class="thumb thumb-news">
+            <a href="/News/NewsDetails/@Model.id"><img src="@Model.image_169" alt=""> </a>
         </div>
-        <div class="right-content">
-            <div class="flex-cat">
-             
-                <span class="time">
-                    <i class="icon icon-time"></i>
-                    @item.publish_date
-                </span>
-            </div>
-            <h2 class="title-news">
-                <a href="/News/NewsDetails/@item.id">
-                    @item.title
-                </a>
-            </h2>
-            <p class="description">
-                @item.lead
-            </p>
-            <a href="/News/NewsDetails/@item.id" class="xemthem">Đọc tiếp</a>
+    </div>
+    <div class="right-content">
+        <div class="flex-cat">
+
+            <span class="time">
+                <i class="icon icon-time"></i>
+                @Model.publish_date
+            </span>
         </div>
-    }
+        <h2 class="title-news">
+            <a href="/News/NewsDetails/@Model.id">
+                @Model.title
+            </a>
+        </h2>
+        <p class="description">
+            @Model.lead
+        </p>
+        <a href="/News/NewsDetails/@Model.id" class="xemthem">Đọc tiếp</a>
+    </div>
+
 }

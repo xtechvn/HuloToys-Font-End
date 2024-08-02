@@ -41,8 +41,15 @@ namespace HuloToys_Front_End.Controllers.News
         {
            
             var data = await _newServices.getListArticleByCategoryIdOrderByDatePinned(requestObj);
+            if (data != null)
+            {
+                return PartialView(data[0]);
+            }
+            else
+            {
+                return PartialView();
 
-            return PartialView(data);
+            }
         }
         public async Task<IActionResult> NewsMostViewedArticle(GetListByCategoryIdRequest requestObj)
         {
@@ -62,13 +69,14 @@ namespace HuloToys_Front_End.Controllers.News
             response.MostViewedArticles = mostViewedArticles;
             return View(response);
         }
-        public async Task<IActionResult> GetNewsByDate()
+        public async Task<IActionResult> GetNewsByDate(int Type)
         {
             var requestObj = new GetListByCategoryIdRequest();
-            requestObj.category_id = 1;
+            requestObj.category_id = 10;
             requestObj.skip = 1;
             requestObj.take = 1;
             var data = await _newServices.getListArticleByCategoryIdOrderByDatePinned(requestObj);
+            data=data.Where(s=>s.position== Type).ToList();
             return Ok(new
             {
                 status = (int)ResponseType.SUCCESS,

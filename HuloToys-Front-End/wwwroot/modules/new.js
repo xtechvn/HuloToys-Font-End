@@ -6,9 +6,9 @@ let category_id = 1;
 var _new = {
     Initialization: function () {
         _new.NewsCategory();
-        _new.getNewsByTag(1, 10, 1);
-        _new.getNewsPinned(1, 10, 1);
-        _new.getNewsMostViewedArticle(1, 10, 1);
+        _new.getNewsByTag(1, 10, 10);
+        _new.getNewsPinned(1, 1, 10);
+        _new.getNewsMostViewedArticle(1, 10, 10);
         
     },
  

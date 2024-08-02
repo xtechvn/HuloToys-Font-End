@@ -22,7 +22,7 @@ namespace HuloToys_Front_End.Controllers.News.Business
             {
                 var obj =new Dictionary<string, object>
                 {
-                    { "category_id","1" }
+                    { "category_id","10" }
                 };
                 var result = await POST(_configuration["API:get_category"], obj);
                 var jsonData = JObject.Parse(result);
@@ -118,7 +118,7 @@ namespace HuloToys_Front_End.Controllers.News.Business
             {
                 var obj = new Dictionary<string, object>
                 {
-                    { "category_id","1" }
+                    { "category_id","10" }
                 };
                 var result = await POST(_configuration["API:get_most_viewed_article"], obj);
                 var jsonData = JObject.Parse(result);
