@@ -1,0 +1,54 @@
+﻿@using HuloToys_Front_End.Models.News;
+@model List<ArticleResponse>
+@if (Model != null)
+{
+    <div class="list-news">
+        @foreach (var item in Model)
+        {
+            <div class="item-news">
+                <div class="box-news">
+                    <div class="thumb-art">
+                        <div class="thumb thumb-news">
+                            <a href="/News/NewsDetails/@item.id"><img src="@item.image_169" alt=""> </a>
+                        </div>
+                    </div>
+                    <div class="right-content">
+                        <div class="flex-cat">
+                            <span class="time">
+                                <i class="icon icon-time"></i>
+                                @item.publish_date.ToString("dd/MM/yyyy")
+                            </span>
+                        </div>
+                        <h2 class="title-news">
+                            <a href="/News/NewsDetails/@item.id">
+                                @item.title
+                            </a>
+                        </h2>
+                        <p class="description">
+                            @item.lead
+                        </p>
+                        <a href="/News/NewsDetails/@item.id" class="xemthem">Đọc tiếp</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div><div class="wrap-paging">
+
+
+        @if (Model[0].total_page > 1)
+        {
+            <ul class="pagination" style="justify-content: center !important;">
+                <li class="page first"><a onclick="_new.paging(1);" href="javascripts:;"><i class="icon icon-page-first"></i></a></li>
+                @for (int i = 1; i <= Model[0].total_page; i++)
+                {
+                    <li class="page paging_@i"><a onclick="_new.paging(@i);" href="javascripts:;">@i</a></li>
+                }
+                <li class="page last"><a onclick="_new.paging(@Model[0].total_page)" href="javascripts:;"><i class="icon icon-page-last"></i></a></li>
+            </ul>
+        }
+
+
+    </div>
+
+}
+

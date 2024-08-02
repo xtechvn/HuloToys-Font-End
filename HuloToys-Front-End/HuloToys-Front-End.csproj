@@ -8,8 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="wwwroot\modules\" />
+=======
+    <Folder Include="Utilities\Common\" />
+    <Folder Include="FilterAttribute\" />
+    <Folder Include="ViewComponents\Home\" />
+    <Folder Include="Views\Client\" />
+>>>>>>> 5ec1fc49328f1de8c9cfafac3cc6c9616cc9a73d
     <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>

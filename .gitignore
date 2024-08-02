@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/HuloToys-Front-End/bin
+/HuloToys-Front-End/obj
+/.vs

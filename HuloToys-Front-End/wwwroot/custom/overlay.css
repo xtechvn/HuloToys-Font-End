@@ -1,0 +1,63 @@
+﻿.overlay-active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.placeholder, .box-placeholder .article-thumb, .box-placeholder .article-content .title_new, .box-placeholder .article-content .description, .box-placeholder .article-content .tag-title, .box-placeholder .article-content .star, .box-placeholder .article-content .number-vote, .box-placeholder .article-content .service li, .box-placeholder .article-content .price {
+    background: #666;
+    opacity: 0.1;
+    animation: fading 1.5s infinite;
+}
+
+.box-placeholder .article-thumb {
+    height: auto !important;
+}
+
+    .box-placeholder .article-thumb img {
+        display: none;
+    }
+
+.box-placeholder .btn-default {
+    display: none;
+}
+
+.box-placeholder .article-content {
+    font-size: 0;
+}
+
+    .box-placeholder .article-content .title_new *, .box-placeholder .article-content .description *, .box-placeholder .article-content .tag-title *, .box-placeholder .article-content .star *, .box-placeholder .article-content .number-vote *, .box-placeholder .article-content .service li *, .box-placeholder .article-content .price * {
+        font-size: 0 !important;
+    }
+
+    .box-placeholder .article-content .title_new span, .box-placeholder .article-content .description span, .box-placeholder .article-content .tag-title span, .box-placeholder .article-content .star span, .box-placeholder .article-content .number-vote span, .box-placeholder .article-content .service li span, .box-placeholder .article-content .price span, .box-placeholder .article-content .title_new img, .box-placeholder .article-content .description img, .box-placeholder .article-content .tag-title img, .box-placeholder .article-content .star img, .box-placeholder .article-content .number-vote img, .box-placeholder .article-content .service li img, .box-placeholder .article-content .price img, .box-placeholder .article-content .title_new svg, .box-placeholder .article-content .description svg, .box-placeholder .article-content .tag-title svg, .box-placeholder .article-content .star svg, .box-placeholder .article-content .number-vote svg, .box-placeholder .article-content .service li svg, .box-placeholder .article-content .price svg, .box-placeholder .article-content .title_new .point, .box-placeholder .article-content .description .point, .box-placeholder .article-content .tag-title .point, .box-placeholder .article-content .star .point, .box-placeholder .article-content .number-vote .point, .box-placeholder .article-content .service li .point, .box-placeholder .article-content .price .point {
+        opacity: 0;
+        padding: 0;
+    }
+
+    .box-placeholder .article-content .lbl {
+        display: none;
+    }
+
+    .box-placeholder .article-content .service li {
+        max-width: 50%;
+    }
+
+    .box-placeholder .article-content .title_new {
+        height: 40px;
+        margin-bottom: 10px;
+    }
+
+    .box-placeholder .article-content .description, .box-placeholder .article-content .star {
+        height: 20px;
+    }
+
+    .box-placeholder .article-content .tag-title {
+        max-width: 100px;
+        margin-bottom: 6px;
+    }
+
+    .box-placeholder .placeholder, .box-placeholder .article-thumb, .box-placeholder .article-content .title_new, .box-placeholder .article-content .description, .box-placeholder .article-content .tag-title, .box-placeholder .article-content .star, .box-placeholder .article-content .number-vote, .box-placeholder .article-content .service li, .box-placeholder .article-content .price {
+        height: 20px;
+        width: 100%;
+        font-size: 0;
+    }
+ 

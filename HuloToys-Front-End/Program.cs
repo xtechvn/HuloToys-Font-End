@@ -23,5 +23,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapControllerRoute(
+    name: "tin-tuc",
+    pattern: "/tin-tuc",
+    defaults: new { controller = "News", action = "Index" });
 app.Run();

@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Tin tức";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="section-news">
+    <div class="container">
+
+        <div class="wrap-news">
+            <div class="content">
+                <div class="list-news-top list-news">
+                    <div class="top-news">
+                        <div class="item-news">
+                            <div class="box-news" id="article-1">
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-cat" id="news-category">
+                    </ul>
+                </div>
+                <div id="section-article-paginate">
+
+                </div>
+               
+            </div>
+            <div class="siderbar-news">
+                <div class="box-side">
+                    <h3 class="title">
+                        XEM NHIỀU NHẤT
+                    </h3>
+                    <div class="list-news" id="Most_Viewed_Article">
+
+                    </div>
+                </div>
+                <div class="box-side">
+                    <h3 class="title">
+                        SẢN PHẨM KHUYẾN MÃI
+                    </h3>
+                    <div class="list-product" id="list_new_Sale">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts {
+    <script type="text/javascript" src="~/modules/new.js"></script>
+}
