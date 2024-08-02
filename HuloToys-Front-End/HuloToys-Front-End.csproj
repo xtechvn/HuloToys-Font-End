@@ -9,6 +9,14 @@
 
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <Folder Include="Utilities\Common\" />
+    <Folder Include="FilterAttribute\" />
+    <Folder Include="Utilities\Contants\" />
+    <Folder Include="Utilities\Lib\" />
+    <Folder Include="ViewComponents\Home\" />
+>>>>>>> parent of 9cecfdc (add)
     <Folder Include="wwwroot\modules\" />
 =======
     <Folder Include="Utilities\Common\" />
