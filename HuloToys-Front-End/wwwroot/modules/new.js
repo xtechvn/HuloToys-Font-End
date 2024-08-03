@@ -3,7 +3,7 @@
     _home_product.Initialization();
 
 })
-let category_id = 1;
+let category_id = 10;
 var _new = {
     Initialization: function () {
         _new.NewsCategory();
@@ -110,7 +110,7 @@ var _new = {
     GetFindArticleByTitle: function () {
         $('#article-1').hide();
         var requestObj = {
-            title: $('#text_input').val,
+            title: $('#text_input').val(),
             parent_cate_faq_id: category_id
         };
         $.ajax({
