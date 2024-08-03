@@ -28,6 +28,7 @@ var _new = {
         });
     },
     getNewsPinned: function (page, size, category_id) {
+        $('#article-1').show();
         var requestObj = {
             skip: page,
             take: size,
@@ -45,7 +46,9 @@ var _new = {
         });
     },
     getNewsByTag: function (page, size, category_id) {
-        
+        $('#article-1').show();
+        $('.cat-tag').removeClass('active');
+        $('.tag_' + category_id).addClass('active');
         $(".page").removeClass("active") 
         category_id = category_id;
         var requestObj = {
@@ -102,5 +105,23 @@ var _new = {
     paging: function (page) {
 
         _new.getNewsByTag(page, 10, category_id)
+    },
+    GetFindArticleByTitle: function () {
+        $('#article-1').hide();
+        var requestObj = {
+            title: $('#text_input').val,
+            parent_cate_faq_id: category_id
+        };
+        $.ajax({
+            url: "/News/GetFindArticleByTitle",
+            type: 'post',
+            data: { requestObj: requestObj },
+            success: function (data) {
+
+                $("#section-article-paginate").html(data);
+               
+            },
+
+        });
     },
 }

@@ -168,5 +168,30 @@ namespace HuloToys_Front_End.Controllers.News.Business
             }
             return null;
         }
+        public async Task<List<ArticleRelationModel>> FindArticleByTitle(FindArticleModel requestObj)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:find_article"], requestObj);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<List<ArticleRelationModel>>(jsonData["data_list"].ToString());
+                }
+                else
+                {
+                    var msg = int.Parse(jsonData["msg"].ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsDetail-NewServices:" + msg.ToString());
+
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsDetail-NewServices:" + ex.ToString());
+            }
+            return null;
+        }
     }
 }

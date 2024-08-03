@@ -11,7 +11,7 @@
                     <div class="thumb-art">
                         <div class="thumb thumb-news">
                             <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))">
-                                <img src="@(item.image_11 != "" ? item.image_11 : (item.image_169 != "" ? item.image_169 : item.image_43))" alt="">
+                                <img src="@item.image_169" alt="">
                             </a>
                         </div>
                     </div>

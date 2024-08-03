@@ -43,6 +43,23 @@ namespace HuloToys_Front_End.Controllers.News
             }
 
             
+        } 
+        public async Task<IActionResult> GetFindArticleByTitle(FindArticleModel requestObj)
+        {
+            try
+            {
+                var data = await _newServices.FindArticleByTitle(requestObj);
+                return PartialView(data);
+
+            }
+            catch(Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "FindArticleByTitle-NewsController:" + ex.ToString());
+
+                return PartialView();
+            }
+
+            
         }
         public async Task<IActionResult> NewsByTag(GetListByCategoryIdRequest requestObj)
         {

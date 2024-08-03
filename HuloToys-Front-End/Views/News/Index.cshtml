@@ -7,6 +7,8 @@
 
         <div class="wrap-news">
             <div class="content">
+                <ul class="list-cat" id="news-category">
+                </ul>
                 <div class="list-news-top list-news">
                     <div class="top-news">
                         <div class="item-news">
@@ -15,8 +17,7 @@
                             </div>
                         </div>
                     </div>
-                    <ul class="list-cat" id="news-category">
-                    </ul>
+                   
                 </div>
                 <div id="section-article-paginate">
 
@@ -24,6 +25,12 @@
                
             </div>
             <div class="siderbar-news">
+                <div class="form-search">
+                  
+                        <input type="text" placeholder="Tìm kiếm tin..." id="text_input">
+                    <button type="button" class="btn-search" onclick="_new.GetFindArticleByTitle();"><i class="icon icon-search"></i></button>
+                  
+                </div>
                 <div class="box-side">
                     <h3 class="title">
                         XEM NHIỀU NHẤT
