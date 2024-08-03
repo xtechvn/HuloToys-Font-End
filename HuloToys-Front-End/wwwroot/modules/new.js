@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
-    _new.Initialization()
+    _new.Initialization();
+    _home_product.Initialization();
 
 })
 let category_id = 1;
@@ -124,4 +125,47 @@ var _new = {
 
         });
     },
+}
+var _home_product = {
+    Initialization: function () {
+        //--Product Sale Slide:
+        _home_product.LoadHomeProductSlide($('.list-product-sale .swiper_wrapper'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
+  
+    },
+    ProductSaleList: function () {
+    },
+    LoadHomeProductSlide: function (element, group_id, size) {
+        var request = {
+            "group_id": group_id,
+            "page_index": 1,
+            "page_size": size
+        }
+        $.when(
+            global_service.POST(API_URL.ProductList, request)
+        ).done(function (result) {
+            element.addClass('placeholder')
+            element.addClass('box-placeholder')
+            var html = ''
+            if (result.is_success) {
+
+                $(result.data).each(function (index, item) {
+                    html += HTML_CONSTANTS.Home.SlideProductItem
+                        .replaceAll('{url}', '/product/detail/' + item.product_code)
+                        .replaceAll('{avt}', item.image_thumb)
+                        .replaceAll('{name}', item.product_name)
+                        .replaceAll('{amount}', item.amount_vnd > 0 ? global_service.Comma(item.amount_vnd) + ' đ' : 'Giá liên hệ')
+                        .replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
+                        .replaceAll('{review_count}', (item.reviews_count == null || item.reviews_count == undefined || item.reviews_count <= 0) ? '(1)' : '(' + item.reviews_count + ')')
+                        .replaceAll('{old_price_style}', (item.price_vnd == null || item.price_vnd == undefined || item.price_vnd <= 0) ? '' : '')
+                        .replaceAll('{price}', (item.price_vnd == null || item.price_vnd == undefined || item.price_vnd <= 0) ? global_service.Comma(item.amount_vnd) + ' đ' : '')
+                });
+            }
+            element.html(html)
+            element.removeClass('placeholder')
+            element.removeClass('box-placeholder')
+
+        })
+    },
+   
+
 }
