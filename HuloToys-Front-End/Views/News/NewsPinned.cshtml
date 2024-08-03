@@ -1,11 +1,12 @@
 ﻿@using HuloToys_Front_End.Models.News;
+@using HuloToys_Front_End.Utilities.Lib;
 @model ArticleResponse
 @if (Model != null)
 {
 
     <div class="thumb-art">
         <div class="thumb thumb-news">
-            <a href="/News/NewsDetails/@Model.id"><img src="@(Model.image_11 ??  Model.image_169 ?? Model.image_43)" alt=""> </a>
+            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(Model.title,Model.id.ToString()))"><img src="@(Model.image_11 ??  Model.image_169 ?? Model.image_43)" alt=""> </a>
         </div>
     </div>
     <div class="right-content">
@@ -17,14 +18,14 @@
             </span>
         </div>
         <h2 class="title-news">
-            <a href="/News/NewsDetails/@Model.id">
+            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(Model.title,Model.id.ToString()))">
                 @Model.title
             </a>
         </h2>
         <p class="description">
             @Model.lead
         </p>
-        <a href="/News/NewsDetails/@Model.id" class="xemthem">Đọc tiếp</a>
+        <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(Model.title,Model.id.ToString()))" class="xemthem">Đọc tiếp</a>
     </div>
 
 }

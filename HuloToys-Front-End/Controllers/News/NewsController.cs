@@ -88,7 +88,7 @@ namespace HuloToys_Front_End.Controllers.News
             }
         
         }
-        public async Task<IActionResult> NewsDetails(string id)
+        public async Task<IActionResult> NewsDetails(string slug, string id)
         {
             try
             {
