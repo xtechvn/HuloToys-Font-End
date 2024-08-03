@@ -27,8 +27,12 @@ var THIRDPARTY_CONSTANTS = {
 }
 var GLOBAL_CONSTANTS = {
     Size: 6,
+    GridSize: 12,
     GroupProduct: {
-        FlashSale: 15
+        FlashSale: 15,
+        Discount: 16,
+        BEAR_COLLECTION: 17,
+        INTELLECTUAL_DEVELOPMENT:18
     }
 }
 var HTML_CONSTANTS = {
@@ -48,7 +52,7 @@ var HTML_CONSTANTS = {
                                             <div class="price-sale">{amount}</div>
                                             <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">{review_count}</span></div>
                                         </div>
-                                        <div class="price-old">
+                                        <div class="price-old" style="{old_price_style}">
                                             So với giá cũ {price} <i class="icon icon-info"></i>
                                             <div class="info-detail">
                                                 Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
@@ -58,7 +62,30 @@ var HTML_CONSTANTS = {
                                     </div>
                                 </a>
                             </div>
-                        </div>`
+                        </div>`,
+        GridProductItem:`<div class="item-product">
+                        <a href="">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="{avt}" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">{name}</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">{amount}</div>
+                                    <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">{review_count}</span></div>
+                                </div>
+                                <div class="price-old" style="{old_price_style}">
+                                    So với giá cũ {price} <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>`
     }
 
 }

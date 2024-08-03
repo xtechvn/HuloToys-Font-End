@@ -23,7 +23,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             try
             {
 
-                var result = await POST(_configuration["API:Login"], request);
+                var result = await POST(_configuration["API:get_product_detail"], request);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
 
@@ -42,7 +42,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
         {
             try
             {
-                var result = await POST(_configuration["API:Register"], request);
+                var result = await POST(_configuration["API:get_product_list"], request);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
 
