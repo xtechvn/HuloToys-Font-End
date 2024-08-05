@@ -14,7 +14,11 @@ var home_product = {
     },
     ProductSaleList: function () {
     },
-    LoadHomeProductSlide: function (element,group_id, size) {
+    LoadHomeProductSlide: function (element, group_id, size) {
+        element.addClass('placeholder')
+        element.addClass('box-placeholder')
+        element.css('width','100%')
+        element.css('height','255px')
         var request = {
             "group_id": group_id,
             "page_index": 1,
@@ -23,8 +27,7 @@ var home_product = {
         $.when(
             global_service.POST(API_URL.ProductList, request)
         ).done(function (result) {
-            element.addClass('placeholder')
-            element.addClass('box-placeholder')
+          
             var html = ''
             if (result.is_success) {
 
@@ -43,10 +46,14 @@ var home_product = {
             element.html(html)
             element.removeClass('placeholder')
             element.removeClass('box-placeholder')
-
+            element.css('height', 'auto')
         })
     },
     LoadHomeProductGrid: function (element, group_id, size) {
+        element.addClass('placeholder')
+        element.addClass('box-placeholder')
+        element.css('width', '100%')
+        element.css('height', '255px')
         var request = {
             "group_id": group_id,
             "page_index": 1,
@@ -55,14 +62,13 @@ var home_product = {
         $.when(
             global_service.POST(API_URL.ProductList, request)
         ).done(function (result) {
-            element.addClass('placeholder')
-            element.addClass('box-placeholder')
+          
             var html = ''
             if (result.is_success) {
 
                 $(result.data).each(function (index, item) {
                     html += HTML_CONSTANTS.Home.GridProductItem
-                        .replaceAll('{url}', '/product/detail/' + item.product_code)
+                        .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(item.product_name).replaceAll(' ','-')+'--' + item.id)
                         .replaceAll('{avt}', item.image_thumb)
                         .replaceAll('{name}', item.product_name)
                         .replaceAll('{amount}', item.amount_vnd > 0 ? global_service.Comma(item.amount_vnd) + ' đ' : 'Giá liên hệ')
@@ -75,6 +81,7 @@ var home_product = {
             element.html(html)
             element.removeClass('placeholder')
             element.removeClass('box-placeholder')
+            element.css('height', 'auto')
 
         })
     }

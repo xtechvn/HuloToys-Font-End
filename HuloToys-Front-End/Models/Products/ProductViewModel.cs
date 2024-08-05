@@ -76,6 +76,9 @@ namespace Entities.ViewModels
         public string product_infomation_HTML { get; set; } // thông tin sản phẩm, edit bằng tiny MCE
         public double package_volume_weight { get; set; } // thể tích sản phẩm quy đổi, tính theo pounds
         public string selected_weight { get; set; } // cân nặng được lựa chọn
+        public int? product_sold_count { get; set; }
+        public int? product_stock_count { get; set; }
+
     }
 
     //public class EsProductViewModel : ProductViewModel

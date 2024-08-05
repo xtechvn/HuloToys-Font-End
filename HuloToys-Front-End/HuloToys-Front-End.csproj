@@ -13,8 +13,6 @@
     <Folder Include="Utilities\Contants\" />
     <Folder Include="ViewComponents\Home\" />
 
-    <Folder Include="wwwroot\modules\" />
-
     <Folder Include="Utilities\Common\" />
     <Folder Include="FilterAttribute\" />
     <Folder Include="ViewComponents\Home\" />

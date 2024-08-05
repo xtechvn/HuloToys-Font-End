@@ -31,4 +31,8 @@ app.MapControllerRoute(
     name: "newsDetail",
     pattern: "tin-tuc/{slug}-{id}",
     defaults: new { controller = "News", action = "NewsDetails" });
+app.MapControllerRoute(
+    name: "san-pham",
+    pattern: "/san-pham/{title}--{product_code}",
+    defaults: new { controller = "Product", action = "ProductDetail" });
 app.Run();

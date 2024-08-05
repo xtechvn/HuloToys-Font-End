@@ -9,6 +9,7 @@ using HuloToys_Front_End.Models.Client;
 using HuloToys_Front_End.Utilities.Contants;
 using LIB.Models.APIRequest;
 using HuloToys_Front_End.Models.Products;
+using Entities.ViewModels;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
 {
@@ -18,7 +19,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
         public ProductServices(IConfiguration configuration) :base(configuration) {
             _configuration = configuration;
         }
-        public async Task<ProductDetailResponseModel> GetProductDetail(ProductDetailRequestModel request)
+        public async Task<ProductViewModel> GetProductDetail(ProductDetailRequestModel request)
         {
             try
             {
@@ -29,7 +30,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
 
                 if (status == (int)ResponseType.SUCCESS)
                 {
-                    return JsonConvert.DeserializeObject<ProductDetailResponseModel>(jsonData["data"].ToString());
+                    return JsonConvert.DeserializeObject<ProductViewModel>(jsonData["data"].ToString());
                 }
             }
             catch
