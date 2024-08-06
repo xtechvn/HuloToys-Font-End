@@ -138,7 +138,7 @@ namespace HuloToys_Front_End.Controllers.News
                 return Ok(new
                 {
                     status = (int)ResponseType.SUCCESS,
-                    data = data[0],
+                    data = data != null? data[0]: null,
                 });
             }
             catch (Exception ex) {
