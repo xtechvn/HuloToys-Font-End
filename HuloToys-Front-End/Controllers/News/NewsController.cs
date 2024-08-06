@@ -80,8 +80,9 @@ namespace HuloToys_Front_End.Controllers.News
             try
             {
                 var data = await _newServices.getListArticleByCategoryIdOrderByDatePinned(requestObj);
-                if (data != null)
+                if (data != null && data.Count >0)
                 {
+                    data = data.Where(s => s.position == requestObj.Pinned).ToList();
                     return PartialView(data[0]);
                 }
             }

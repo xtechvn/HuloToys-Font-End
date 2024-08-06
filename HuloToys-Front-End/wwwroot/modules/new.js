@@ -1,14 +1,20 @@
 ﻿$(document).ready(function () {
     _new.Initialization();
     _home_product.Initialization();
-
+    $("#text_input").on('keyup', function (e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            _new.GetFindArticleByTitle();
+        }
+    });
 })
 let category_id = 10;
 var _new = {
     Initialization: function () {
         _new.NewsCategory();
         _new.getNewsByTag(1, 10, 10);
-        _new.getNewsPinned(1, 1, 10);
+        _new.getNewsPinned1(1, 1, 10);
+        _new.getNewsPinned2(1, 1, 10);
+        _new.getNewsPinned3(1, 1, 10);
         _new.getNewsMostViewedArticle(1, 10, 10);
         
     },
@@ -28,12 +34,13 @@ var _new = {
            
         });
     },
-    getNewsPinned: function (page, size, category_id) {
+    getNewsPinned1: function (page, size, category_id) {
         $('#article-1').show();
         var requestObj = {
             skip: page,
             take: size,
-            category_id: category_id
+            category_id: category_id,
+            Pinned: 1
         };
         $.ajax({
             url: "/News/NewsPinned",           
@@ -46,8 +53,48 @@ var _new = {
            
         });
     },
+    getNewsPinned2: function (page, size, category_id) {
+        $('#article-1').show();
+        var requestObj = {
+            skip: page,
+            take: size,
+            category_id: category_id,
+            Pinned: 2
+        };
+        $.ajax({
+            url: "/News/NewsPinned",
+            type: 'post',
+            data: { requestObj: requestObj },
+            success: function (data) {
+
+                $("#article-2").html(data);
+            },
+
+        });
+    },
+    getNewsPinned3: function (page, size, category_id) {
+        $('#article-1').show();
+        var requestObj = {
+            skip: page,
+            take: size,
+            category_id: category_id,
+            Pinned:3
+        };
+        $.ajax({
+            url: "/News/NewsPinned",
+            type: 'post',
+            data: { requestObj: requestObj },
+            success: function (data) {
+
+                $("#article-3").html(data);
+            },
+
+        });
+    },
     getNewsByTag: function (page, size, category_id) {
         $('#article-1').show();
+        $('#article-2').show();
+        $('#article-3').show();
         $('.cat-tag').removeClass('active');
         $('.tag_' + category_id).addClass('active');
         $(".page").removeClass("active") 
@@ -109,6 +156,9 @@ var _new = {
     },
     GetFindArticleByTitle: function () {
         $('#article-1').hide();
+        $('#article-2').hide();
+        $('#article-3').hide();
+        $('#section-article-paginate').hide();
         var requestObj = {
             title: $('#text_input').val(),
             parent_cate_faq_id: category_id
@@ -118,7 +168,7 @@ var _new = {
             type: 'post',
             data: { requestObj: requestObj },
             success: function (data) {
-
+                $('#section-article-paginate').show();
                 $("#section-article-paginate").html(data);
                
             },
