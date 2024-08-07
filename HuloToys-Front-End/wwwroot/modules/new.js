@@ -95,6 +95,7 @@ var _new = {
         $('#article-1').show();
         $('#article-2').show();
         $('#article-3').show();
+        $('.list-news-top').show();
         $('.cat-tag').removeClass('active');
         $('.tag_' + category_id).addClass('active');
         $(".page").removeClass("active") 
@@ -158,6 +159,7 @@ var _new = {
         $('#article-1').hide();
         $('#article-2').hide();
         $('#article-3').hide();
+        $('.list-news-top').hide();
         $('#section-article-paginate').hide();
         var requestObj = {
             title: $('#text_input').val(),

@@ -19,7 +19,7 @@
                         <div class="flex-cat">
                             <span class="time">
                                 <i class="icon icon-time"></i>
-                                @item.publish_date.ToString("dd/MM/yyyy")
+                                @item.publish_date.ToString("dd/MM/yyyy") |   @item.category_name
                             </span>
                         </div>
                         <h2 class="title-news">
@@ -29,9 +29,6 @@
                         </h2>
                         <p class="description">
                             @item.Lead
-                        </p>
-                        <p class="description">
-                            @item.category_name
                         </p>
                         <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.Title,item.Id.ToString()))" class="xemthem">Đọc tiếp</a>
                     </div>
