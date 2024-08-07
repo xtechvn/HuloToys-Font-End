@@ -10,8 +10,14 @@
 let category_id = 10;
 var _new = {
     Initialization: function () {
+        var categoryIdSession = sessionStorage.getItem('NewsCategoryId');
+        if (categoryIdSession) {
+            _new.getNewsByTag(1, 10, categoryIdSession);
+        } else {
+            _new.getNewsByTag(1, 10, 10);
+        }
         _new.NewsCategory();
-        _new.getNewsByTag(1, 10, 10);
+      
         _new.getNewsPinned1(1, 1, 10);
         _new.getNewsPinned2(1, 1, 10);
         _new.getNewsPinned3(1, 1, 10);
@@ -105,6 +111,7 @@ var _new = {
             take: size,
             category_id: category_id
         };
+        sessionStorage.setItem('NewsCategoryId', Number(category_id));
         $.ajax({
             url: "/News/NewsByTag",           
             type: 'post',
@@ -112,6 +119,8 @@ var _new = {
             success: function (data) {
                
                 $("#section-article-paginate").html(data);
+                $('.cat-tag').removeClass('active');
+                $('.tag_' + category_id).addClass('active');
                 $(".paging_" + page).addClass("active") 
             },
            
