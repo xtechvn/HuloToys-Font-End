@@ -4,5 +4,6 @@
     {
         public int category_id { get; set; }
         public int Pinned { get; set; }
+        public List<int>  List_id { get; set; }
     }
 }
