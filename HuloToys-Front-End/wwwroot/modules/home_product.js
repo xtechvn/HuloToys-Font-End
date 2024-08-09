@@ -33,7 +33,7 @@ var home_product = {
 
                 $(result.data).each(function (index, item) {
                     html += HTML_CONSTANTS.Home.SlideProductItem
-                        .replaceAll('{url}', '/product/detail/' + item.product_code)
+                        .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(item.product_name).replaceAll(' ', '-') + '--' + item.id)
                         .replaceAll('{avt}', item.image_thumb)
                         .replaceAll('{name}', item.product_name)
                         .replaceAll('{amount}', item.amount_vnd > 0 ? global_service.Comma(item.amount_vnd) + ' đ' : 'Giá liên hệ')
