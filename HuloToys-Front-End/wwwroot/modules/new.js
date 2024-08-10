@@ -5,7 +5,7 @@
         if (e.key === 'Enter' || e.keyCode === 13) {
             _new.GetFindArticleByTitle();
         }
-    });
+    });   
 })
 let category_id = 10;
 var _new = {
@@ -21,7 +21,7 @@ var _new = {
         _new.getNewsPinned1(1, 1, 10);
         _new.getNewsPinned2(1, 1, 10);
         _new.getNewsPinned3(1, 1, 10);
-        _new.getNewsMostViewedArticle(1, 10, 10);
+        _new.getNewsMostViewedArticle(1, 3, 10);
         
     },
  
@@ -55,6 +55,7 @@ var _new = {
             success: function (data) {
                
                 $("#article-1").html(data);
+                
             },
            
         });
@@ -74,6 +75,7 @@ var _new = {
             success: function (data) {
 
                 $("#article-2").html(data);
+
             },
 
         });
@@ -93,6 +95,7 @@ var _new = {
             success: function (data) {
 
                 $("#article-3").html(data);
+             
             },
 
         });
