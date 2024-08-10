@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using HuloToys_Front_End.Models.News;
 using System.Net.Http;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using HuloToys_Service.Utilities.Lib;
 
 namespace HuloToys_Front_End.Controllers.News.Business
 {
@@ -35,11 +36,17 @@ namespace HuloToys_Front_End.Controllers.News.Business
 
                     return data;
                 }
-               
+                else
+                {
+                    var msg = int.Parse(jsonData["msg"].ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsCategory-NewServices:" + msg.ToString());
+
+                }
+
             }
             catch (Exception ex)
             {
-                
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsCategory-NewServices:"+ ex.ToString());
             }
             return null;
         }
@@ -58,9 +65,16 @@ namespace HuloToys_Front_End.Controllers.News.Business
 
                     return data;
                 }
+                else
+                {
+                    var msg = int.Parse(jsonData["msg"].ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "getListArticleByCategoryIdOrderByDate-NewServices:" + msg.ToString());
+
+                }
             }
-            catch
+            catch(Exception ex)
             {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "getListArticleByCategoryIdOrderByDate-NewServices:" + ex.ToString());
             }
             return null;
 
@@ -86,9 +100,16 @@ namespace HuloToys_Front_End.Controllers.News.Business
                     }
                     return data;
                 }
+                else
+                {
+                    var msg = int.Parse(jsonData["msg"].ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "getListArticleByCategoryIdOrderByDatePinned-NewServices:" + msg.ToString());
+
+                }
             }
-            catch
+            catch(Exception ex)
             {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "getListArticleByCategoryIdOrderByDatePinned-NewServices:" + ex.ToString());
             }
             return null;
 
@@ -105,10 +126,16 @@ namespace HuloToys_Front_End.Controllers.News.Business
                 {
                     return JsonConvert.DeserializeObject<GetNewDetailResponse>(jsonData["data"].ToString());
                 }
+                else
+                {
+                    var msg = int.Parse(jsonData["msg"].ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsDetail-NewServices:" + msg.ToString());
+
+                }
             }
             catch (Exception ex)
             {
-              
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsDetail-NewServices:" + ex.ToString());
             }
             return null;
         }
@@ -128,10 +155,41 @@ namespace HuloToys_Front_End.Controllers.News.Business
                 {
                     return JsonConvert.DeserializeObject<List<ArticleResponse>>(jsonData["data"].ToString());
                 }
+                else
+                {
+                    var msg = int.Parse(jsonData["msg"].ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetMostViewedArticles-NewServices:" + msg.ToString());
+
+                }
             }
             catch (Exception ex)
             {
-              
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetMostViewedArticles-NewServices:" + ex.ToString());
+            }
+            return null;
+        }
+        public async Task<List<ArticleRelationModel>> FindArticleByTitle(FindArticleModel requestObj)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:find_article"], requestObj);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<List<ArticleRelationModel>>(jsonData["data_list"].ToString());
+                }
+                else
+                {
+                    var msg = int.Parse(jsonData["msg"].ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsDetail-NewServices:" + msg.ToString());
+
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsDetail-NewServices:" + ex.ToString());
             }
             return null;
         }

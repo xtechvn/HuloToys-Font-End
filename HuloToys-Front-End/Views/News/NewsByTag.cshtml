@@ -1,6 +1,7 @@
 ﻿@using HuloToys_Front_End.Models.News;
+@using HuloToys_Front_End.Utilities.Lib;
 @model List<ArticleResponse>
-@if (Model != null)
+@if (Model != null&& Model.Count > 0 )
 {
     <div class="list-news">
         @foreach (var item in Model)
@@ -9,25 +10,28 @@
                 <div class="box-news">
                     <div class="thumb-art">
                         <div class="thumb thumb-news">
-                            <a href="/News/NewsDetails/@item.id"><img src="@item.image_169" alt=""> </a>
+                            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))">
+                                <img src="@item.image_169" alt="">
+                            </a>
                         </div>
                     </div>
                     <div class="right-content">
                         <div class="flex-cat">
                             <span class="time">
                                 <i class="icon icon-time"></i>
-                                @item.publish_date.ToString("dd/MM/yyyy")
+                                @item.publish_date.ToString("dd/MM/yyyy") |
+                                @item.category_name
                             </span>
                         </div>
                         <h2 class="title-news">
-                            <a href="/News/NewsDetails/@item.id">
+                            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))">
                                 @item.title
                             </a>
                         </h2>
                         <p class="description">
                             @item.lead
                         </p>
-                        <a href="/News/NewsDetails/@item.id" class="xemthem">Đọc tiếp</a>
+                        <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))" class="xemthem">Đọc tiếp</a>
                     </div>
                 </div>
             </div>
@@ -51,4 +55,15 @@
     </div>
 
 }
-
+else
+{
+<div class="list-news">
+    <div class="search-null center mb40">
+        <div class="mb24">
+            <img src="/images/graphics/icon-search.png" alt="">
+        </div>
+        <h2 class="title txt_24">Không tìm thấy kết quả</h2>
+        <div class="gray">Chúng tôi không tìm thấy thông tin mà bạn cần, vui lòng thử lại</div>
+    </div>
+</div>
+}

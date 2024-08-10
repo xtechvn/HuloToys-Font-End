@@ -1,5 +1,8 @@
 ﻿using HuloToys_Front_End.Models.Client;
+using HuloToys_Front_End.Utilities.Contants;
 using HuloToys_Service.Models;
+using HuloToys_Service.Utilities.Lib;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text;
@@ -8,6 +11,7 @@ namespace HuloToys_Front_End.Utilities.Lib
 {
     public class APIService
     {
+        private readonly IConfiguration _configuration;
         private HttpClient _HttpClient;
         private const string CONST_TOKEN_PARAM = "token";
         private readonly string _ApiSecretKey;
@@ -18,6 +22,7 @@ namespace HuloToys_Front_End.Utilities.Lib
 
         public APIService(IConfiguration configuration)
         {
+            _configuration = configuration;
             _HttpClient = new HttpClient(new HttpClientHandler
             {
                 ServerCertificateCustomValidationCallback = (message, certificate2, arg3, arg4) => true
@@ -66,11 +71,22 @@ namespace HuloToys_Front_End.Utilities.Lib
                 if (response.IsSuccessStatusCode)
                 {
                     var json = JObject.Parse(await response.Content.ReadAsStringAsync());
-                   return json["token"].ToString();
+                    var status = int.Parse(json["status"].ToString());
+                    if (status != (int)ResponseType.SUCCESS)
+                    {
+                        LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetToken - APIService:" + json["msg"].ToString());  
+                    }
+                    else
+                    {
+                        return json["token"].ToString();
+                    }
+
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetToken - APIService:" + ex.ToString());
+
             }
             return null;
 

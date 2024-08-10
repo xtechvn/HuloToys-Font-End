@@ -1,4 +1,5 @@
 ﻿@using HuloToys_Front_End.Models.News;
+@using HuloToys_Front_End.Utilities.Lib;
 @model List<ArticleResponse>
 @if (Model != null)
 {
@@ -8,27 +9,26 @@
             <div class="box-news">
                 <div class="thumb-art">
                     <div class="thumb thumb-news">
-                        <a href="/News/NewsDetails/@item.id"><img src="@item.image_169" alt=""> </a>
+                        <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))"><img src="@item.image_169" alt=""> </a>
                     </div>
                 </div>
                 <div class="right-content">
                     <div class="flex-cat">
-                        <a href="/News/NewsDetails/@item.id" class="cat-tag cat-dochoi">Đồ chơi</a>
-                        <a href="/News/NewsDetails/@item.id" class="cat-tag cat-goiy">Gợi ý </a>
+
                         <span class="time">
                             <i class="icon icon-time"></i>
-                            @item.publish_date.ToString("dd/MM/yyyy")
+                            @item.publish_date.ToString("dd/MM/yyyy") |   @item.category_name
                         </span>
                     </div>
                     <h2 class="title-news">
-                        <a href="/News/NewsDetails/@item.id">
+                        <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))">
                             @item.title
                         </a>
                     </h2>
                     <p class="description">
                         @item.lead
                     </p>
-                    <a href="/News/NewsDetails/@item.id" class="xemthem">Đọc tiếp</a>
+                    <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))" class="xemthem">Đọc tiếp</a>
                 </div>
             </div>
         </div>
