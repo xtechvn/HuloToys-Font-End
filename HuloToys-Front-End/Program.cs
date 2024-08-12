@@ -38,5 +38,6 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "san-pham",
     pattern: "/san-pham/{title}--{product_code}",
-    defaults: new { controller = "Product", action = "ProductDetail" });
+    defaults: new { controller = "Product", action = "Detail" });
+
 app.Run();

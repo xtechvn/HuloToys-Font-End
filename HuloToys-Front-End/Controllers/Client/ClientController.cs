@@ -2,7 +2,9 @@
 using HuloToys_Front_End.Models.Client;
 using HuloToys_Front_End.Utilities.Lib;
 using LIB.Models.APIRequest;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace HuloToys_Front_End.Controllers.Client
@@ -10,8 +12,10 @@ namespace HuloToys_Front_End.Controllers.Client
     public class ClientController : Controller
     {
         private readonly IConfiguration _configuration;
-        private readonly ClientServices _clientServices; public ClientController(IConfiguration configuration) {
+        private readonly ClientServices _clientServices; 
+        public ClientController(IConfiguration configuration) {
 
+            _configuration=configuration;
             _clientServices = new ClientServices(configuration);
         }
         [HttpGet]
@@ -24,8 +28,6 @@ namespace HuloToys_Front_End.Controllers.Client
                 data = result
             });
         }
-        [HttpPost]
-        [Route("login")]
         public async Task<IActionResult> Login(ClientLoginRequestModel request)
         {
             var result = await _clientServices.Login(request);
@@ -35,20 +37,18 @@ namespace HuloToys_Front_End.Controllers.Client
                 result.time_expire = DateTime.Now.AddDays(30);
                 result.validate_token = EncodeHelpers.Encode(JsonConvert.SerializeObject(result), _configuration["API:SecretKey"]);
             }
-            return new JsonResult(new
+            return Ok(new
             {
                 is_success = result != null,
                 data = result
             });
         }
 
-        [HttpPost]
-        [Route("Register")]
         public async Task<IActionResult> Register(ClientRegisterRequestModel request)
         {
             var result = await _clientServices.Register(request);
 
-            return new JsonResult(new
+            return Ok(new
             {
                 is_success = result != null,
                 data = result

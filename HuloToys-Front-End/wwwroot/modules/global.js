@@ -30,13 +30,9 @@ var global_service = {
     POST: function (url, data) {
         return new Promise(function (resolve, reject) {
             $.ajax({
-                url: url,
-                dataType: 'json',
                 type: 'post',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify(data),
-                processData: false,
+                url: url,
+                data: { request: data },
                 success: function (data) {
                     resolve(data);
                 },
