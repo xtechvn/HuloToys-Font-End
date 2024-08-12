@@ -20,6 +20,7 @@ var _new = {
             _new.getNewsPinned1(1, 1, 10);
 
         }
+
         _new.NewsCategory();
         _new.getNewsMostViewedArticle(1, 3, 10);
         
@@ -60,61 +61,19 @@ var _new = {
            
         });
     },
-    getNewsPinned2: function (page, size, category_id) {
-        $('#article-1').show();
-        var requestObj = {
-            skip: page,
-            take: size,
-            category_id: category_id,
-            Pinned: 2
-        };
-        $.ajax({
-            url: "/News/NewsPinned",
-            type: 'post',
-            data: { requestObj: requestObj },
-            success: function (data) {
-
-                $("#article-2").html(data);
-
-            },
-
-        });
-    },
-    getNewsPinned3: function (page, size, category_id) {
-        $('#article-1').show();
-        var requestObj = {
-            skip: page,
-            take: size,
-            category_id: category_id,
-            Pinned:3
-        };
-        $.ajax({
-            url: "/News/NewsPinned",
-            type: 'post',
-            data: { requestObj: requestObj },
-            success: function (data) {
-
-                $("#article-3").html(data);
-             
-            },
-
-        });
-    },
     getNewsByTag: function (page, size, category_id) {
         $('#article-1').show();
         $('#article-2').show();
         $('#article-3').show();
-        $('.list-news-top').show();
-        $('.cat-tag').removeClass('active');
-        $('.tag_' + category_id).addClass('active');
-        $(".page").removeClass("active") 
         category_id = category_id;
+  
         var requestObj = {
             skip: page,
             take: size,
             category_id: category_id
         };
         sessionStorage.setItem('NewsCategoryId', Number(category_id));
+ 
         $.ajax({
             url: "/News/NewsByTag",           
             type: 'post',
@@ -122,6 +81,7 @@ var _new = {
             success: function (data) {
                
                 $("#section-article-paginate").html(data);
+                $('.list-news-top').show();
                 $('.cat-tag').removeClass('active');
                 $('.tag_' + category_id).addClass('active');
                 $(".paging_" + page).addClass("active") 
@@ -164,9 +124,9 @@ var _new = {
         });
     },
     paging: function (page) {
-
-        _new.getNewsByTag(page, 10, category_id)
-        _new.getNewsPinned1(page, 10, category_id);
+        var categoryIdSession = sessionStorage.getItem('NewsCategoryId');
+        _new.getNewsByTag(page, 10, parseFloat(categoryIdSession))
+        _new.getNewsPinned1(page, 10, parseFloat(categoryIdSession));
 
     },
     GetFindArticleByTitle: function () {
