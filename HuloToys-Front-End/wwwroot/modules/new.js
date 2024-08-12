@@ -23,8 +23,6 @@ var _new = {
             _new.getNewsPinned3(1, 1, 10);
         }
         _new.NewsCategory();
-      
-
         _new.getNewsMostViewedArticle(1, 3, 10);
         
     },
@@ -170,9 +168,9 @@ var _new = {
     paging: function (page) {
 
         _new.getNewsByTag(page, 10, category_id)
-        _new.getNewsPinned1(page, 1, category_id);
-        _new.getNewsPinned2(page, 1, category_id);
-        _new.getNewsPinned3(page, 1, category_id);
+        _new.getNewsPinned1(page, 10, category_id);
+        _new.getNewsPinned2(page, 10, category_id);
+        _new.getNewsPinned3(page, 10, category_id);
 
     },
     GetFindArticleByTitle: function () {
