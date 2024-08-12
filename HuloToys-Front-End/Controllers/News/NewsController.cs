@@ -35,15 +35,15 @@ namespace HuloToys_Front_End.Controllers.News
                 return PartialView(data);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "NewsCategory-NewsController:" + ex.ToString());
 
                 return PartialView();
             }
 
-            
-        } 
+
+        }
         public async Task<IActionResult> GetFindArticleByTitle(FindArticleModel requestObj)
         {
             try
@@ -52,14 +52,14 @@ namespace HuloToys_Front_End.Controllers.News
                 return PartialView(data);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "FindArticleByTitle-NewsController:" + ex.ToString());
 
                 return PartialView();
             }
 
-            
+
         }
         public async Task<IActionResult> NewsByTag(GetListByCategoryIdRequest requestObj)
         {
@@ -70,7 +70,8 @@ namespace HuloToys_Front_End.Controllers.News
 
                 return PartialView(data);
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "NewsByTag-NewsController:" + ex.ToString());
             }
             return PartialView();
@@ -80,16 +81,14 @@ namespace HuloToys_Front_End.Controllers.News
             try
             {
                 var data = await _newServices.getListArticleByCategoryIdOrderByDatePinned(requestObj);
-                if (data != null && data.Count >0)
-                {
-                    data = data.Where(s => s.position == requestObj.Pinned).ToList();
-                    return PartialView(data[0]);
-                }
+
+                return PartialView(data);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "NewsPinned-NewsController:" + ex.ToString());
             }
-           
+
             return PartialView();
         }
         public async Task<IActionResult> NewsMostViewedArticle(GetListByCategoryIdRequest requestObj)
@@ -99,12 +98,13 @@ namespace HuloToys_Front_End.Controllers.News
                 var data = await _newServices.GetMostViewedArticles();
                 return PartialView(data);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "NewsMostViewedArticle-NewsController:" + ex.ToString());
 
                 return PartialView();
             }
-        
+
         }
         public async Task<IActionResult> NewsDetails(string slug, string id)
         {
@@ -120,12 +120,13 @@ namespace HuloToys_Front_End.Controllers.News
                 response.MostViewedArticles = mostViewedArticles;
                 return View(response);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsByDate-NewsController:" + ex.ToString());
 
                 return View();
             }
-           
+
         }
         public async Task<IActionResult> GetNewsByDate()
         {
@@ -139,10 +140,11 @@ namespace HuloToys_Front_End.Controllers.News
                 return Ok(new
                 {
                     status = (int)ResponseType.SUCCESS,
-                    data = data != null? data[0]: null,
+                    data = data != null ? data[0] : null,
                 });
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsByDate-NewsController:" + ex.ToString());
             }
             return Ok(new

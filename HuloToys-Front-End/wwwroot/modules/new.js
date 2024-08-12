@@ -14,13 +14,11 @@ var _new = {
         if (categoryIdSession) {
             _new.getNewsByTag(1, 10, categoryIdSession);
             _new.getNewsPinned1(1, 1, categoryIdSession);
-            _new.getNewsPinned2(1, 1, categoryIdSession);
-            _new.getNewsPinned3(1, 1, categoryIdSession);
+
         } else {
             _new.getNewsByTag(1, 10, 10);
             _new.getNewsPinned1(1, 1, 10);
-            _new.getNewsPinned2(1, 1, 10);
-            _new.getNewsPinned3(1, 1, 10);
+
         }
         _new.NewsCategory();
         _new.getNewsMostViewedArticle(1, 3, 10);
@@ -56,7 +54,7 @@ var _new = {
             data: { requestObj: requestObj },
             success: function (data) {
                
-                $("#article-1").html(data);
+                $("#article").html(data);
                 
             },
            
@@ -169,8 +167,6 @@ var _new = {
 
         _new.getNewsByTag(page, 10, category_id)
         _new.getNewsPinned1(page, 10, category_id);
-        _new.getNewsPinned2(page, 10, category_id);
-        _new.getNewsPinned3(page, 10, category_id);
 
     },
     GetFindArticleByTitle: function () {

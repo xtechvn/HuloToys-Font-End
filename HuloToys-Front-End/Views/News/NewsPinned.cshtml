@@ -1,31 +1,102 @@
 ﻿@using HuloToys_Front_End.Models.News;
 @using HuloToys_Front_End.Utilities.Lib;
-@model ArticleResponse
+@model List<ArticleResponse>
 @if (Model != null)
 {
+    <div class="top-news" style="width:65%;">
+        <div class="item-news">
+            <div class="box-news" id="article-1">
+                @foreach (var item in Model.Where(s => s.position == 1).ToList())
+                {
+                    <div class="thumb-art">
+                        <div class="thumb thumb-news">
+                            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))"><img src="@item.image_169" alt=""> </a>
+                        </div>
+                    </div>
+                    <div class="right-content">
+                        <div class="flex-cat">
 
-    <div class="thumb-art">
-        <div class="thumb thumb-news">
-            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(Model.title,Model.id.ToString()))"><img src="@Model.image_169" alt=""> </a>
+                            <span class="time">
+                                <i class="icon icon-time"></i>
+                                @item.publish_date.ToString("dd/MM/yyyy") |   @item.category_name
+                            </span>
+                        </div>
+                        <h2 class="title-news">
+                            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))">
+                                @item.title
+                            </a>
+                        </h2>
+                        <p class="description">
+                            @item.lead
+                        </p>
+                        <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))" class="xemthem">Đọc tiếp</a>
+                    </div>
+                }
+            </div>
         </div>
     </div>
-    <div class="right-content">
-        <div class="flex-cat">
+    <div class="next-news" style="width:25%">
+        <div class="item-news">
+            <div class="box-news" id="article-2">
+                @foreach (var item in Model.Where(s => s.position == 2).ToList())
+                {
+                    <div class="thumb-art">
+                        <div class="thumb thumb-news">
+                            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))"><img src="@item.image_169" alt=""> </a>
+                        </div>
+                    </div>
+                    <div class="right-content">
+                        <div class="flex-cat">
 
-            <span class="time">
-                <i class="icon icon-time"></i>
-                @Model.publish_date.ToString("dd/MM/yyyy") |   @Model.category_name
-            </span>
+                            <span class="time">
+                                <i class="icon icon-time"></i>
+                                @item.publish_date.ToString("dd/MM/yyyy") |   @item.category_name
+                            </span>
+                        </div>
+                        <h2 class="title-news">
+                            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))">
+                                @item.title
+                            </a>
+                        </h2>
+                        <p class="description">
+                            @item.lead
+                        </p>
+                        <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))" class="xemthem">Đọc tiếp</a>
+                    </div>
+                }
+            </div>
         </div>
-        <h2 class="title-news">
-            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(Model.title,Model.id.ToString()))">
-                @Model.title
-            </a>
-        </h2>
-        <p class="description">
-            @Model.lead
-        </p>
-        <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(Model.title,Model.id.ToString()))" class="xemthem">Đọc tiếp</a>
+        <div class="item-news">
+            <div class="box-news" id="article-3">
+                @foreach (var item in Model.Where(s => s.position == 3).ToList())
+                {
+                    <div class="thumb-art">
+                        <div class="thumb thumb-news">
+                            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))"><img src="@item.image_169" alt=""> </a>
+                        </div>
+                    </div>
+                    <div class="right-content">
+                        <div class="flex-cat">
+
+                            <span class="time">
+                                <i class="icon icon-time"></i>
+                                @item.publish_date.ToString("dd/MM/yyyy") |   @item.category_name
+                            </span>
+                        </div>
+                        <h2 class="title-news">
+                            <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))">
+                                @item.title
+                            </a>
+                        </h2>
+                        <p class="description">
+                            @item.lead
+                        </p>
+                        <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))" class="xemthem">Đọc tiếp</a>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
+
 
 }
