@@ -76,7 +76,7 @@ var account = {
                 "user_name": $('#dangnhap .user input').val(),
                 "password": $('#dangnhap .password input').val(),
                 "remember_me": $('#dangnhap .checkbox').is(":checked"),
-                "token":'',
+                "token": '',
                 "type": 1
             }
             $.when(
@@ -100,6 +100,7 @@ var account = {
                 }
 
             })
+          
         }
     },
     Register: function () {

@@ -2,10 +2,10 @@
     Login:'account'
 }
 var API_URL = {
-    Login:'/Client/Login',
-    Register:'/Client/Register',
-    ProductDetail:'/Product/detail',
-    ProductList:'/Product/list'
+    Login:'Client/Login',
+    Register:'Client/Register',
+    ProductDetail:'Product/Detail',
+    ProductList:'Product/GetList'
 }
 var NOTIFICATION_MESSAGE = {
     LoginIncorrect:'Tài khoản / Mật khẩu không chính xác, vui lòng thử lại',
