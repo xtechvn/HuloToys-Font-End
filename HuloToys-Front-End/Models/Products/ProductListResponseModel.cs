@@ -2,7 +2,9 @@
 
 namespace HuloToys_Front_End.Models.Products
 {
-    public class ProductListResponseModel: SearchEsEntitiesViewModel
+    public class ProductListResponseModel
     {
+        public List<ProductMongoDbModel> items { get; set; }
+        public long count { get; set; }
     }
 }

@@ -62,7 +62,13 @@ namespace HuloToys_Front_End.Controllers.News.Business
                 if (status == (int)ResponseType.SUCCESS)
                 {
                     var data= JsonConvert.DeserializeObject<List<ArticleResponse>>(jsonData["data_list"].ToString());
-
+                    if (data.Count > 0)
+                    {
+                        var total_item = int.Parse(jsonData["total_item"].ToString());
+                        var total_page = int.Parse(jsonData["total_page"].ToString());
+                        data[0].total_item = total_item;
+                        data[0].total_page = total_page;
+                    }
                     return data;
                 }
                 else
@@ -165,6 +171,31 @@ namespace HuloToys_Front_End.Controllers.News.Business
             catch (Exception ex)
             {
                 LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetMostViewedArticles-NewServices:" + ex.ToString());
+            }
+            return null;
+        }
+        public async Task<List<ArticleRelationModel>> FindArticleByTitle(FindArticleModel requestObj)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:find_article"], requestObj);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<List<ArticleRelationModel>>(jsonData["data_list"].ToString());
+                }
+                else
+                {
+                    var msg = int.Parse(jsonData["msg"].ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsDetail-NewServices:" + msg.ToString());
+
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetNewsDetail-NewServices:" + ex.ToString());
             }
             return null;
         }

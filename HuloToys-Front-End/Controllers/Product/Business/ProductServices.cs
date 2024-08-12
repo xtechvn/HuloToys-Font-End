@@ -9,6 +9,8 @@ using HuloToys_Front_End.Models.Client;
 using HuloToys_Front_End.Utilities.Contants;
 using LIB.Models.APIRequest;
 using HuloToys_Front_End.Models.Products;
+using Entities.ViewModels;
+using Entities.ViewModels.Products;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
 {
@@ -23,7 +25,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             try
             {
 
-                var result = await POST(_configuration["API:Login"], request);
+                var result = await POST(_configuration["API:get_product_detail"], request);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
 
@@ -42,7 +44,26 @@ namespace HuloToys_Front_End.Controllers.Client.Business
         {
             try
             {
-                var result = await POST(_configuration["API:Register"], request);
+                var result = await POST(_configuration["API:get_product_list"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<ProductListResponseModel>(jsonData["data"].ToString());
+                }
+            }
+            catch
+            {
+            }
+            return null;
+
+        }
+        public async Task<ProductListResponseModel> GetSubProductList(ProductDetailRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:get_sub_product_list"], request);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
 
