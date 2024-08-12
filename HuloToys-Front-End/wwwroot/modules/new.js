@@ -84,7 +84,8 @@ var _new = {
                 $('.list-news-top').show();
                 $('.cat-tag').removeClass('active');
                 $('.tag_' + category_id).addClass('active');
-                $(".paging_" + page).addClass("active") 
+                $(".paging_" + page).addClass("active")
+                $(window).scrollTop(0);
             },
            
         });
@@ -127,7 +128,6 @@ var _new = {
         var categoryIdSession = sessionStorage.getItem('NewsCategoryId');
         _new.getNewsByTag(page, 10, parseFloat(categoryIdSession))
         _new.getNewsPinned1(page, 10, parseFloat(categoryIdSession));
-
     },
     GetFindArticleByTitle: function () {
         $('#article-1').hide();
