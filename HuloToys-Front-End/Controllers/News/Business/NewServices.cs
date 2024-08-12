@@ -62,7 +62,13 @@ namespace HuloToys_Front_End.Controllers.News.Business
                 if (status == (int)ResponseType.SUCCESS)
                 {
                     var data= JsonConvert.DeserializeObject<List<ArticleResponse>>(jsonData["data_list"].ToString());
-
+                    if (data.Count > 0)
+                    {
+                        var total_item = int.Parse(jsonData["total_item"].ToString());
+                        var total_page = int.Parse(jsonData["total_page"].ToString());
+                        data[0].total_item = total_item;
+                        data[0].total_page = total_page;
+                    }
                     return data;
                 }
                 else
