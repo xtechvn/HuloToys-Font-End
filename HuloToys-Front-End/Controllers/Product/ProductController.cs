@@ -20,20 +20,12 @@ namespace HuloToys_Front_End.Controllers.Product
         {
             try
             {
-                int product_id = -1;
-                try
-                {
-                     product_id = Convert.ToInt32(product_code);
-                }
-                catch { }
-                if (product_id <= 0) {
-                    return Redirect("/Error");
-                }
+               
                 var result = await _productServices.GetProductDetail(new Models.Products.ProductDetailRequestModel()
                 {
-                    id=product_id
+                    id= product_code
                 });
-                if(result!=null && result.id >0)
+                if(result!=null && result._id !=null)
                 {
                     ViewBag.Product=result;
                     return View();
@@ -56,12 +48,13 @@ namespace HuloToys_Front_End.Controllers.Product
         public async Task<IActionResult> GetList(ProductListRequestModel request)
         {
             var result = await _productServices.GetProductList(request);
-            if (result != null && result.obj_lst_product_result != null && result.obj_lst_product_result.Count > 0)
+            if (result != null && result.items != null && result.items.Count > 0)
             {
                 return Ok(new
                 {
                     is_success = true,
-                    data = result.obj_lst_product_result
+                    data = result.items,
+                    count=result.count
                 });
             }
             else

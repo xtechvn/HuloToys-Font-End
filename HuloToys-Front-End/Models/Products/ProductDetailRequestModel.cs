@@ -2,7 +2,7 @@
 {
     public class ProductDetailRequestModel
     {
-        public int id { get; set; }
+        public string id { get; set; }
 
     }
 }

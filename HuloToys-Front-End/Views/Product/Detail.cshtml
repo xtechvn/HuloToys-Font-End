@@ -1,6 +1,6 @@
 ﻿@{
-    Entities.ViewModels.ProductViewModel product = (Entities.ViewModels.ProductViewModel)ViewBag.Product;
-    ViewData["Title"] = product.product_name +" | Hulotoys";
+    HuloToys_Front_End.Models.Products.ProductDetailResponseModel product = (HuloToys_Front_End.Models.Products.ProductDetailResponseModel)ViewBag.Product;
+    ViewData["Title"] = product.name +" | Hulotoys";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="section-details-product">
@@ -9,11 +9,11 @@
             <div class="gallery-product">
                 <div class="swiper thumb-big">
                     <div class="swiper-wrapper">
-                        @for (int i = 0; i < (product.image_product.Count > 4 ? 4 : product.image_product.Count); i++)
+                        @for (int i = 0; i < (product.images.Count > 4 ? 4 : product.images.Count); i++)
                         {
                             <div class="swiper-slide">
 
-                                <img src="@(product.image_product[i])" alt="" />
+                                <img src="@(product.images[i])" alt="" />
                             </div>
                         }
                     @*     <div class="swiper-slide">
@@ -32,11 +32,11 @@
                 </div>
                 <div class="swiper thumb-small">
                     <div class="swiper-wrapper">
-                        @for (int i = 0; i < (product.image_product.Count > 4 ? 4 : product.image_product.Count); i++)
+                        @for (int i = 0; i < (product.images.Count > 4 ? 4 : product.images.Count); i++)
                         {
                             <div class="swiper-slide">
 
-                                <img src="@(product.image_product[i])" alt="" />
+                                <img src="@(product.images[i])" alt="" />
                             </div>
                         }
                        @*  <div class="swiper-slide">
@@ -59,13 +59,13 @@
             </div>
             <div class="info-product">
                 <div class="box-name-product">
-                    <h1 class="name-product">@product.product_name</h1>
+                    <h1 class="name-product">@product.name</h1>
                     <div class="like"><i class="icon icon-like"></i></div>
                     <!-- <div class="like active"><i class="icon icon-like"></i></div> -->
                 </div>
                 <div class="box-review">
                     <div class="review">
-                        @if(product.star > 0)
+                        @if (product.star > 0)
                         {
                             @for (int i = 0; i < (product.star); i++)
                             {
@@ -100,9 +100,9 @@
                     }
                 </div>
                 <div class="box-price">
-                    <span class="price">@product.amount_vnd.ToString("N0")</span>
+                    <span class="price">@product.amount.ToString("N0")</span>
                     <div class="price-old">
-                        So với giá cũ <b>@product.amount_vnd.ToString("N0") đ</b> <i class="icon icon-info"></i>
+                        So với giá cũ <b>@product.amount.ToString("N0") đ</b> <i class="icon icon-info"></i>
                         <div class="info-detail">
                             Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
                             được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
@@ -338,7 +338,7 @@
                 <div class="box-des">
                     <h3 class="title">Chi tiết sản phẩm</h3>
                     <div>
-                       @Html.Raw(product.product_infomation_HTML)
+                       @Html.Raw(product.description)
                     </div>
                 </div>
                 <div class="box-comment">
