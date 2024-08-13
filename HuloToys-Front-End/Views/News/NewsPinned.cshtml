@@ -18,7 +18,7 @@
 
                             <span class="time">
                                 <i class="icon icon-time"></i>
-                                @item.publish_date.ToString("dd/MM/yyyy") |   @item.category_name
+                                @item.publish_date.ToString("dd/MM/yyyy") |   @item.category_name.TrimEnd(',', ' ')
                             </span>
                         </div>
                         <h2 class="title-news">
