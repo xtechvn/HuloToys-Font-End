@@ -65,7 +65,7 @@ var _new = {
         $('#article-1').show();
         $('#article-2').show();
         $('#article-3').show();
-        _new.getNewsPinned1(page, size, category_id);
+        _new.getNewsPinned1(page == 1 ? 0 : page, size, category_id);
         category_id = category_id;
   
         var requestObj = {
