@@ -1,9 +1,11 @@
-﻿@model HuloToys_Front_End.Models.News.GetNewDetailObjectResponse
+﻿@using HuloToys_Front_End.Models.News;
+@model HuloToys_Front_End.Models.News.GetNewDetailObjectResponse
 @{
     ViewData["Title"] = "Chi tiết tin tức";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var details = Model.Details;
     var mostViewedArticles = Model.MostViewedArticles;
+    var data_NewsCategory = (List<GetCategoryResponse>)ViewBag.NewsCategory;
 }
 @if (details != null)
 {
@@ -14,13 +16,27 @@
             <div class="wrap-news cat-menu">
                 <div class="content" id="list-news-category">
                     <ul class="list-cat" id="news-category">
-                        <li class="list-news placeholder box-placeholder" style="width:100%;height:60px;"></li>
+                        <li> <a onclick="_newdetail.getNewsByTag(10,'tin-tuc')" href="javascript:;" data-id="10" class="cat-tag  tag_10">Tất cả</a></li>
+                        @if (data_NewsCategory != null)
+                        {
+
+                            foreach (var item in data_NewsCategory)
+                            {
+                                <li> <a onclick="_newdetail.getNewsByTag(@item.id,'@item.url_path')" href="javascript:;" data-id="@item.id" class="cat-tag tag_@item.id">@item.name</a></li>
+                            }
+                        }
+                       
                     </ul>
                 </div>
-              
+                <div class="top-siderbar-news">
+                    <div class="form-search">
+                        <input type="search" placeholder="Tìm kiếm tin..." id="text_input">
+                        <button type="button" class="btn-search" onclick="_new.GetFindArticleByTitle();"><i class="icon icon-search"></i></button>
+                    </div>
+                </div>
             </div>
             <div class="wrap-news">
-                <div class="content">
+                <div class="content" id="body-data-new">
                     <div class="thumb-art">
                         <div class="thumb thumb-news">
                             <a href=""><img src="@(details.image_11 != "" ? details.image_11 : (details.image_169 != "" ? details.image_169 : details.image_43))" alt=""> </a>

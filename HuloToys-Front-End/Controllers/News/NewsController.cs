@@ -114,10 +114,11 @@ namespace HuloToys_Front_End.Controllers.News
                 request.article_id = long.Parse(id);
                 var details = await _newServices.GetNewsDetail(request);
                 var mostViewedArticles = await _newServices.GetMostViewedArticles();
-
+                var data = await _newServices.GetNewsCategory();
                 GetNewDetailObjectResponse response = new GetNewDetailObjectResponse();
                 response.Details = details;
                 response.MostViewedArticles = mostViewedArticles;
+                ViewBag.NewsCategory = data;
                 return View(response);
             }
             catch (Exception ex)
