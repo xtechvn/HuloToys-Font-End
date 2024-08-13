@@ -13,11 +13,11 @@ var _new = {
         var categoryIdSession = sessionStorage.getItem('NewsCategoryId');
         if (categoryIdSession) {
             _new.getNewsByTag(1, 10, categoryIdSession);
-            _new.getNewsPinned1(1, 1, categoryIdSession);
+            /*_new.getNewsPinned1(1, 1, categoryIdSession);*/
 
         } else {
             _new.getNewsByTag(1, 10, 10);
-            _new.getNewsPinned1(1, 1, 10);
+            /*_new.getNewsPinned1(1, 1, 10);*/
 
         }
 
@@ -61,10 +61,11 @@ var _new = {
            
         });
     },
-    getNewsByTag: function (page, size, category_id) {
+    getNewsByTag: function (page, size, category_id, page_url) {
         $('#article-1').show();
         $('#article-2').show();
         $('#article-3').show();
+        _new.getNewsPinned1(page, size, category_id);
         category_id = category_id;
   
         var requestObj = {
@@ -73,7 +74,7 @@ var _new = {
             category_id: category_id
         };
         sessionStorage.setItem('NewsCategoryId', Number(category_id));
- 
+        var id = parseFloat(category_id);
         $.ajax({
             url: "/News/NewsByTag",           
             type: 'post',
@@ -83,8 +84,10 @@ var _new = {
                 $("#section-article-paginate").html(data);
                 $('.list-news-top').show();
                 $('.cat-tag').removeClass('active');
-                $('.tag_' + parseFloat(category_id)).addClass('active');
+                $('.tag_' + id).addClass('active');
                 $(".paging_" + page).addClass("active")
+                if (page_url != null && page_url!="")
+                window.history.pushState('string', '', page_url)
                 $(window).scrollTop(0);
             },
            

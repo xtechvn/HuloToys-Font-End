@@ -7,6 +7,7 @@ using HuloToys_Front_End.Models.News;
 using System.Net.Http;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using HuloToys_Service.Utilities.Lib;
+using System.Diagnostics;
 
 namespace HuloToys_Front_End.Controllers.News.Business
 {
@@ -54,7 +55,8 @@ namespace HuloToys_Front_End.Controllers.News.Business
         {
             try
             {
-              
+                var st3 = new Stopwatch();
+                st3.Start();
                 var result = await POST(_configuration["API:get_list_by_categoryid_order"], requestObj);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
@@ -69,6 +71,9 @@ namespace HuloToys_Front_End.Controllers.News.Business
                         data[0].total_item = total_item;
                         data[0].total_page = total_page;
                     }
+                    if (st3.ElapsedMilliseconds > 1000)
+                        LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "get_list_by_categoryid_order-api:" + st3.ElapsedMilliseconds + "ms");
+
                     return data;
                 }
                 else
