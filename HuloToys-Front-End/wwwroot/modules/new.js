@@ -83,7 +83,7 @@ var _new = {
                 $("#section-article-paginate").html(data);
                 $('.list-news-top').show();
                 $('.cat-tag').removeClass('active');
-                $('.tag_' + category_id).addClass('active');
+                $('.tag_' + parseFloat(category_id)).addClass('active');
                 $(".paging_" + page).addClass("active")
                 $(window).scrollTop(0);
             },
