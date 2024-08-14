@@ -31,7 +31,9 @@ namespace HuloToys_Front_End.Controllers.News
         {
             try
             {
-                var data = await _newServices.GetNewsCategory();
+                var data = await _newServices.GetNewsCategory(requestObj);
+                var category_id = Convert.ToInt32(_configuration["config:category_id"]);
+                ViewBag.category_id = category_id;
                 return PartialView(data);
 
             }
@@ -110,14 +112,19 @@ namespace HuloToys_Front_End.Controllers.News
         {
             try
             {
+                var category_id = Convert.ToInt32(_configuration["config:category_id"]);
                 GetNewDetailRequest request = new GetNewDetailRequest();
                 request.article_id = long.Parse(id);
                 var details = await _newServices.GetNewsDetail(request);
                 var mostViewedArticles = await _newServices.GetMostViewedArticles();
-
+                var requestObj =new GetListByCategoryIdRequest();
+                requestObj.category_id = category_id;
+                var data = await _newServices.GetNewsCategory(requestObj);
                 GetNewDetailObjectResponse response = new GetNewDetailObjectResponse();
                 response.Details = details;
                 response.MostViewedArticles = mostViewedArticles;
+                ViewBag.NewsCategory = data;
+                ViewBag.category_id = category_id;
                 return View(response);
             }
             catch (Exception ex)
