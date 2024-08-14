@@ -19,8 +19,10 @@
                         <div class="flex-cat">
                             <span class="time">
                                 <i class="icon icon-time"></i>
-                                @item.publish_date.ToString("dd/MM/yyyy") |
-                                @item.category_name.TrimEnd(',',' ')
+                                @{
+                                    var category_name = item.category_name.TrimEnd(',', ' ').Split(',');
+                                }
+                                @item.publish_date.ToString("dd/MM/yyyy") |   @category_name[0]
                             </span>
                         </div>
                         <h2 class="title-news">
@@ -44,10 +46,12 @@
         {
             <ul class="pagination" style="justify-content: center !important;">
                 <li class="page first"><a onclick="_new.paging(1);" href="javascripts:;"><i class="icon icon-page-first"></i></a></li>
+                <li class="page first"><a onclick="_new.prev(1);" href="javascripts:;"><i class="icon icon-page-previous"></i></a></li>
                 @for (int i = 1; i <= Model[0].total_page; i++)
                 {
-                    <li class="page paging_@i"><a onclick="_new.paging(@i);" href="javascripts:;">@i</a></li>
+                    <li class="page paging_@i" data-page="@i"><a onclick="_new.paging(@i);" href="javascripts:;">@i</a></li>
                 }
+                <li class="page last"><a onclick="_new.next(@Model[0].total_page)" href="javascripts:;"><i class="icon icon-page-next"></i></a></li>
                 <li class="page last"><a onclick="_new.paging(@Model[0].total_page)" href="javascripts:;"><i class="icon icon-page-last"></i></a></li>
             </ul>
         }
@@ -64,10 +68,12 @@ else
             {
                 <ul class="pagination" style="justify-content: center !important;">
                     <li class="page first"><a onclick="_new.paging(1);" href="javascripts:;"><i class="icon icon-page-first"></i></a></li>
+                    <li class="page first"><a onclick="_new.prev(1);" href="javascripts:;"><i class="icon icon-page-previous"></i></a></li>
                     @for (int i = 1; i <= ViewBag.skip; i++)
                     {
                         <li class="page paging_@i"><a onclick="_new.paging(@i);" href="javascripts:;">@i</a></li>
                     }
+                    <li class="page last"><a onclick="_new.next(@ViewBag.skip)" href="javascripts:;"><i class="icon icon-page-next"></i></a></li>
                     <li class="page last"><a onclick="_new.paging(@ViewBag.skip)" href="javascripts:;"><i class="icon icon-page-last"></i></a></li>
                 </ul>
             }

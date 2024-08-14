@@ -18,13 +18,13 @@ namespace HuloToys_Front_End.Controllers.News.Business
         {
             _configuration = configuration;
         }
-        public async Task<List<GetCategoryResponse>> GetNewsCategory()
+        public async Task<List<GetCategoryResponse>> GetNewsCategory(GetListByCategoryIdRequest requestObj)
         {
             try
             {
                 var obj =new Dictionary<string, object>
                 {
-                    { "category_id","10" }
+                    { "category_id",requestObj.category_id }
                 };
                 var result = await POST(_configuration["API:get_category"], obj);
                 var jsonData = JObject.Parse(result);

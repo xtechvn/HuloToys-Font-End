@@ -16,7 +16,7 @@
             <div class="wrap-news cat-menu">
                 <div class="content" id="list-news-category">
                     <ul class="list-cat" id="news-category">
-                        <li> <a onclick="_newdetail.getNewsByTag(10,'tin-tuc')" href="javascript:;" data-id="10" class="cat-tag  tag_10">Tất cả</a></li>
+                        <li> <a onclick="_newdetail.getNewsByTag(@ViewBag.category_id,'tin-tuc')" href="javascript:;" data-id="@ViewBag.category_id" class="cat-tag  tag_@ViewBag.category_id">Tất cả</a></li>
                         @if (data_NewsCategory != null)
                         {
 

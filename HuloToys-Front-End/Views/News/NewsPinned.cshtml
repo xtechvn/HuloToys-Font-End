@@ -18,7 +18,10 @@
 
                             <span class="time">
                                 <i class="icon icon-time"></i>
-                                @item.publish_date.ToString("dd/MM/yyyy") |   @item.category_name.TrimEnd(',', ' ')
+                                @{
+                                    var category_name = item.category_name.TrimEnd(',', ' ').Split(',');
+                                }
+                                @item.publish_date.ToString("dd/MM/yyyy") |   @category_name[0]
                             </span>
                         </div>
                         <h2 class="title-news">
@@ -50,7 +53,10 @@
 
                             <span class="time">
                                 <i class="icon icon-time"></i>
-                                @item.publish_date.ToString("dd/MM/yyyy") |   @item.category_name
+                                @{
+                                    var category_name = item.category_name.TrimEnd(',', ' ').Split(',');
+                                }
+                                @item.publish_date.ToString("dd/MM/yyyy") |   @category_name[0]
                             </span>
                         </div>
                         <h2 class="title-news">
@@ -80,7 +86,10 @@
 
                             <span class="time">
                                 <i class="icon icon-time"></i>
-                                @item.publish_date.ToString("dd/MM/yyyy") |   @item.category_name
+                                @{
+                                    var category_name = item.category_name.TrimEnd(',', ' ').Split(',');
+                                }
+                                @item.publish_date.ToString("dd/MM/yyyy") |   @category_name[0]
                             </span>
                         </div>
                         <h2 class="title-news">

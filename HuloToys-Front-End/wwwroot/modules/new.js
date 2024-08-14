@@ -7,7 +7,8 @@
         }
     });   
 })
-let category_id = 10;
+let category_id = 22;
+let category_id_menu = 22;
 var _new = {
     Initialization: function () {
         var categoryIdSession = sessionStorage.getItem('NewsCategoryId');
@@ -16,20 +17,20 @@ var _new = {
             /*_new.getNewsPinned1(1, 1, categoryIdSession);*/
 
         } else {
-            _new.getNewsByTag(1, 10, 10);
+            _new.getNewsByTag(1, 10, category_id_menu);
             /*_new.getNewsPinned1(1, 1, 10);*/
 
         }
 
-        _new.NewsCategory();
-        _new.getNewsMostViewedArticle(1, 3, 10);
+        _new.NewsCategory(category_id_menu);
+        _new.getNewsMostViewedArticle(1, 3, category_id_menu);
         
     },
  
  
-    NewsCategory: function () {
+    NewsCategory: function (category_id) {
         var requestObj = {
-           
+            category_id: category_id,
         };
         $.ajax({
             url: "/News/NewsCategory",
@@ -131,6 +132,26 @@ var _new = {
         var categoryIdSession = sessionStorage.getItem('NewsCategoryId');
         _new.getNewsByTag(page, 10, parseFloat(categoryIdSession))
         _new.getNewsPinned1(page, 10, parseFloat(categoryIdSession));
+    },
+    prev: function (min) {
+        var page = $('.pagination .active').attr('data-page');
+        if (page != min) {
+            page = parseFloat(page) - 1;
+            var categoryIdSession = sessionStorage.getItem('NewsCategoryId');
+            _new.getNewsByTag(page, 10, parseFloat(categoryIdSession))
+            _new.getNewsPinned1(page, 10, parseFloat(categoryIdSession));
+        }
+       
+    },
+    next: function (max) {
+        var page = $('.pagination .active').attr('data-page');
+        if (page != max) {
+            page = parseFloat(page) + 1;
+            var categoryIdSession = sessionStorage.getItem('NewsCategoryId');
+            _new.getNewsByTag(page, 10, parseFloat(categoryIdSession))
+            _new.getNewsPinned1(page, 10, parseFloat(categoryIdSession));
+        }
+       
     },
     GetFindArticleByTitle: function () {
         $('#article-1').hide();
