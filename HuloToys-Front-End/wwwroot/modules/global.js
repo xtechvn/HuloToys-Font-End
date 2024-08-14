@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
-    global_service.Initialization()
+    global_service.Initialization();
+    global_service.LoadPolicy();
 })
 var global_service = {
     Initialization: function () {
@@ -14,6 +15,22 @@ var global_service = {
             var element = $(this)
             event.preventDefault()
             element.closest('.overlay').removeClass('overlay-active')
+        });
+    },
+    LoadPolicy: function ()
+    {
+        $.ajax({
+            url: "/Support/GetListPolicy",
+            type: 'post',
+            data: null,
+            success: function (data) {
+                console.log(data)
+                data.forEach(item => {
+                    let html = `<li><a href="/Support/Index" onclick="_support.GetBodyArticle('${item.id}')">${item.title}</a></li>`;
+                    $(".policy-footer").append(html);
+                });
+                
+            },
         });
     },
     CheckLogin: function () {

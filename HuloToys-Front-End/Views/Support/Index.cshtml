@@ -1,0 +1,85 @@
+﻿@using HuloToys_Front_End.Models.News
+@{
+    ViewData["Title"] = "Hỗ trợ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var LstQuestions = (List<ArticleFeModel>)ViewBag.Questions;
+    var LstPolicies = (List<ArticleFeModel>)ViewBag.Policy;
+}
+
+
+
+<section class="section-banner-search">
+    <div class="container">
+        <div class="flex-banner">
+            <div class="wrap-form">
+                <h2 class="title">Chào mừng quý khách !</h2>
+                <h3 class="sub-title">HULOTOYS có thể giúp được gì cho quý khách ?</h3>
+                <div class="form-search">
+                    <form>
+                        <input id="search-input" type="text" placeholder="Câu hỏi, thắc mắc của quý khách...">
+                        <button onclick="_support.SearchQuestion()" type="button" class="btn-search"><i class="icon icon-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="image">
+                <img src="/images/img-search.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-help">
+    <div class="container">
+        <!-- Kết quả tìm kiếm -->
+        <div class="result-search">
+            
+            
+        </div>
+        <!-- //Policy -->
+        <div class="flex-content">
+            <div class="left-content">
+                <ul class="list-faq">
+                    @if (LstPolicies != null)
+                    {
+                        <li class="">
+                            <a>Trung tâm hỗ trợ</a>
+                        </li>
+
+                        @for (int i = 0; i < LstPolicies.Count; i++)
+                        {
+                            <li onclick="_support.GetBodyArticle('@LstPolicies[i].id')">
+                                <a>@LstPolicies[i].title</a>
+                            </li>
+                        }
+
+                    }
+                </ul>
+            </div>
+            <div class="content">
+                <!-- câu hỏi thường gặp -->
+                <h1 class="title question">Câu hỏi thường gặp</h1>
+                @if(LstQuestions != null)
+                {
+                    @foreach (var i in LstQuestions)
+                    {
+                        <p class="question content-article">@i.title</p>
+                    }
+                }
+                <!-- chính sách đổi trả -->
+                <h1 class="title" id="title_policy" ></h1>
+                
+                <div id="lead_policy">
+                    
+                </div>
+
+                <div id="body_policy"> 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script asp-append-version="true" type="text/javascript" src="~/modules/support.js"></script>
+}
