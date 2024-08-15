@@ -8,7 +8,12 @@
     var LstPolicies = (List<ArticleFeModel>)ViewBag.Policy;
 }
 
-
+<style>
+    .content-policy
+    {
+        margin-left: 20px;
+    }
+</style>
 
 <section class="section-banner-search">
     <div class="container">
@@ -56,7 +61,7 @@
                     }
                 </ul>
             </div>
-            <div class="content">
+            <div class="content-policy">
                 <!-- câu hỏi thường gặp -->
                 <h1 class="title question">Câu hỏi thường gặp</h1>
                 @if(LstQuestions != null)

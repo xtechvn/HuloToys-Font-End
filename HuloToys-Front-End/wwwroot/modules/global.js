@@ -17,8 +17,7 @@ var global_service = {
             element.closest('.overlay').removeClass('overlay-active')
         });
     },
-    LoadPolicy: function ()
-    {
+    LoadPolicy: function () {
         $.ajax({
             url: "/Support/GetListPolicy",
             type: 'post',
@@ -26,12 +25,17 @@ var global_service = {
             success: function (data) {
                 console.log(data)
                 data.forEach(item => {
-                    let html = `<li><a href="/Support/Index" onclick="_support.GetBodyArticle('${item.id}')">${item.title}</a></li>`;
+                    let html = `<li><a onclick="global_service.Naviga('${item.id}')">${item.title}</a></li>`;
                     $(".policy-footer").append(html);
                 });
-                
+
             },
         });
+    },
+    Naviga: function (id)
+    {
+        window.location.href = "/Support/Index";
+        localStorage.setItem('ChosenIdPolicy', id);
     },
     CheckLogin: function () {
         var str = localStorage.getItem(STORAGE_NAME.Login)

@@ -8,16 +8,16 @@ var _support =
             type: 'post',
             data: { id: id },
             success: function (data) {
-                $(".content").html('');
-                $(".content").append(`<h1 class="title" id="title_policy" >${data.title}</h1>`)
-                $(".content").append(`<div>${data.lead}</h1>`)
-                $(".content").append(`<div style="margin-top:10px">${data.body}</h1>`)
+                $(".content-policy").html('');
+                $(".content-policy").append(`<h1 class="title" id="title_policy" >${data.title}</h1>`)
+                $(".content-policy").append(`<div>${data.lead}</h1>`)
+                $(".content-policy").append(`<div style="margin-top:10px">${data.body}</h1>`)
             },
 
         });
     },
 
-    LoadPolicy: function () {
+    /*LoadPolicy: function () {
         $.ajax({
             url: "/Support/GetListPolicy",
             type: 'post',
@@ -31,7 +31,7 @@ var _support =
 
             },
         });
-    },
+    },*/
 
     GetBodyQuestion: function (id) {
         $.ajax({
@@ -40,7 +40,7 @@ var _support =
             data: { id: id },
             success: function (data) {
                 $('.result-search').html('');
-                $(".content").html('');
+                $(".content-policy").html('');
                 $(".left-content").html('');
                 $(".left-content").append(`
                 <ul class="list-faq">
@@ -50,16 +50,16 @@ var _support =
                         </li>
 
                 </ul>`);
-                $(".content").append(`<h1 class="title" id="title_policy" >${data.title}</h1>`)
-                $(".content").append(`<div>${data.lead}</h1>`)
-                $(".content").append(`<div style="margin-top:10px">${data.body}</h1>`)
+                $(".content-policy").append(`<h1 class="title" id="title_policy" >${data.title}</h1>`)
+                $(".content-policy").append(`<div>${data.lead}</h1>`)
+                $(".content-policy").append(`<div style="margin-top:10px">${data.body}</h1>`)
             },
 
         });
     },
     SearchQuestion: function () {
         var title = $('#search-input').val();
-        $('.content').html('');
+        $('.content-policy').html('');
         $('.left-content').html('');
         if (title == '') {
             $('.result-search').html(`<h2>không tìm thấy kết quả tìm kiếm</h2>`);
@@ -97,26 +97,40 @@ var _support =
     CreateFeedback: function ()
     {
         let comment = $('#comment-text').val();
-        let Id = global_service.CheckLogin().account_client_id;
-        var obj =
-        {
-            "AccountClientId": Id,
-            "Content": comment
+        
+        if (global_service.CheckLogin()) {
+            let Id = global_service.CheckLogin().account_client_id;
+            document.getElementById("CommentSucces").style.display = "block";
+            var obj =
+            {
+                "AccountClientId": Id,
+                "Content": comment
+            }
+            $.ajax({
+                url: "/Support/CreateFeedback",
+                type: 'post',
+                data: { obj: obj },
+                success: function (data) {
+                },
+
+            });
         }
-
-        $.ajax({
-            url: "/Support/CreateFeedback",
-            type: 'post',
-            data: { obj: obj },
-            success: function (data) {
-                alert("OK")
-            },
-
-        });
-
+        else
+        {
+            document.getElementById("CommentSucces").style.display = "block";
+            document.getElementById("CommentSucces").textContent = "Vui lòng đăng nhập trước khi góp ý !";
+            setTimeout(() => {
+                document.getElementById("CommentSucces").style.display = 'none';
+            }, 1000);
+            return;
+        }
     }
 }
 
 $(document).ready(function () {
-    _support.LoadPolicy();
+    var ID = localStorage.getItem('ChosenIdPolicy');
+    if (ID != null)
+    {
+        _support.GetBodyArticle(ID);
+    }
 })

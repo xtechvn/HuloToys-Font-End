@@ -2,6 +2,30 @@
     ViewData["Title"] = "Đóng góp ý kiến";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .AddcommentSucces {
+        padding: 15px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #f0ad4e;
+        color: #fff;
+    }
+
+    .close {
+        float: right;
+        font-size: 21px;
+        font-weight: bold;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        opacity: .5;
+    }
+
+</style>
+<div id="CommentSucces" class="AddcommentSucces" style="display:none">
+    <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Thông báo:</strong> Cảm ơn vì đã góp ý!
+</div>
 <section class="section-banner-search section-donggopykien">
     <div class="container">
         <div class="flex-banner">
@@ -11,13 +35,13 @@
                     <form onsubmit="return false">
                         <div class="form-group">
                             <label>Nội dung*</label>
-                            <div class="box-input content">
+                            <div class="box-input">
                                 <textarea style="min-height:150px" class="form-control" id="comment-text" rows="5" placeholder="Hãy chia sẽ những góp ý của bạn với Hulo Toys tại đây nhé."></textarea>
                             </div>
                         </div>
                         <div class="action">
                             <a href="" class="btn back">Trở lại</a>
-                            <a href="" onclick="_support.CreateFeedback()" class="btn btn-save">Cập nhật</a>
+                            <a onclick="_support.CreateFeedback()" id="liveToastBtn" class="btn btn-save">Cập nhật</a>
                         </div>
                     </form>
                 </div>
