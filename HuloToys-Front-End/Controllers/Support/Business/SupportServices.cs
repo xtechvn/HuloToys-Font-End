@@ -25,7 +25,7 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             {
                 var obj = new Dictionary<string, object>
                 {
-                    { "category_id","21" }
+                    { "category_id","23" }
                 };
                 var result = await POST("api/news/get-list-by-categoryid.json", obj);
                 var jsonData = JObject.Parse(result);
@@ -74,7 +74,7 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             {
                 var obj = new Dictionary<string, object>
                 {
-                    { "category_id","21" }
+                    { "category_id","23" }
                 };
                 var result = await POST("api/news/get-list-by-categoryid.json", obj);
                 var jsonData = JObject.Parse(result);
@@ -108,7 +108,7 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             {
                 var obj = new Dictionary<string, object>
                 {
-                    { "category_id","20" }
+                    { "category_id","24" }
                 };
                 var result = await POST("api/news/get-list-by-categoryid.json", obj);
                 var jsonData = JObject.Parse(result);
@@ -142,7 +142,7 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             {
                 var obj = new Dictionary<string, object>
                 {
-                    { "category_id","20" }
+                    { "category_id","24" }
                 };
                 var result = await POST("api/news/get-list-by-categoryid.json", obj);
                 var jsonData = JObject.Parse(result);
@@ -176,7 +176,7 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             {
                 var obj = new Dictionary<string, object>
                 {
-                    { "category_id","20" }
+                    { "category_id","24" }
                 };
                 var result = await POST("api/news/get-list-by-categoryid.json", obj);
                 var jsonData = JObject.Parse(result);
