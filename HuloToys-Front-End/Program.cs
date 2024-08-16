@@ -23,13 +23,26 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+//Support Controller
 app.MapControllerRoute(
-    name: "tin-tuc",
-    pattern: "/tin-tuc",
-    defaults: new { controller = "News", action = "Index" });
+    name: "Support",
+    pattern: "/cham-soc-khach-hang",
+    defaults: new { controller = "Support", action = "Index" });
+app.MapControllerRoute(
+    name: "Policy",
+    pattern: "/chinh-sach/{policy}",
+    defaults: new { controller = "Support", action = "Index" });
+app.MapControllerRoute(
+    name: "Comment",
+    pattern: "/dong-gop-y-kien",
+    defaults: new { controller = "Support", action = "feedback" });
+//app.MapControllerRoute(
+//    name: "tin-tuc",
+//    pattern: "/tin-tuc",
+//    defaults: new { controller = "News", action = "Index" });
 app.MapControllerRoute(
     name: "newsCategory",
-    pattern: "{category}",
+    pattern: "/{category}",
     defaults: new { controller = "News", action = "Index" });
 app.MapControllerRoute(
     name: "newsDetail",
@@ -38,5 +51,7 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "san-pham",
     pattern: "/san-pham/{title}--{product_code}",
-    defaults: new { controller = "Product", action = "ProductDetail" });
+    defaults: new { controller = "Product", action = "Detail" });
+
+
 app.Run();

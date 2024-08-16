@@ -1,5 +1,8 @@
 ﻿$(document).ready(function () {
-    global_service.Initialization()
+    global_service.Initialization();
+    global_service.LoadPolicy();
+    global_service.LoadAbouHulotoys();
+    global_service.LoadCustomerSupport();
 })
 var global_service = {
     Initialization: function () {
@@ -16,6 +19,53 @@ var global_service = {
             element.closest('.overlay').removeClass('overlay-active')
         });
     },
+    LoadPolicy: function () {
+        $.ajax({
+            url: "/Support/GetListPolicy",
+            type: 'post',
+            data: null,
+            success: function (data) {
+                console.log(data)
+                data.forEach(item => {
+                    let html = `<li><a class="li-Cursor" onclick="global_service.Naviga('/chinh-sach/','${item.id}','${item.title}')">${item.title}</a></li>`;
+                    $(".policy-footer").append(html);
+                });
+            },
+        });
+    },
+    LoadAbouHulotoys: function () {
+        $.ajax({
+            url: "/Support/GetListAboutHulotoys",
+            type: 'post',
+            data: null,
+            success: function (data) {
+                console.log(data)
+                data.forEach(item => {
+                    let html = `<li><a class="li-Cursor" onclick="global_service.Naviga('/tin-tuc/','${item.id}','${item.title}-${item.id}')">${item.title}</a></li>`;
+                    $(".AboutHulotoy-footer").append(html);
+                });
+            },
+        });
+    },
+    LoadCustomerSupport: function () {
+        $.ajax({
+            url: "/Support/GetListCustomerSupport",
+            type: 'post',
+            data: null,
+            success: function (data) {
+                console.log(data)
+                data.forEach(item => {
+                    let html = `<li><a class="li-Cursor" onclick="global_service.Naviga('/tin-tuc/','${item.id}','${item.title}-${item.id}')">${item.title}</a></li>`;
+                    $(".CustomerSupport-footer").prepend(html);
+                });
+            },
+        });
+    },
+    Naviga: function (url,id,title)
+    {
+        window.location.href = url + this.convertVietnameseToUnsign(title);
+        localStorage.setItem('ChosenIdPolicy', id);
+    },
     CheckLogin: function () {
         var str = localStorage.getItem(STORAGE_NAME.Login)
         if (str != undefined && str.trim() != '') {
@@ -30,13 +80,9 @@ var global_service = {
     POST: function (url, data) {
         return new Promise(function (resolve, reject) {
             $.ajax({
-                url: url,
-                dataType: 'json',
                 type: 'post',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify(data),
-                processData: false,
+                url: url,
+                data: { request: data },
                 success: function (data) {
                     resolve(data);
                 },
@@ -107,6 +153,24 @@ var global_service = {
             text = text.replaceAll(arr1[i].toUpperCase(), arr2[i].toUpperCase());
         }
         return text;
+    },
+    convertVietnameseToUnsign: function (str)
+    {
+       // Bảng chuyển đổi các ký tự có dấu thành không dấu
+       const from = "àáạảãâầấậẩẫăắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơớờợởỡùúụủũưừứựửữỳýỵỷỹđ";
+       const to = "aaaaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyyd";
+       const fromArray = from.split('');
+       const toArray = to.split('');
+
+       str = str.toLowerCase();
+
+       for (let i = 0; i < fromArray.length; i++)
+       {
+       str = str.replace(new RegExp(fromArray[i], 'g'), toArray[i]);
+       }
+
+       str = str.replace(/\s+/g, '-'); // Thay thế nhiều khoảng trắng thành 1 -
+       return str.trim();
     }
 
 }

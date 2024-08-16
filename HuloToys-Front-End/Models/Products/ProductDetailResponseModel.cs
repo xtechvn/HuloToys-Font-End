@@ -1,10 +1,13 @@
 ﻿using Entities.ViewModels;
+using Entities.ViewModels.Products;
 
 namespace HuloToys_Front_End.Models.Products
 {
-    public class ProductDetailResponseModel
+    public class ProductDetailResponseModel: ProductMongoDbModel
     {
-        public long total_item_store { get; set; } // Tổng số ket qua tìm thấy trên mặt trang gốc                
-        public List<ProductViewModel> obj_lst_product_result { get; set; } // ds sp tìm được
+        public float star { get; set; }
+        public int product_sold_count { get; set; }
+        public int reviews_count { get; set; }
+
     }
 }
