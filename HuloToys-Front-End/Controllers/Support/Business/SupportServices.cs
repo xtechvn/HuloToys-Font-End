@@ -19,13 +19,13 @@ namespace HuloToys_Front_End.Controllers.Support.Business
         }
 
 
-        public async Task<List<ArticleFeModel>> GetListPolicy()
+        public async Task<List<ArticleFeModel>> GetListByCategoryID(int id_Cate)
         {
             try
             {
                 var obj = new Dictionary<string, object>
                 {
-                    { "category_id","23" }
+                    { "category_id",id_Cate }
                 };
                 var result = await POST("api/news/get-list-by-categoryid.json", obj);
                 var jsonData = JObject.Parse(result);
@@ -169,41 +169,5 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             }
             return null;
         }
-
-        public async Task<List<ArticleFeModel>> GetListCommonQuestions ()
-        {
-            try
-            {
-                var obj = new Dictionary<string, object>
-                {
-                    { "category_id","24" }
-                };
-                var result = await POST("api/news/get-list-by-categoryid.json", obj);
-                var jsonData = JObject.Parse(result);
-                var status = int.Parse(jsonData["status"].ToString());
-
-                if (status == (int)ResponseType.SUCCESS)
-                {
-
-                    var data = JsonConvert.DeserializeObject<List<ArticleFeModel>>(jsonData["data_list"].ToString());
-
-                    return data;
-                }
-                else
-                {
-                    var msg = int.Parse(jsonData["msg"].ToString());
-                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + msg.ToString());
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + ex.ToString());
-            }
-            return null;
-        }
     } 
-
-
 }

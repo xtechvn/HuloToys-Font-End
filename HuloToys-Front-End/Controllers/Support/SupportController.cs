@@ -18,8 +18,8 @@ namespace HuloToys_Front_End.Controllers.Support
         }
         public async Task<IActionResult> Index()
         {
-            var ListCommonQuestions = await _supportServices.GetListCommonQuestions();
-            var ListPolicy = await _supportServices.GetListPolicy();
+            var ListCommonQuestions = await _supportServices.GetListByCategoryID(24);
+            var ListPolicy = await _supportServices.GetListByCategoryID(23);
             ViewBag.Questions = ListCommonQuestions;
             ViewBag.Policy = ListPolicy;
             return View();
@@ -41,13 +41,46 @@ namespace HuloToys_Front_End.Controllers.Support
             try
             {
                List<ArticleFeModel> data = null; 
-               data = await _supportServices.GetListPolicy();
+               data = await _supportServices.GetListByCategoryID(23);
                return Ok(data);
 
             }
             catch (Exception ex)
             {
                 LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportController:" + ex.ToString());
+
+                return BadRequest();
+            }
+        }
+
+        public async Task<IActionResult> GetListAboutHulotoys()
+        {
+            try
+            {
+                List<ArticleFeModel> data = null;
+                data = await _supportServices.GetListByCategoryID(25);
+                return Ok(data);
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListCustomerSupport-SupportController:" + ex.ToString());
+
+                return BadRequest();
+            }
+        }
+        public async Task<IActionResult> GetListCustomerSupport()
+        {
+            try
+            {
+                List<ArticleFeModel> data = null;
+                data = await _supportServices.GetListByCategoryID(26);
+                return Ok(data);
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListAboutHulotoys-SupportController:" + ex.ToString());
 
                 return BadRequest();
             }
@@ -63,7 +96,7 @@ namespace HuloToys_Front_End.Controllers.Support
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportController:" + ex.ToString());
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetPolicyById-SupportController:" + ex.ToString());
 
                 return BadRequest();
             }
@@ -79,7 +112,7 @@ namespace HuloToys_Front_End.Controllers.Support
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportController:" + ex.ToString());
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetQuestionById-SupportController:" + ex.ToString());
 
                 return BadRequest();
             }
@@ -95,7 +128,7 @@ namespace HuloToys_Front_End.Controllers.Support
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportController:" + ex.ToString());
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListQuestion-SupportController:" + ex.ToString());
 
                 return BadRequest();
             }
@@ -105,7 +138,7 @@ namespace HuloToys_Front_End.Controllers.Support
         {
             try
             {
-                var data = await _supportServices.GetListCommonQuestions();
+                var data = await _supportServices.GetListByCategoryID(24);
                 return Ok(data);
 
             }
