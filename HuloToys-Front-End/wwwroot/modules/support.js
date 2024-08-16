@@ -8,6 +8,7 @@ var _support =
             type: 'post',
             data: { id: id },
             success: function (data) {
+                window.history.pushState('string', '', "/chinh-sach/" + global_service.convertVietnameseToUnsign(data.title))
                 $(".content-policy").html('');
                 $(".content-policy").append(`<h1 class="title" id="title_policy" >${data.title}</h1>`)
                 $(".content-policy").append(`<div>${data.lead}</h1>`)
@@ -17,33 +18,18 @@ var _support =
         });
     },
 
-    /*LoadPolicy: function () {
-        $.ajax({
-            url: "/Support/GetListPolicy",
-            type: 'post',
-            data: null,
-            success: function (data) {
-                $(".policy-footer").html(``);
-                data.forEach(item => {
-                    let html = `<li><a onclick="_support.GetBodyArticle('${item.id}')">${item.title}</a></li>`;
-                    $(".policy-footer").append(html);
-                });
-
-            },
-        });
-    },*/
-
     GetBodyQuestion: function (id) {
         $.ajax({
             url: "/Support/GetQuestionById",
             type: 'post',
             data: { id: id },
             success: function (data) {
+                window.history.pushState('string','', "/questions/" + global_service.convertVietnameseToUnsign(data.title))
                 $('.result-search').html('');
                 $(".content-policy").html('');
                 $(".left-content").html('');
                 $(".left-content").append(`
-                <ul class="list-faq">
+                <ul class="list-faq" style="min-width:250px">
 
                         <li>
                             <a >${data.title}</a>
@@ -81,7 +67,7 @@ var _support =
                         $('.result-search').html(notif);
 
                         data.forEach(item => {
-                            let html = `<p onclick="_support.GetBodyQuestion('${item.id}')">${item.title}</p>`;
+                            let html = `<p class="Option-load" onclick="_support.GetBodyQuestion('${item.id}')">${item.title}</p>`;
                             $('.result-search').append(html);
                         });
                     }
@@ -129,8 +115,9 @@ var _support =
 
 $(document).ready(function () {
     var ID = localStorage.getItem('ChosenIdPolicy');
-    if (ID != null)
+    if (ID != "")
     {
         _support.GetBodyArticle(ID);
     }
+    localStorage.setItem('ChosenIdPolicy', "");
 })
