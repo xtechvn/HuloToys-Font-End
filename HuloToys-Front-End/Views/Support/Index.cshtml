@@ -4,8 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
-    var LstQuestions = (List<ArticleFeModel>)ViewBag.Questions;
-    var LstPolicies = (List<ArticleFeModel>)ViewBag.Policy;
+    var MenuHelpers = (List<GetCategoryResponse>)ViewBag.MenuHelpers;
 }
 
 <style>
@@ -50,42 +49,26 @@
         <div class="flex-content">
             <div class="left-content">
                 <ul class="list-faq" style="min-width:250px">
-                    @if (LstPolicies != null)
+                    @if (MenuHelpers != null)
                     {
-                        <li class="active">
-                            <a>Trung tâm hỗ trợ</a>
-                        </li>
-
-                        @for (int i = 0; i < LstPolicies.Count; i++)
+                        @for (int i = 0; i < MenuHelpers.Count; i++)
                         {
-                            <li class="Option-load" onclick="_support.GetBodyArticle('@LstPolicies[i].id')">
-                                <a>@LstPolicies[i].title</a>
+                            <li class="Option-load" id="Selected-@MenuHelpers[i].id" onclick="_support.GetBodyArticle('@MenuHelpers[i].id','@MenuHelpers[i].name')">
+                                <a>@MenuHelpers[i].name</a>
                             </li>
                         }
 
                     }
                 </ul>
             </div>
-            <div class="content-policy">
+            <ul class="content-policy">
 
-                <h1 class="title question">Câu hỏi thường gặp</h1>
-                @if(LstQuestions != null)
-                {
-                    @foreach (var i in LstQuestions)
-                    {
-                        <p class="question content-article">@i.title</p>
-                    }
-                }
-
-                <h1 class="title" id="title_policy" ></h1>
-                
-                <div id="lead_policy">
-                    
-                </div>
-
-                <div id="body_policy"> 
-                </div>
-            </div>
+                @* <li>
+                    <h1 class="title" id="title_policy"></h1>
+                    <div id="lead_policy"></div>
+                    <div id="body_policy"></div>
+                </li> *@
+            </ul>
         </div>
     </div>
 </section>
