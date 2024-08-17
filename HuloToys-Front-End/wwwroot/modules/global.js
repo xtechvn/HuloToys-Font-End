@@ -25,9 +25,8 @@ var global_service = {
             type: 'post',
             data: null,
             success: function (data) {
-                console.log(data)
                 data.forEach(item => {
-                    let html = `<li><a class="li-Cursor" onclick="global_service.Naviga('/chinh-sach/','${item.id}','${item.title}')">${item.title}</a></li>`;
+                    let html = `<li><a class="li-Cursor" onclick="global_service.PolicyNaviga('/chinh-sach/','${item.id}','${item.name}')">${item.name}</a></li>`;
                     $(".policy-footer").append(html);
                 });
             },
@@ -39,7 +38,6 @@ var global_service = {
             type: 'post',
             data: null,
             success: function (data) {
-                console.log(data)
                 data.forEach(item => {
                     let html = `<li><a class="li-Cursor" onclick="global_service.Naviga('/tin-tuc/','${item.id}','${item.title}-${item.id}')">${item.title}</a></li>`;
                     $(".AboutHulotoy-footer").append(html);
@@ -61,10 +59,14 @@ var global_service = {
             },
         });
     },
-    Naviga: function (url,id,title)
+    PolicyNaviga: function (url,id,title)
     {
         window.location.href = url + this.convertVietnameseToUnsign(title);
         localStorage.setItem('ChosenIdPolicy', id);
+        localStorage.setItem('ChosenUrlPolicy', title);
+    },
+    Naviga: function (url, id, title) {
+        window.location.href = url + this.convertVietnameseToUnsign(title);
     },
     CheckLogin: function () {
         var str = localStorage.getItem(STORAGE_NAME.Login)

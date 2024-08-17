@@ -11,17 +11,22 @@ namespace HuloToys_Front_End.Controllers.Support
     {
         private readonly IConfiguration _configuration;
         private readonly SupportServices _supportServices;
+        private readonly NewServices _newsService;
         public SupportController(IConfiguration configuration)
         {
             _configuration = configuration;
+            _newsService = new NewServices(configuration);
             _supportServices = new SupportServices(configuration);
         }
         public async Task<IActionResult> Index()
         {
-            var ListCommonQuestions = await _supportServices.GetListByCategoryID(24);
-            var ListPolicy = await _supportServices.GetListByCategoryID(23);
-            ViewBag.Questions = ListCommonQuestions;
-            ViewBag.Policy = ListPolicy;
+
+            GetListByCategoryIdRequest requestObj = new GetListByCategoryIdRequest() 
+            {
+                category_id = 21,
+            };
+            var ListMenuHelpers = await _newsService.GetNewsCategory(requestObj);
+            ViewBag.MenuHelpers = ListMenuHelpers;
             return View();
         }
 
@@ -40,8 +45,12 @@ namespace HuloToys_Front_End.Controllers.Support
         {
             try
             {
-               List<ArticleFeModel> data = null; 
-               data = await _supportServices.GetListByCategoryID(23);
+               GetListByCategoryIdRequest requestObj = new GetListByCategoryIdRequest()
+               {
+                  category_id = 21,
+               };
+                List<GetCategoryResponse> data = null; 
+               data = await _newsService.GetNewsCategory(requestObj);
                return Ok(data);
 
             }
@@ -69,6 +78,24 @@ namespace HuloToys_Front_End.Controllers.Support
                 return BadRequest();
             }
         }
+
+        public async Task<IActionResult> GetListByCategoryID(int id)
+        {
+            try
+            {
+                List<ArticleFeModel> data = null;
+                data = await _supportServices.GetListByCategoryID(id);
+                return Ok(data);
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListByCategoryID-SupportController:" + ex.ToString());
+
+                return BadRequest();
+            }
+        }
+
         public async Task<IActionResult> GetListCustomerSupport()
         {
             try
@@ -86,43 +113,11 @@ namespace HuloToys_Front_End.Controllers.Support
             }
         }
 
-        public async Task<IActionResult> GetPolicyById(int id)
+        public async Task<IActionResult> GetListQuestionsByTitle(string title,int id)
         {
             try
             {
-                var data = await _supportServices.GetPolicyById(id);
-                return Ok(data);
-
-            }
-            catch (Exception ex)
-            {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetPolicyById-SupportController:" + ex.ToString());
-
-                return BadRequest();
-            }
-        }
-
-        public async Task<IActionResult> GetQuestionById(int id)
-        {
-            try
-            {
-                var data = await _supportServices.GetQuestionById(id);
-                return Ok(data);
-
-            }
-            catch (Exception ex)
-            {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetQuestionById-SupportController:" + ex.ToString());
-
-                return BadRequest();
-            }
-        }
-
-        public async Task<IActionResult> GetListQuestionsByTitle(string title)
-        {
-            try
-            {
-                var data = await _supportServices.GetQuestionsByTitle(title);
+                var data = await _supportServices.GetArticlesByTitle(title,id);
                 return Ok(data);
 
             }
@@ -133,6 +128,24 @@ namespace HuloToys_Front_End.Controllers.Support
                 return BadRequest();
             }
         }
+
+        public async Task<IActionResult> GetBodyArticle(int id)
+        {
+            try
+            {
+                var data = await _supportServices.GetListByCategoryID(28);
+                var obj = data.FirstOrDefault(x => x.id == id);
+                return Ok(obj);
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListQuestion-SupportController:" + ex.ToString());
+
+                return BadRequest();
+            }
+        }
+
 
         public async Task<IActionResult> GetListCommonQuestions()
         {

@@ -2,17 +2,36 @@
 
 var _support =
 {
-    GetBodyArticle: function (id) {
+    GetBodyArticle: function (id,urlname) {
+        var SelectedElement = $("#Selected-" + id);
+        $(".Option-load").removeClass('active');
+        SelectedElement.addClass('active');
         $.ajax({
-            url: "/Support/GetPolicyById",
+            url: "/Support/GetListByCategoryID",
             type: 'post',
             data: { id: id },
             success: function (data) {
-                window.history.pushState('string', '', "/chinh-sach/" + global_service.convertVietnameseToUnsign(data.title))
+                window.history.pushState('string', '', "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname))
                 $(".content-policy").html('');
-                $(".content-policy").append(`<h1 class="title" id="title_policy" >${data.title}</h1>`)
-                $(".content-policy").append(`<div>${data.lead}</h1>`)
-                $(".content-policy").append(`<div style="margin-top:10px">${data.body}</h1>`)
+                if (data.length > 0) {
+                    data.forEach(item => {
+                        
+                        $(".content-policy").append(`
+                    <li>
+                    <h2>${urlname}</h2>
+                    <h3 style="margin-bottom:10px;margin-top:15px;color:#3B56B4"><i class="fa fa-arrow-right" aria-hidden="true"></i>${item.title}</h3>
+                    <div id="lead_policy">${item.lead}</div>
+                    <div style="margin-top:10px" id="body_policy">${item.body}</div>
+                    </li>`);
+                    });
+                }
+                else
+                {
+                    $(".content-policy").append(`
+                    <li>
+                    <h3 style="color:#3B56B4">Chưa có nội dung !</h3>
+                    </li>`)
+                }
             },
 
         });
@@ -20,25 +39,28 @@ var _support =
 
     GetBodyQuestion: function (id) {
         $.ajax({
-            url: "/Support/GetQuestionById",
+            url: "/Support/GetBodyArticle",
             type: 'post',
             data: { id: id },
             success: function (data) {
-                window.history.pushState('string','', "/questions/" + global_service.convertVietnameseToUnsign(data.title))
-                $('.result-search').html('');
-                $(".content-policy").html('');
-                $(".left-content").html('');
-                $(".left-content").append(`
-                <ul class="list-faq" style="min-width:250px">
+                /*window.history.pushState('string','', "/questions/" + global_service.convertVietnameseToUnsign(data.title))*/
+                if (data != null)
+                {
+                    $('.result-search').html('');
+                    $(".content-policy").html('');
+                    $(".left-content").html('');
+                    $(".left-content").append(`
+                    <ul class="list-faq" style="min-width:250px">
 
                         <li>
                             <a >${data.title}</a>
                         </li>
 
-                </ul>`);
-                $(".content-policy").append(`<h1 class="title" id="title_policy" >${data.title}</h1>`)
-                $(".content-policy").append(`<div>${data.lead}</h1>`)
-                $(".content-policy").append(`<div style="margin-top:10px">${data.body}</h1>`)
+                    </ul>`);
+                    $(".content-policy").append(`<h2 id="title_policy" >${data.title}</h2>`)
+                    $(".content-policy").append(`<div style="margin-top:10px">${data.lead}</h1>`)
+                    $(".content-policy").append(`<div style="margin-top:10px">${data.body}</h1>`)
+                }
             },
 
         });
@@ -54,7 +76,7 @@ var _support =
             $.ajax({
                 url: "/Support/GetListQuestionsByTitle",
                 type: 'post',
-                data: { title: title },
+                data: { title: title, id: 28 },
                 success: function (data) {
                     $('.result-search').html('');
                     let count = 0;
@@ -67,7 +89,7 @@ var _support =
                         $('.result-search').html(notif);
 
                         data.forEach(item => {
-                            let html = `<p class="Option-load" onclick="_support.GetBodyQuestion('${item.id}')">${item.title}</p>`;
+                            let html = `<p style="margin-top:15px" class="Option-load" onclick="_support.GetBodyQuestion('${item.id}')">${item.title}</p>`;
                             $('.result-search').append(html);
                         });
                     }
@@ -115,9 +137,10 @@ var _support =
 
 $(document).ready(function () {
     var ID = localStorage.getItem('ChosenIdPolicy');
+    var URL = localStorage.getItem('ChosenUrlPolicy'); 
     if (ID != "")
     {
-        _support.GetBodyArticle(ID);
+        _support.GetBodyArticle(ID,URL);
     }
     localStorage.setItem('ChosenIdPolicy', "");
 })
