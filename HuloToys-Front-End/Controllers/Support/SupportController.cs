@@ -2,6 +2,7 @@
 using HuloToys_Front_End.Controllers.Support.Business;
 using HuloToys_Front_End.Models.Comments;
 using HuloToys_Front_End.Models.News;
+using HuloToys_Front_End.Utilities.Contants;
 using HuloToys_Service.Utilities.Lib;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,7 +24,7 @@ namespace HuloToys_Front_End.Controllers.Support
 
             GetListByCategoryIdRequest requestObj = new GetListByCategoryIdRequest() 
             {
-                category_id = 21,
+                category_id = SupportConfig.MenuType,
             };
             var ListMenuHelpers = await _newsService.GetNewsCategory(requestObj);
             ViewBag.MenuHelpers = ListMenuHelpers;
@@ -41,13 +42,13 @@ namespace HuloToys_Front_End.Controllers.Support
             return Ok();
         }
 
-        public async Task<IActionResult> GetListPolicy()
+        public async Task<IActionResult> GetListPolicy(int idTypePolicy)
         {
             try
             {
                GetListByCategoryIdRequest requestObj = new GetListByCategoryIdRequest()
                {
-                  category_id = 21,
+                  category_id = idTypePolicy,
                };
                 List<GetCategoryResponse> data = null; 
                data = await _newsService.GetNewsCategory(requestObj);
@@ -62,12 +63,12 @@ namespace HuloToys_Front_End.Controllers.Support
             }
         }
 
-        public async Task<IActionResult> GetListAboutHulotoys()
+        public async Task<IActionResult> GetListAboutHulotoys(int idCate)
         {
             try
             {
                 List<ArticleFeModel> data = null;
-                data = await _supportServices.GetListByCategoryID(25);
+                data = await _supportServices.GetListByCategoryID(idCate);
                 return Ok(data);
 
             }
@@ -96,12 +97,12 @@ namespace HuloToys_Front_End.Controllers.Support
             }
         }
 
-        public async Task<IActionResult> GetListCustomerSupport()
+        public async Task<IActionResult> GetListCustomerSupport(int idCate)
         {
             try
             {
                 List<ArticleFeModel> data = null;
-                data = await _supportServices.GetListByCategoryID(26);
+                data = await _supportServices.GetListByCategoryID(idCate);
                 return Ok(data);
 
             }
@@ -129,11 +130,11 @@ namespace HuloToys_Front_End.Controllers.Support
             }
         }
 
-        public async Task<IActionResult> GetBodyArticle(int id)
+        public async Task<IActionResult> GetBodyArticle(int id,int idType)
         {
             try
             {
-                var data = await _supportServices.GetListByCategoryID(28);
+                var data = await _supportServices.GetListByCategoryID(idType);
                 var obj = data.FirstOrDefault(x => x.id == id);
                 return Ok(obj);
 
