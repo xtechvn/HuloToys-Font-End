@@ -2,21 +2,21 @@
 
 var _support =
 {
-    GetBodyArticle: function (id,urlname) {
+    GetBodyArticle: function (id, urlname) {
         var SelectedElement = $("#Selected-" + id);
         $(".Option-load").removeClass('active');
         SelectedElement.addClass('active');
         $.ajax({
             url: "/Support/GetListByCategoryID",
             type: 'post',
-            data: { id: id ,idType : 28},
+            data: { id: id, idType: 28 },
             success: function (data) {
                 window.history.pushState('string', '', "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname))
                 $(".content-policy").html('');
                 if (data.length > 0) {
                     $(".content-policy").append(`<h2 style="margin-bottom:20px">${urlname}</h2>`);
                     data.forEach(item => {
-                        
+
                         $(".content-policy").append(`
                     <div class="item">
                     <h3 class="title-faq" onclick="_support.DisplayHiddenContent('${item.id}')">${item.title}</h3>
@@ -26,8 +26,7 @@ var _support =
                 </div>`);
                     });
                 }
-                else
-                {
+                else {
                     $(".content-policy").append(`
                     <h3 style="color:#3B56B4">Chưa có nội dung !</h3>`)
                 }
@@ -35,15 +34,12 @@ var _support =
 
         });
     },
-    DisplayHiddenContent: function (id)
-    {
+    DisplayHiddenContent: function (id) {
         let contentpolicy = $('.content' + id)
-        if (!contentpolicy.hasClass('Hide-ContentPolicy'))
-        {
+        if (!contentpolicy.hasClass('Hide-ContentPolicy')) {
             contentpolicy.addClass('Hide-ContentPolicy');
         }
-        else
-        {
+        else {
             contentpolicy.removeClass('Hide-ContentPolicy');
         }
 
@@ -54,9 +50,8 @@ var _support =
             type: 'post',
             data: { id: id, idType: 28 },
             success: function (data) {
-                window.history.pushState('string','', "/questions/" + global_service.convertVietnameseToUnsign(data.title))
-                if (data != null)
-                {
+                window.history.pushState('string', '', "/questions/" + global_service.convertVietnameseToUnsign(data.title))
+                if (data != null) {
                     $('.result-search').html('');
                     $(".content-policy").html('');
                     $(".left-content").html('');
@@ -112,6 +107,19 @@ var _support =
             });
         }
     },
+    GotoSearchBox: function () {
+        localStorage.setItem("focus", "aaa");
+        window.location.href = '/cham-soc-khach-hang';
+    },
+
+    FocusOnSearch: function ()
+    {
+        if (localStorage.getItem("focus"))
+        {
+            $("#search-input").focus();
+            localStorage.removeItem("focus");
+        }
+    },
 
     CreateFeedback: function ()
     {
@@ -149,9 +157,23 @@ var _support =
 $(document).ready(function () {
     var ID = localStorage.getItem('ChosenIdPolicy');
     var URL = localStorage.getItem('ChosenUrlPolicy'); 
-    if (ID != "")
+    if (ID != "") {
+        _support.GetBodyArticle(ID, URL);
+    }
+    else
     {
-        _support.GetBodyArticle(ID,URL);
+        var IdDefault = $('#IDdefaultOption').text();
+        var UrlDefault = $('#NamedefaultOption').text();
+        _support.GetBodyArticle(IdDefault, UrlDefault)
     }
     localStorage.setItem('ChosenIdPolicy', "");
+
+    _support.FocusOnSearch();
+
+    $("#search-input").on('keyup', function (e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
+            _support.SearchQuestion();
+        }
+    });
 })
