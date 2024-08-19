@@ -100,7 +100,7 @@ var _support =
                         });
                     }
                     else {
-                        $('.result-search').html(`<h2>không tìm thấy kết quả tìm kiếm</h2>`);
+                        $('.result-search').html(`<h2>Không tìm thấy kết quả tìm kiếm</h2>`);
                     }
                 },
 
