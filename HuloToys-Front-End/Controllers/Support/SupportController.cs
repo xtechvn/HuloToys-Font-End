@@ -74,7 +74,7 @@ namespace HuloToys_Front_End.Controllers.Support
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListCustomerSupport-SupportController:" + ex.ToString());
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListAboutHulotoys-SupportController:" + ex.ToString());
 
                 return BadRequest();
             }
@@ -108,7 +108,7 @@ namespace HuloToys_Front_End.Controllers.Support
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListAboutHulotoys-SupportController:" + ex.ToString());
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListCustomerSupport-SupportController:" + ex.ToString());
 
                 return BadRequest();
             }
@@ -141,7 +141,7 @@ namespace HuloToys_Front_End.Controllers.Support
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListQuestion-SupportController:" + ex.ToString());
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetBodyArticle-SupportController:" + ex.ToString());
 
                 return BadRequest();
             }
