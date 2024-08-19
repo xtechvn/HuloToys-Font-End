@@ -23,7 +23,7 @@ var global_service = {
         $.ajax({
             url: "/Support/GetListPolicy",
             type: 'post',
-            data: null,
+            data: { idTypePolicy : 21},
             success: function (data) {
                 data.forEach(item => {
                     let html = `<li><a class="li-Cursor" onclick="global_service.PolicyNaviga('/chinh-sach/','${item.id}','${item.name}')">${item.name}</a></li>`;
@@ -36,7 +36,7 @@ var global_service = {
         $.ajax({
             url: "/Support/GetListAboutHulotoys",
             type: 'post',
-            data: null,
+            data: {idCate : 25},
             success: function (data) {
                 data.forEach(item => {
                     let html = `<li><a class="li-Cursor" onclick="global_service.Naviga('/tin-tuc/','${item.id}','${item.title}-${item.id}')">${item.title}</a></li>`;
@@ -49,7 +49,7 @@ var global_service = {
         $.ajax({
             url: "/Support/GetListCustomerSupport",
             type: 'post',
-            data: null,
+            data: {idCate : 26},
             success: function (data) {
                 console.log(data)
                 data.forEach(item => {

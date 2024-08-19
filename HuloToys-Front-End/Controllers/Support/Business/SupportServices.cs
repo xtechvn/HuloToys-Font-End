@@ -74,7 +74,7 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             {
                 var obj = new Dictionary<string, object>
                 {
-                    { "category_id","23" }
+                    { "category_id",SupportConfig.PolicyType }
                 };
                 var result = await POST("api/news/get-list-by-categoryid.json", obj);
                 var jsonData = JObject.Parse(result);

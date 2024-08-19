@@ -9,41 +9,52 @@ var _support =
         $.ajax({
             url: "/Support/GetListByCategoryID",
             type: 'post',
-            data: { id: id },
+            data: { id: id ,idType : 28},
             success: function (data) {
                 window.history.pushState('string', '', "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname))
                 $(".content-policy").html('');
                 if (data.length > 0) {
+                    $(".content-policy").append(`<h2 style="margin-bottom:20px">${urlname}</h2>`);
                     data.forEach(item => {
                         
                         $(".content-policy").append(`
-                    <li>
-                    <h2>${urlname}</h2>
-                    <h3 style="margin-bottom:10px;margin-top:15px;color:#3B56B4"><i class="fa fa-arrow-right" aria-hidden="true"></i>${item.title}</h3>
-                    <div id="lead_policy">${item.lead}</div>
-                    <div style="margin-top:10px" id="body_policy">${item.body}</div>
-                    </li>`);
+                    <div class="item">
+                    <h3 class="title-faq" onclick="_support.DisplayHiddenContent('${item.id}')">${item.title}</h3>
+                    <div class="answer content${item.id}" style="margin-left:20px;margin-bottom:20px">
+                        ${item.body}
+                    </div>
+                </div>`);
                     });
                 }
                 else
                 {
                     $(".content-policy").append(`
-                    <li>
-                    <h3 style="color:#3B56B4">Chưa có nội dung !</h3>
-                    </li>`)
+                    <h3 style="color:#3B56B4">Chưa có nội dung !</h3>`)
                 }
             },
 
         });
     },
+    DisplayHiddenContent: function (id)
+    {
+        let contentpolicy = $('.content' + id)
+        if (!contentpolicy.hasClass('Hide-ContentPolicy'))
+        {
+            contentpolicy.addClass('Hide-ContentPolicy');
+        }
+        else
+        {
+            contentpolicy.removeClass('Hide-ContentPolicy');
+        }
 
+    },
     GetBodyQuestion: function (id) {
         $.ajax({
             url: "/Support/GetBodyArticle",
             type: 'post',
-            data: { id: id },
+            data: { id: id, idType: 28 },
             success: function (data) {
-                /*window.history.pushState('string','', "/questions/" + global_service.convertVietnameseToUnsign(data.title))*/
+                window.history.pushState('string','', "/questions/" + global_service.convertVietnameseToUnsign(data.title))
                 if (data != null)
                 {
                     $('.result-search').html('');
