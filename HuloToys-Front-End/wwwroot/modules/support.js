@@ -124,8 +124,15 @@ var _support =
     CreateFeedback: function ()
     {
         let comment = $('#comment-text').val();
-        
-        if (global_service.CheckLogin()) {
+        if (!comment)
+        {
+            document.getElementById("CommentSucces").style.display = "block";
+            document.getElementById("CommentSucces").textContent = "Vui lòng nhập nội dung góp ý !";
+            setTimeout(() => {
+                document.getElementById("CommentSucces").style.display = 'none';
+            }, 1000);
+        }
+        else if (global_service.CheckLogin()) {
             let Id = global_service.CheckLogin().account_client_id;
             document.getElementById("CommentSucces").style.display = "block";
             var obj =
