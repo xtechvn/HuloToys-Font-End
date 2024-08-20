@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\modules\feedback.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\modules\feedback.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Utilities\Common\" />
     <Folder Include="FilterAttribute\" />
     <Folder Include="ViewComponents\Home\" />
@@ -26,6 +34,7 @@
     <None Include="wwwroot\js\jquery.magnific-popup.min.js" />
     <None Include="wwwroot\js\jquery.min.js" />
     <None Include="wwwroot\js\swiper-bundle.min.js" />
+    <None Include="wwwroot\modules\feedback.js" />
   </ItemGroup>
 
   <ItemGroup>
