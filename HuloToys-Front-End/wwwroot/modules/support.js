@@ -58,7 +58,7 @@ var _support =
                     $(".left-content").append(`
                     <ul class="list-faq" style="min-width:250px">
 
-                        <li>
+                        <li class="active">
                             <a >${data.title}</a>
                         </li>
 
