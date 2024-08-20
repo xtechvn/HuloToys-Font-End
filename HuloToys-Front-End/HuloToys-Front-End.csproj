@@ -8,9 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\modules\feedback.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\modules\feedback.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Utilities\Common\" />
     <Folder Include="FilterAttribute\" />
-    <Folder Include="Utilities\Contants\" />
     <Folder Include="ViewComponents\Home\" />
 
     <Folder Include="Utilities\Common\" />
@@ -19,6 +26,15 @@
     <Folder Include="Views\Client\" />
 
     <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\common.js" />
+    <None Include="wwwroot\js\jquery-ui.js" />
+    <None Include="wwwroot\js\jquery.magnific-popup.min.js" />
+    <None Include="wwwroot\js\jquery.min.js" />
+    <None Include="wwwroot\js\swiper-bundle.min.js" />
+    <None Include="wwwroot\modules\feedback.js" />
   </ItemGroup>
 
   <ItemGroup>
