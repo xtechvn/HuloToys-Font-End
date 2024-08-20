@@ -4,7 +4,7 @@
 var API_URL = {
     Login:'Client/Login',
     Register:'Client/Register',
-    ProductDetail:'Product/Detail',
+    ProductDetail:'/Product/ProductDetail',
     ProductList:'Product/GetList'
 }
 var NOTIFICATION_MESSAGE = {

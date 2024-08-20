@@ -3,14 +3,17 @@
 })
 var home_product = {
     Initialization: function () {
-        //--Product Sale Slide:
-        home_product.LoadHomeProductSlide($('.list-product-sale .swiper-wrapper'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
-        //-- Discount Grid:
-        home_product.LoadHomeProductGrid($('#product-discount .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.Discount, GLOBAL_CONSTANTS.GridSize)
-        //-- Bear Grid:
-        home_product.LoadHomeProductGrid($('#bear-collection .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.BEAR_COLLECTION, GLOBAL_CONSTANTS.GridSize)
-        //-- Intelligence Grid:
-        home_product.LoadHomeProductGrid($('#intelligence-collection .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.INTELLECTUAL_DEVELOPMENT, GLOBAL_CONSTANTS.GridSize)
+        if ($('.list-product-sale .swiper-wrapper').length > 0) {
+            //--Product Sale Slide:
+            home_product.LoadHomeProductSlide($('.list-product-sale .swiper-wrapper'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
+            //-- Discount Grid:
+            home_product.LoadHomeProductGrid($('#product-discount .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.Discount, GLOBAL_CONSTANTS.GridSize)
+            //-- Bear Grid:
+            home_product.LoadHomeProductGrid($('#bear-collection .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.BEAR_COLLECTION, GLOBAL_CONSTANTS.GridSize)
+            //-- Intelligence Grid:
+            home_product.LoadHomeProductGrid($('#intelligence-collection .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.INTELLECTUAL_DEVELOPMENT, GLOBAL_CONSTANTS.GridSize)
+        }
+       
     },
     ProductSaleList: function () {
     },

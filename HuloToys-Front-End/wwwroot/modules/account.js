@@ -56,6 +56,7 @@ var account = {
                 element.find('input').prop('checked', true);
             }
         });
+
         $("body").on('click', ".btn-login-gg", function () {
             document.querySelector('.g_id_signin div[role=button]').click();
 
