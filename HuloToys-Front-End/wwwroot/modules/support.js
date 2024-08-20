@@ -120,45 +120,6 @@ var _support =
             localStorage.removeItem("focus");
         }
     },
-
-    CreateFeedback: function ()
-    {
-        let comment = $('#comment-text').val();
-        if (!comment)
-        {
-            document.getElementById("CommentSucces").style.display = "block";
-            document.getElementById("CommentSucces").textContent = "Vui lòng nhập nội dung góp ý !";
-            setTimeout(() => {
-                document.getElementById("CommentSucces").style.display = 'none';
-            }, 1000);
-        }
-        else if (global_service.CheckLogin()) {
-            let Id = global_service.CheckLogin().account_client_id;
-            document.getElementById("CommentSucces").style.display = "block";
-            var obj =
-            {
-                "AccountClientId": Id,
-                "Content": comment
-            }
-            $.ajax({
-                url: "/Support/CreateFeedback",
-                type: 'post',
-                data: { obj: obj },
-                success: function (data) {
-                },
-
-            });
-        }
-        else
-        {
-            document.getElementById("CommentSucces").style.display = "block";
-            document.getElementById("CommentSucces").textContent = "Vui lòng đăng nhập trước khi góp ý !";
-            setTimeout(() => {
-                document.getElementById("CommentSucces").style.display = 'none';
-            }, 1000);
-            return;
-        }
-    }
 }
 
 $(document).ready(function () {
