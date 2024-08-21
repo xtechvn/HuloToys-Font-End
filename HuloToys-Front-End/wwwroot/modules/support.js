@@ -19,7 +19,7 @@ var _support =
 
                         $(".content-policy").append(`
                     <div class="item">
-                    <h3 class="title-faq" onclick="_support.DisplayHiddenContent('${item.id}')">${item.title}</h3>
+                    <h3 class="title-faq title${item.id}" onclick="_support.DisplayHiddenContent('${item.id}')">${item.title}</h3>
                     <div class="answer content${item.id}" style="margin-left:20px;margin-bottom:20px">
                         ${item.body}
                     </div>
@@ -36,11 +36,14 @@ var _support =
     },
     DisplayHiddenContent: function (id) {
         let contentpolicy = $('.content' + id)
-        if (!contentpolicy.hasClass('Hide-ContentPolicy')) {
+        let titlepolicy = $('.title' + id)
+        if (!contentpolicy.hasClass('Hide-ContentPolicy') && !titlepolicy.hasClass('active')) {
             contentpolicy.addClass('Hide-ContentPolicy');
+            titlepolicy.addClass('active');
         }
         else {
             contentpolicy.removeClass('Hide-ContentPolicy');
+            titlepolicy.removeClass('active');
         }
 
     },
