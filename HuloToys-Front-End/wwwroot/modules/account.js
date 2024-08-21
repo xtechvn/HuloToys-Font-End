@@ -22,7 +22,7 @@ var account = {
         $('.err').hide()
         var usr = global_service.CheckLogin()
         if (usr) {
-            $('#client-account-name').html(usr.name)
+            $('#client-account-name').html(usr.name +' '+ `<a href="javascript:;" id="account-logout"> [ Đăng xuất ]</a>`)
             $('#client-account-name').closest('a').attr('href', '/account')
             $('.right-mainheader .client-login').removeAttr('data-id')
 
@@ -32,6 +32,7 @@ var account = {
     DynamicBind: function () {
         $("body").on('focusout', "#dangnhap input, #dangky input", function () {
             var element = $(this)
+
             if (element.hasClass('no-requirement') && (element.val() == undefined || element.val().trim() == '')) {
                 element.closest('.form-group').find('.err').show()
             }
@@ -44,6 +45,9 @@ var account = {
         });
         $("body").on('click', "#btn-client-login", function () {
             account.Login()
+        });
+        $("body").on('click', "#account-logout", function () {
+            account.Logout()
         });
         $("body").on('click', "#btn-client-register", function () {
             account.Register()
@@ -103,6 +107,11 @@ var account = {
             })
           
         }
+    },
+    Logout: function () {
+        localStorage.removeItem(STORAGE_NAME.Login)
+        sessionStorage.removeItem(STORAGE_NAME.Login)
+        window.location.reload()
     },
     Register: function () {
         var element = $('#btn-client-register')

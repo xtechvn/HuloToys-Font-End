@@ -1,11 +1,16 @@
 ﻿var STORAGE_NAME = {
-    Login:'account'
+    Login: 'account',
+    ProductDetail: 'ProductDetail',
+    CartCount: 'CartCount',
+    BuyNowItem: 'BuyNowItem'
+
 }
 var API_URL = {
-    Login:'Client/Login',
-    Register:'Client/Register',
+    Login:'/Client/Login',
+    Register:'/Client/Register',
     ProductDetail:'/Product/ProductDetail',
-    ProductList:'Product/GetList'
+    ProductList:'/Product/GetList',
+    AddToCart:'/Product/AddToCart',
 }
 var NOTIFICATION_MESSAGE = {
     LoginIncorrect:'Tài khoản / Mật khẩu không chính xác, vui lòng thử lại',

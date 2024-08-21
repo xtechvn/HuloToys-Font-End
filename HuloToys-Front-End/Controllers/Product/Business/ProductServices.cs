@@ -59,23 +59,42 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             return null;
 
         }
-        public async Task<ProductListResponseModel> GetSubProductList(ProductDetailRequestModel request)
+        public async Task<string> AddToCart(ProductAddToCartRequestModel request)
         {
             try
             {
-                var result = await POST(_configuration["API:get_sub_product_list"], request);
+                var result = await POST(_configuration["API:add_to_cart"], request);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
 
                 if (status == (int)ResponseType.SUCCESS)
                 {
-                    return JsonConvert.DeserializeObject<ProductListResponseModel>(jsonData["data"].ToString());
+                    return jsonData["data"].ToString();
                 }
             }
             catch
             {
             }
             return null;
+
+        }
+        public async Task<int> GetCartCount(ProductCartCountRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:cart_count"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return Convert.ToInt32(jsonData["data"].ToString());
+                }
+            }
+            catch
+            {
+            }
+            return 0;
 
         }
     }

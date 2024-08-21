@@ -14,6 +14,24 @@ var product_detail = {
                 element.closest('ul').find('li').removeClass('active')
                 element.addClass('active')
             }
+            var product = product_detail.GetProductDetailSession()
+            if (product != undefined) {
+                product_detail.RenderChangedAttributeSelected(product)
+
+            } else {
+                window.location.reload()
+            }
+        });
+        $("body").on('click', ".attribute-detail", function () {
+            product_detail.RenderBuyNowButton()
+        });
+        $("body").on('click', ".add-cart", function () {
+            product_detail.AddToCart()
+
+        });
+        $("body").on('click', ".buy-now", function () {
+            product_detail.BuyNow()
+
         });
     },
     Detail: function () {
@@ -27,10 +45,13 @@ var product_detail = {
             global_service.POST(API_URL.ProductDetail, request)
         ).done(function (result) {
             if (result.is_success && result.data) {
-               product_detail. RenderDetail(result.data)
-              
+                sessionStorage.setItem(STORAGE_NAME.ProductDetail, JSON.stringify(result.data))
+                product_detail.RenderDetail(result.data)
+
             }
-          
+            else {
+                window.location.href ='/Home/NotFound' 
+            }
         })
     },
     RenderDetail: function (product) {
@@ -85,7 +106,7 @@ var product_detail = {
         if (product.discount > 0) {
             $('#price-old').html(global_service.Comma(product.amount + product.discount))
         } else {
-            $('#price-old').hide()
+            $('#price-old').closest('.price-old').hide()
         }
         var total_stock = product.quanity_of_stock
 
@@ -128,8 +149,128 @@ var product_detail = {
             if (index < 5) return true
             else element.hide()
         })
+        product_detail.RenderBuyNowButton()
 
         product_detail.RemoveLoading()
+    },
+    GetProductDetailSession: function () {
+        var json = sessionStorage.getItem(STORAGE_NAME.ProductDetail)
+        if (json != undefined && json.trim()!='') {
+            return JSON.parse(json)
+        }
+        return undefined
+    },
+    RenderChangedAttributeSelected: function (product) {
+        var options=[]
+        $('.box-info-details tbody .attributes').each(function (index, item) {
+            var element = $(this)
+            var value = element.find('.box-tag').find('.active').attr('data-id')
+            var level = element.attr('data-level')
+            options.push({
+                _id: null,
+                level: level,
+                name: value
+            })
+        })
+
+        var variation = product.variations.filter(obj => {
+            return product_detail.Compare2Array(obj.variation_attributes, options)
+        })
+        if (variation != undefined && variation.length>0) {
+            $('.section-details-product .price').html(global_service.Comma(variation[0].amount))
+            $('.box-info-details .box-detail-stock .soluong').html(global_service.Comma(variation[0].quanity_of_stock) + ' sản phẩm có sẵn')
+        }
+    },
+    RenderBuyNowButton: function () {
+        var no_select_all = false
+        if ($('.box-info-details tbody .attributes').length <= 0) {
+
+        }
+        else {
+            $('.box-info-details tbody .attributes').each(function (index, item) {
+                var element = $(this)
+                var li_active = element.find('.box-tag').find('.active')
+                if (li_active.length <= 0) {
+                    no_select_all = true
+                    return false
+                }
+            })
+        }
+        if (no_select_all) {
+            $('.add-cart').prop('disabled',true)
+            $('.buy-now').prop('disabled', true)
+            $('.add-cart').addClass('button-disabled')
+            $('.buy-now').addClass('button-disabled')
+
+        } else {
+            $('.add-cart').prop('disabled', false)
+            $('.buy-now').prop('disabled', false)
+            $('.add-cart').removeClass('button-disabled')
+            $('.buy-now').removeClass('button-disabled')
+        }
+    },
+    AddToCart: function () {
+        var product = product_detail.GetProductDetailSession()
+        var usr = global_service.CheckLogin()
+        var account_client_id=0
+        if (usr) {
+            account_client_id = usr.account_client_id
+            var request = {
+                "product": product,
+                "quanity": parseInt($('#box-detail-stock .quantity').val()),
+                "account_client_id": account_client_id
+            }
+            $.when(
+                global_service.POST(API_URL.AddToCart, request)
+            ).done(function (result) {
+                if (result.is_success && result.data) {
+                    sessionStorage.removeItem(STORAGE_NAME.ProductDetail)
+                    sessionStorage.removeItem(STORAGE_NAME.BuyNowItem)
+                    var cart_count = sessionStorage.getItem(STORAGE_NAME.CartCount)
+                    if (cart_count) {
+                        sessionStorage.setItem(STORAGE_NAME.CartCount, (parseInt(cart_count) + 1))
+                    } else {
+                        sessionStorage.setItem(STORAGE_NAME.CartCount, 1)
+                    }
+                    global_service.LoadCartCount()
+                    //window.location.href = '/Order/Cart'
+                }
+            })
+        }
+        else {
+            $('.mainheader .client-login').click()
+            return
+        }
+       
+    },
+    BuyNow: function () {
+        var product = product_detail.GetProductDetailSession()
+        var usr = global_service.CheckLogin()
+        var account_client_id = 0
+        if (usr) {
+            account_client_id = usr.account_client_id
+            var request = {
+                "product": product,
+                "quanity": parseInt($('#box-detail-stock .quantity').val()),
+                "account_client_id": account_client_id
+            }
+            sessionStorage.setItem(STORAGE_NAME.BuyNowItem, JSON.parse(request))
+            window.location.href = '/Order/Payment'
+        }
+        else {
+            $('.mainheader .client-login').click()
+            return
+        }
+      
+    },
+    Compare2Array: function (arr1, arr2) {
+        const objectsEqual = (o1, o2) =>
+            Object.keys(o1).length === Object.keys(o2).length
+            && Object.keys(o1).every(p => o1[p] === o2[p]);
+        const arraysEqual = (a1, a2) =>
+            a1.length === a2.length && a1.every((o, idx) => objectsEqual(o, a2[idx]));
+        return arraysEqual(arr1, arr2)
+
     },
     ShowLoading: function () {
         $('.section-details-product').addClass('placeholder')
@@ -174,8 +315,8 @@ var product_detail_constants = {
                                     </ul>
                                 </td>
                             </tr>`,
-        Tr_Attributes_Td_li: `<li class="attribute-detail {active}">{src} {name}</li>`,
-        Tr_Quanity:`<tr>
+        Tr_Attributes_Td_li: `<li class="attribute-detail {active}" data-id="{name}">{src} {name}</li>`,
+        Tr_Quanity:`<tr class="box-detail-stock">
                                 <td>Số lượng:</td>
                                 <td>
                                     <div class="number-input">

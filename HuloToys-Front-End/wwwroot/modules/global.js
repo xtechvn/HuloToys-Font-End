@@ -3,6 +3,7 @@
     global_service.LoadPolicy();
     global_service.LoadAbouHulotoys();
     global_service.LoadCustomerSupport();
+    global_service.LoadCartCount();
 })
 var global_service = {
     Initialization: function () {
@@ -58,6 +59,35 @@ var global_service = {
                 });
             },
         });
+    },
+    LoadCartCount: function () {
+        var usr = global_service.CheckLogin()
+        if (usr) {
+            var cart_count = sessionStorage.getItem(STORAGE_NAME.CartCount)
+            if (cart_count) {
+                $('#carts .badge').html(cart_count)
+            } else {
+                $.ajax({
+                    url: "/Order/CartCount",
+                    type: 'post',
+                    data: {
+                        request: {
+                            account_client_id: usr.account_client_id
+                        }
+                    },
+                    success: function (result) {
+                        if (result.is_success && result.data) {
+                            $('#carts .badge').html(result.data)
+                            sessionStorage.setItem(STORAGE_NAME.CartCount, result.data)
+                        } else { $('#carts .badge').html('0') }
+                    },
+                });
+            }
+        }
+        else {
+            $('#carts .badge').html('0')
+        }
+       
     },
     PolicyNaviga: function (url,id,title)
     {

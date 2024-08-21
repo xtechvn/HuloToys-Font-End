@@ -40,6 +40,7 @@ namespace HuloToys_Front_End.Controllers.Product
                 data = result
             });
         }
+       
         public async Task<IActionResult> GetList(ProductListRequestModel request)
         {
             var result = await _productServices.GetProductList(request);
@@ -61,6 +62,16 @@ namespace HuloToys_Front_End.Controllers.Product
             }
 
         }
+       
+        public async Task<IActionResult> AddToCart(ProductAddToCartRequestModel request)
+        {
+            var result = await _productServices.AddToCart(request);
 
+            return Ok(new
+            {
+                is_success = result != null,
+                data = result
+            });
+        }
     }
 }
