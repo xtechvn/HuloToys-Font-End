@@ -26,7 +26,6 @@ var global_service = {
             type: 'post',
             data: { idTypePolicy : 21},
             success: function (data) {
-                console.log(data)
                 data.forEach(item => {
                     let html = `<li><a class="li-Cursor" onclick="global_service.PolicyNaviga('/chinh-sach/','${item.id}','${item.name}')">${item.name}</a></li>`;
                     $(".policy-footer").append(html);
