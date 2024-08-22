@@ -1,4 +1,26 @@
-﻿
+﻿$(document).ready(function () {
+    var ID = localStorage.getItem('ChosenIdPolicy');
+    var URL = localStorage.getItem('ChosenUrlPolicy');
+    const currentPath = window.location.pathname;
+    if (ID != "") {
+        _support.GetBodyArticle(ID, URL);
+    }
+    else if (ID == "" && (currentPath.startsWith('/chinh-sach/') || currentPath.startsWith('/cham-soc-khach-hang'))) {
+        var IdDefault = $('#IDdefaultOption').text();
+        var UrlDefault = $('#NamedefaultOption').text();
+        _support.GetBodyArticle(IdDefault, UrlDefault)
+    }
+    localStorage.setItem('ChosenIdPolicy', "");
+
+    _support.FocusOnSearch();
+
+    $("#search-input").on('keyup', function (e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
+            _support.SearchQuestion();
+        }
+    });
+})
 
 var _support =
 {
@@ -125,26 +147,4 @@ var _support =
     },
 }
 
-$(document).ready(function () {
-    var ID = localStorage.getItem('ChosenIdPolicy');
-    var URL = localStorage.getItem('ChosenUrlPolicy'); 
-    if (ID != "") {
-        _support.GetBodyArticle(ID, URL);
-    }
-    else
-    {
-        var IdDefault = $('#IDdefaultOption').text();
-        var UrlDefault = $('#NamedefaultOption').text();
-        _support.GetBodyArticle(IdDefault, UrlDefault)
-    }
-    localStorage.setItem('ChosenIdPolicy', "");
 
-    _support.FocusOnSearch();
-
-    $("#search-input").on('keyup', function (e) {
-        if (e.key === 'Enter' || e.keyCode === 13) {
-            e.preventDefault();
-            _support.SearchQuestion();
-        }
-    });
-})

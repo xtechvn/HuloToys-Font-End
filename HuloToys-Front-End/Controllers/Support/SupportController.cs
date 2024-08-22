@@ -36,9 +36,15 @@ namespace HuloToys_Front_End.Controllers.Support
             return View();
         }
 
-        public async Task<IActionResult> CreateFeedback(CommentCreateRequest obj) 
+        public async Task<IActionResult> CreateFeedback(PushQueueCreateRequest obj) 
         {
             await _supportServices.Comments(obj);
+            return Ok();
+        }
+
+        public async Task<IActionResult> CreateEmailPromotion(PushQueueCreateRequest obj)
+        {
+            await _supportServices.EmailPromotion(obj);
             return Ok();
         }
 

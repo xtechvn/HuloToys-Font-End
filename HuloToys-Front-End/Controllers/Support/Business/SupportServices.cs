@@ -6,6 +6,7 @@ using HuloToys_Service.Utilities.Lib;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Utilities.Contants;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HuloToys_Front_End.Controllers.Support.Business
@@ -53,11 +54,28 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             return null;
         }
 
-        public async Task<CommentCreateRequest> Comments(CommentCreateRequest obj)
+        public async Task<PushQueueCreateRequest> Comments(PushQueueCreateRequest obj)
         {
             try
             {
-                var result = await POST("/api/insert-comments", obj);
+                obj.Type_Queue = QueueType.ADD_COMMENT;
+                var result = await POST("/api/push-queue", obj);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "InsertComment-SupportServices:" + ex.ToString());
+            }
+            return null;
+        }
+
+        public async Task<PushQueueCreateRequest> EmailPromotion(PushQueueCreateRequest obj)
+        {
+            try
+            {
+                obj.Type_Queue = QueueType.ADD_RECEIVER_INFO_EMAIL;
+                var result = await POST("/api/push-queue", obj);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
             }

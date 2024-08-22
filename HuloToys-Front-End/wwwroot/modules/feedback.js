@@ -33,5 +33,28 @@
             $('.client-login').click();
             return;
         }
+    },
+    CreateEmailPromotion: function () {
+        let email_input = $('#Email-text').val();
+        var obj =
+        {
+            "AccountClientId": '',
+            "Content": '',
+            "Email": email_input
+        }
+        if (!email_input) {}
+        else {
+            $.ajax({
+                url: "/Support/CreateEmailPromotion",
+                type: 'post',
+                data: { obj: obj },
+                success: function (data) {
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000);
+                },
+
+            });
+        }
     }
 }
