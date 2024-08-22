@@ -42,8 +42,10 @@
             "Content": '',
             "Email": email_input
         }
-        if (!email_input) {}
-        else {
+        if (email_input == null || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email_input)) {
+        }
+        else
+        {
             $.ajax({
                 url: "/Support/CreateEmailPromotion",
                 type: 'post',
