@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
     global_service.Initialization();
+    global_service.DynamicBind();
     global_service.LoadPolicy();
     global_service.LoadAbouHulotoys();
     global_service.LoadCustomerSupport();
@@ -7,6 +8,9 @@
 })
 var global_service = {
     Initialization: function () {
+     
+    },
+    DynamicBind: function () {
         $("body").on('click', ".client-login", function (event) {
             var element = $(this)
             event.preventDefault()
@@ -14,11 +18,12 @@ var global_service = {
             $('.client-login-popup').removeClass('overlay-active')
             $('' + box_id).addClass('overlay-active')
         });
-        $("body").on('click', ".overlay .close", function (event) {
+        $("body").on('click', ".overlay .close, .overlay .btn-close", function (event) {
             var element = $(this)
             event.preventDefault()
             element.closest('.overlay').removeClass('overlay-active')
         });
+      
     },
     LoadPolicy: function () {
         $.ajax({
@@ -68,7 +73,7 @@ var global_service = {
                 $('#carts .badge').html(cart_count)
             } else {
                 $.ajax({
-                    url: "/Order/CartCount",
+                    url: API_URL.CartCount,
                     type: 'post',
                     data: {
                         request: {
@@ -203,6 +208,47 @@ var global_service = {
 
        str = str.replace(/\s+/g, '-'); // Thay thế nhiều khoảng trắng thành 1 -
        return str.trim();
-    }
+    },
+    LoadHomeProductGrid: function (element, group_id, size) {
+        element.addClass('placeholder')
+        element.addClass('box-placeholder')
+        element.css('width', '100%')
+        element.css('height', '255px')
+        var request = {
+            "group_id": group_id,
+            "page_index": 1,
+            "page_size": size
+        }
+        $.when(
+            global_service.POST(API_URL.ProductList, request)
+        ).done(function (result) {
+
+            var html = ''
+            if (result.is_success) {
+
+                $(result.data).each(function (index, item) {
+                    var img_src = item.avatar
+                    if (!img_src.includes(API_URL.StaticDomain)
+                        && !img_src.includes("data:image")
+                        && !img_src.includes("http"))
+                        img_src = API_URL.StaticDomain + item.avatar
+                    html += HTML_CONSTANTS.Home.SlideProductItem
+                        .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(item.name).replaceAll(' ', '-') + '--' + item._id)
+                        .replaceAll('{avt}', img_src)
+                        .replaceAll('{name}', item.name)
+                        .replaceAll('{amount}', item.amount > 0 ? global_service.Comma(item.amount) + ' đ' : 'Giá liên hệ')
+                        //.replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
+                        .replaceAll('{review_point}', '5')
+                        .replaceAll('{review_count}', '')
+                        .replaceAll('{old_price_style}', '')
+                        .replaceAll('{price}', (item.amount == null || item.amount == undefined || item.amount <= 0) ? global_service.Comma(item.amount) + ' đ' : '')
+                });
+            }
+            element.html(html)
+            element.removeClass('placeholder')
+            element.removeClass('box-placeholder')
+            element.css('height', 'auto')
+        })
+    },
 
 }

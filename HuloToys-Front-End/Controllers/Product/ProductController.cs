@@ -63,15 +63,6 @@ namespace HuloToys_Front_End.Controllers.Product
 
         }
        
-        public async Task<IActionResult> AddToCart(ProductAddToCartRequestModel request)
-        {
-            var result = await _productServices.AddToCart(request);
-
-            return Ok(new
-            {
-                is_success = result != null,
-                data = result
-            });
-        }
+        
     }
 }

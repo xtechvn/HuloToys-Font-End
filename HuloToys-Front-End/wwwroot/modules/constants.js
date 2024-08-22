@@ -2,7 +2,8 @@
     Login: 'account',
     ProductDetail: 'ProductDetail',
     CartCount: 'CartCount',
-    BuyNowItem: 'BuyNowItem'
+    BuyNowItem: 'BuyNowItem',
+    SubProduct: 'SubProduct'
 
 }
 var API_URL = {
@@ -10,7 +11,10 @@ var API_URL = {
     Register:'/Client/Register',
     ProductDetail:'/Product/ProductDetail',
     ProductList:'/Product/GetList',
-    AddToCart:'/Product/AddToCart',
+    AddToCart: '/Cart/AddToCart',
+    CartCount: '/Cart/CartCount',
+    CartList: '/Cart/GetList',
+    StaticDomain:'https://static-image.adavigo.com'
 }
 var NOTIFICATION_MESSAGE = {
     LoginIncorrect:'Tài khoản / Mật khẩu không chính xác, vui lòng thử lại',
@@ -91,6 +95,106 @@ var HTML_CONSTANTS = {
                             </div>
                         </a>
                     </div>`
+    },
+    Detail: {
+        Images: `<div class="swiper-slide">
+                                <img src="{src}" alt="" />
+                            </div>`,
+        Star: `<i class="icon icon-star"></i>`,
+        Tr_Voucher: ` <tr>
+                                 <td>Mã giảm giá</td>
+                                <td>
+                                   {span}
+                                </td> 
+                            </tr>`,
+        Tr_Voucher_Td_span: `<span class="coupon" data-id="{id}">{name}</span>`,
+        Tr_Combo: ` <tr>
+                                <td>Combo khuyến mại</td>
+                                <td> {span} </td>
+                            </tr>`,
+        Tr_Combo_Td_span: ` <span class="combo" data-id="{id}">{name}</span>`,
+
+        Tr_Shipping: ` <tr>
+                                <td>Vận chuyển</td>
+                                <td>Miễn phí vận chuyển</td>
+                            </tr>`,
+        Tr_Attributes: `<tr class="attributes" data-level="{level}">
+                                <td>{name}</td>
+                                <td>
+                                    <ul class="box-tag">
+                                       {li}
+
+                                    </ul>
+                                </td>
+                            </tr>`,
+        Tr_Attributes_Td_li: `<li class="attribute-detail {active}" data-id="{name}">{src} {name}</li>`,
+        Tr_Quanity: `<tr class="box-detail-stock">
+                                <td>Số lượng:</td>
+                                <td>
+                                    <div class="number-input">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                    </div>
+
+                                    <span class="soluong">{stock} sản phẩm có sẵn</span>
+                                </td>
+                            </tr>`
+    },
+    Cart: {
+        Product:`<div class="product" data-cart-id="{id}" data-amount="{amount}">
+                            <div class="product-checkall">
+                                <div class="box-checkbox">
+                                    <input type="checkbox" name="checkbox-cart-product" class="checkbox-cart" />
+                                    <label class="box-checkbox-label"></label>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <img class="thumb-product" src="{src}" alt="" />
+                                <div class="product-title">
+                                    <h3 class="name-product">
+                                       {name}
+                                    </h3>
+                                    <p class="product-description">{attribute}</p>
+                                </div>
+
+                            </div>
+                            <div class="product-price">
+                                <span class="price-one">{amount_display}</span>
+                                <span class="price-old" style="display:none">
+                                    932.00đ <span class="percent">6%</span>
+                                    <div class="discount">
+                                        <span class="bg-sale">Giảm 30K</span>
+                                    </div>
+                            </div>
+                            <div class="product-quantity">
+                                <div class="number-input">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                    <input class="quantity" min="0" name="quantity" value="{quanity}" type="number">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                            class="plus"></button>
+                                </div>
+                            </div>
+
+                            <div class="product-line-price">{total_amount} đ</div>
+                            <div class="product-removal">
+                                <button class="remove-product">
+                                    Xóa
+                                </button>
+                            </div>
+                        </div>`,
+        Empty:` <div class="breadcrumb">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active"><a href="javascript:;">Giỏ hàng / Thanh toán</a></li>
+            </ul>
+        </div>
+        <div class="box-empty">
+            <img src="/images/empty.png" alt="" />
+            <h3 class="title">Giỏ hàng trống</h3>
+            <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
+            <a href="/" class="btn btn-base">Tiếp tục mua sắm</a>
+        </div>`
     }
 
 }

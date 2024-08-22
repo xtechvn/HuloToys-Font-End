@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace HuloToys_Front_End.Models.Products
 {
-    public class ProductDiscountOnGroupsBuyModel
+    public class ProductMongoDbSummitModel: ProductMongoDbModel
     {
-        public int from { get; set; }
-        public int to { get; set; }
-        public double discount { get; set; }
-        public int type { get; set; }
+        public List<ProductDetailVariationMongoDbModel> variations { get; set; }
+
 
     }
 }

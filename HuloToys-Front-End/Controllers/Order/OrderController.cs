@@ -17,26 +17,12 @@ namespace HuloToys_Front_End.Controllers.Product
             _productServices = new ProductServices(configuration);
 
         }
-        public async Task<ActionResult> Cart()
-        {
-            return View();
-
-        } 
+       
         public async Task<ActionResult> Payment()
         {
             return View();
 
         }
-        public async Task<IActionResult> CartCount(ProductCartCountRequestModel request)
-        {
-            var result = await _productServices.GetCartCount(request);
-
-            return Ok(new
-            {
-                is_success = result != null,
-                data = result
-            });
-        }
-
+        
     }
 }

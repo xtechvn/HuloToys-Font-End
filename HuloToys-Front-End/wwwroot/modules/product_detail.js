@@ -3,9 +3,14 @@
 })
 var product_detail = {
     Initialization: function () {
+
         product_detail.ShowLoading()
+        sessionStorage.removeItem(STORAGE_NAME.ProductDetail)
+
+        sessionStorage.removeItem(STORAGE_NAME.SubProduct)
         product_detail.Detail()
         product_detail.DynamicBind()
+        global_service.LoadHomeProductGrid($('#combo-discount .list-product'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
     },
     DynamicBind: function () {
         $("body").on('click', ".attribute-detail", function () {
@@ -44,25 +49,36 @@ var product_detail = {
         $.when(
             global_service.POST(API_URL.ProductDetail, request)
         ).done(function (result) {
-            if (result.is_success && result.data) {
+            
+            if (result.is_success && result.data && result.data.product_main) {
                 sessionStorage.setItem(STORAGE_NAME.ProductDetail, JSON.stringify(result.data))
-                product_detail.RenderDetail(result.data)
-
+                sessionStorage.setItem(STORAGE_NAME.SubProduct, JSON.stringify(result.data.product_sub))
+                product_detail.RenderDetail(result.data.product_main, result.data.product_sub)
             }
             else {
                 window.location.href ='/Home/NotFound' 
             }
         })
     },
-    RenderDetail: function (product) {
+    RenderDetail: function (product,product_sub) {
         var html = ''
+        var img_src = product.avatar
+        if (!img_src.includes(API_URL.StaticDomain)
+            && !img_src.includes("data:image")
+            && !img_src.includes("http"))
+            img_src = API_URL.StaticDomain + product.avatar
 
-        html += product_detail_constants.HTML.Images
-            .replaceAll('{src}', product.avatar)
+        html += HTML_CONSTANTS.Detail.Images
+            .replaceAll('{src}', img_src)
 
         $(product.images).each(function (index, item) {
-            html += product_detail_constants.HTML.Images
-                .replaceAll('{src}', item)
+            img_src = item
+            if (!img_src.includes(API_URL.StaticDomain)
+                && !img_src.includes("data:image")
+                && !img_src.includes("http"))
+                img_src = API_URL.StaticDomain + item
+            html += HTML_CONSTANTS.Detail.Images
+                .replaceAll('{src}', img_src)
 
         });
         $('.section-details-product .gallery-product .swiper-wrapper').html(html)
@@ -82,16 +98,16 @@ var product_detail = {
 
         html = ''
         for (var i = 0; i < (product.star <= 0 ? 5 : product.star); i++) {
-            html += product_detail_constants.HTML.Star
+            html += HTML_CONSTANTS.Detail.Star
         }
         html += '' + (product.star <= 0 ? 5 : product.star)
         $('.box-review .review').html(html)
 
-        if (product.variations != undefined && product.variations.length > 0) {
-            const max_obj = product.variations.reduce(function (prev, current) {
+        if (product_sub != undefined && product_sub.length > 0) {
+            const max_obj = product_sub.reduce(function (prev, current) {
                 return (prev && prev.amount > current.amount) ? prev : current
             })
-            const min_obj = product.variations.reduce(function (prev, current) {
+            const min_obj = product_sub.reduce(function (prev, current) {
                 return (prev && prev.amount < current.amount) ? prev : current
             })
             if (max_obj.amount <= min_obj.amount)
@@ -111,11 +127,11 @@ var product_detail = {
         var total_stock = product.quanity_of_stock
 
         html = ''
-        //html += product_detail_constants.HTML.Tr_Voucher.replaceAll('{span}', '')
-        //html += product_detail_constants.HTML.Tr_Combo.replaceAll('{span}', '')
-        html += product_detail_constants.HTML.Tr_Shipping
-        //html += product_detail_constants.HTML.Tr_Combo.replaceAll('{span}', '')
-        if (product.variations != undefined && product.variations.length > 0) {
+        //html += HTML_CONSTANTS.Detail.Tr_Voucher.replaceAll('{span}', '')
+        //html += HTML_CONSTANTS.Detail.Tr_Combo.replaceAll('{span}', '')
+        html += HTML_CONSTANTS.Detail.Tr_Shipping
+        //html += HTML_CONSTANTS.Detail.Tr_Combo.replaceAll('{span}', '')
+        if (product_sub != undefined && product_sub.length > 0) {
             $(product.attributes).each(function (index, attribute) {
                 var attr_detail =  product.attributes_detail.filter(obj => {
                     return obj.attribute_id === attribute._id
@@ -123,20 +139,20 @@ var product_detail = {
                 var html_item=''
                 if (attr_detail != undefined && attr_detail.length > 0) {
                     $(attr_detail).each(function (index_detail, attribute_detail) {
-                        html_item += product_detail_constants.HTML.Tr_Attributes_Td_li
+                        html_item += HTML_CONSTANTS.Detail.Tr_Attributes_Td_li
                             .replaceAll('{active}', '')
                             .replaceAll('{src}', attribute_detail.img != undefined && attribute_detail.img.trim() != '' ? '<img src="' + attribute_detail.img +'" />':'')
                             .replaceAll('{name}', attribute_detail.name)
                     })
                 }
-                html += product_detail_constants.HTML.Tr_Attributes
+                html += HTML_CONSTANTS.Detail.Tr_Attributes
                     .replaceAll('{level}', attribute._id)
                     .replaceAll('{name}', attribute.name)
                     .replaceAll('{li}', html_item)
             });
-            total_stock = product.variations.reduce((n, { amount }) => n + amount, 0)
+            total_stock = product_sub.reduce((n, { amount }) => n + amount, 0)
         }
-        html += product_detail_constants.HTML.Tr_Quanity.replaceAll('{stock}', global_service.Comma(total_stock))
+        html += HTML_CONSTANTS.Detail.Tr_Quanity.replaceAll('{stock}', global_service.Comma(total_stock))
         
         $('.box-info-details tbody').html(html)
         $('#description').html(product.description)
@@ -160,6 +176,34 @@ var product_detail = {
         }
         return undefined
     },
+    GetSubProductSessionByAttributeSelected: function () {
+        var json = sessionStorage.getItem(STORAGE_NAME.SubProduct)
+        if (json != undefined && json.trim() != '') {
+            var list = JSON.parse(json)
+            var sub_list = list
+            var options = []
+            $('.box-info-details tbody .attributes').each(function (index, item) {
+                var element = $(this)
+                var value = element.find('.box-tag').find('.active').attr('data-id')
+                var level = element.attr('data-level')
+                options.push({
+                    id: level,
+                    name: value
+                })
+
+            })
+            $(options).each(function (index, item) {
+                
+                sub_list = sub_list.filter(({ variation_detail }) =>
+                    variation_detail.some(v => v.id == item.id && v.name==item.name)
+                )
+                    
+
+            })
+            return sub_list[0]
+        }
+        return undefined
+    },
     RenderChangedAttributeSelected: function (product) {
         var options=[]
         $('.box-info-details tbody .attributes').each(function (index, item) {
@@ -167,19 +211,22 @@ var product_detail = {
             var value = element.find('.box-tag').find('.active').attr('data-id')
             var level = element.attr('data-level')
             options.push({
-                _id: null,
-                level: level,
+                id: level,
                 name: value
             })
         })
-
-        var variation = product.variations.filter(obj => {
-            return product_detail.Compare2Array(obj.variation_attributes, options)
-        })
-        if (variation != undefined && variation.length>0) {
-            $('.section-details-product .price').html(global_service.Comma(variation[0].amount))
-            $('.box-info-details .box-detail-stock .soluong').html(global_service.Comma(variation[0].quanity_of_stock) + ' sản phẩm có sẵn')
+        var json = sessionStorage.getItem(STORAGE_NAME.SubProduct)
+        if (json != undefined && json.trim() != '') {
+            var list = JSON.parse(json)
+            var variation = list.filter(obj => {
+                return product_detail.Compare2Array(obj.variation_detail, options)
+            })
+            if (variation != undefined && variation.length > 0) {
+                $('.section-details-product .price').html(global_service.Comma(variation[0].amount))
+                $('.box-info-details .box-detail-stock .soluong').html(global_service.Comma(variation[0].quanity_of_stock) + ' sản phẩm có sẵn')
+            }
         }
+       
     },
     RenderBuyNowButton: function () {
         var no_select_all = false
@@ -210,21 +257,20 @@ var product_detail = {
         }
     },
     AddToCart: function () {
-        var product = product_detail.GetProductDetailSession()
+        var product = product_detail.GetSubProductSessionByAttributeSelected()
         var usr = global_service.CheckLogin()
         var account_client_id=0
         if (usr) {
             account_client_id = usr.account_client_id
             var request = {
-                "product": product,
-                "quanity": parseInt($('#box-detail-stock .quantity').val()),
+                "product_id": product._id,
+                "quanity": parseInt($('.box-detail-stock .quantity').val()),
                 "account_client_id": account_client_id
             }
             $.when(
                 global_service.POST(API_URL.AddToCart, request)
             ).done(function (result) {
                 if (result.is_success && result.data) {
-                    sessionStorage.removeItem(STORAGE_NAME.ProductDetail)
                     sessionStorage.removeItem(STORAGE_NAME.BuyNowItem)
                     var cart_count = sessionStorage.getItem(STORAGE_NAME.CartCount)
                     if (cart_count) {
@@ -233,6 +279,8 @@ var product_detail = {
                         sessionStorage.setItem(STORAGE_NAME.CartCount, 1)
                     }
                     global_service.LoadCartCount()
+                    $('#thanhcong .lightbox-description').html('Thêm sản phẩm vào giỏ hàng thành công')
+                    $('#thanhcong').addClass('overlay-active')
                     //window.location.href = '/Order/Cart'
                 }
             })
@@ -283,51 +331,4 @@ var product_detail = {
         $('.section-category').removeClass('placeholder')
     }
 }
-var product_detail_constants = {
-    HTML: {
-        Images:`<div class="swiper-slide">
-                                <img src="{src}" alt="" />
-                            </div>`,
-        Star:`<i class="icon icon-star"></i>`,
-        Tr_Voucher:` <tr>
-                                 <td>Mã giảm giá</td>
-                                <td>
-                                   {span}
-                                </td> 
-                            </tr>`,
-        Tr_Voucher_Td_span:`<span class="coupon" data-id="{id}">{name}</span>`,
-        Tr_Combo:` <tr>
-                                <td>Combo khuyến mại</td>
-                                <td> {span} </td>
-                            </tr>`,
-        Tr_Combo_Td_span: ` <span class="combo" data-id="{id}">{name}</span>`,
 
-        Tr_Shipping:` <tr>
-                                <td>Vận chuyển</td>
-                                <td>Miễn phí vận chuyển</td>
-                            </tr>`,
-        Tr_Attributes:`<tr class="attributes" data-level="{level}">
-                                <td>{name}</td>
-                                <td>
-                                    <ul class="box-tag">
-                                       {li}
-
-                                    </ul>
-                                </td>
-                            </tr>`,
-        Tr_Attributes_Td_li: `<li class="attribute-detail {active}" data-id="{name}">{src} {name}</li>`,
-        Tr_Quanity:`<tr class="box-detail-stock">
-                                <td>Số lượng:</td>
-                                <td>
-                                    <div class="number-input">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                        <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                                    </div>
-
-                                    <span class="soluong">{stock} sản phẩm có sẵn</span>
-                                </td>
-                            </tr>`
-
-    }
-}
