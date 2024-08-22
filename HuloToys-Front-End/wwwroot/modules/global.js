@@ -249,5 +249,34 @@ var global_service = {
             element.css('height', 'auto')
         })
     },
+    GotoCart: function () {
+        var usr = global_service.CheckLogin()
+        if (usr) {
+            window.location.href='/cart'
+
+        }
+        else {
+            $('.mainheader .client-login').click()
+            return
+        }
+    },
+    IncreaseCartCount: function () {
+        var cart_count = sessionStorage.getItem(STORAGE_NAME.CartCount)
+        if (cart_count) {
+            sessionStorage.setItem(STORAGE_NAME.CartCount, (parseInt(cart_count) + 1))
+        } else {
+            sessionStorage.setItem(STORAGE_NAME.CartCount, 1)
+        }
+        global_service.LoadCartCount()
+    },
+    DecreaseCartCount: function () {
+        var cart_count = sessionStorage.getItem(STORAGE_NAME.CartCount)
+        if (cart_count) {
+            sessionStorage.setItem(STORAGE_NAME.CartCount, (parseInt(cart_count) - 1))
+        } else {
+            sessionStorage.setItem(STORAGE_NAME.CartCount, 0)
+        }
+        global_service.LoadCartCount()
+    }
 
 }

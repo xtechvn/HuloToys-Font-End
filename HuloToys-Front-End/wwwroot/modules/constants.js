@@ -14,6 +14,7 @@ var API_URL = {
     AddToCart: '/Cart/AddToCart',
     CartCount: '/Cart/CartCount',
     CartList: '/Cart/GetList',
+    CartDelete: '/Cart/Delete',
     StaticDomain:'https://static-image.adavigo.com'
 }
 var NOTIFICATION_MESSAGE = {
@@ -133,7 +134,7 @@ var HTML_CONSTANTS = {
                                 <td>
                                     <div class="number-input">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                        <input class="quantity" min="1" name="quantity" value="1" type="number">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                                     </div>
 
@@ -170,7 +171,7 @@ var HTML_CONSTANTS = {
                             <div class="product-quantity">
                                 <div class="number-input">
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                    <input class="quantity" min="0" name="quantity" value="{quanity}" type="number">
+                                    <input class="quantity" min="1" name="quantity" value="{quanity}" type="number">
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                             class="plus"></button>
                                 </div>
@@ -183,7 +184,9 @@ var HTML_CONSTANTS = {
                                 </button>
                             </div>
                         </div>`,
-        Empty:` <div class="breadcrumb">
+        Empty:`<section class="cart-empty" style="margin-top:20px;margin-bottom:100px;">
+    <div class="container">
+        <div class="breadcrumb">
             <ul>
                 <li><a href="/">Trang chủ</a></li>
                 <li class="active"><a href="javascript:;">Giỏ hàng / Thanh toán</a></li>
@@ -194,7 +197,9 @@ var HTML_CONSTANTS = {
             <h3 class="title">Giỏ hàng trống</h3>
             <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
             <a href="/" class="btn btn-base">Tiếp tục mua sắm</a>
-        </div>`
+        </div>
+    </div>
+</section>`
     }
 
 }

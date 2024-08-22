@@ -2,6 +2,7 @@
 using HuloToys_Front_End.Models.Cart;
 using HuloToys_Front_End.Models.Client;
 using Microsoft.AspNetCore.Mvc;
+using Models.APIRequest;
 
 namespace HuloToys_Front_End.Controllers.Product
 {
@@ -49,6 +50,16 @@ namespace HuloToys_Front_End.Controllers.Product
             return Ok(new
             {
                 is_success = result != null,
+                data = result
+            });
+        }  
+        public async Task<IActionResult> Delete(CartDeleteRequestModel request)
+        {
+            var result = await _cartServices.Delete(request);
+
+            return Ok(new
+            {
+                is_success = result >-1,
                 data = result
             });
         }

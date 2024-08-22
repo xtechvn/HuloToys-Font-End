@@ -130,38 +130,39 @@
                                 <li class="item">
                                     <div class="choose">
                                         <div class="box-checkbox">
-                                            <input class="checkbox" id="checkbox8" type="checkbox">
-                                            <label for="checkbox8">Lấy tại cửa hàng</label>
+                                            <input class="checkbox select-delivery-checkbox" name="select-delivery" type="radio" value="3" checked>
+                                            <label class="option-name">Giao nhanh</label>
                                         </div>
                                     </div>
-                                    <div class="price-ship">0đ</div>
+                                    <div class="price-ship" style="display:none;">0đ</div>
                                 </li>
                                 <li class="item">
                                     <div class="choose">
                                         <div class="box-checkbox">
-                                            <input class="checkbox" id="checkbox7" type="checkbox">
-                                            <label for="checkbox7">Hỏa tốc</label>
+                                            <input class="checkbox select-delivery-checkbox" name="select-delivery" type="radio" value="1">
+                                            <label class="option-name">Lấy tại cửa hàng</label>
                                         </div>
                                     </div>
-                                    <div class="price-ship">0đ</div>
+                                    <div class="price-ship" style="display:none;">0đ</div>
                                 </li>
                                 <li class="item">
                                     <div class="choose">
                                         <div class="box-checkbox">
-                                            <input class="checkbox" id="checkbox6" type="checkbox">
-                                            <label for="checkbox6">Giao nhanh</label>
+                                            <input class="checkbox select-delivery-checkbox" name="select-delivery" type="radio" value="2" >
+                                            <label class="option-name">Hỏa tốc</label>
                                         </div>
                                     </div>
-                                    <div class="price-ship">0đ</div>
+                                    <div class="price-ship" style="display:none;">0đ</div>
                                 </li>
+                              
                                 <li class="item">
                                     <div class="choose">
                                         <div class="box-checkbox">
-                                            <input class="checkbox" id="checkbox5" type="checkbox">
-                                            <label for="checkbox5">Giao tiết kiệm</label>
+                                            <input class="checkbox select-delivery-checkbox" name="select-delivery" type="radio" value="4">
+                                            <label class="option-name">Giao tiết kiệm</label>
                                         </div>
                                     </div>
-                                    <div class="price-ship">0đ</div>
+                                    <div class="price-ship" style="display:none;">0đ</div>
                                 </li>
                             </ul>
                         </div>
@@ -190,21 +191,12 @@
                             <li class="item">
                                 <div class="choose">
                                     <div class="box-checkbox">
-                                        <input class="checkbox" id="checkbox1" type="checkbox">
-                                        <label for="checkbox1">
-                                            <img src="/images/icon/COD_Dou.svg" alt="" />
-                                            Thanh toán khi nhận hàng(COD)
-                                        </label>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="choose">
-                                    <div class="box-checkbox">
-                                        <input class="checkbox" id="checkbox2" type="checkbox">
+                                        <input class="checkbox select-delivery-checkbox" name="select-bank" type="radio" value="2" checked>
                                         <label for="checkbox2">
                                             <img src="/images/icon/Bank_Dou.svg" alt="" />
-                                            Chuyển khoản qua ngân hàng
+                                            <nw class="option-name">Chuyển khoản qua ngân hàng</nw>
+
+
                                         </label>
                                     </div>
                                 </div>
@@ -212,10 +204,24 @@
                             <li class="item">
                                 <div class="choose">
                                     <div class="box-checkbox">
-                                        <input class="checkbox" id="checkbox3" type="checkbox">
+                                        <input class="checkbox select-delivery-checkbox" name="select-bank" type="radio" value="1" >
+                                        <label for="checkbox1">
+                                            <img src="/images/icon/COD_Dou.svg" alt="" />
+                                            <nw class="option-name">Thanh toán khi nhận hàng(COD)</nw>
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                          
+                            <li class="item">
+                                <div class="choose">
+                                    <div class="box-checkbox">
+                                        <input class="checkbox select-delivery-checkbox" name="select-bank" type="radio" value="3">
                                         <label for="checkbox3">
-                                            <img src="/images/icon/QR_Dou.svg" alt="" />Thanh
-                                            toán QR-PAY
+                                            <img src="/images/icon/QR_Dou.svg" alt="" />
+
+                                            <nw class="option-name">Thanh toán QR-PAY</nw>
+
                                         </label>
                                     </div>
                                 </div>
@@ -223,11 +229,12 @@
                             <li class="item">
                                 <div class="choose">
                                     <div class="box-checkbox">
-                                        <input class="checkbox" id="checkbox4" type="checkbox">
+                                        <input class="checkbox select-delivery-checkbox" name="select-bank" type="radio" value="4">
                                         <label for="checkbox4">
                                             <img src="/images/icon/MasterCard_Dou.svg"
-                                                 alt="" />Thẻ Visa - Master
-                                            Card
+                                                 alt="" />
+                                            <nw class="option-name">Thẻ Visa - Master Card</nw>
+
                                         </label>
                                     </div>
                                 </div>
@@ -236,30 +243,109 @@
                     </div>
                 </div>
                 <div class="total-cart">
-                    <div class="flex-total">
+                    <div class="flex-total total-amount">
                         <div class="tt">Tiền hàng</div>
                         <div class="pr">3.000.000đ</div>
                     </div>
-                    <div class="flex-total">
+                    <div class="flex-total total-shipping-fee">
                         <div class="tt">Phí vận chuyển</div>
                         <div class="pr">30.000đ</div>
                     </div>
-                    <div class="flex-total">
+                    <div class="flex-total total-discount" style="display:none;">
                         <div class="tt">Giảm giá</div>
                         <div class="pr">-3.000đ</div>
                     </div>
-                    <div class="bt-total">
+                    <div class="bt-total total-final-amount">
                         <div class="flex-total">
                             <div class="tt">Tổng tiền</div>
                             <div class="pr">3.000.000đ</div>
                         </div>
                     </div>
                 </div>
-                <a href="" class="btn btn-base btn-confirm">XÁC NHẬN THANH TOÁN</a>
+                <a href="javascript:;" class="btn btn-base btn-confirm btn-confirm-cart">XÁC NHẬN THANH TOÁN</a>
             </div>
         </div>
     </div>
 </section>
+<div id="update-address" class="overlay form-update-address">
+    <div class="popup">
+        <a class="close" href="javascript:;">
+            <i class="icon icon-close"></i>
+        </a>
+        <div class="content">
+            <h4 class="title-popup">Cập nhật thông tin giao hàng</h4>
+            <nw>
+                <div class="scroll-form">
+                    <div class="form-group">
+                        <label>Họ và tên</label>
+                        <div class="box-input user">
+                            <input class="form-control" type="text" placeholder="Nhập họ tên" />
+                        </div>
+                        <span class="err" style="display:none;">Vui lòng không để trống</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <div class="box-input tel">
+                            <input class="form-control" type="text" placeholder="Nhập số điện thoại" />
+                        </div>
+                        <span class="err" style="display:none;">Vui lòng không để trống</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tỉnh/thành</label>
+                        <div class="box-input province">
+                            <input class="form-control" type="text" placeholder="Chọn tỉnh thành" />
+                        </div>
+                        <span class="err" style="display:none;">Vui lòng không để trống</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Quận/Huyện</label>
+                        <div class="box-input district">
+                            <input class="form-control" type="text" placeholder="Chọn quận/huyện" />
+                        </div>
+                        <span class="err" style="display:none;">Vui lòng không để trống</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Phường/Xã</label>
+                        <div class="box-input wards">
+                            <input class="form-control" type="text" placeholder="Chọn phường/xã" />
+                        </div>
+                        <span class="err">Vui lòng không để trống</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ cụ thể</label>
+                        <div class="box-input address">
+                            <input class="form-control" type="text" placeholder="Nhập địa chỉ cụ thể" />
+                        </div>
+                        <span class="err" style="display:none;">Vui lòng không để trống</span>
+                    </div>
+                </div>
+                <div class="action">
+                    <a href="" class="btn btn-back">Trở lại</a>
+                    <a href="" class="btn btn-base btn-save">Cập nhật</a>
+                </div>
+            </nw>
+        </div>
+    </div>
+</div>
+<!--Box xác nhận xóa-->
+<div id="lightbox-delete-cart" class="overlay form-noti" style="margin-top:50px;">
+    <div class="popup">
+        <a class="close" href="javascript:;">
+            <i class="icon icon-close"></i>
+        </a>
+        <div class="content">
+            <h4 class="title-popup">Cập nhật thông tin giao hàng</h4>
+            <p style="font-size:14px;color:red;">Sản phẩm này sẽ bị xóa khỏi giỏ hàng, bạn có chắc chắn không?</p>
+            <form>
+                <div class="action">
+                    <a href="javascript:;" class="btn btn-back">Hủy</a>
+                    <a href="javascript:;" class="btn btn-base btn-save">Xác nhận</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @section Scripts {
     <script type="text/javascript" src="/modules/cart.js"></script>
 

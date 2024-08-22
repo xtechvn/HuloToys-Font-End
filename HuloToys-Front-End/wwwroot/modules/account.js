@@ -77,6 +77,7 @@ var account = {
         if (account.ValidateLogin()) {
             $(':input[type="submit"]').prop('disabled', true);
             element.html('Vui lòng chờ ....')
+            element.prop("disabled", true);
             var request = {
                 "user_name": $('#dangnhap .user input').val(),
                 "password": $('#dangnhap .password input').val(),
@@ -101,6 +102,7 @@ var account = {
                     $('#dangnhap .user input').closest('.form-group').find('.err').show()
                     $('#dangnhap .user input').closest('.form-group').find('.err').html(NOTIFICATION_MESSAGE.LoginIncorrect)
                     element.html('Đăng nhập')
+                    element.prop("disabled", false);
 
                 }
 

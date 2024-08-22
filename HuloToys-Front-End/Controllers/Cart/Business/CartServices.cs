@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using HuloToys_Front_End.Utilities.Contants;
 using HuloToys_Front_End.Models.Cart;
 using Models.MongoDb;
+using Models.APIRequest;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
 {
@@ -15,7 +16,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
         }
        
        
-        public async Task<string> AddToCart(AddToCartRequestModel request)
+        public async Task<int> AddToCart(AddToCartRequestModel request)
         {
             try
             {
@@ -25,13 +26,13 @@ namespace HuloToys_Front_End.Controllers.Client.Business
 
                 if (status == (int)ResponseType.SUCCESS)
                 {
-                    return jsonData["data"].ToString();
+                    return Convert.ToInt32(jsonData["data"].ToString());
                 }
             }
             catch
             {
             }
-            return null;
+            return -1;
 
         }
         public async Task<int> GetCartCount(CartGeneralRequestModel request)
@@ -70,6 +71,22 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             {
             }
             return null;
+
+        } 
+        public async Task<int> Delete(CartDeleteRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:cart_delete"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+                return status;
+               
+            }
+            catch
+            {
+            }
+            return -1;
 
         }
     }
