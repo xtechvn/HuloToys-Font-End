@@ -3,7 +3,8 @@
     ProductDetail: 'ProductDetail',
     CartCount: 'CartCount',
     BuyNowItem: 'BuyNowItem',
-    SubProduct: 'SubProduct'
+    SubProduct: 'SubProduct',
+    Order: 'Order'
 
 }
 var API_URL = {
@@ -15,6 +16,9 @@ var API_URL = {
     CartCount: '/Cart/CartCount',
     CartList: '/Cart/GetList',
     CartDelete: '/Cart/Delete',
+    CartConfirm: '/Order/Confirm',
+    OrderDetail: '/Order/detail',
+    QRCode: '/Order/QRCode',
     StaticDomain:'https://static-image.adavigo.com'
 }
 var NOTIFICATION_MESSAGE = {
@@ -43,7 +47,13 @@ var GLOBAL_CONSTANTS = {
         Discount: 16,
         BEAR_COLLECTION: 17,
         INTELLECTUAL_DEVELOPMENT:18
-    }
+    },
+    PaymentType: [
+        { id: 1, name:'Thanh toán khi nhận hàng(COD)'},
+        { id: 2, name:'Chuyển khoản qua ngân hàng'},
+        { id: 3, name:'Thanh toán QR-PAY'},
+        { id: 4, name:'Thẻ Visa - Master Card'},
+    ]
 }
 var HTML_CONSTANTS = {
     GoogleAccountNotRegistered : '<span class="err err-gg-account" style=" width: 100%; text-align: -webkit-center; ">Tài khoản Google chưa được đăng ký, vui lòng điền đầy đủ thông tin và nhấn tạo tài khoản</span>',

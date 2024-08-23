@@ -63,5 +63,6 @@ namespace HuloToys_Front_End.Controllers.Product
                 data = result
             });
         }
+       
     }
 }
