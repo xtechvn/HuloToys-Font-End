@@ -26,6 +26,15 @@
         text-align: center;
         line-height: 30px; 
     }
+
+    .disabled {
+        pointer-events: none;
+        opacity: 0.5; /* Làm mờ liên kết */
+    }
+
+    .btn-Send {
+        float:right;
+    }
 </style>
 <div id="CommentSucces" class="AddcommentSucces" style="display:none;justify-content:center">
 @*     <span class="close" onclick="this.parentElement.style.display='none';">&times;</span> *@
@@ -41,12 +50,12 @@
                         <div class="form-group">
                             <label>Nội dung*</label>
                             <div class="box-input">
-                                <textarea style="min-height:150px" class="form-control" id="comment-text" rows="5" placeholder="Hãy chia sẽ những góp ý của bạn với Hulo Toys tại đây nhé."></textarea>
+                                <textarea maxlength="500" style="min-height:150px" oninput="_feedback.SaveText()" class="form-control" id="comment-text" rows="5" placeholder="Hãy chia sẽ những góp ý của bạn với Hulo Toys tại đây nhé."></textarea>
                             </div>
                         </div>
                         <div class="action">
-                            <a href="" class="btn back">Trở lại</a>
-                            <a onclick="_feedback.CreateFeedback()" id="liveToastBtn" class="btn btn-save">Cập nhật</a>
+                            <div></div>
+                            <a onclick="_feedback.CreateFeedback()" id="liveToastBtn" class="btn btn-Send">Gửi</a>
                         </div>
                     </form>
                 </div>
