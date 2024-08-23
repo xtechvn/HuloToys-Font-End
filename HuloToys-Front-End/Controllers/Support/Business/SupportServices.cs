@@ -42,7 +42,7 @@ namespace HuloToys_Front_End.Controllers.Support.Business
                 else
                 {
                     var msg = int.Parse(jsonData["msg"].ToString());
-                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + msg.ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListByCategoryID-SupportServices:" + msg.ToString());
 
                 }
 
@@ -81,7 +81,7 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "InsertComment-SupportServices:" + ex.ToString());
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "InsertEmailPromotion-SupportServices:" + ex.ToString());
             }
             return null;
         }
@@ -108,14 +108,14 @@ namespace HuloToys_Front_End.Controllers.Support.Business
                 else
                 {
                     var msg = int.Parse(jsonData["msg"].ToString());
-                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + msg.ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetPolicyById-SupportServices:" + msg.ToString());
 
                 }
 
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + ex.ToString());
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetPolicyById-SupportServices:" + ex.ToString());
             }
             return null;
         }
@@ -144,14 +144,14 @@ namespace HuloToys_Front_End.Controllers.Support.Business
                 else
                 {
                     var msg = int.Parse(jsonData["msg"].ToString());
-                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + msg.ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetArticlesByTitle-SupportServices:" + msg.ToString());
 
                 }
 
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + ex.ToString());
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetArticlesByTitle-SupportServices:" + ex.ToString());
             }
             return null;
         }
