@@ -203,6 +203,8 @@ var cart = {
                     if (result.is_success && result.data != undefined) {
                         request.result = result.data
                         sessionStorage.setItem(STORAGE_NAME.Order, JSON.stringify(request))
+                        global_service.DecreaseCartCount()
+
                         window.location.href = '/order/payment/' + result.data.id
 
                     }
