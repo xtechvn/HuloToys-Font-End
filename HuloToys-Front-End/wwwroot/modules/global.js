@@ -236,7 +236,7 @@ var global_service = {
                         && item.amount_max != null
                         && item.amount_min != undefined
                         && item.amount_min != null) {
-                        amount_html = _product_function.Comma(item.amount_min) + ' - ' + _product_function.Comma(item.amount_max)
+                        amount_html = global_service.Comma(item.amount_min) + ' - ' + global_service.Comma(item.amount_max)
                     }
                     else if (item.amount != undefined
                         && item.amount != null && item.amount > 0) {
