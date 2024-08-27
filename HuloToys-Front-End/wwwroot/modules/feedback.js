@@ -33,6 +33,7 @@ var _feedback =
                 data: { obj: obj },
                 success: function (data) {
                     document.getElementById("CommentSucces").style.display = "block";
+                    document.getElementById("CommentSucces").textContent = "Cảm ơn vì đã góp ý!";
                     sessionStorage.setItem("Saved_Input", '');
                     sessionStorage.setItem("CreateFeedbackAction", 0);
                     setTimeout(() => {
@@ -72,6 +73,7 @@ var _feedback =
                 data: { obj: obj },
                 success: function (data) {
                     document.getElementById("CommentSucces").style.display = "block";
+                    document.getElementById("CommentSucces").textContent = "Cảm ơn vì đã góp ý!";
                     sessionStorage.setItem("Saved_Input", '');
                     sessionStorage.setItem("CreateFeedbackAction", 0);
                     setTimeout(() => {
