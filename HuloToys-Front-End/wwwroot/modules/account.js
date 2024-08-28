@@ -22,9 +22,11 @@ var account = {
         $('.err').hide()
         var usr = global_service.CheckLogin()
         if (usr) {
-            $('#client-account-name').html(usr.name +' '+ `<a href="javascript:;" id="account-logout"> [ Đăng xuất ]</a>`)
-            $('#client-account-name').closest('a').attr('href', '/account')
+            $('#client-account-name').html(usr.name +' '/*+ `<a href="javascript:;" id="account-logout"> [ Đăng xuất ]</a>`*/)
+            $('#client-account-name').closest('a').attr('href', '/order')
             $('.right-mainheader .client-login').removeAttr('data-id')
+            $('.right-mainheader .client-login').addClass('client-logged')
+            $('.right-mainheader .client-login').removeClass('client-login')
 
         }
         $('#dangky .email input').addClass('no-requirement')

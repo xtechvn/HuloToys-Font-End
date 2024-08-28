@@ -289,6 +289,22 @@ var global_service = {
             sessionStorage.setItem(STORAGE_NAME.CartCount, 0)
         }
         global_service.LoadCartCount()
+    },
+    DateTimeToString: function (date, has_time=false) {
+        var text = ("0" + date.getDate()).slice(-2) + '/' + ("0" + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear() ;
+        if (has_time == true) {
+            text += + ' ' + ("0" + date.getHours()).slice(-2) + ':' + ("0" + date.getMinutes()).slice(-2)
+        }
+        return text
+    },
+    DateTimeDotNetToString: function (date_string, has_time = false) {
+        //"2024-08-28T09:15:09.43Z"
+        var date = new Date(date_string)
+        var text = ("0" + date.getDate()).slice(-2) + '/' + ("0" + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear() ;
+        if (has_time == true) {
+            text += + ' ' + ("0" + date.getHours()).slice(-2) + ':' + ("0" + date.getMinutes()).slice(-2)
+        }
+        return text
     }
 
 }

@@ -168,7 +168,10 @@ var cart = {
         $.when(
             global_service.POST(API_URL.CartDelete, request)
         ).done(function (result) {
-            global_service.DecreaseCartCount()
+            for (var i = 0; i < $('.table-addtocart .product').length; i++) {
+                global_service.DecreaseCartCount()
+
+            }
         })
         $('#lightbox-delete-cart').removeClass('overlay-active')
        

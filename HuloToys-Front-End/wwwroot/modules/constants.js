@@ -19,7 +19,9 @@ var API_URL = {
     CartConfirm: '/Order/Confirm',
     OrderDetail: '/Order/detail',
     QRCode: '/Order/QRCode',
-    StaticDomain:'https://static-image.adavigo.com'
+    StaticDomain: 'https://static-image.adavigo.com',
+    OrderListing: '/Order/Listing',
+
 }
 var NOTIFICATION_MESSAGE = {
     LoginIncorrect:'Tài khoản / Mật khẩu không chính xác, vui lòng thử lại',
@@ -53,6 +55,13 @@ var GLOBAL_CONSTANTS = {
         { id: 2, name:'Chuyển khoản qua ngân hàng'},
         { id: 3, name:'Thanh toán QR-PAY'},
         { id: 4, name:'Thẻ Visa - Master Card'},
+    ],
+    OrderStatus: [
+        { id: 0, name:'Chờ thanh toán'},
+        { id: 1, name:'Đang xử lý '},
+        { id: 2, name:'Đang giao hàng'},
+        { id: 3, name:'Hoàn thành'},
+        { id: 4, name:'Đã hủy'},
     ]
 }
 var HTML_CONSTANTS = {
@@ -210,6 +219,42 @@ var HTML_CONSTANTS = {
         </div>
     </div>
 </section>`
+    },
+    OrderHistory: {
+        Item:` <div class="box-order-detail" data-id="{order_id}">
+                            <div class="head-box">
+                                <span class="code">Mã đơn hàng: <b>{order_no}</b></span>
+                                <span class="status">Tình trạng: <span class="high">{status}</span></span>
+                                <span class="code">Ngày đặt hàng: <b>{create_date}</b></span>
+                                <a href="/order/detail/{order_id}" class="btn-seemore">Xem chi tiết</a>
+                            </div>
+                            <div class="list-product-order">
+                               {product_detail}
+                            </div>
+                            <div class="bottom-box">
+                                <div class="action">
+                                    <a href="javascript:;" class="btn btn-base btn-confirm-received {confirm_display}" style="">Đã nhận được hàng</a>
+                                    <a href="javascript:;" class="btn btn-line btn-cancel-order {confirm_cancel}" >Hủy đơn hàng</a>
+                                </div>
+                                <div class="total-price">Tổng tiền: <span class="number-price">{total_amount}</span> </div>
+                            </div>
+                        </div>`,
+        ItemProduct:` <div class="item">
+                                    <div class="img">
+                                        <img src="{src}" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <h3 class="name-product">
+                                          {name}
+                                        </h3>
+                                        <div class="cat">{attributes}</div>
+                                        <div class="flex-quantity">
+                                            <span>Giá: {price} &nbsp; &nbsp; &nbsp;</span>
+                                            <span>Số lượng:{quanity}</span>
+                                        </div>
+                                        <p class="price amount">{amount}</p>
+                                    </div>
+                                </div>`
     }
 
 }
