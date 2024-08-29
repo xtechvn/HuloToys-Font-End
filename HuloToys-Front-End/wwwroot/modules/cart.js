@@ -168,7 +168,10 @@ var cart = {
         $.when(
             global_service.POST(API_URL.CartDelete, request)
         ).done(function (result) {
-            global_service.DecreaseCartCount()
+            for (var i = 0; i < $('.table-addtocart .product').length; i++) {
+                global_service.DecreaseCartCount()
+
+            }
         })
         $('#lightbox-delete-cart').removeClass('overlay-active')
        
@@ -203,6 +206,8 @@ var cart = {
                     if (result.is_success && result.data != undefined) {
                         request.result = result.data
                         sessionStorage.setItem(STORAGE_NAME.Order, JSON.stringify(request))
+                        global_service.DecreaseCartCount()
+
                         window.location.href = '/order/payment/' + result.data.id
 
                     }

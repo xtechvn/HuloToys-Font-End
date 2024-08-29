@@ -7,6 +7,7 @@ using Models.MongoDb;
 using Models.APIRequest;
 using HuloToys_Front_End.Models.Products;
 using HuloToys_Front_End.Models.Orders;
+using HuloToys_Service.Models.Orders;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
 {
@@ -68,6 +69,26 @@ namespace HuloToys_Front_End.Controllers.Client.Business
                 if (status == (int)ResponseType.SUCCESS)
                 {
                     return jsonData["data"].ToString();
+
+                }
+
+            }
+            catch
+            {
+            }
+            return null;
+
+        }
+        public async Task<OrderHistoryResponseModel> Listing(OrderHistoryRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:order_history"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<OrderHistoryResponseModel>(jsonData["data"].ToString());
 
                 }
 

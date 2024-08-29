@@ -42,7 +42,8 @@ namespace HuloToys_Front_End.Models.Products
         public string sku { get; set; }
         public DateTime created_date { get; set; }
         public DateTime updated_last { get; set; }
-
+        public double? amount_max { get; set; }
+        public double? amount_min { get; set; }
         public string parent_product_id { get; set; }
         public int status { get; set; }
 

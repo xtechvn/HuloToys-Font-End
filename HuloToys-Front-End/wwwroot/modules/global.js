@@ -231,11 +231,23 @@ var global_service = {
                         && !img_src.includes("data:image")
                         && !img_src.includes("http"))
                         img_src = API_URL.StaticDomain + item.avatar
+                    var amount_html = 'Giá liên hệ'
+                    if (item.amount_max != undefined
+                        && item.amount_max != null
+                        && item.amount_min != undefined
+                        && item.amount_min != null) {
+                        amount_html = global_service.Comma(item.amount_min) + ' - ' + global_service.Comma(item.amount_max)
+                    }
+                    else if (item.amount != undefined
+                        && item.amount != null && item.amount > 0) {
+                        amount_html = global_service.Comma(item.amount)
+
+                    }
                     html += HTML_CONSTANTS.Home.SlideProductItem
                         .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(item.name).replaceAll(' ', '-') + '--' + item._id)
                         .replaceAll('{avt}', img_src)
                         .replaceAll('{name}', item.name)
-                        .replaceAll('{amount}', item.amount > 0 ? global_service.Comma(item.amount) + ' đ' : 'Giá liên hệ')
+                        .replaceAll('{amount}', amount_html)
                         //.replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
                         .replaceAll('{review_point}', '5')
                         .replaceAll('{review_count}', '')
@@ -277,6 +289,22 @@ var global_service = {
             sessionStorage.setItem(STORAGE_NAME.CartCount, 0)
         }
         global_service.LoadCartCount()
+    },
+    DateTimeToString: function (date, has_time=false) {
+        var text = ("0" + date.getDate()).slice(-2) + '/' + ("0" + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear() ;
+        if (has_time == true) {
+            text += + ' ' + ("0" + date.getHours()).slice(-2) + ':' + ("0" + date.getMinutes()).slice(-2)
+        }
+        return text
+    },
+    DateTimeDotNetToString: function (date_string, has_time = false) {
+        //"2024-08-28T09:15:09.43Z"
+        var date = new Date(date_string)
+        var text = ("0" + date.getDate()).slice(-2) + '/' + ("0" + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear() ;
+        if (has_time == true) {
+            text += + ' ' + ("0" + date.getHours()).slice(-2) + ':' + ("0" + date.getMinutes()).slice(-2)
+        }
+        return text
     }
 
 }
