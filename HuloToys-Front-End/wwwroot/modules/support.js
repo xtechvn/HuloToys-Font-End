@@ -20,6 +20,26 @@
             _support.SearchQuestion();
         }
     });
+
+    var lst_IdCate = "";
+    $.ajax({
+        url: "/Support/GetCategories",
+        type: 'post',
+        data: null,
+        success: function (rs) {
+            rs.forEach(item => {
+                if (lst_IdCate) {
+                    lst_IdCate = lst_IdCate + "," + item.id;
+                }
+                else {
+                    lst_IdCate = lst_IdCate + item.id;
+                }
+            });
+            lst_IdCate = lst_IdCate + ",28";//Add id of Common Question to ListId
+            sessionStorage.setItem("list_idCate", lst_IdCate);
+        },
+
+    });
 })
 
 var _support =
@@ -31,7 +51,7 @@ var _support =
         $.ajax({
             url: "/Support/GetListByCategoryID",
             type: 'post',
-            data: { id: id, idType: 28 },
+            data: { id: id},
             success: function (data) {
                 window.history.pushState('string', '', "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname))
                 $(".content-policy").html('');
@@ -73,7 +93,7 @@ var _support =
         $.ajax({
             url: "/Support/GetBodyArticle",
             type: 'post',
-            data: { id: id, idType: 28 },
+            data: { id: id},
             success: function (data) {
                 window.history.pushState('string', '', "/questions/" + global_service.convertVietnameseToUnsign(data.title))
                 if (data != null) {
@@ -96,25 +116,43 @@ var _support =
 
         });
     },
-    SearchQuestion: function () {
+/*    OnchangeInput: function ()
+    {
         var title = $('#search-input').val();
+        if (!title)
+        {
+            window.location.href = '/cham-soc-khach-hang';
+        }
+    },*/
+    SearchQuestion: function () {
+        $('.result-search').html('');
+        $('.result-search').html(`<h2>Đang tìm kiếm...</h2>`);
+        var lst_Id = sessionStorage.getItem("list_idCate");
+        var title = $('#search-input').val();
+        var obj =
+        {
+            "title": title,
+            "parent_cate_faq_id": lst_Id
+        }
         $('.content-policy').html('');
         $('.left-content').html('');
         if (title == '') {
-            $('.result-search').html(`<h2>không tìm thấy kết quả tìm kiếm</h2>`);
+            window.location.href = '/cham-soc-khach-hang';
         }
         else {
             $.ajax({
-                url: "/Support/GetListQuestionsByTitle",
+                url: "/Support/FindAllArticleByTitle",
                 type: 'post',
-                data: { title: title, id: 28 },
+                data: { requestObj: obj },
                 success: function (data) {
                     $('.result-search').html('');
                     let count = 0;
                     //dem ban ghi
-                    data.forEach(item => {
-                        count++;
-                    });
+                    if (data) {
+                        data.forEach(item => {
+                            count++;
+                        });
+                    }
                     if (count > 0) {
                         let notif = `<h2>có "${count} kết quả" tìm kiếm</h2>`;
                         $('.result-search').html(notif);

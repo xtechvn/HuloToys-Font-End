@@ -31,6 +31,20 @@ namespace HuloToys_Front_End.Controllers.Support
             return View();
         }
 
+        public async Task<List<GetCategoryResponse>> GetCategories() 
+        {
+            GetListByCategoryIdRequest requestObj = new GetListByCategoryIdRequest()
+            {
+                category_id = SupportConfig.MenuType,
+            };
+            var ListMenuHelpers = await _newsService.GetNewsCategory(requestObj);
+            if (ListMenuHelpers != null) 
+            {
+                return ListMenuHelpers;
+            }
+            return null;
+        }
+
         public async Task<IActionResult> feedback()
         {
             return View();
@@ -86,6 +100,16 @@ namespace HuloToys_Front_End.Controllers.Support
             }
         }
 
+        public async Task<List<ArticleRelationModel>> FindAllArticleByTitle(FindAllArticleRequest requestObj) 
+        {
+            var lstobj = await _supportServices.FindAllArticleByTitle(requestObj);
+            if (lstobj != null) 
+            {
+                return lstobj;
+            }
+            return null;
+        }
+
         public async Task<IActionResult> GetListByCategoryID(int id)
         {
             try
@@ -136,13 +160,16 @@ namespace HuloToys_Front_End.Controllers.Support
             }
         }
 
-        public async Task<IActionResult> GetBodyArticle(int id,int idType)
+        public async Task<IActionResult> GetBodyArticle(int id)
         {
             try
             {
-                var data = await _supportServices.GetListByCategoryID(idType);
-                var obj = data.FirstOrDefault(x => x.id == id);
-                return Ok(obj);
+                GetNewDetailRequest objRequest = new GetNewDetailRequest() 
+                {
+                    article_id = id
+                };
+                var data = await _newsService.GetNewsDetail(objRequest);
+                return Ok(data);
 
             }
             catch (Exception ex)

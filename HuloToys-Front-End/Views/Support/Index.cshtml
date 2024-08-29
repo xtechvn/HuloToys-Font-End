@@ -32,7 +32,7 @@
                 <h3 class="sub-title">HULOTOYS có thể giúp được gì cho quý khách ?</h3>
                 <div class="form-search">
                     <form onsubmit="return false">
-                        <input id="search-input" type="text" placeholder="Câu hỏi, thắc mắc của quý khách...">
+                        <input id="search-input" type="text" @* oninput="_support.OnchangeInput()" *@ placeholder="Câu hỏi, thắc mắc của quý khách...">
                         <button onclick="_support.SearchQuestion()" type="button" class="btn-search"><i class="icon icon-search"></i></button>
                     </form>
                 </div>
@@ -72,8 +72,6 @@
             <div class="content-policy list-faq-v2">
                 
             </div>
-
-
         </div>
     </div>
 </section>
