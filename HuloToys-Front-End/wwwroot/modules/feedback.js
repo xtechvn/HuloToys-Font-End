@@ -102,6 +102,11 @@ var _feedback =
             "Email": email_input
         }
         if (email_input == null || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email_input)) {
+            document.getElementById("PromotionNoti").style.display = "block";
+            document.getElementById("PromotionNoti").textContent = "Xin vui lòng nhập đúng định dạng Email!";
+            setTimeout(() => {
+                document.getElementById("PromotionNoti").style.display = 'none';
+            }, 1000);
         }
         else {
             $.ajax({
@@ -109,6 +114,8 @@ var _feedback =
                 type: 'post',
                 data: { obj: obj },
                 success: function (data) {
+                    document.getElementById("PromotionNoti").style.display = "block";
+                    document.getElementById("PromotionNoti").textContent = "Chúng tôi đã nhận được Email của bạn!";
                     setTimeout(() => {
                         location.reload();
                     }, 1000);

@@ -86,6 +86,32 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             return null;
         }
 
+        public async Task<List<ArticleRelationModel>> FindAllArticleByTitle(FindAllArticleRequest requestObj)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:find-all-article"], requestObj);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<List<ArticleRelationModel>>(jsonData["data_list"].ToString());
+                }
+                else
+                {
+                    var msg = int.Parse(jsonData["msg"].ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "FindAllArticleByTitle-SupportServices:" + msg.ToString());
+
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "FindAllArticleByTitle-SupportServices:" + ex.ToString());
+            }
+            return null;
+        }
+
         public async Task<ArticleFeModel> GetPolicyById(int id)
         {
             try
