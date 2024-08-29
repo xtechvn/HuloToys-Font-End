@@ -1,5 +1,6 @@
 ﻿using HuloToys_Front_End.Controllers.Client.Business;
 using HuloToys_Front_End.Models.Cart;
+using HuloToys_Service.Models.Orders;
 using Microsoft.AspNetCore.Mvc;
 using Models.APIRequest;
 using Models.MongoDb;
@@ -18,8 +19,14 @@ namespace HuloToys_Front_End.Controllers.Product
             _orderServices = new OrderServices(configuration);
 
         }
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
+            return View();
+
+        }
+        public ActionResult OrderDetail(string id)
+        {
+            ViewBag.Id= id;
             return View();
 
         }
@@ -39,9 +46,19 @@ namespace HuloToys_Front_End.Controllers.Product
                 data = result
             });
         }
-        public async Task<IActionResult> detail(OrdersGeneralRequestModel request)
+        public async Task<IActionResult> GetDetail(OrdersGeneralRequestModel request)
         {
             var result = await _orderServices.GetDetail(request);
+
+            return Ok(new
+            {
+                is_success = result != null,
+                data = result
+            });
+        }  
+        public async Task<IActionResult> GetHistoryDetail(OrderHistoryDetailRequestModel request)
+        {
+            var result = await _orderServices.GetHistoryDetail(request);
 
             return Ok(new
             {

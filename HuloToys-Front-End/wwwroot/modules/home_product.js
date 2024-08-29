@@ -89,8 +89,8 @@ var home_product = {
 
                         }
                     html += HTML_CONSTANTS.Home.GridProductItem
-                        .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(item.product_name).replaceAll(' ','-')+'--' + item.id)
-                        .replaceAll('{avt}', item.image_thumb)
+                        .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(item.product_name).replaceAll(' ', '-') + '--' + item.id)
+                        .replaceAll('{avt}', global_service.CorrectImage(item.image_thumb))
                         .replaceAll('{name}', item.product_name)
                         .replaceAll('{amount}',  amount_html )
                         .replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)

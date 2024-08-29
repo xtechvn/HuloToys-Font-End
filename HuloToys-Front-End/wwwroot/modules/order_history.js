@@ -32,7 +32,7 @@ var order_history = {
         $('.box-quanlytaikhoan .box-name .name').html(usr.name)
         var request = {
             "client_id": usr.account_client_id,
-            "status": $('.list-tab .active a').attr('order-tab'),
+            "status": $('.list-tab .active a').attr('data-id'),
             "page_index": order_history.Data.Index,
             "page_size": order_history.Data.Size
         }

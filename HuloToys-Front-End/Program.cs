@@ -56,4 +56,8 @@ app.MapControllerRoute(
     name: "thanh-toan",
     pattern: "/order/payment/{id}",
     defaults: new { controller = "Order", action = "Payment" });
+app.MapControllerRoute(
+    name: "thanh-toan",
+    pattern: "/order/detail/{id}",
+    defaults: new { controller = "Order", action = "OrderDetail" });
 app.Run();

@@ -302,9 +302,20 @@ var global_service = {
         var date = new Date(date_string)
         var text = ("0" + date.getDate()).slice(-2) + '/' + ("0" + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear() ;
         if (has_time == true) {
-            text += + ' ' + ("0" + date.getHours()).slice(-2) + ':' + ("0" + date.getMinutes()).slice(-2)
+            var time_text = + ' ' + (date.getHours()) + ':' + (("0" + date.getMinutes()).slice(-2))
+            return text + ' ' + time_text
         }
         return text
+    },
+     CorrectImage: function (image) {
+         var img_src = image
+         if (img_src == null || img_src == undefined) return ''
+         if (!img_src.includes(API_URL.StaticDomain)
+            && !img_src.includes("data:image")
+            && !img_src.includes("http")
+            && !img_src.includes("base64,"))
+            img_src = API_URL.StaticDomain + item
+        return img_src
     }
 
 }
