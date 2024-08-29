@@ -76,11 +76,23 @@ var home_product = {
             if (result.is_success) {
 
                 $(result.data).each(function (index, item) {
+                    var amount_html = 'Giá liên hệ'
+                    if (item.amount_max != undefined
+                        && item.amount_max != null
+                        && item.amount_min != undefined
+                        && item.amount_min != null) {
+                        amount_html = global_service.Comma(item.amount_min) + ' - '+global_service.Comma(item.amount_max)
+                    }
+                    else if (item.amount != undefined
+                        && item.amount != null && item.amount>0) {
+                        amount_html = global_service.Comma(item.amount) 
+
+                        }
                     html += HTML_CONSTANTS.Home.GridProductItem
                         .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(item.product_name).replaceAll(' ','-')+'--' + item.id)
                         .replaceAll('{avt}', item.image_thumb)
                         .replaceAll('{name}', item.product_name)
-                        .replaceAll('{amount}', item.amount_vnd > 0 ? global_service.Comma(item.amount_vnd) + ' đ' : 'Giá liên hệ')
+                        .replaceAll('{amount}',  amount_html )
                         .replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
                         .replaceAll('{review_count}', (item.reviews_count == null || item.reviews_count == undefined || item.reviews_count <= 0) ? '(1)' : '(' + item.reviews_count + ')')
                         .replaceAll('{old_price_style}', (item.price_vnd == null || item.price_vnd == undefined || item.price_vnd <= 0) ? '' : '')

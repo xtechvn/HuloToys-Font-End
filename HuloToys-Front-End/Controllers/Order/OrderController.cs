@@ -18,12 +18,26 @@ namespace HuloToys_Front_End.Controllers.Product
             _orderServices = new OrderServices(configuration);
 
         }
+        public async Task<ActionResult> Index()
+        {
+            return View();
 
+        }
         public async Task<ActionResult> Payment(string id)
         {
             ViewBag.Id = id;
             return View();
 
+        }
+        public async Task<IActionResult> Listing(OrderHistoryRequestModel request)
+        {
+            var result = await _orderServices.Listing(request);
+
+            return Ok(new
+            {
+                is_success = result != null,
+                data = result
+            });
         }
         public async Task<IActionResult> detail(OrdersGeneralRequestModel request)
         {
