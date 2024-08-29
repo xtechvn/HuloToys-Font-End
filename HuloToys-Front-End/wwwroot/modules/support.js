@@ -51,7 +51,7 @@ var _support =
         $.ajax({
             url: "/Support/GetListByCategoryID",
             type: 'post',
-            data: { id: id, idType: 28 },
+            data: { id: id},
             success: function (data) {
                 window.history.pushState('string', '', "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname))
                 $(".content-policy").html('');
