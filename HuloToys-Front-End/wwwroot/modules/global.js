@@ -314,7 +314,7 @@ var global_service = {
             && !img_src.includes("data:image")
             && !img_src.includes("http")
             && !img_src.includes("base64,"))
-            img_src = API_URL.StaticDomain + item
+             img_src = API_URL.StaticDomain + image
         return img_src
     }
 
