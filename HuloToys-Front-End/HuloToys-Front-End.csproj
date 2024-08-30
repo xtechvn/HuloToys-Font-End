@@ -23,7 +23,6 @@
     <Folder Include="Utilities\Common\" />
     <Folder Include="FilterAttribute\" />
     <Folder Include="ViewComponents\Home\" />
-    <Folder Include="Views\Client\" />
 
     <Folder Include="wwwroot\images\" />
   </ItemGroup>

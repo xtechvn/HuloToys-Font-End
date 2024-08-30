@@ -17,13 +17,6 @@ var order_detail = {
        
     },
     Detail: function () {
-        var usr = global_service.CheckLogin()
-        if (usr == undefined || usr.account_client_id == undefined) {
-            window.location.href='/'
-        }
-        $('.box-quanlytaikhoan .avatar img').attr('src', usr.avatar == undefined ? '/images/img-search.png' : usr.avatar)
-        $('.box-quanlytaikhoan .box-name .name').html(usr.name)
-        $('.box-quanlytaikhoan .menu-left-user').removeClass('placeholder')
         var request = {
             "id": $('#order-detail').val()
         }

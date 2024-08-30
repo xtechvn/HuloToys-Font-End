@@ -73,6 +73,6 @@ var payment = {
             } break;
         }
 
-       
+        $('.box-payment-info').removeClass('placeholder')
     }
 }

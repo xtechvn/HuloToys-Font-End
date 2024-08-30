@@ -17,7 +17,7 @@ var API_URL = {
     CartList: '/Cart/GetList',
     CartDelete: '/Cart/Delete',
     CartConfirm: '/Order/Confirm',
-    OrderDetail: '/Order/detail',
+    OrderDetail: '/Order/GetDetail',
     OrderHistoryDetail: '/Order/GetHistoryDetail',
     QRCode: '/Order/QRCode',
     StaticDomain: 'https://static-image.adavigo.com',
@@ -256,6 +256,17 @@ var HTML_CONSTANTS = {
                                         <p class="price amount">{amount}</p>
                                     </div>
                                 </div>`
+    },
+    Address: {
+        GridItem:` <div class="item address-item {active}" data-id="{id}">
+                            <span class="defauld" style="{default-address-stype}">Đặt làm mặc định</span>
+                            <h3 class="name">{name}</h3>
+                            <p class="add">
+                               {address}
+                            </p>
+                            <p class="tel">Điện thoại: {tel}</p>
+                            <a href="javascript:;" class="btn btn-update btn-update-address">Cập nhật</a>
+                        </div>`
     }
 
 }

@@ -167,7 +167,7 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="" class="edit">Thay đổi</a>
+                    <a href="#update-address" class="edit">Thay đổi</a>
                 </div>
                 <div class="voucher">
                     <div class="box-tt">
@@ -267,67 +267,7 @@
         </div>
     </div>
 </section>
-<div id="update-address" class="overlay form-update-address">
-    <div class="popup">
-        <a class="close" href="javascript:;">
-            <i class="icon icon-close"></i>
-        </a>
-        <div class="content">
-            <h4 class="title-popup">Cập nhật thông tin giao hàng</h4>
-            <nw>
-                <div class="scroll-form">
-                    <div class="form-group">
-                        <label>Họ và tên</label>
-                        <div class="box-input user">
-                            <input class="form-control" type="text" placeholder="Nhập họ tên" />
-                        </div>
-                        <span class="err" style="display:none;">Vui lòng không để trống</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Số điện thoại</label>
-                        <div class="box-input tel">
-                            <input class="form-control" type="text" placeholder="Nhập số điện thoại" />
-                        </div>
-                        <span class="err" style="display:none;">Vui lòng không để trống</span>
-                    </div>
 
-                    <div class="form-group">
-                        <label>Tỉnh/thành</label>
-                        <div class="box-input province">
-                            <input class="form-control" type="text" placeholder="Chọn tỉnh thành" />
-                        </div>
-                        <span class="err" style="display:none;">Vui lòng không để trống</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Quận/Huyện</label>
-                        <div class="box-input district">
-                            <input class="form-control" type="text" placeholder="Chọn quận/huyện" />
-                        </div>
-                        <span class="err" style="display:none;">Vui lòng không để trống</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Phường/Xã</label>
-                        <div class="box-input wards">
-                            <input class="form-control" type="text" placeholder="Chọn phường/xã" />
-                        </div>
-                        <span class="err">Vui lòng không để trống</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Địa chỉ cụ thể</label>
-                        <div class="box-input address">
-                            <input class="form-control" type="text" placeholder="Nhập địa chỉ cụ thể" />
-                        </div>
-                        <span class="err" style="display:none;">Vui lòng không để trống</span>
-                    </div>
-                </div>
-                <div class="action">
-                    <a href="" class="btn btn-back">Trở lại</a>
-                    <a href="" class="btn btn-base btn-save">Cập nhật</a>
-                </div>
-            </nw>
-        </div>
-    </div>
-</div>
 <!--Box xác nhận xóa-->
 <div id="lightbox-delete-cart" class="overlay form-noti" style="margin-top:50px;">
     <div class="popup">
@@ -375,7 +315,9 @@
         </div>
     </div>
 </div>
+
 @section Scripts {
     <script type="text/javascript" src="/modules/cart.js"></script>
+    <script type="text/javascript" src="/modules/order_address.js"></script>
 
 }
