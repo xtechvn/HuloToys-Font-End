@@ -49,7 +49,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
 
                 if (status == (int)ResponseType.SUCCESS)
                 {
-                    return "Success";
+                    return jsonData["data"].ToString();
                 }
             }
             catch

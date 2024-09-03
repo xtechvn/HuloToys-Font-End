@@ -1,11 +1,28 @@
 ﻿var STORAGE_NAME = {
-    Login:'account'
+    Login: 'account',
+    ProductDetail: 'ProductDetail',
+    CartCount: 'CartCount',
+    BuyNowItem: 'BuyNowItem',
+    SubProduct: 'SubProduct',
+    Order: 'Order'
+
 }
 var API_URL = {
-    Login:'Client/Login',
-    Register:'Client/Register',
-    ProductDetail:'Product/Detail',
-    ProductList:'Product/GetList'
+    Login:'/Client/Login',
+    Register:'/Client/Register',
+    ProductDetail:'/Product/ProductDetail',
+    ProductList:'/Product/GetList',
+    AddToCart: '/Cart/AddToCart',
+    CartCount: '/Cart/CartCount',
+    CartList: '/Cart/GetList',
+    CartDelete: '/Cart/Delete',
+    CartConfirm: '/Order/Confirm',
+    OrderDetail: '/Order/GetDetail',
+    OrderHistoryDetail: '/Order/GetHistoryDetail',
+    QRCode: '/Order/QRCode',
+    StaticDomain: 'https://static-image.adavigo.com',
+    OrderListing: '/Order/Listing',
+
 }
 var NOTIFICATION_MESSAGE = {
     LoginIncorrect:'Tài khoản / Mật khẩu không chính xác, vui lòng thử lại',
@@ -33,7 +50,20 @@ var GLOBAL_CONSTANTS = {
         Discount: 16,
         BEAR_COLLECTION: 17,
         INTELLECTUAL_DEVELOPMENT:18
-    }
+    },
+    PaymentType: [
+        { id: 1, name:'Thanh toán khi nhận hàng(COD)'},
+        { id: 2, name:'Chuyển khoản qua ngân hàng'},
+        { id: 3, name:'Thanh toán QR-PAY'},
+        { id: 4, name:'Thẻ Visa - Master Card'},
+    ],
+    OrderStatus: [
+        { id: 0, name:'Chờ thanh toán'},
+        { id: 1, name:'Đang xử lý '},
+        { id: 2, name:'Đang giao hàng'},
+        { id: 3, name:'Hoàn thành'},
+        { id: 4, name:'Đã hủy'},
+    ]
 }
 var HTML_CONSTANTS = {
     GoogleAccountNotRegistered : '<span class="err err-gg-account" style=" width: 100%; text-align: -webkit-center; ">Tài khoản Google chưa được đăng ký, vui lòng điền đầy đủ thông tin và nhấn tạo tài khoản</span>',
@@ -86,6 +116,157 @@ var HTML_CONSTANTS = {
                             </div>
                         </a>
                     </div>`
+    },
+    Detail: {
+        Images: `<div class="swiper-slide">
+                                <img src="{src}" alt="" />
+                            </div>`,
+        Star: `<i class="icon icon-star"></i>`,
+        Tr_Voucher: ` <tr>
+                                 <td>Mã giảm giá</td>
+                                <td>
+                                   {span}
+                                </td> 
+                            </tr>`,
+        Tr_Voucher_Td_span: `<span class="coupon" data-id="{id}">{name}</span>`,
+        Tr_Combo: ` <tr>
+                                <td>Combo khuyến mại</td>
+                                <td> {span} </td>
+                            </tr>`,
+        Tr_Combo_Td_span: ` <span class="combo" data-id="{id}">{name}</span>`,
+
+        Tr_Shipping: ` <tr>
+                                <td>Vận chuyển</td>
+                                <td>Miễn phí vận chuyển</td>
+                            </tr>`,
+        Tr_Attributes: `<tr class="attributes" data-level="{level}">
+                                <td>{name}</td>
+                                <td>
+                                    <ul class="box-tag">
+                                       {li}
+
+                                    </ul>
+                                </td>
+                            </tr>`,
+        Tr_Attributes_Td_li: `<li class="attribute-detail {active}" data-id="{name}">{src} {name}</li>`,
+        Tr_Quanity: `<tr class="box-detail-stock">
+                                <td>Số lượng:</td>
+                                <td>
+                                    <div class="number-input">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                        <input class="quantity" min="1" name="quantity" value="1" type="number">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                    </div>
+
+                                    <span class="soluong">{stock} sản phẩm có sẵn</span>
+                                </td>
+                            </tr>`
+    },
+    Cart: {
+        Product:`<div class="product" data-cart-id="{id}" data-amount="{amount}">
+                            <div class="product-checkall">
+                                <div class="box-checkbox">
+                                    <input type="checkbox" name="checkbox-cart-product" class="checkbox-cart" />
+                                    <label class="box-checkbox-label"></label>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <img class="thumb-product" src="{src}" alt="" />
+                                <div class="product-title">
+                                    <h3 class="name-product">
+                                       {name}
+                                    </h3>
+                                    <p class="product-description">{attribute}</p>
+                                </div>
+
+                            </div>
+                            <div class="product-price">
+                                <span class="price-one">{amount_display}</span>
+                                <span class="price-old" style="display:none">
+                                    932.00đ <span class="percent">6%</span>
+                                    <div class="discount">
+                                        <span class="bg-sale">Giảm 30K</span>
+                                    </div>
+                            </div>
+                            <div class="product-quantity">
+                                <div class="number-input">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                    <input class="quantity" min="1" name="quantity" value="{quanity}" type="number">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                            class="plus"></button>
+                                </div>
+                            </div>
+
+                            <div class="product-line-price">{total_amount} đ</div>
+                            <div class="product-removal">
+                                <button class="remove-product">
+                                    Xóa
+                                </button>
+                            </div>
+                        </div>`,
+        Empty:`<section class="cart-empty" style="margin-top:20px;margin-bottom:100px;">
+    <div class="container">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active"><a href="javascript:;">Giỏ hàng / Thanh toán</a></li>
+            </ul>
+        </div>
+        <div class="box-empty">
+            <img src="/images/empty.png" alt="" />
+            <h3 class="title">Giỏ hàng trống</h3>
+            <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
+            <a href="/" class="btn btn-base">Tiếp tục mua sắm</a>
+        </div>
+    </div>
+</section>`
+    },
+    OrderHistory: {
+        Item:` <div class="box-order-detail" data-id="{order_id}">
+                            <div class="head-box">
+                                <span class="code">Mã đơn hàng: <b>{order_no}</b></span>
+                                <span class="status">Tình trạng: <span class="high">{status}</span></span>
+                                <span class="code">Ngày đặt hàng: <b>{create_date}</b></span>
+                                <a href="/order/detail/{order_id}" class="btn-seemore">Xem chi tiết</a>
+                            </div>
+                            <div class="list-product-order">
+                               {product_detail}
+                            </div>
+                            <div class="bottom-box">
+                                <div class="action">
+                                    <a href="javascript:;" class="btn btn-base btn-confirm-received {confirm_display}" style="">Đã nhận được hàng</a>
+                                    <a href="javascript:;" class="btn btn-line btn-cancel-order {confirm_cancel}" >Hủy đơn hàng</a>
+                                </div>
+                                <div class="total-price">Tổng tiền: <span class="number-price">{total_amount}</span> </div>
+                            </div>
+                        </div>`,
+        ItemProduct:` <div class="item">
+                                    <div class="img">
+                                        <img src="{src}" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <h3 class="name-product">
+                                          {name}
+                                        </h3>
+                                        <div class="cat">{attributes}</div>
+                                        <div class="flex-quantity">
+                                            <span>Giá: {price} &nbsp; &nbsp; &nbsp;</span>
+                                            <span>Số lượng:{quanity}</span>
+                                        </div>
+                                        <p class="price amount">{amount}</p>
+                                    </div>
+                                </div>`
+    },
+    Address: {
+        GridItem:` <div class="item address-item {active}" data-id="{id}">
+                            <span class="defauld" style="{default-address-stype}">Đặt làm mặc định</span>
+                            <h3 class="name">{name}</h3>
+                            <p class="add">
+                               {address}
+                            </p>
+                            <p class="tel">Điện thoại: {tel}</p>
+                            <a href="javascript:;" class="btn btn-update btn-update-address">Cập nhật</a>
+                        </div>`
     }
 
 }

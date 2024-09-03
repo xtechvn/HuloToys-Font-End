@@ -1,0 +1,188 @@
+﻿$(document).ready(function () {
+    var ID = localStorage.getItem('ChosenIdPolicy');
+    var URL = localStorage.getItem('ChosenUrlPolicy');
+    const currentPath = window.location.pathname;
+    if (ID != "") {
+        _support.GetBodyArticle(ID, URL);
+    }
+    else if (ID == "" && (currentPath.startsWith('/chinh-sach/') || currentPath.startsWith('/cham-soc-khach-hang'))) {
+        var IdDefault = $('#IDdefaultOption').text();
+        var UrlDefault = $('#NamedefaultOption').text();
+        _support.GetBodyArticle(IdDefault, UrlDefault)
+    }
+    localStorage.setItem('ChosenIdPolicy', "");
+
+    _support.FocusOnSearch();
+
+    $("#search-input").on('keyup', function (e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
+            _support.SearchQuestion();
+        }
+    });
+
+    var lst_IdCate = "";
+    $.ajax({
+        url: "/Support/GetCategories",
+        type: 'post',
+        data: null,
+        success: function (rs) {
+            rs.forEach(item => {
+                if (lst_IdCate) {
+                    lst_IdCate = lst_IdCate + "," + item.id;
+                }
+                else {
+                    lst_IdCate = lst_IdCate + item.id;
+                }
+            });
+            lst_IdCate = lst_IdCate + ",28";//Add id of Common Question to ListId
+            sessionStorage.setItem("list_idCate", lst_IdCate);
+        },
+
+    });
+})
+
+var _support =
+{
+    GetBodyArticle: function (id, urlname) {
+        var SelectedElement = $("#Selected-" + id);
+        $(".Option-load").removeClass('active');
+        SelectedElement.addClass('active');
+        $.ajax({
+            url: "/Support/GetListByCategoryID",
+            type: 'post',
+            data: { id: id},
+            success: function (data) {
+                window.history.pushState('string', '', "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname))
+                $(".content-policy").html('');
+                if (data.length > 0) {
+                    $(".content-policy").append(`<h2 style="margin-bottom:20px">${urlname}</h2>`);
+                    data.forEach(item => {
+
+                        $(".content-policy").append(`
+                    <div class="item">
+                    <h3 class="title-faq title${item.id}" onclick="_support.DisplayHiddenContent('${item.id}')">${item.title}</h3>
+                    <div class="answer content${item.id}" style="margin-left:20px;margin-bottom:20px">
+                        ${item.body}
+                    </div>
+                </div>`);
+                    });
+                }
+                else {
+                    $(".content-policy").append(`
+                    <h3 style="color:#3B56B4">Chưa có nội dung !</h3>`)
+                }
+            },
+
+        });
+    },
+    DisplayHiddenContent: function (id) {
+        let contentpolicy = $('.content' + id)
+        let titlepolicy = $('.title' + id)
+        if (!contentpolicy.hasClass('Hide-ContentPolicy') && !titlepolicy.hasClass('active')) {
+            contentpolicy.addClass('Hide-ContentPolicy');
+            titlepolicy.addClass('active');
+        }
+        else {
+            contentpolicy.removeClass('Hide-ContentPolicy');
+            titlepolicy.removeClass('active');
+        }
+
+    },
+    GetBodyQuestion: function (id) {
+        $.ajax({
+            url: "/Support/GetBodyArticle",
+            type: 'post',
+            data: { id: id},
+            success: function (data) {
+                window.history.pushState('string', '', "/questions/" + global_service.convertVietnameseToUnsign(data.title))
+                if (data != null) {
+                    $('.result-search').html('');
+                    $(".content-policy").html('');
+                    $(".left-content").html('');
+                    $(".left-content").append(`
+                    <ul class="list-faq" style="min-width:250px">
+
+                        <li class="active">
+                            <a >${data.title}</a>
+                        </li>
+
+                    </ul>`);
+                    $(".content-policy").append(`<h2 id="title_policy" >${data.title}</h2>`)
+                    $(".content-policy").append(`<div style="margin-top:10px">${data.lead}</h1>`)
+                    $(".content-policy").append(`<div style="margin-top:10px">${data.body}</h1>`)
+                }
+            },
+
+        });
+    },
+/*    OnchangeInput: function ()
+    {
+        var title = $('#search-input').val();
+        if (!title)
+        {
+            window.location.href = '/cham-soc-khach-hang';
+        }
+    },*/
+    SearchQuestion: function () {
+        $('.result-search').html('');
+        $('.result-search').html(`<h2>Đang tìm kiếm...</h2>`);
+        var lst_Id = sessionStorage.getItem("list_idCate");
+        var title = $('#search-input').val();
+        var obj =
+        {
+            "title": title,
+            "parent_cate_faq_id": lst_Id
+        }
+        $('.content-policy').html('');
+        $('.left-content').html('');
+        if (title == '') {
+            window.location.href = '/cham-soc-khach-hang';
+        }
+        else {
+            $.ajax({
+                url: "/Support/FindAllArticleByTitle",
+                type: 'post',
+                data: { requestObj: obj },
+                success: function (data) {
+                    $('.result-search').html('');
+                    let count = 0;
+                    //dem ban ghi
+                    if (data) {
+                        data.forEach(item => {
+                            count++;
+                        });
+                    }
+                    if (count > 0) {
+                        let notif = `<h2>có "${count} kết quả" tìm kiếm</h2>`;
+                        $('.result-search').html(notif);
+
+                        data.forEach(item => {
+                            let html = `<p style="margin-top:15px" class="Option-load" onclick="_support.GetBodyQuestion('${item.id}')">${item.title}</p>`;
+                            $('.result-search').append(html);
+                        });
+                    }
+                    else {
+                        $('.result-search').html(`<h2>Không tìm thấy kết quả tìm kiếm</h2>`);
+                    }
+                },
+
+            });
+        }
+    },
+    GotoSearchBox: function () {
+        localStorage.setItem("focus", "aaa");
+        window.location.href = '/cham-soc-khach-hang';
+    },
+
+    FocusOnSearch: function ()
+    {
+        if (localStorage.getItem("focus"))
+        {
+            $("#search-input").focus();
+            localStorage.removeItem("focus");
+        }
+    },
+}
+
+
