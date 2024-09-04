@@ -1,18 +1,59 @@
 ﻿$(document).ready(function () {
-    var ID = localStorage.getItem('ChosenIdPolicy');
-    var URL = localStorage.getItem('ChosenUrlPolicy');
-    const currentPath = window.location.pathname;
-    if (ID != "") {
-        _support.GetBodyArticle(ID, URL);
-    }
-    else if (ID == "" && (currentPath.startsWith('/chinh-sach/') || currentPath.startsWith('/cham-soc-khach-hang'))) {
-        var IdDefault = $('#IDdefaultOption').text();
-        var UrlDefault = $('#NamedefaultOption').text();
-        _support.GetBodyArticle(IdDefault, UrlDefault)
-    }
-    localStorage.setItem('ChosenIdPolicy', "");
+    var Path = window.location.href;
+    var IdPath = _support.extractValues(Path)[1];
+    window.onpopstate = function (event) {
+        var currentPath = window.location.href;
+        IdPath = _support.extractValues(currentPath)[1];
+        if (/^\d+$/.test(IdPath) && IdPath != null) {
 
-    _support.FocusOnSearch();
+
+            if (currentPath.match('/chinh-sach/')) {
+                $.ajax({
+                    url: "/Support/GetCategoryById",
+                    type: 'post',
+                    data: { id: IdPath },
+                    success: function (data) {
+                        var NamePath = !data ? null : data.name;
+                        _support.GetMenuPolicy().then(() => {
+                            _support.GetBodyArticle(IdPath, NamePath);
+                        });
+
+                    }
+                })
+
+            }
+            else if (currentPath.match('/questions/')) {
+                _support.GetBodyQuestion(IdPath);
+            }
+
+        }
+    };
+
+    if (/^\d+$/.test(IdPath) && Path.match('/chinh-sach/')) {
+        $.ajax({
+            url: "/Support/GetCategoryById",
+            type: 'post',
+            data: { id: IdPath },
+            success: function (data) {
+                NamePath = data.name;
+                if (NamePath != null) {
+                    _support.GetBodyArticle(IdPath, NamePath);
+                }
+            }
+        })
+    }
+    else if ((Path.match('/chinh-sach/') || Path.match('/cham-soc-khach-hang'))) {
+        _support.GetMenuPolicy().then(() => {
+            var IdDefault = $('#IDdefaultOption').text();
+            var UrlDefault = $('#NamedefaultOption').text();
+            _support.GetBodyArticle(IdDefault, UrlDefault);
+        });
+    }
+    else if (Path.match('/questions/'))
+    {
+        _support.GetBodyQuestion(IdPath);
+    }
+   
 
     $("#search-input").on('keyup', function (e) {
         if (e.key === 'Enter' || e.keyCode === 13) {
@@ -44,16 +85,63 @@
 
 var _support =
 {
+    GetMenuPolicy: function () {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: "/Support/GetCategories",
+                type: 'post',
+                data: null,
+                success: function (data) {
+                    if (data != null) {
+                        // Tạo HTML bằng template literals
+                        const html = data.map(item => `
+                        <li class="Option-load" id="Selected-${item.id}" onclick="_support.GetBodyArticle('${item.id}','${item.name}')">
+                            <a>${item.name}</a>
+                        </li>
+                    `).join('');
+
+                        // Cập nhật DOM
+                        $(".list-faq").html(`
+                        <div id="IDdefaultOption" style="display:none">${data[0].id}</div>
+                        <div id="NamedefaultOption" style="display:none">${data[0].name}</div>
+                        ${html}
+                    `);
+
+                        resolve();
+                    } else {
+                        reject('Data is null');
+                    }
+                },
+                error: function (error) {
+                    reject(error);
+                }
+            });
+        });
+    },
+    GetMenuByID: function (id) {
+        $.ajax({
+            url: "/Support/GetCategoryById",
+            type: 'post',
+            data: { id: id },
+            success: function (data) {
+                return data;
+            }
+        })
+    }
+    ,
     GetBodyArticle: function (id, urlname) {
-        var SelectedElement = $("#Selected-" + id);
+        var SelectedElement = document.getElementById("Selected-" + id);
         $(".Option-load").removeClass('active');
-        SelectedElement.addClass('active');
+        SelectedElement.classList.add('active');
         $.ajax({
             url: "/Support/GetListByCategoryID",
             type: 'post',
             data: { id: id},
             success: function (data) {
-                window.history.pushState('string', '', "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname))
+                var currentPath = window.location.pathname;
+                if (currentPath != "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname) + "-" + id) {
+                    window.history.pushState('string', '', "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname) + "-" + id) 
+                }
                 $(".content-policy").html('');
                 if (data.length > 0) {
                     $(".content-policy").append(`<h2 style="margin-bottom:20px">${urlname}</h2>`);
@@ -95,7 +183,11 @@ var _support =
             type: 'post',
             data: { id: id},
             success: function (data) {
-                window.history.pushState('string', '', "/questions/" + global_service.convertVietnameseToUnsign(data.title))
+                var currentPath = window.location.pathname;
+                if (currentPath != "/questions/" + global_service.convertVietnameseToUnsign(data.title) + "-" + id)
+                {
+                    window.history.pushState('string', '', "/questions/" + global_service.convertVietnameseToUnsign(data.title) + "-" + id)
+                }
                 if (data != null) {
                     $('.result-search').html('');
                     $(".content-policy").html('');
@@ -116,14 +208,7 @@ var _support =
 
         });
     },
-/*    OnchangeInput: function ()
-    {
-        var title = $('#search-input').val();
-        if (!title)
-        {
-            window.location.href = '/cham-soc-khach-hang';
-        }
-    },*/
+
     SearchQuestion: function () {
         $('.result-search').html('');
         $('.result-search').html(`<h2>Đang tìm kiếm...</h2>`);
@@ -169,6 +254,24 @@ var _support =
 
             });
         }
+    },
+    extractValues: function (str) {
+        // Loại bỏ tất cả các ký tự đặc biệt ngoại trừ dấu gạch nối
+        const cleanedStr = str.replace(/[^a-zA-Z0-9-]/g, '');
+
+        // Tìm vị trí của dấu gạch ngang cuối cùng
+        const lastDashIndex = cleanedStr.lastIndexOf('-');
+
+        // Nếu không tìm thấy dấu gạch ngang, trả về null
+        if (lastDashIndex === -1) {
+            return null;
+        }
+
+        // Lấy phần chuỗi trước và sau dấu gạch ngang cuối cùng
+        const part1 = cleanedStr.substring(0, lastDashIndex);
+        const part2 = cleanedStr.substring(lastDashIndex + 1);
+
+        return [part1, part2];
     },
     GotoSearchBox: function () {
         localStorage.setItem("focus", "aaa");

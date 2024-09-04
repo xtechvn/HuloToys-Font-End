@@ -44,6 +44,20 @@ namespace HuloToys_Front_End.Controllers.Support
             }
             return null;
         }
+        public async Task<GetCategoryResponse> GetCategoryById(int id)
+        {
+            GetListByCategoryIdRequest requestObj = new GetListByCategoryIdRequest()
+            {
+                category_id = SupportConfig.MenuType,
+            };
+            var ListMenuHelpers = await _newsService.GetNewsCategory(requestObj);
+            var obj = ListMenuHelpers.FirstOrDefault(x => x.id == id);
+            if (obj != null)
+            {
+                return obj;
+            }
+            return null;
+        }
 
         public async Task<IActionResult> feedback()
         {
