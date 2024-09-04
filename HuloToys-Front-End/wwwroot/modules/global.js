@@ -95,9 +95,9 @@ var global_service = {
     },
     PolicyNaviga: function (url,id,title)
     {
-        window.location.href = url + this.convertVietnameseToUnsign(title);
-        localStorage.setItem('ChosenIdPolicy', id);
-        localStorage.setItem('ChosenUrlPolicy', title);
+        window.location.href = url + this.convertVietnameseToUnsign(title) + "-" + id;
+        //localStorage.setItem('ChosenIdPolicy', id);
+        //localStorage.setItem('ChosenUrlPolicy', title);
     },
     Naviga: function (url, id, title) {
         window.location.href = url + this.convertVietnameseToUnsign(title);

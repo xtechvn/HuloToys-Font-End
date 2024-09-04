@@ -33,6 +33,10 @@ app.MapControllerRoute(
     pattern: "/chinh-sach/{policy}",
     defaults: new { controller = "Support", action = "Index" });
 app.MapControllerRoute(
+    name: "Policy",
+    pattern: "/questions/{policy}",
+    defaults: new { controller = "Support", action = "Index" });
+app.MapControllerRoute(
     name: "Comment",
     pattern: "/dong-gop-y-kien",
     defaults: new { controller = "Support", action = "feedback" });
