@@ -22,9 +22,11 @@ var account = {
         $('.err').hide()
         var usr = global_service.CheckLogin()
         if (usr) {
-            $('#client-account-name').html(usr.name)
-            $('#client-account-name').closest('a').attr('href', '/account')
+            $('#client-account-name').html(usr.name +' '/*+ `<a href="javascript:;" id="account-logout"> [ Đăng xuất ]</a>`*/)
+            $('#client-account-name').closest('a').attr('href', '/order')
             $('.right-mainheader .client-login').removeAttr('data-id')
+            $('.right-mainheader .client-login').addClass('client-logged')
+            $('.right-mainheader .client-login').removeClass('client-login')
 
         }
         $('#dangky .email input').addClass('no-requirement')
@@ -32,6 +34,7 @@ var account = {
     DynamicBind: function () {
         $("body").on('focusout', "#dangnhap input, #dangky input", function () {
             var element = $(this)
+
             if (element.hasClass('no-requirement') && (element.val() == undefined || element.val().trim() == '')) {
                 element.closest('.form-group').find('.err').show()
             }
@@ -45,6 +48,9 @@ var account = {
         $("body").on('click', "#btn-client-login", function () {
             account.Login()
         });
+        $("body").on('click', "#account-logout", function () {
+            account.Logout()
+        });
         $("body").on('click', "#btn-client-register", function () {
             account.Register()
         });
@@ -56,6 +62,7 @@ var account = {
                 element.find('input').prop('checked', true);
             }
         });
+
         $("body").on('click', ".btn-login-gg", function () {
             document.querySelector('.g_id_signin div[role=button]').click();
 
@@ -72,6 +79,7 @@ var account = {
         if (account.ValidateLogin()) {
             $(':input[type="submit"]').prop('disabled', true);
             element.html('Vui lòng chờ ....')
+            element.prop("disabled", true);
             var request = {
                 "user_name": $('#dangnhap .user input').val(),
                 "password": $('#dangnhap .password input').val(),
@@ -96,12 +104,18 @@ var account = {
                     $('#dangnhap .user input').closest('.form-group').find('.err').show()
                     $('#dangnhap .user input').closest('.form-group').find('.err').html(NOTIFICATION_MESSAGE.LoginIncorrect)
                     element.html('Đăng nhập')
+                    element.prop("disabled", false);
 
                 }
 
             })
           
         }
+    },
+    Logout: function () {
+        localStorage.removeItem(STORAGE_NAME.Login)
+        sessionStorage.removeItem(STORAGE_NAME.Login)
+        window.location.reload()
     },
     Register: function () {
         var element = $('#btn-client-register')

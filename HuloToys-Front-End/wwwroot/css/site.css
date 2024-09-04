@@ -1,0 +1,12 @@
+﻿.button-disabled {
+    pointer-events: none !important;
+    background-color: gray !important;
+}
+.pay .list-option, .delivery .list-option {
+    left: 10px;
+    top: 40px;
+}
+ .delivery .list-option {
+    left: -150px;
+    
+}

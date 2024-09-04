@@ -1,4 +1,4 @@
-﻿using Entities.ViewModels.Products;
+﻿using HuloToys_Front_End.Models.Products;
 
 namespace HuloToys_Front_End.Models.Products
 {

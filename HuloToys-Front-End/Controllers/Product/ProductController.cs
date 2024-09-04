@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HuloToys_Front_End.Controllers.Product
 {
+
     public class ProductController : Controller
     {
         private readonly IConfiguration _configuration;
@@ -16,26 +17,13 @@ namespace HuloToys_Front_End.Controllers.Product
             _productServices = new ProductServices(configuration);
 
         }
-        public async Task<ActionResult> Detail(string product_code, string title)
+        public ActionResult Detail(string product_code, string title)
         {
-            try
-            {
-               
-                var result = await _productServices.GetProductDetail(new Models.Products.ProductDetailRequestModel()
-                {
-                    id= product_code
-                });
-                if(result!=null && result._id !=null)
-                {
-                    ViewBag.Product=result;
-                    return View();
-                }
-            }
-            catch {}
-            return Redirect("/Error");
+            ViewBag.ProductCode = product_code;
+            return View();
 
         }
-        public async Task<IActionResult> Detail(ProductDetailRequestModel request)
+        public async Task<IActionResult> ProductDetail(ProductDetailRequestModel request)
         {
             var result = await _productServices.GetProductDetail(request);
 
@@ -45,6 +33,7 @@ namespace HuloToys_Front_End.Controllers.Product
                 data = result
             });
         }
+       
         public async Task<IActionResult> GetList(ProductListRequestModel request)
         {
             var result = await _productServices.GetProductList(request);
@@ -66,6 +55,7 @@ namespace HuloToys_Front_End.Controllers.Product
             }
 
         }
-
+       
+        
     }
 }

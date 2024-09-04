@@ -31,7 +31,7 @@ const swiperCAT = new Swiper('.category-slide', {
     loop: false,
     pagination: false,
     navigation: false,
-    spaceBetween: 15,
+    spaceBetween: 10,
     slidesPerView: 2.5,
     breakpoints: {
         540: {
@@ -72,20 +72,17 @@ const swiperFlash = new Swiper('.section-flashsale .product-slide', {
             slidesPerView: 4.5,
         },
         1400: {
-            slidesPerView: 5.5,
-        },
-        1680: {
-            slidesPerView: 6,
-        },
+            slidesPerView: 5,
+        }
     }
 });
 $(function () {
     $('.btn-filter').on('click', function () {
         $('#productList').addClass('show-filter');
     });
-    // $('#closeFilter').on('click', function () {
-    //     $('#productList').removeClass('show-filter');
-    // });
+    $('#closeFilter').on('click', function () {
+        $('#productList').removeClass('show-filter');
+    });
     $('.list-tab-menu .sub-menu').on('click', function () {
         $(this).toggleClass('active');
     });
@@ -174,5 +171,24 @@ $(function () {
     $(".backToTopBtn").click(function () {
         $("html, body").animate({ scrollTop: 0 }, 1);
         return false;
+    });
+});
+
+// hỗ trợ
+$(document).ready(function () {
+    $(".list-faq-v2 .item > .title-faq").on("click", function () {
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            $(this)
+                .siblings(".answer")
+                .slideUp(300);
+        } else {
+            $(".list-faq-v2 .item > .title-faq").removeClass("active");
+            $(this).addClass("active");
+            $(".answer").slideUp(300);
+            $(this)
+                .siblings(".answer")
+                .slideDown(300);
+        }
     });
 });

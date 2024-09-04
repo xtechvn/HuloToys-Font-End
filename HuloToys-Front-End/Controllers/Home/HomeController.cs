@@ -7,6 +7,10 @@ namespace HuloToys_Front_End.Controllers.Home
         public IActionResult Index()
         {
             return View();
+        } 
+        public IActionResult NotFound()
+        {
+            return View();
         }
     }
 }

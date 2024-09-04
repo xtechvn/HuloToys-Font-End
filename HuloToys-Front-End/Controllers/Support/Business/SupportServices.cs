@@ -6,6 +6,7 @@ using HuloToys_Service.Utilities.Lib;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Utilities.Contants;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HuloToys_Front_End.Controllers.Support.Business
@@ -41,7 +42,7 @@ namespace HuloToys_Front_End.Controllers.Support.Business
                 else
                 {
                     var msg = int.Parse(jsonData["msg"].ToString());
-                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + msg.ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListByCategoryID-SupportServices:" + msg.ToString());
 
                 }
 
@@ -53,11 +54,12 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             return null;
         }
 
-        public async Task<CommentCreateRequest> Comments(CommentCreateRequest obj)
+        public async Task<PushQueueCreateRequest> Comments(PushQueueCreateRequest obj)
         {
             try
             {
-                var result = await POST("/api/insert-comments", obj);
+                obj.Type_Queue = QueueType.ADD_COMMENT;
+                var result = await POST("/api/push-queue", obj);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
             }
@@ -68,13 +70,55 @@ namespace HuloToys_Front_End.Controllers.Support.Business
             return null;
         }
 
+        public async Task<PushQueueCreateRequest> EmailPromotion(PushQueueCreateRequest obj)
+        {
+            try
+            {
+                obj.Type_Queue = QueueType.ADD_RECEIVER_INFO_EMAIL;
+                var result = await POST("/api/push-queue", obj);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "InsertEmailPromotion-SupportServices:" + ex.ToString());
+            }
+            return null;
+        }
+
+        public async Task<List<ArticleRelationModel>> FindAllArticleByTitle(FindAllArticleRequest requestObj)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:find-all-article"], requestObj);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<List<ArticleRelationModel>>(jsonData["data_list"].ToString());
+                }
+                else
+                {
+                    var msg = int.Parse(jsonData["msg"].ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "FindAllArticleByTitle-SupportServices:" + msg.ToString());
+
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "FindAllArticleByTitle-SupportServices:" + ex.ToString());
+            }
+            return null;
+        }
+
         public async Task<ArticleFeModel> GetPolicyById(int id)
         {
             try
             {
                 var obj = new Dictionary<string, object>
                 {
-                    { "category_id","23" }
+                    { "category_id",SupportConfig.PolicyType }
                 };
                 var result = await POST("api/news/get-list-by-categoryid.json", obj);
                 var jsonData = JObject.Parse(result);
@@ -90,59 +134,27 @@ namespace HuloToys_Front_End.Controllers.Support.Business
                 else
                 {
                     var msg = int.Parse(jsonData["msg"].ToString());
-                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + msg.ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetPolicyById-SupportServices:" + msg.ToString());
 
                 }
 
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + ex.ToString());
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetPolicyById-SupportServices:" + ex.ToString());
             }
             return null;
         }
 
-        public async Task<ArticleFeModel> GetQuestionById(int id)
+
+        
+        public async Task<List<ArticleFeModel>> GetArticlesByTitle(string title,int id)
         {
             try
             {
                 var obj = new Dictionary<string, object>
                 {
-                    { "category_id","24" }
-                };
-                var result = await POST("api/news/get-list-by-categoryid.json", obj);
-                var jsonData = JObject.Parse(result);
-                var status = int.Parse(jsonData["status"].ToString());
-
-                if (status == (int)ResponseType.SUCCESS)
-                {
-
-                    var data = JsonConvert.DeserializeObject<List<ArticleFeModel>>(jsonData["data_list"].ToString());
-                    ArticleFeModel objById = data.Where(x => x.id == id).FirstOrDefault();
-                    return objById;
-                }
-                else
-                {
-                    var msg = int.Parse(jsonData["msg"].ToString());
-                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + msg.ToString());
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + ex.ToString());
-            }
-            return null;
-        }
-
-        public async Task<List<ArticleFeModel>> GetQuestionsByTitle(string title)
-        {
-            try
-            {
-                var obj = new Dictionary<string, object>
-                {
-                    { "category_id","24" }
+                    { "category_id",id }
                 };
                 var result = await POST("api/news/get-list-by-categoryid.json", obj);
                 var jsonData = JObject.Parse(result);
@@ -158,14 +170,14 @@ namespace HuloToys_Front_End.Controllers.Support.Business
                 else
                 {
                     var msg = int.Parse(jsonData["msg"].ToString());
-                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + msg.ToString());
+                    LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetArticlesByTitle-SupportServices:" + msg.ToString());
 
                 }
 
             }
             catch (Exception ex)
             {
-                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetListPolicy-SupportServices:" + ex.ToString());
+                LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetArticlesByTitle-SupportServices:" + ex.ToString());
             }
             return null;
         }
