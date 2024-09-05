@@ -312,7 +312,7 @@ var global_service = {
         }
         return text
     },
-     CorrectImage: function (image) {
+    CorrectImage: function (image) {
          var img_src = image
          if (img_src == null || img_src == undefined) return ''
          if (!img_src.includes(API_URL.StaticDomain)
@@ -321,6 +321,13 @@ var global_service = {
             && !img_src.includes("base64,"))
              img_src = API_URL.StaticDomain + image
         return img_src
-    }
+    },
+    Select2WithFixedOptionAndSearch: function (element, placeholder = "Vui lòng chọn...") {
+      
+        element.select2({
+            placeholder: placeholder,
+        });
+    },
+    
 
 }

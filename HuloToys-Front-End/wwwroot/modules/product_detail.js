@@ -259,6 +259,16 @@ var product_detail = {
     },
     AddToCart: function () {
         var product = product_detail.GetSubProductSessionByAttributeSelected()
+        if (product == undefined) {
+            var json = sessionStorage.getItem(STORAGE_NAME.ProductDetail)
+            if (json != undefined && json.trim() != '') {
+                product = JSON.parse(json).product_main
+               
+            }
+        }
+        if (product == undefined) {
+            window.location.reload()
+        }
         var usr = global_service.CheckLogin()
         var account_client_id=0
         if (usr) {

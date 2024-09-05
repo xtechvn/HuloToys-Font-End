@@ -8,6 +8,8 @@ var cart = {
         $('.select-delivery .list-option').fadeOut()
         $('.select-bank .list-option').fadeOut()
         $('.voucher ').hide()
+        cart.OrderAddress()
+
     },
     DynamicBind: function () {
         $("body").on('click', ".select-delivery .tt, .select-bank .tt ", function () {
@@ -45,6 +47,24 @@ var cart = {
         $("body").on('click', ".btn-confirm-cart", function () {
             cart.ConfirmCart()
         });
+    },
+    OrderAddress: function () {
+        var request = {
+
+        }
+        $.when(
+            global_service.POST(API_URL.AddressPopup, request)
+        ).done(function (result) {
+            $('body').append(result)
+            address_client.Initialization()
+            address_client.DynamicConfirmAddress(function (data) {
+                cart.ConfirmCartAddress(data)
+            })
+        })
+    },
+    ConfirmCartAddress: function (data) {
+        
+        debugger
     },
     CartItem: function () {
         var usr = global_service.CheckLogin()

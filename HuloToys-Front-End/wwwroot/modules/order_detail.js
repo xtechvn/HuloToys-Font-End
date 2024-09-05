@@ -8,13 +8,31 @@ var order_detail = {
     },
     Initialization: function () {
         $('.content-left-user').addClass('placeholder')
+        $('.content-left-user .list-tab-menu .my-order-detail').addClass('active')
+        $('.content-left-user .list-tab-menu .my-order-detail').addClass('active')
 
         order_detail.DynamicBind()
         order_detail.Detail()
 
+        
+       
     },
     DynamicBind: function () {
        
+    },
+    OrderAddress: function () {
+        var request = {
+
+        }
+        $.when(
+            global_service.POST(API_URL.AddressPopup, request)
+        ).done(function (result) {
+            $('body').append(result)
+            address_client.Initialization()
+            address_client.DynamicConfirmAddress(function (data) {
+                order_detail.ConfirmOrderAddress(data)
+            })
+        })
     },
     Detail: function () {
         var request = {
@@ -43,7 +61,7 @@ var order_detail = {
         $('.btn-review').hide()
         $('#order-no').html(order.orderno)
         var status_name = GLOBAL_CONSTANTS.OrderStatus.filter(obj => {
-            return obj.id == order.status
+            return obj.id == order.orderstatus
         })
         $('.status-name').html(status_name[0].name)
         $('.created-time').html(global_service.DateTimeDotNetToString(order.createddate, true))
@@ -122,6 +140,7 @@ var order_detail = {
         $('.progress-confirmed').find('.date-time').show()
 
         $('.content-left-user').removeClass('placeholder')
+        order_detail.OrderAddress()
 
     },
     RenderOrderProduct: function ( order_detail_object) {
@@ -152,5 +171,8 @@ var order_detail = {
             }
         })
         return variation_value
-    }
+    },
+    ConfirmOrderAddress: function (data) {
+        debugger
+    },
 }

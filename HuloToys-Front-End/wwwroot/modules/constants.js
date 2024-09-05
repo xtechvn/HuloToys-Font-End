@@ -22,6 +22,13 @@ var API_URL = {
     QRCode: '/Order/QRCode',
     StaticDomain: 'https://static-image.adavigo.com',
     OrderListing: '/Order/Listing',
+    AddressList: '/Client/AddressList',
+    AddressDetail: '/Client/AddressDetail',
+    AddressPopup: '/Client/AddressPopup',
+    AddressProvince: '/Client/Province',
+    AddressDistrict: '/Client/District',
+    AddressWard: '/Client/Ward',
+    UpdateAddress: '/Client/SubmitAddress',
 
 }
 var NOTIFICATION_MESSAGE = {
@@ -67,6 +74,9 @@ var GLOBAL_CONSTANTS = {
 }
 var HTML_CONSTANTS = {
     GoogleAccountNotRegistered : '<span class="err err-gg-account" style=" width: 100%; text-align: -webkit-center; ">Tài khoản Google chưa được đăng ký, vui lòng điền đầy đủ thông tin và nhấn tạo tài khoản</span>',
+    Global: {
+        SelectOption:`<option value="{value}">{name}</option>`
+    },
     Home: {
         SlideProductItem:` <div class="swiper-slide">
                             <div class="item-product">
@@ -259,7 +269,7 @@ var HTML_CONSTANTS = {
     },
     Address: {
         GridItem:` <div class="item address-item {active}" data-id="{id}">
-                            <span class="defauld" style="{default-address-stype}">Đặt làm mặc định</span>
+                            <span class="defauld" style="{default-address-style}">Đặt làm mặc định</span>
                             <h3 class="name">{name}</h3>
                             <p class="add">
                                {address}
