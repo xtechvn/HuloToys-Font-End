@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuloToys-Front-End", "HuloToys-Front-End\HuloToys-Front-End.csproj", "{EFFDDF67-4B59-4B82-AD9E-7AC6147EC30D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HuloToys-Front-End", "HuloToys-Front-End\HuloToys-Front-End.csproj", "{EFFDDF67-4B59-4B82-AD9E-7AC6147EC30D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIOLIFE", "BIOLIFE\BIOLIFE.csproj", "{424FF8A5-656A-4D7E-A6A4-36B151E066A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EFFDDF67-4B59-4B82-AD9E-7AC6147EC30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFFDDF67-4B59-4B82-AD9E-7AC6147EC30D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFFDDF67-4B59-4B82-AD9E-7AC6147EC30D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{424FF8A5-656A-4D7E-A6A4-36B151E066A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{424FF8A5-656A-4D7E-A6A4-36B151E066A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{424FF8A5-656A-4D7E-A6A4-36B151E066A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{424FF8A5-656A-4D7E-A6A4-36B151E066A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

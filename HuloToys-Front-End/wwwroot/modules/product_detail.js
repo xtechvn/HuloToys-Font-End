@@ -67,20 +67,15 @@ var product_detail = {
     RenderDetail: function (product,product_sub) {
         var html = ''
         var img_src = product.avatar
-        if (!img_src.includes(API_URL.StaticDomain)
-            && !img_src.includes("data:image")
-            && !img_src.includes("http"))
-            img_src = API_URL.StaticDomain + product.avatar
+        img_src = global_service.CorrectImage(product.avatar)
+
 
         html += HTML_CONSTANTS.Detail.Images
             .replaceAll('{src}', img_src)
 
         $(product.images).each(function (index, item) {
-            img_src = item
-            if (!img_src.includes(API_URL.StaticDomain)
-                && !img_src.includes("data:image")
-                && !img_src.includes("http"))
-                img_src = API_URL.StaticDomain + item
+
+           img_src= global_service.CorrectImage(item)
             html += HTML_CONSTANTS.Detail.Images
                 .replaceAll('{src}', img_src)
 
@@ -143,9 +138,11 @@ var product_detail = {
                 var html_item=''
                 if (attr_detail != undefined && attr_detail.length > 0) {
                     $(attr_detail).each(function (index_detail, attribute_detail) {
+                        img_src = global_service.CorrectImage(attribute_detail.img)
+
                         html_item += HTML_CONSTANTS.Detail.Tr_Attributes_Td_li
                             .replaceAll('{active}', '')
-                            .replaceAll('{src}', attribute_detail.img != undefined && attribute_detail.img.trim() != '' ? '<img src="' + attribute_detail.img +'" />':'')
+                            .replaceAll('{src}', attribute_detail.img != undefined && attribute_detail.img.trim() != '' ? '<img src="' + img_src +'" />':'')
                             .replaceAll('{name}', attribute_detail.name)
                     })
                 }

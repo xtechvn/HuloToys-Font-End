@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\84385\\source\\Repos\\HuloToys-Font-End\\BIOLIFE\\BIOLIFE.csproj": {}
+    "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\BIOLIFE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\84385\\source\\Repos\\HuloToys-Font-End\\BIOLIFE\\BIOLIFE.csproj": {
+    "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\BIOLIFE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\84385\\source\\Repos\\HuloToys-Font-End\\BIOLIFE\\BIOLIFE.csproj",
+        "projectUniqueName": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\BIOLIFE.csproj",
         "projectName": "BIOLIFE",
-        "projectPath": "C:\\Users\\84385\\source\\Repos\\HuloToys-Font-End\\BIOLIFE\\BIOLIFE.csproj",
-        "packagesPath": "C:\\Users\\84385\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\84385\\source\\Repos\\HuloToys-Font-End\\BIOLIFE\\obj\\",
+        "projectPath": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\BIOLIFE.csproj",
+        "packagesPath": "C:\\Users\\cuong\\.nuget\\packages\\",
+        "outputPath": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\84385\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cuong\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -39,11 +39,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -68,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
