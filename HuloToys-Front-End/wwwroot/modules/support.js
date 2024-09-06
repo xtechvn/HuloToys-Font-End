@@ -1,6 +1,60 @@
 ﻿$(document).ready(function () {
     var Path = window.location.href;
     var IdPath = _support.extractValues(Path)[1];
+
+    if (/^\d+$/.test(IdPath) && Path.match('/chinh-sach/')) {
+        $.ajax({
+            url: "/Support/GetCategoryById",
+            type: 'post',
+            data: { id: IdPath },
+            success: function (data) {
+                NamePath = data.name;
+                if (NamePath != null) {
+                    _support.GetBodyArticle(IdPath, NamePath);
+                }
+            }
+        })
+    }
+    else if ((Path.match('/chinh-sach/') || Path.match('/cham-soc-khach-hang'))) {
+        _support.GetMenuPolicy().then(() => {
+            var IdDefault = $('#IDdefaultOption').text();
+            var UrlDefault = $('#NamedefaultOption').text();
+            _support.GetBodyArticle(IdDefault, UrlDefault);
+        });
+    }
+    else if (Path.match('/questions/')) {
+        _support.GetBodyQuestion(IdPath);
+    }
+
+
+    $("#search-input").on('keyup', function (e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
+            _support.SearchQuestion();
+        }
+    });
+
+    var lst_IdCate = "";
+    $.ajax({
+        url: "/Support/GetCategories",
+        type: 'post',
+        data: null,
+        success: function (rs) {
+            rs.forEach(item => {
+                if (lst_IdCate) {
+                    lst_IdCate = lst_IdCate + "," + item.id;
+                }
+                else {
+                    lst_IdCate = lst_IdCate + item.id;
+                }
+            });
+            lst_IdCate = lst_IdCate + ",28";//Add id of Common Question to ListId
+            sessionStorage.setItem("list_idCate", lst_IdCate);
+        },
+
+    });
+
+
     window.onpopstate = function (event) {
         var currentPath = window.location.href;
         IdPath = _support.extractValues(currentPath)[1];
@@ -29,58 +83,7 @@
         }
     };
 
-    if (/^\d+$/.test(IdPath) && Path.match('/chinh-sach/')) {
-        $.ajax({
-            url: "/Support/GetCategoryById",
-            type: 'post',
-            data: { id: IdPath },
-            success: function (data) {
-                NamePath = data.name;
-                if (NamePath != null) {
-                    _support.GetBodyArticle(IdPath, NamePath);
-                }
-            }
-        })
-    }
-    else if ((Path.match('/chinh-sach/') || Path.match('/cham-soc-khach-hang'))) {
-        _support.GetMenuPolicy().then(() => {
-            var IdDefault = $('#IDdefaultOption').text();
-            var UrlDefault = $('#NamedefaultOption').text();
-            _support.GetBodyArticle(IdDefault, UrlDefault);
-        });
-    }
-    else if (Path.match('/questions/'))
-    {
-        _support.GetBodyQuestion(IdPath);
-    }
    
-
-    $("#search-input").on('keyup', function (e) {
-        if (e.key === 'Enter' || e.keyCode === 13) {
-            e.preventDefault();
-            _support.SearchQuestion();
-        }
-    });
-
-    var lst_IdCate = "";
-    $.ajax({
-        url: "/Support/GetCategories",
-        type: 'post',
-        data: null,
-        success: function (rs) {
-            rs.forEach(item => {
-                if (lst_IdCate) {
-                    lst_IdCate = lst_IdCate + "," + item.id;
-                }
-                else {
-                    lst_IdCate = lst_IdCate + item.id;
-                }
-            });
-            lst_IdCate = lst_IdCate + ",28";//Add id of Common Question to ListId
-            sessionStorage.setItem("list_idCate", lst_IdCate);
-        },
-
-    });
 })
 
 var _support =
@@ -138,8 +141,9 @@ var _support =
             type: 'post',
             data: { id: id},
             success: function (data) {
-                var currentPath = window.location.pathname;
-                if (currentPath != "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname) + "-" + id) {
+                var currentPath = window.location.href;
+                var PathNext = "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname) + "-" + id;
+                if (!currentPath.includes(PathNext) ) {
                     window.history.pushState('string', '', "/chinh-sach/" + global_service.convertVietnameseToUnsign(urlname) + "-" + id) 
                 }
                 $(".content-policy").html('');
@@ -181,10 +185,11 @@ var _support =
         $.ajax({
             url: "/Support/GetBodyArticle",
             type: 'post',
-            data: { id: id},
+            data: { id: id },
             success: function (data) {
-                var currentPath = window.location.pathname;
-                if (currentPath != "/questions/" + global_service.convertVietnameseToUnsign(data.title) + "-" + id)
+                var currentPath = window.location.href;
+                var PathNext = '/questions/' + global_service.convertVietnameseToUnsign(data.title) + '-' + id;
+                if (!currentPath.includes(PathNext))
                 {
                     window.history.pushState('string', '', "/questions/" + global_service.convertVietnameseToUnsign(data.title) + "-" + id)
                 }
