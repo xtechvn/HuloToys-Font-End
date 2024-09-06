@@ -17,17 +17,10 @@ namespace HuloToys_Front_End.Controllers.Product
             _productServices = new ProductServices(configuration);
 
         }
-        public async Task<ActionResult> Detail(string product_code, string title)
+        public ActionResult Detail(string product_code, string title)
         {
-            try
-            {
-
-               
-                ViewBag.ProductCode = product_code;
-                return View();
-            }
-            catch {}
-            return Redirect("/Error");
+            ViewBag.ProductCode = product_code;
+            return View();
 
         }
         public async Task<IActionResult> ProductDetail(ProductDetailRequestModel request)

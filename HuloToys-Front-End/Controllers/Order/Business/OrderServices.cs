@@ -19,7 +19,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
         }
 
 
-        public async Task<OrdersGeneralResponseModel> GetDetail(OrdersGeneralRequestModel request)
+        public async Task<OrderDetailMongoDbModel> GetDetail(OrdersGeneralRequestModel request)
         {
             try
             {
@@ -30,7 +30,27 @@ namespace HuloToys_Front_End.Controllers.Client.Business
 
                 if (status == (int)ResponseType.SUCCESS)
                 {
-                    return JsonConvert.DeserializeObject<OrdersGeneralResponseModel>(jsonData["data"].ToString());
+                    return JsonConvert.DeserializeObject<OrderDetailMongoDbModel>(jsonData["data"].ToString());
+                }
+            }
+            catch
+            {
+            }
+            return null;
+
+        }
+        public async Task<OrderHistoryDetailResponseModel> GetHistoryDetail(OrderHistoryDetailRequestModel request)
+        {
+            try
+            {
+
+                var result = await POST(_configuration["API:order_history_detail"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<OrderHistoryDetailResponseModel>(jsonData["data"].ToString());
                 }
             }
             catch

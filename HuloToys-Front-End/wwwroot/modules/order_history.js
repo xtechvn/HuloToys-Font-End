@@ -24,15 +24,10 @@ var order_history = {
         });
     },
     Detail: function () {
-        var usr = global_service.CheckLogin()
-        if (usr == undefined || usr.account_client_id == undefined) {
-            window.location.href='/'
-        }
-        $('.box-quanlytaikhoan .avatar img').attr('src', usr.avatar == undefined ? '/images/img-search.png' : usr.avatar)
-        $('.box-quanlytaikhoan .box-name .name').html(usr.name)
+      
         var request = {
             "client_id": usr.account_client_id,
-            "status": $('.list-tab .active a').attr('order-tab'),
+            "status": $('.list-tab .active a').attr('data-id'),
             "page_index": order_history.Data.Index,
             "page_size": order_history.Data.Size
         }
