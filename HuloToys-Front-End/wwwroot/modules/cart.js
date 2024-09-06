@@ -32,6 +32,22 @@ var cart = {
         $("body").on('click', "#lightbox-delete-cart .btn-save", function () {
             cart.ConfirmRemoveCartItem()
         });
+        $("body").on('click', ".box-checkbox-all", function () {
+            var element = $(this)
+            var checkbox= element.closest('.box-checkbox').find('input')
+            if (!checkbox.is(":checked")) {
+                $('.table-addtocart .box-checkbox').each(function (index_var, variation_item) {
+                    var element_product = $(this)
+                    element_product.find('input').prop('checked', true)
+                })
+            } else {
+                $('.table-addtocart .box-checkbox').each(function (index_var, variation_item) {
+                    var element_product = $(this)
+                    element_product.find('input').prop('checked', false)
+                })
+            }
+            cart.ReRenderAmount()
+        });
         $("body").on('click', ".box-checkbox-label,.delivery .list-option label,.pay .list-option label", function () {
             var element = $(this)
             element.closest('.box-checkbox').find('input').click()
@@ -41,7 +57,7 @@ var cart = {
                 element.closest('.list-option').fadeOut()
             }
         });
-        $("body").on('click', ".box-checkbox input, .number-input button, .checkbox-cart", function () {            
+        $("body").on('click', ".box-checkbox, .number-input button, .checkbox-cart", function () {            
             cart.ReRenderAmount()
         });
         $("body").on('click', ".btn-confirm-cart", function () {
@@ -191,6 +207,7 @@ var cart = {
     RemoveCartItem: function (data_id) {
         $('#lightbox-delete-cart').addClass('overlay-active')
         $('#lightbox-delete-cart').attr('data-cart-id', data_id)
+
     },
     ConfirmRemoveCartItem: function () {
         var data_id = $('#lightbox-delete-cart').attr('data-cart-id')
@@ -211,10 +228,8 @@ var cart = {
         $.when(
             global_service.POST(API_URL.CartDelete, request)
         ).done(function (result) {
-            for (var i = 0; i < $('.table-addtocart .product').length; i++) {
-                global_service.DecreaseCartCount()
-
-            }
+            sessionStorage.removeItem(STORAGE_NAME.CartCount)
+            global_service.LoadCartCount()
         })
         $('#lightbox-delete-cart').removeClass('overlay-active')
        
@@ -242,6 +257,7 @@ var cart = {
                     "account_client_id": usr.account_client_id,
                     "payment_type": $('input[name="select-bank"]:checked').val(),
                     "delivery_type": $('input[name="select-delivery"]:checked').val(),
+                    "address": 
                 }
                 $.when(
                     global_service.POST(API_URL.CartConfirm, request)
@@ -249,7 +265,8 @@ var cart = {
                     if (result.is_success && result.data != undefined) {
                         request.result = result.data
                         sessionStorage.setItem(STORAGE_NAME.Order, JSON.stringify(request))
-                        global_service.DecreaseCartCount()
+                        sessionStorage.removeItem(STORAGE_NAME.CartCount)
+                        global_service.LoadCartCount()
 
                         window.location.href = '/order/payment/' + result.data.id
 
