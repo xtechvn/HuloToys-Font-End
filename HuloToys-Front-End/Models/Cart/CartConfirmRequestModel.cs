@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HuloToys_Service.Models.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Models.APIRequest
         public int delivery_type { get; set; }
 
         public List<CartConfirmItemRequestModel> carts { get; set; }
+        public AddressClientFEModel address { get; set; }
     }
     public class CartConfirmItemRequestModel
     {

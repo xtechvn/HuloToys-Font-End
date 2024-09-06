@@ -4,7 +4,9 @@
     CartCount: 'CartCount',
     BuyNowItem: 'BuyNowItem',
     SubProduct: 'SubProduct',
-    Order: 'Order'
+    Order: 'Order',
+    AddressClient: 'AddressClient',
+    CartAddress: 'CartAddress'
 
 }
 var API_URL = {
@@ -29,6 +31,7 @@ var API_URL = {
     AddressDistrict: '/Client/District',
     AddressWard: '/Client/Ward',
     UpdateAddress: '/Client/SubmitAddress',
+    DefaultAddress: '/Client/DefaultAddress',
 
 }
 var NOTIFICATION_MESSAGE = {

@@ -41,7 +41,7 @@ var cart = {
                 element.closest('.list-option').fadeOut()
             }
         });
-        $("body").on('click', ".box-checkbox input, .number-input button", function () {            
+        $("body").on('click', ".box-checkbox input, .number-input button, .checkbox-cart", function () {            
             cart.ReRenderAmount()
         });
         $("body").on('click', ".btn-confirm-cart", function () {
@@ -49,6 +49,7 @@ var cart = {
         });
     },
     OrderAddress: function () {
+        cart.RenderDefaultAddress();
         var request = {
 
         }
@@ -62,9 +63,31 @@ var cart = {
             })
         })
     },
+    RenderDefaultAddress: function () {
+        var usr = global_service.CheckLogin()
+        if (usr == undefined || usr.account_client_id == undefined) {
+            return
+        }
+        var request = {
+            "account_client_id": usr.account_client_id
+        }
+        $.when(
+            global_service.POST(API_URL.DefaultAddress, request)
+        ).done(function (result) {
+            if (result.is_success) {
+                cart.ConfirmCartAddress(result.data)
+
+            }
+        })
+    },
     ConfirmCartAddress: function (data) {
-        
-        debugger
+        if (data != undefined && data.id != undefined) {
+            $('#address-receivername').attr('data-id', data.id)
+            $('#address-receivername').html(data.receivername)
+            $('#address-phone').html(data.phone)
+            $('#address').html(address_client.RenderDetailAddress(data))
+            sessionStorage.setItem(STORAGE_NAME.CartAddress, JSON.stringify(data))
+        }
     },
     CartItem: function () {
         var usr = global_service.CheckLogin()

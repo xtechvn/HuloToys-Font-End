@@ -173,6 +173,24 @@ var order_detail = {
         return variation_value
     },
     ConfirmOrderAddress: function (data) {
+        if (data != undefined && data.id != undefined) {
+            $('#address-receivername').attr('data-id', data.id)
+            $('#address-receivername').html(data.receivername)
+            $('#address-phone').html(data.phone)
+            var address = data.address
+            var address_select = '<br /> '
+            if (data.province_detail != null && data.province_detail != undefined && data.province_detail.id != undefined) {
+                address_select += data.province_detail.name
+            }
+            if (data.district_detail != null && data.district_detail != undefined && data.district_detail.id != undefined) {
+                address_select += data.district_detail.name
+            }
+            if (data.ward_detail != null && data.ward_detail != undefined && data.ward_detail.id != undefined) {
+                address_select += data.ward_detail.name
+            }
+            $('#address').html(data.address + address_select)
+
+        }
         debugger
     },
 }

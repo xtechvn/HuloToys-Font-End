@@ -131,5 +131,15 @@ namespace HuloToys_Front_End.Controllers.Client
                 is_success = result
             });
         }
+        public async Task<IActionResult> DefaultAddress(ClientAddressGeneralRequestModel request)
+        {
+            var result = await _addressClientServices.DefaultAddress(request);
+
+            return Ok(new
+            {
+                is_success = (result != null),
+                data = result
+            });
+        }
     }
 }

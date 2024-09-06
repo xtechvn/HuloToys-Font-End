@@ -1,15 +1,8 @@
 ﻿using HuloToys_Front_End.Utilities.Lib;
-using HuloToys_Service.Models;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using System.Net.Http;
-using Microsoft.AspNetCore.Identity;
-using System.Reflection;
-using HuloToys_Front_End.Models.Client;
 using HuloToys_Front_End.Utilities.Contants;
-using LIB.Models.APIRequest;
 using HuloToys_Service.Models.Client;
-using Entities.Models;
 using HuloToys_Service.Models.Address;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
@@ -81,6 +74,25 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             {
             }
             return false;
+
+        }
+        public async Task<AddressClientFEModel> DefaultAddress(ClientAddressGeneralRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:address_client_default"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<AddressClientFEModel>(jsonData["data"].ToString());
+                }
+            }
+            catch
+            {
+            }
+            return null;
 
         }
     }
