@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     var Path = window.location.href;
-    var IdPath = _support.extractValues(Path)[1];
+    var GetUrl = _support.extractValues(Path);
+    var IdPath = (GetUrl != null && GetUrl.length == 2) ? _support.extractValues(Path)[1] : null;
 
     if (/^\d+$/.test(IdPath) && Path.match('/chinh-sach/')) {
         $.ajax({
