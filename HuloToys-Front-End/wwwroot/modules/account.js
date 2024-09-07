@@ -143,8 +143,14 @@ var account = {
                 }
                 else {
                     $(':input[type="submit"]').prop('disabled', false);
-                    $('#dangky .user input').closest('.form-group').find('.err').show()
-                    $('#dangky .user input').closest('.form-group').find('.err').html(NOTIFICATION_MESSAGE.RegisterIncorrect)
+                    if (res.data.msg.toLowerCase().includes('email')) {
+                        $('#dangky .email input').closest('.form-group').find('.err').show()
+                        $('#dangky .email input').closest('.form-group').find('.err').html(res.data.msg)
+                    } else {
+                        $('#dangky .user input').closest('.form-group').find('.err').show()
+                        $('#dangky .user input').closest('.form-group').find('.err').html(res.data.msg)
+                    }
+                   
                     element.html('Đăng ký')
 
                 }

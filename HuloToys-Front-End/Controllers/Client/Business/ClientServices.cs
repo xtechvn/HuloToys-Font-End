@@ -37,7 +37,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             return null;
 
         }
-        public async Task<string> Register(ClientRegisterRequestModel request)
+        public async Task<ClientRegisterResponseModel> Register(ClientRegisterRequestModel request)
         {
             try
             {
@@ -46,11 +46,8 @@ namespace HuloToys_Front_End.Controllers.Client.Business
                 var result = await POST(_configuration["API:Register"], request);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
+                return JsonConvert.DeserializeObject<ClientRegisterResponseModel>(result); ;
 
-                if (status == (int)ResponseType.SUCCESS)
-                {
-                    return jsonData["data"].ToString();
-                }
             }
             catch
             {

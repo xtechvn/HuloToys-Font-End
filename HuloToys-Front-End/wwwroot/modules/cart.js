@@ -118,11 +118,13 @@ var cart = {
             ).done(function (result) {
                 if (result.is_success && result.data && result.data.length > 0) {
                     cart.RenderCartItem(result.data)
+                    cart.RenderBuyNowSelection()
                 }
                 else {
                     $('#main').html(HTML_CONSTANTS.Cart.Empty)
 
                 }
+                
             })
 
         } else {
@@ -140,6 +142,7 @@ var cart = {
         $(list).each(function (index, item) {
             var html_item = HTML_CONSTANTS.Cart.Product
                 .replaceAll('{id}', item._id)
+                .replaceAll('{product_id}', item.product._id)
                 .replaceAll('{amount}', item.product.amount)
                 .replaceAll('{name}', item.product.name)
                 .replaceAll('{amount_display}', global_service.Comma(item.product.amount))
@@ -180,6 +183,22 @@ var cart = {
         //--Render Amount:
         cart.ReRenderAmount()
         cart.RenderCartNumberOfProduct()
+    },
+    RenderBuyNowSelection: function () {
+        var buy_now_item = sessionStorage.getItem(STORAGE_NAME.BuyNowItem)
+        if (buy_now_item) {
+            var buy_now = JSON.parse(buy_now_item)
+            $('.table-addtocart .product').each(function (index, item) {
+                var element = $(this)
+                if (element.attr('data-product-id') == buy_now.product_id) {
+                    element.find('.checkbox-cart').prop('checked', true)
+                    cart.ReRenderAmount()
+                    return false
+                }
+            })
+            sessionStorage.removeItem(STORAGE_NAME.BuyNowItem)
+        }
+        
     },
     RenderCartNumberOfProduct: function () {
         $('.total-sp').html('(' + $('.table-addtocart .product').length + ' sản phẩm) ')

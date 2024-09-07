@@ -3,6 +3,7 @@
 })
 var product_detail = {
     Initialization: function () {
+        $('#thanhcong').removeClass('overlay-active')
 
         product_detail.ShowLoading()
         sessionStorage.removeItem(STORAGE_NAME.ProductDetail)
@@ -257,7 +258,7 @@ var product_detail = {
             $('.buy-now').removeClass('button-disabled')
         }
     },
-    AddToCart: function () {
+    AddToCart: function (buy_now=false) {
         var product = product_detail.GetSubProductSessionByAttributeSelected()
         if (product == undefined) {
             var json = sessionStorage.getItem(STORAGE_NAME.ProductDetail)
@@ -302,18 +303,34 @@ var product_detail = {
         $('#thanhcong .btn-go-to-cart').html('Xem giỏ hàng')
     },
     BuyNow: function () {
-        var product = product_detail.GetProductDetailSession()
+        var product = product_detail.GetSubProductSessionByAttributeSelected()
+        if (product == undefined) {
+            var json = sessionStorage.getItem(STORAGE_NAME.ProductDetail)
+            if (json != undefined && json.trim() != '') {
+                product = JSON.parse(json).product_main
+
+            }
+        }
+        if (product == undefined) {
+            window.location.reload()
+        }
         var usr = global_service.CheckLogin()
         var account_client_id = 0
         if (usr) {
             account_client_id = usr.account_client_id
             var request = {
-                "product": product,
-                "quanity": parseInt($('#box-detail-stock .quantity').val()),
+                "product_id": product._id,
+                "quanity": parseInt($('.box-detail-stock .quantity').val()),
                 "account_client_id": account_client_id
             }
-            sessionStorage.setItem(STORAGE_NAME.BuyNowItem, JSON.parse(request))
-            window.location.href = '/Order/Payment'
+            $.when(
+                global_service.POST(API_URL.AddToCart, request)
+            ).done(function (result) {
+                if (result.is_success && result.data) {
+                    sessionStorage.setItem(STORAGE_NAME.BuyNowItem, JSON.stringify(request) )
+                    window.location.href ='/cart'
+                }
+            })
         }
         else {
             $('.mainheader .client-login').click()

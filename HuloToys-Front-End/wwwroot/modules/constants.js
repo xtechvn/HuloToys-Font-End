@@ -176,7 +176,7 @@ var HTML_CONSTANTS = {
                             </tr>`
     },
     Cart: {
-        Product:`<div class="product" data-cart-id="{id}" data-amount="{amount}">
+        Product:`<div class="product" data-cart-id="{id}" data-product-id="{product_id}" data-amount="{amount}">
                             <div class="product-checkall">
                                 <div class="box-checkbox">
                                     <input type="checkbox" name="checkbox-cart-product" class="checkbox-cart" />

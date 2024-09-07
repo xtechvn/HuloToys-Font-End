@@ -57,7 +57,7 @@ namespace HuloToys_Front_End.Controllers.Client
 
             return Ok(new
             {
-                is_success = result != null,
+                is_success = (result != null && result.data!=null && result.data.Trim() != ""),
                 data = result
             });
         } 
