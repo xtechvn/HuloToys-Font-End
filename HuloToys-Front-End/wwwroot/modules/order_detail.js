@@ -191,6 +191,6 @@ var order_detail = {
             $('#address').html(data.address + address_select)
 
         }
-        debugger
+        
     },
 }

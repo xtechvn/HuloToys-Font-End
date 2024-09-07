@@ -67,26 +67,20 @@ var global_service = {
     LoadCartCount: function () {
         var usr = global_service.CheckLogin()
         if (usr) {
-            var cart_count = sessionStorage.getItem(STORAGE_NAME.CartCount)
-            if (cart_count) {
-                $('#carts .badge').html(cart_count)
-            } else {
-                $.ajax({
-                    url: API_URL.CartCount,
-                    type: 'post',
-                    data: {
-                        request: {
-                            account_client_id: usr.account_client_id
-                        }
-                    },
-                    success: function (result) {
-                        if (result.is_success && result.data) {
-                            $('#carts .badge').html(result.data)
-                            sessionStorage.setItem(STORAGE_NAME.CartCount, result.data)
-                        } else { $('#carts .badge').html('0') }
-                    },
-                });
-            }
+            $.ajax({
+                url: API_URL.CartCount,
+                type: 'post',
+                data: {
+                    request: {
+                        account_client_id: usr.account_client_id
+                    }
+                },
+                success: function (result) {
+                    if (result.is_success && result.data) {
+                        $('#carts .badge').html(result.data)
+                    } else { $('#carts .badge').html('0') }
+                },
+            });
         }
         else {
             $('#carts .badge').html('0')
@@ -247,7 +241,7 @@ var global_service = {
                     }
                     if (has_price) {
                         html += HTML_CONSTANTS.Home.SlideProductItem
-                            .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(item.name).replaceAll(' ', '-') + '--' + item._id)
+                            .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(global_service.RemoveSpecialCharacters(item.name)).replaceAll(' ', '-') + '--' + item._id)
                             .replaceAll('{avt}', img_src)
                             .replaceAll('{name}', item.name)
                             .replaceAll('{amount}', amount_html)
@@ -277,24 +271,7 @@ var global_service = {
             return
         }
     },
-    IncreaseCartCount: function () {
-        var cart_count = sessionStorage.getItem(STORAGE_NAME.CartCount)
-        if (cart_count) {
-            sessionStorage.setItem(STORAGE_NAME.CartCount, (parseInt(cart_count) + 1))
-        } else {
-            sessionStorage.setItem(STORAGE_NAME.CartCount, 1)
-        }
-        global_service.LoadCartCount()
-    },
-    DecreaseCartCount: function () {
-        var cart_count = sessionStorage.getItem(STORAGE_NAME.CartCount)
-        if (cart_count) {
-            sessionStorage.setItem(STORAGE_NAME.CartCount, (parseInt(cart_count) - 1))
-        } else {
-            sessionStorage.setItem(STORAGE_NAME.CartCount, 0)
-        }
-        global_service.LoadCartCount()
-    },
+  
     DateTimeToString: function (date, has_time=false) {
         var text = ("0" + date.getDate()).slice(-2) + '/' + ("0" + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear() ;
         if (has_time == true) {
@@ -329,5 +306,9 @@ var global_service = {
         });
     },
     
+    RemoveSpecialCharacters: function(value) {
+        value = value.replace(/[^a-zA-Z0-9 ]/g, '');
+        return value.trim();
+    }
 
 }

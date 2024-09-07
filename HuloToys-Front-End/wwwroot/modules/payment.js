@@ -60,7 +60,7 @@ var payment = {
                     global_service.POST(API_URL.QRCode, request)
                 ).done(function (result) {
                     if (result.is_success && result.data) {
-                        debugger
+                        
                         $('.box-payment-info .img-qr img').attr('src', result.data)
                     }
                 })

@@ -28,13 +28,15 @@ var cart = {
         $("body").on('click', ".section-cart .table-addtocart .remove-product", function () {
             var element = $(this)
             cart.RemoveCartItem(element.closest('.product').attr('data-cart-id'))
+
         });
         $("body").on('click', "#lightbox-delete-cart .btn-save", function () {
             cart.ConfirmRemoveCartItem()
+
         });
         $("body").on('click', ".box-checkbox-all", function () {
             var element = $(this)
-            var checkbox= element.closest('.box-checkbox').find('input')
+            var checkbox = element.closest('.box-checkbox').find('input')
             if (!checkbox.is(":checked")) {
                 $('.table-addtocart .box-checkbox').each(function (index_var, variation_item) {
                     var element_product = $(this)
@@ -57,7 +59,7 @@ var cart = {
                 element.closest('.list-option').fadeOut()
             }
         });
-        $("body").on('click', ".box-checkbox, .number-input button, .checkbox-cart", function () {            
+        $("body").on('click', ".box-checkbox, .number-input button, .checkbox-cart", function () {
             cart.ReRenderAmount()
         });
         $("body").on('click', ".btn-confirm-cart", function () {
@@ -127,7 +129,7 @@ var cart = {
             $('#main').html(HTML_CONSTANTS.Cart.Empty)
             $('.mainheader .client-login').click()
         }
-     
+
 
     },
     RenderCartItem: function (list) {
@@ -137,13 +139,13 @@ var cart = {
         //-- Table Product
         $(list).each(function (index, item) {
             var html_item = HTML_CONSTANTS.Cart.Product
-                .replaceAll('{id}',item._id)
+                .replaceAll('{id}', item._id)
                 .replaceAll('{amount}', item.product.amount)
                 .replaceAll('{name}', item.product.name)
                 .replaceAll('{amount_display}', global_service.Comma(item.product.amount))
                 .replaceAll('{quanity}', global_service.Comma(item.quanity))
                 .replaceAll('{total_amount}', global_service.Comma(item.total_amount))
-            var variation_value=''
+            var variation_value = ''
             $(item.product.variation_detail).each(function (index_var, variation_item) {
                 var attribute = item.product.attributes.filter(obj => {
                     return obj._id === variation_item.id
@@ -153,7 +155,7 @@ var cart = {
                 })
                 variation_value += attribute[0].name + ':' + attribute_detail[0].name
                 if (index_var < ($(item.product.variation_detail).length - 1)) {
-                    variation_value+=', <br />'
+                    variation_value += ', <br />'
                 }
             })
             var img_src = item.product.avatar
@@ -171,13 +173,16 @@ var cart = {
         });
         $('.section-cart .table-addtocart').html(html)
         $('.total-shipping-fee').hide()
-        $('.total-sp').html('('+ $('.table-addtocart .product').length+  ' sản phẩm) ')
 
 
         //-- Remove placeholder:
         $('.section-cart').removeClass('placeholder')
-      //--Render Amount:
+        //--Render Amount:
         cart.ReRenderAmount()
+        cart.RenderCartNumberOfProduct()
+    },
+    RenderCartNumberOfProduct: function () {
+        $('.total-sp').html('(' + $('.table-addtocart .product').length + ' sản phẩm) ')
 
     },
     ReRenderAmount: function () {
@@ -230,6 +235,8 @@ var cart = {
         ).done(function (result) {
             sessionStorage.removeItem(STORAGE_NAME.CartCount)
             global_service.LoadCartCount()
+            cart.RenderCartNumberOfProduct()
+
         })
         $('#lightbox-delete-cart').removeClass('overlay-active')
        
@@ -257,7 +264,7 @@ var cart = {
                     "account_client_id": usr.account_client_id,
                     "payment_type": $('input[name="select-bank"]:checked').val(),
                     "delivery_type": $('input[name="select-delivery"]:checked').val(),
-                    "address": 
+                    "address": JSON.parse(sessionStorage.getItem(STORAGE_NAME.CartAddress)) 
                 }
                 $.when(
                     global_service.POST(API_URL.CartConfirm, request)

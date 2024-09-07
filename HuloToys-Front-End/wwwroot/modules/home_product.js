@@ -89,7 +89,7 @@ var home_product = {
 
                         }
                     html += HTML_CONSTANTS.Home.GridProductItem
-                        .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(item.product_name).replaceAll(' ', '-') + '--' + item.id)
+                        .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(global_service.RemoveSpecialCharacters( item.product_name)).replaceAll(' ', '-') + '--' + item.id)
                         .replaceAll('{avt}', global_service.CorrectImage(item.image_thumb))
                         .replaceAll('{name}', item.product_name)
                         .replaceAll('{amount}',  amount_html )

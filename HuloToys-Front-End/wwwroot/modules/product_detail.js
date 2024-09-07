@@ -283,7 +283,7 @@ var product_detail = {
             ).done(function (result) {
                 if (result.is_success && result.data) {
                     sessionStorage.removeItem(STORAGE_NAME.BuyNowItem)
-                    if (result.data == 1) global_service.IncreaseCartCount()
+                    global_service.LoadCartCount()
                     product_detail.SuccessAddToCart()
                 }
             })

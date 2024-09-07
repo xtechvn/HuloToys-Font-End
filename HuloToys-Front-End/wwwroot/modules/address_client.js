@@ -361,13 +361,13 @@ var address_client = {
             if (result.is_success) {
                 $('#update-address').removeClass('overlay-active')
 
-                var overlay_box = false
-                if ($('#address-book').hasClass('overlay')) {
-                    overlay_box = true
-                }
-                if (overlay_box) {
-                    $('#address-book').addClass('overlay-active')
-                }
+                //var overlay_box = false
+                //if ($('#address-book').hasClass('overlay')) {
+                //    overlay_box = true
+                //}
+                //if (overlay_box) {
+                //    $('#address-book').addClass('overlay-active')
+                //}
                 setTimeout(() => {
                     address_client.Detail($('#update-address').attr('data-id'))
                 }, 1000);
