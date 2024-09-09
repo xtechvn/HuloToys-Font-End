@@ -80,6 +80,11 @@ var cart = {
                 cart.ChangeCartQuanity(element.closest('.product'))
             }, 1500);
         });
+        $("body").on('click', "#lightbox-delete-cart .btn-back", function () {
+            $('#lightbox-delete-cart').removeClass('overlay-active')
+
+
+        });
     },
     OrderAddress: function () {
         cart.RenderDefaultAddress();
