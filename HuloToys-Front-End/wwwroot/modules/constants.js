@@ -6,8 +6,8 @@
     SubProduct: 'SubProduct',
     Order: 'Order',
     AddressClient: 'AddressClient',
-    CartAddress: 'CartAddress'
-
+    CartAddress: 'CartAddress',
+    ProductDetailSelected: 'ProductDetailSelected'
 }
 var API_URL = {
     Login:'/Client/Login',

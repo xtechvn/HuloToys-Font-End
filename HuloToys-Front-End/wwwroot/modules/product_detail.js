@@ -168,7 +168,7 @@ var product_detail = {
             else element.hide()
         })
         product_detail.RenderBuyNowButton()
-
+        product_detail.RenderSavedProductDetailAttributeSelected()
         product_detail.RemoveLoading()
     },
     GetProductDetailSession: function () {
@@ -290,6 +290,7 @@ var product_detail = {
             })
         }
         else {
+            product_detail.SaveProductDetailAttributeSelected()
             $('.mainheader .client-login').click()
             return
         }
@@ -334,9 +335,52 @@ var product_detail = {
         }
         else {
             $('.mainheader .client-login').click()
+            product_detail.SaveProductDetailAttributeSelected()
             return
         }
       
+    },
+    SaveProductDetailAttributeSelected: function () {
+        var selected = []
+        $('.box-info-details .attributes').each(function (index_detail, attribute_detail) {
+            var tr_attributes = $(this)
+            if (tr_attributes.find('.active').length > 0) {
+                selected.push({
+                    "level": tr_attributes.attr('data-level'),
+                    "data": tr_attributes.find('.active').attr('data-id')
+                })
+            }
+        })
+        if (selected.length > 0) {
+            sessionStorage.setItem(STORAGE_NAME.ProductDetailSelected, JSON.stringify(selected))
+        }
+    },
+    RenderSavedProductDetailAttributeSelected: function () {
+        var selected = sessionStorage.getItem(STORAGE_NAME.ProductDetailSelected)
+        if (selected) {
+            var data = JSON.parse(selected)
+            if (data != undefined && data.length > 0) {
+                $('.box-info-details .attributes').each(function (index_detail, attribute_detail) {
+                    var tr_attributes = $(this)
+                    var level = tr_attributes.attr('data-level')
+                    var selected_value = data.filter(obj => {
+                        return obj.level == level
+                    })
+                      
+                    tr_attributes.find('li').each(function (index_detail, attribute_detail) {
+                        var li_attribute = $(this)
+                        if (li_attribute.attr('data-id') == selected_value[0].data) {
+                            li_attribute.trigger('click')
+                            return false
+                        }
+
+                    })
+                })
+            }
+            sessionStorage.removeItem(STORAGE_NAME.ProductDetailSelected)
+        }
+
+
     },
     Compare2Array: function (arr1, arr2) {
         const objectsEqual = (o1, o2) =>
