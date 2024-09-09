@@ -5,7 +5,7 @@ var payment = {
     Initialization: function () {
         payment.DynamicBind()
         payment.Detail()
-       
+        $('.img-qr').addClass('placeholder')
     },
     DynamicBind: function () {
         $("body").on('click', ".box-payment-info .btn", function () {
@@ -60,7 +60,8 @@ var payment = {
                     global_service.POST(API_URL.QRCode, request)
                 ).done(function (result) {
                     if (result.is_success && result.data) {
-                        
+                        $('.img-qr').removeClass('placeholder')
+
                         $('.box-payment-info .img-qr img').attr('src', result.data)
                     }
                 })

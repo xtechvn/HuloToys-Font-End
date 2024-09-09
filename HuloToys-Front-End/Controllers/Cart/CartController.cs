@@ -63,6 +63,15 @@ namespace HuloToys_Front_End.Controllers.Product
                 data = result
             });
         }
-       
+        public async Task<IActionResult> ChangeQuanity(AddToCartRequestModel request)
+        {
+            var result = await _cartServices.ChangeQuanity(request);
+
+            return Ok(new
+            {
+                is_success = result != null && result.Trim()!="",
+                data = result
+            });
+        }
     }
 }

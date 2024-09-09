@@ -2,6 +2,9 @@
     cart.Initialization()
 })
 var cart = {
+    Data: {
+        cancel_token:false
+    },
     Initialization: function () {
         cart.DynamicBind()
         cart.CartItem()
@@ -64,6 +67,18 @@ var cart = {
         });
         $("body").on('click', ".btn-confirm-cart", function () {
             cart.ConfirmCart()
+        });
+        $("body").on('keyup', ".product-quantity input", function () {
+            var element = $(this)
+            setTimeout(() => {
+                cart.ChangeCartQuanity(element.closest('.product'))
+            }, 1500);
+        });
+        $("body").on('click', ".product-quantity button", function () {
+            var element = $(this)
+            setTimeout(() => {
+                cart.ChangeCartQuanity(element.closest('.product'))
+            }, 1500);
         });
     },
     OrderAddress: function () {
@@ -255,6 +270,7 @@ var cart = {
             sessionStorage.removeItem(STORAGE_NAME.CartCount)
             global_service.LoadCartCount()
             cart.RenderCartNumberOfProduct()
+            cart.ReRenderAmount()
 
         })
         $('#lightbox-delete-cart').removeClass('overlay-active')
@@ -262,8 +278,8 @@ var cart = {
 
         
     },
+    
     ConfirmCart: function () {
-        $('.btn-confirm-cart').addClass('button-disabled')
         var usr = global_service.CheckLogin()
         if (usr) {
             var carts = []
@@ -272,12 +288,15 @@ var cart = {
                 if (element.find('.checkbox-cart').is(':checked')) {
                     var cart = {
                         "id": element.attr('data-cart-id'),
+                        "amount": element.attr('data-amount'),
                         "quanity": parseInt(element.find('.quantity').val())
                     }
                     carts.push(cart)
                 }
             })
+
             if (carts.length > 0) {
+              
                 var request = {
                     "carts": carts,
                     "account_client_id": usr.account_client_id,
@@ -314,5 +333,39 @@ var cart = {
             return
         }
        
+    },
+    ChangeCartQuanity: function (element) {
+
+        var product_id = element.attr('data-product-id')
+        if (product_id == undefined || product_id.trim() == '') return
+        var usr = global_service.CheckLogin()
+        var account_client_id = 0
+        if (usr) {
+            account_client_id = usr.account_client_id
+            var request = {
+                "product_id": product_id,
+                "quanity": parseInt(element.find('.product-quantity').find('input').val()),
+                "account_client_id": account_client_id
+            }
+            $.when(
+                global_service.POST(API_URL.CartChangeQuanity, request)
+            ).done(function (result) {
+               
+            })
+        }
+        else {
+            return
+        }
+
+    },
+    CheckCartProductDetail: function (carts) {
+        var request = {
+            "carts": carts
+        }
+        $.when(
+            global_service.POST(API_URL.CartChangeQuanity, request)
+        ).done(function (result) {
+
+        })
     }
 }

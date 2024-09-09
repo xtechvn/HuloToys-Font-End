@@ -32,6 +32,8 @@ var API_URL = {
     AddressWard: '/Client/Ward',
     UpdateAddress: '/Client/SubmitAddress',
     DefaultAddress: '/Client/DefaultAddress',
+    CartChangeQuanity: '/Cart/ChangeQuanity',
+    CartCheckProductDetail: '/Cart/CheckProduct',
 
 }
 var NOTIFICATION_MESSAGE = {
