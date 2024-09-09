@@ -109,6 +109,22 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             return -1;
 
         } 
+        public async Task<int> DeleteByOrder(CartDeleteRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:cart_delete_by_order"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+                return status;
+               
+            }
+            catch
+            {
+            }
+            return -1;
+
+        } 
       
         public async Task<CartCheckProductResponseModel> CheckProduct(CartCheckProductRequestModel request)
         {

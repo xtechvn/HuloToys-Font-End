@@ -69,16 +69,27 @@ var cart = {
             cart.ConfirmCart()
         });
         $("body").on('keyup', ".product-quantity input", function () {
+            $('.btn-confirm-cart').addClass('button-disabled')
+            $('.btn-confirm-cart').addClass('placeholder')
+
             var element = $(this)
             setTimeout(() => {
                 cart.ChangeCartQuanity(element.closest('.product'))
-            }, 1500);
+                cart.ReRenderAmount()
+
+            }, 1000);
+
         });
         $("body").on('click', ".product-quantity button", function () {
+            $('.btn-confirm-cart').addClass('button-disabled')
+            $('.btn-confirm-cart').addClass('placeholder')
+
             var element = $(this)
             setTimeout(() => {
                 cart.ChangeCartQuanity(element.closest('.product'))
-            }, 1500);
+                cart.ReRenderAmount()
+
+            }, 1000);
         });
         $("body").on('click', "#lightbox-delete-cart .btn-back", function () {
             $('#lightbox-delete-cart').removeClass('overlay-active')
@@ -355,10 +366,15 @@ var cart = {
             $.when(
                 global_service.POST(API_URL.CartChangeQuanity, request)
             ).done(function (result) {
-               
+                $('.btn-confirm-cart').removeClass('placeholder')
+
+
             })
         }
         else {
+            $('.btn-confirm-cart').removeClass('placeholder')
+
+
             return
         }
 

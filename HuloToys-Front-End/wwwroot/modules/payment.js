@@ -11,7 +11,7 @@ var payment = {
         $("body").on('click', ".box-payment-info .btn", function () {
             $('.box-payment-info').hide()
             $('.box-payment-sucess').show()
-
+            
         });
     },
     Detail: function () {

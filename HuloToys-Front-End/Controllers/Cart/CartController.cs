@@ -73,5 +73,15 @@ namespace HuloToys_Front_End.Controllers.Product
                 data = result
             });
         }
+        public async Task<IActionResult> DeleteByOrder(CartDeleteRequestModel request)
+        {
+            var result = await _cartServices.DeleteByOrder(request);
+
+            return Ok(new
+            {
+                is_success = result > -1,
+                data = result
+            });
+        }
     }
 }
