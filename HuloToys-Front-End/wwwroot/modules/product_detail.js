@@ -348,41 +348,49 @@ var product_detail = {
       
     },
     SaveProductDetailAttributeSelected: function () {
-        var selected = []
+        var selected = {
+            attributes: [],
+            quanity:1
+        }
         $('.box-info-details .attributes').each(function (index_detail, attribute_detail) {
             var tr_attributes = $(this)
             if (tr_attributes.find('.active').length > 0) {
-                selected.push({
+                selected.attributes.push({
                     "level": tr_attributes.attr('data-level'),
                     "data": tr_attributes.find('.active').attr('data-id')
                 })
             }
         })
-        if (selected.length > 0) {
-            sessionStorage.setItem(STORAGE_NAME.ProductDetailSelected, JSON.stringify(selected))
-        }
+        selected.quanity = $('.quantity').val()
+        sessionStorage.setItem(STORAGE_NAME.ProductDetailSelected, JSON.stringify(selected))
+
     },
     RenderSavedProductDetailAttributeSelected: function () {
         var selected = sessionStorage.getItem(STORAGE_NAME.ProductDetailSelected)
         if (selected) {
             var data = JSON.parse(selected)
-            if (data != undefined && data.length > 0) {
-                $('.box-info-details .attributes').each(function (index_detail, attribute_detail) {
-                    var tr_attributes = $(this)
-                    var level = tr_attributes.attr('data-level')
-                    var selected_value = data.filter(obj => {
-                        return obj.level == level
-                    })
-                      
-                    tr_attributes.find('li').each(function (index_detail, attribute_detail) {
-                        var li_attribute = $(this)
-                        if (li_attribute.attr('data-id') == selected_value[0].data) {
-                            li_attribute.trigger('click')
-                            return false
-                        }
+            if (data != undefined) {
+                if (data.attributes != undefined && data.attributes.length > 0) {
+                    $('.box-info-details .attributes').each(function (index_detail, attribute_detail) {
+                        var tr_attributes = $(this)
+                        var level = tr_attributes.attr('data-level')
+                        var selected_value = data.attributes.filter(obj => {
+                            return obj.level == level
+                        })
 
+                        tr_attributes.find('li').each(function (index_detail, attribute_detail) {
+                            var li_attribute = $(this)
+                            if (li_attribute.attr('data-id') == selected_value[0].data) {
+                                li_attribute.trigger('click')
+                                return false
+                            }
+
+                        })
                     })
-                })
+                }
+                if (data.quanity != undefined && data.quanity.trim() != '') {
+                    $('.quantity').val(data.quanity)
+                }
             }
             sessionStorage.removeItem(STORAGE_NAME.ProductDetailSelected)
         }
