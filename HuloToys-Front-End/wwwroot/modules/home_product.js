@@ -13,7 +13,7 @@ var home_product = {
             //-- Intelligence Grid:
             global_service.LoadHomeProductGrid($('#intelligence-collection .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.INTELLECTUAL_DEVELOPMENT, GLOBAL_CONSTANTS.GridSize)
         }
-       
+        $('.xemthem').hide()
     },
     ProductSaleList: function () {
     },
