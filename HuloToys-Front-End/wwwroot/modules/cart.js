@@ -63,6 +63,20 @@ var cart = {
         $("body").on('click', ".box-checkbox-label,.delivery .list-option label,.pay .list-option label", function () {
             var element = $(this)
             element.closest('.box-checkbox').find('input').click()
+            var check_all=true
+            $('.table-addtocart .box-checkbox').each(function (index_var, variation_item) {
+                var element_checkbox = $(this)
+                if (!element_checkbox.find('input').is(":checked")) {
+                    check_all = false
+                    return false
+                }
+            })
+            if (check_all) {
+                $('.box-checkbox-all').closest('.box-checkbox').find('input').prop('checked', true)
+            } else {
+                $('.box-checkbox-all').closest('.box-checkbox').find('input').prop('checked', false)
+
+            }
             var value = element.closest('.box-checkbox').find('.option-name').text()
             element.closest('.select-option').find('.tt').text(value)
             if (!element.closest('.list-option').is(':hidden')) {
