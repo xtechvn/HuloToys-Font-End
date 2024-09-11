@@ -55,7 +55,17 @@ namespace HuloToys_Front_End.Controllers.Product
             }
 
         }
-       
-        
+        public async Task<IActionResult> Search(ProductGlobalSearchRequestModel request)
+        {
+            var result = await _productServices.Search(request);
+
+            return Ok(new
+            {
+                is_success = result != null,
+                data = result
+            });
+        }
+
+
     }
 }
