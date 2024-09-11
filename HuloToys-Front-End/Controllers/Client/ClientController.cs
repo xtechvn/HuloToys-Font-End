@@ -70,7 +70,6 @@ namespace HuloToys_Front_End.Controllers.Client
         public ActionResult AddressPopup()
         {
             return View();
-
         }
         public async Task<IActionResult> AddressList(ClientAddressGeneralRequestModel request)
         {
