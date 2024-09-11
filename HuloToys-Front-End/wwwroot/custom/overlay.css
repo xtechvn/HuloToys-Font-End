@@ -87,3 +87,7 @@
     .header .mainheader .wrap_mainheader .form-search .box-search-list .list-product-recomment .item-product .flex-price, .header .mainheader .wrap_mainheader .form-search .box-search-list .list-product-recomment .item-product .name-product, .header .mainheader .wrap_mainheader .form-search .box-search-list .list-product-recomment .item-product .price-old {
         position: static;
     }
+
+.box-search-list .item-product .box-info{
+    width:100% !important;
+}
