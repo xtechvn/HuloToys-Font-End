@@ -79,7 +79,7 @@ var _feedback =
                     sessionStorage.setItem("Saved_Input", '');
                     sessionStorage.setItem("CreateFeedbackAction", 0);
                     setTimeout(() => {
-                       document.getElementById("Comment_success").classList.remove('overlay-active');
+                        document.getElementById("Comment_success").classList.remove('overlay-active');
                     }, 3000);
                 },
                 error: function (xhr, status, error) {
@@ -87,6 +87,11 @@ var _feedback =
                     location.reload();
                 }
             });
+        }
+        else
+        {
+            sessionStorage.setItem("Saved_Input", '');
+            sessionStorage.setItem("CreateFeedbackAction", 0);
         }
     },
     //Lưu trữ content khi sự kiện textchange xảy ra
