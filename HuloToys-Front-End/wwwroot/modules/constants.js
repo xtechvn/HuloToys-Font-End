@@ -99,7 +99,7 @@ var HTML_CONSTANTS = {
                                             <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">{review_count}</span></div>
                                         </div>
                                         <div class="price-old" style="{old_price_style}">
-                                            So với giá cũ {price} <i class="icon icon-info"></i>
+                                            <nw style="display:none;">So với giá cũ {price} <i class="icon icon-info"></i></nw>
                                             <div class="info-detail">
                                                 Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
                                                 được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
@@ -123,7 +123,7 @@ var HTML_CONSTANTS = {
                                     <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">{review_count}</span></div>
                                 </div>
                                 <div class="price-old" style="{old_price_style}">
-                                    So với giá cũ {price} <i class="icon icon-info"></i>
+                                    <nw style="display:none;">So với giá cũ {price} <i class="icon icon-info"></i></nw>
                                     <div class="info-detail">
                                         Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
                                         được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>

@@ -404,11 +404,24 @@ var product_detail = {
         $('.section-details-product').addClass('placeholder')
         $('.section-description-product').addClass('placeholder')
         $('.section-category').addClass('placeholder')
+        $('.gallery-product .swiper-wrapper').addClass('placeholder')
+        $('.gallery-product swiper-slide').addClass('placeholder')
+        $('.box-name-product').addClass('placeholder')
+        $('.price').addClass('placeholder')
+        $('.box-info-details').addClass('placeholder')
+        $('.box-action').addClass('placeholder')
     },
     RemoveLoading: function () {
         $('.section-details-product').removeClass('placeholder')
         $('.section-description-product').removeClass('placeholder')
         $('.section-category').removeClass('placeholder')
+        $('.gallery-product .swiper-wrapper').removeClass('placeholder')
+        $('.gallery-product swiper-slide').removeClass('placeholder')
+        $('.box-name-product').removeClass('placeholder')
+        $('.price').removeClass('placeholder')
+        $('.box-info-details').removeClass('placeholder')
+        $('.box-action').removeClass('placeholder')
+
     }
 }
 
