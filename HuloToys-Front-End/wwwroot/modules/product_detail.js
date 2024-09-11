@@ -1,11 +1,5 @@
 ﻿$(document).ready(function () {
-	 if (window.history && window.history.pushState) {
-         $(window).on('popstate', function () {
-            debugger
-            window.location.reload()
-        });
-
-    }
+	
     product_detail.Initialization()
 })
 var product_detail = {

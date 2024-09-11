@@ -8,7 +8,12 @@
 })
 var global_service = {
     Initialization: function () {
-     
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.location.reload()
+            });
+
+        }
     },
     DynamicBind: function () {
         $("body").on('click', ".client-login", function (event) {
