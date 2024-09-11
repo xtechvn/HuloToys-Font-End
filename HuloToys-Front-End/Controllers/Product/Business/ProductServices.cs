@@ -51,6 +51,24 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             return null;
 
         }
-       
+        public async Task<ProductListResponseModel> Search(ProductGlobalSearchRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:product_search"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<ProductListResponseModel>(jsonData["data"].ToString());
+                }
+            }
+            catch
+            {
+            }
+            return null;
+
+        }
     }
 }

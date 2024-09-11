@@ -35,6 +35,8 @@ var API_URL = {
     DefaultAddress: '/Client/DefaultAddress',
     CartChangeQuanity: '/Cart/ChangeQuanity',
     CartCheckProductDetail: '/Cart/CheckProduct',
+    GlobalSearch: '/Product/Search',
+
 
 }
 var NOTIFICATION_MESSAGE = {
@@ -79,12 +81,12 @@ var GLOBAL_CONSTANTS = {
     ]
 }
 var HTML_CONSTANTS = {
-    GoogleAccountNotRegistered : '<span class="err err-gg-account" style=" width: 100%; text-align: -webkit-center; ">Tài khoản Google chưa được đăng ký, vui lòng điền đầy đủ thông tin và nhấn tạo tài khoản</span>',
+    GoogleAccountNotRegistered: '<span class="err err-gg-account" style=" width: 100%; text-align: -webkit-center; ">Tài khoản Google chưa được đăng ký, vui lòng điền đầy đủ thông tin và nhấn tạo tài khoản</span>',
     Global: {
-        SelectOption:`<option value="{value}">{name}</option>`
+        SelectOption: `<option value="{value}">{name}</option>`
     },
     Home: {
-        SlideProductItem:` <div class="swiper-slide">
+        SlideProductItem: ` <div class="swiper-slide">
                             <div class="item-product">
                                 <a href="{url}">
                                     <div class="box-thumb">
@@ -99,7 +101,7 @@ var HTML_CONSTANTS = {
                                             <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">{review_count}</span></div>
                                         </div>
                                         <div class="price-old" style="{old_price_style}">
-                                            So với giá cũ {price} <i class="icon icon-info"></i>
+                                            <nw style="display:none;">So với giá cũ {price} <i class="icon icon-info"></i></nw>
                                             <div class="info-detail">
                                                 Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
                                                 được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
@@ -109,6 +111,100 @@ var HTML_CONSTANTS = {
                                 </a>
                             </div>
                         </div>`,
+        GlobalSearchProductItem:` <div class="item-product">
+            <a href="{url}">
+                <div class="box-thumb">
+                    <div class="thumb-product">
+                        <img src="{avt}" width="100px" height="100px" alt="">
+                    </div>
+                </div>
+                <div class="box-info">
+                    <h3 class="name-product">{name}</h3>
+                    <div class="flex-price">
+                    <div class="price-sale">{amount}</div>
+                     <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">{review_count}</span></div>
+                    </div>
+                    <div class="price-old">
+                     <nw style="display:none;">So với giá cũ {price} <i class="icon icon-info"></i></nw>
+                        <div class="info-detail">
+                            Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                            được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>`,
+        GlobalSearchBoxLoading:` <div class="list-product-recomment">
+        <div class="item-product">
+            <a href="">
+                <div class="box-thumb">
+                    <div class="thumb-product">
+                        <img src="/images/product.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box-info">
+                    <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                    <div class="flex-price">
+                        <div class="price-sale">689,098đ</div>
+                        <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                    </div>
+                    <div class="price-old">
+                        So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                        <div class="info-detail">
+                            Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                            được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item-product">
+            <a href="">
+                <div class="box-thumb">
+                    <div class="thumb-product">
+                        <img src="/images/product.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box-info">
+                    <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                    <div class="flex-price">
+                        <div class="price-sale">689,098đ</div>
+                        <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                    </div>
+                    <div class="price-old">
+                        So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                        <div class="info-detail">
+                            Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                            được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item-product">
+            <a href="">
+                <div class="box-thumb">
+                    <div class="thumb-product">
+                        <img src="/images/product.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box-info">
+                    <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                    <div class="flex-price">
+                        <div class="price-sale">689,098đ</div>
+                        <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                    </div>
+                    <div class="price-old">
+                        So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                        <div class="info-detail">
+                            Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                            được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>`,
         GridProductItem:`<div class="item-product">
                         <a href="">
                             <div class="box-thumb">
@@ -123,7 +219,7 @@ var HTML_CONSTANTS = {
                                     <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">{review_count}</span></div>
                                 </div>
                                 <div class="price-old" style="{old_price_style}">
-                                    So với giá cũ {price} <i class="icon icon-info"></i>
+                                    <nw style="display:none;">So với giá cũ {price} <i class="icon icon-info"></i></nw>
                                     <div class="info-detail">
                                         Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
                                         được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
