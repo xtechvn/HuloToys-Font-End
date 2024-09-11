@@ -14,6 +14,11 @@ var global_service = {
             });
 
         }
+        $('#thanhcong').removeClass('overlay-active')
+        $('#thatbai').removeClass('overlay-active')
+        $('#dangnhap').removeClass('overlay-active')
+        $('#dangky').removeClass('overlay-active')
+        $('#quenmk').removeClass('overlay-active')
     },
     DynamicBind: function () {
         $("body").on('click', ".client-login", function (event) {
