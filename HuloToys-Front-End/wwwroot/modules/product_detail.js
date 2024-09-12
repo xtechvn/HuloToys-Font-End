@@ -158,7 +158,7 @@ var product_detail = {
         html += HTML_CONSTANTS.Detail.Tr_Quanity.replaceAll('{stock}', global_service.Comma(total_stock))
         
         $('.box-info-details tbody').html(html)
-        $('#description').html(product.description)
+        $('#description').html(product.description.replaceAll('\n','<br />'))
 
         //--hide voucher (implement later):
         $('#voucher').hide()
