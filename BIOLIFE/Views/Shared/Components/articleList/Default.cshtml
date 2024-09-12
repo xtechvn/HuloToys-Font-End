@@ -1,0 +1,12 @@
+﻿@using BIOLIFE.ViewModels;
+@model ArticleViewModel
+
+<div class="col-md-3 col-sm-6">
+    <h4 class="title">@Model.category_name</h4>
+    <ul class="links">
+        @foreach (var item in Model.obj_article_list)
+        {
+            <li><a href="#">@item.title</a></li>
+        }
+    </ul>
+</div>

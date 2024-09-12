@@ -5,244 +5,264 @@
       "PackagePath": "staticwebassets\\BIOLIFE.bundle.scp.css"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\images\\bg-img-about.jpg",
+      "PackagePath": "staticwebassets\\css\\images\\bg-img-about.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\jquery-ui.css",
+      "PackagePath": "staticwebassets\\css\\jquery-ui.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\main.css",
+      "PackagePath": "staticwebassets\\css\\main.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\maps\\main.css.map",
+      "PackagePath": "staticwebassets\\css\\maps\\main.css.map"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\maps\\swiper-vars.css.map",
+      "PackagePath": "staticwebassets\\css\\maps\\swiper-vars.css.map"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\scss\\_footer.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_footer.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\scss\\_header.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_header.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\scss\\_icon.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_icon.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\scss\\_reset.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_reset.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\scss\\_swiper.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_swiper.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\scss\\_theme.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\_theme.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\scss\\main.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\main.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\scss\\swiper-vars.css",
+      "PackagePath": "staticwebassets\\css\\scss\\swiper-vars.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\scss\\swiper-vars.css.map",
+      "PackagePath": "staticwebassets\\css\\scss\\swiper-vars.css.map"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\scss\\swiper-vars.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\swiper-vars.scss"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\swiper-bundle.min.css",
+      "PackagePath": "staticwebassets\\css\\swiper-bundle.min.css"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\swiper-vars.css",
+      "PackagePath": "staticwebassets\\css\\swiper-vars.css"
     },
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\site.js",
-      "PackagePath": "staticwebassets\\js\\site.js"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\demo.html",
+      "PackagePath": "staticwebassets\\icofont\\demo.html"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\LICENSE",
-      "PackagePath": "staticwebassets\\lib\\bootstrap"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\fonts\\icofont.eot",
+      "PackagePath": "staticwebassets\\icofont\\fonts\\icofont.eot"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\fonts\\icofont.svg",
+      "PackagePath": "staticwebassets\\icofont\\fonts\\icofont.svg"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\fonts\\icofont.ttf",
+      "PackagePath": "staticwebassets\\icofont\\fonts\\icofont.ttf"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\fonts\\icofont.woff",
+      "PackagePath": "staticwebassets\\icofont\\fonts\\icofont.woff"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\fonts\\icofont.woff2",
+      "PackagePath": "staticwebassets\\icofont\\fonts\\icofont.woff2"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\icofont.css",
+      "PackagePath": "staticwebassets\\icofont\\icofont.css"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\icofont.min.css",
+      "PackagePath": "staticwebassets\\icofont\\icofont.min.css"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\FilmReel.png",
+      "PackagePath": "staticwebassets\\images\\FilmReel.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Leaf.png",
+      "PackagePath": "staticwebassets\\images\\Leaf.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Logo_BIOLIFE.png",
+      "PackagePath": "staticwebassets\\images\\Logo_BIOLIFE.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\ShoppingBag.png",
+      "PackagePath": "staticwebassets\\images\\ShoppingBag.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\ToiletPaper.png",
+      "PackagePath": "staticwebassets\\images\\ToiletPaper.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\banner-contact.jpg",
+      "PackagePath": "staticwebassets\\images\\banner-contact.jpg"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\banner-news.png",
+      "PackagePath": "staticwebassets\\images\\banner-news.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\banner.jpg",
+      "PackagePath": "staticwebassets\\images\\banner.jpg"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\banner2.jpg",
+      "PackagePath": "staticwebassets\\images\\banner2.jpg"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\banner3.jpg",
+      "PackagePath": "staticwebassets\\images\\banner3.jpg"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\check.svg",
+      "PackagePath": "staticwebassets\\images\\check.svg"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\copy.png",
+      "PackagePath": "staticwebassets\\images\\copy.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\error-1.svg",
+      "PackagePath": "staticwebassets\\images\\error-1.svg"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\error.svg",
+      "PackagePath": "staticwebassets\\images\\error.svg"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\facebook.png",
+      "PackagePath": "staticwebassets\\images\\facebook.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\fb.png",
+      "PackagePath": "staticwebassets\\images\\fb.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\hab_center.png",
+      "PackagePath": "staticwebassets\\images\\hab_center.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\icon-check.png",
+      "PackagePath": "staticwebassets\\images\\icon-check.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\icon-err.png",
+      "PackagePath": "staticwebassets\\images\\icon-err.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\jcb.png",
+      "PackagePath": "staticwebassets\\images\\jcb.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\logoSaleNoti.png",
+      "PackagePath": "staticwebassets\\images\\logoSaleNoti.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\mastercard.png",
+      "PackagePath": "staticwebassets\\images\\mastercard.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\pinterest.png",
+      "PackagePath": "staticwebassets\\images\\pinterest.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\product.jpg",
+      "PackagePath": "staticwebassets\\images\\product.jpg"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\shera.png",
+      "PackagePath": "staticwebassets\\images\\shera.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\shoppe.png",
+      "PackagePath": "staticwebassets\\images\\shoppe.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\success.svg",
+      "PackagePath": "staticwebassets\\images\\success.svg"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\tiktok.png",
+      "PackagePath": "staticwebassets\\images\\tiktok.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\twiter.png",
+      "PackagePath": "staticwebassets\\images\\twiter.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\visa.png",
+      "PackagePath": "staticwebassets\\images\\visa.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\warning.svg",
+      "PackagePath": "staticwebassets\\images\\warning.svg"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\yt.png",
+      "PackagePath": "staticwebassets\\images\\yt.png"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\common.js",
+      "PackagePath": "staticwebassets\\js\\common.js"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\jquery-ui.js",
+      "PackagePath": "staticwebassets\\js\\jquery-ui.js"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.min.js"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\popper.min.js"
     },
     {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery\\LICENSE.txt",
-      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery\\dist\\jquery.js",
-      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
-      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
-    },
-    {
-      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
-      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\swiper-bundle.min.js",
+      "PackagePath": "staticwebassets\\js\\swiper-bundle.min.js"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.BIOLIFE.Microsoft.AspNetCore.StaticWebAssets.props",
