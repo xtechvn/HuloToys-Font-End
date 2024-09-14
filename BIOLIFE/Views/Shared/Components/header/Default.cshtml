@@ -4,7 +4,7 @@
 <header class="header">
     <div class="container">
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <div class="logo">
                     <img src="~/images/Logo_BIOLIFE.png" alt="" />
                 </div>
@@ -23,7 +23,7 @@
                     @foreach (var item in Model)
                     {
                         <li class="nav-item">
-                            <a class="nav-link"  href="@("/" + item.path)">@item.name</a>
+                            <a class="nav-link" href="@("/" + item.path.Replace("-"+ item.id,""))">@item.name</a>
                         </li>
                     }
                 </ul>
@@ -37,3 +37,5 @@
         </nav>
     </div>
 </header>
+
+<script src="~/js/common.js"></script>

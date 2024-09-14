@@ -1,15 +1,16 @@
-﻿using BIOLIFE.Controllers.Home.Service;
+﻿using BIOLIFE.Service.Redis;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection;
 
 namespace BIOLIFE.ViewComponents.Footer
 {
-    public class footerViewComponent : ViewComponent
+    public class FooterViewComponent : ViewComponent
     {
         private readonly IConfiguration configuration;
-        public footerViewComponent(IConfiguration _Configuration)
+        private readonly RedisConn _redisService;
+        public FooterViewComponent(IConfiguration _Configuration, RedisConn redisService)
         {
             configuration = _Configuration;
+            _redisService = redisService;
         }
 
         /// <summary>
@@ -19,19 +20,18 @@ namespace BIOLIFE.ViewComponents.Footer
         /// <returns></returns>
         public async Task<IViewComponentResult?> InvokeAsync()
         {
-            return View();
-            //try
-            //{
-            //    //var obj_menu = new MenuService(configuration);
+            try
+            {
+                // Nếu không có trong cache, gọi dịch vụ
+               //var objMenu = new NewsService(configuration, _redisService);
+              //  var obj_data = await objMenu.getArticleByCategoryId(Convert.ToInt32(configuration["menu:help_parent_id"]));
 
-            //    //var obj_lst_cate = await obj_menu.getArticleByCategoryId(Convert.ToInt32(configuration["menu:help_parent_id"]));
-            //    //return obj_lst_cate != null ? View(obj_lst_cate) : Content("");
-            //    return View();
-            //}
-            //catch (Exception)
-            //{                
-            //    return Content(""); 
-            //}
+                return View();
+            }
+            catch (Exception)
+            {
+                return Content("");
+            }
         }
     }
 }

@@ -3,7 +3,6 @@ using BIOLIFE.Models;
 using BIOLIFE.Service.Redis;
 using BIOLIFE.Utilities;
 using BIOLIFE.ViewModels;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
@@ -18,16 +17,18 @@ namespace BIOLIFE.Controllers.News.Service
         {
             configuration = _configuration;
             redisService = _redisService;
-        }       
-        
-        public async Task<ArticleViewModel?> getArticleByCategoryId(int category_id)
+        }
+
+        public async Task<ArticleViewModel?> getArticleByCategoryId(int category_id, int top)
         {
             try
             {
                 var connect_api_us = new ConnectApi(configuration, redisService);
                 var input_request = new Dictionary<string, string>
                 {
-                    {"category_id",category_id.ToString() }
+                    {"category_id",category_id.ToString() },
+                     {"skip","0"},
+                     {"take", top.ToString()}
                 };
                 var response_api = await connect_api_us.CreateHttpRequest("/api/news/get-list-by-categoryid.json", input_request);
 
@@ -38,12 +39,12 @@ namespace BIOLIFE.Controllers.News.Service
                 if (status == ((int)ResponseType.SUCCESS))
                 {
                     var _category_detail = JsonConvert.DeserializeObject<CategoryModel>(JsonParent[0]["category_detail"].ToString());
-                    var _list_article = JsonConvert.DeserializeObject<List<ArticleModel>>(JsonParent[0]["data"].ToString());
+                    var _list_article = JsonConvert.DeserializeObject<List<CategoryArticleModel>>(JsonParent[0]["data"].ToString());
 
                     var model = new ArticleViewModel
                     {
                         obj_article_list = _list_article,
-                        category_name = _category_detail == null ? "": _category_detail.name,
+                        category_detail = _category_detail
                     };
                     return model;
                 }

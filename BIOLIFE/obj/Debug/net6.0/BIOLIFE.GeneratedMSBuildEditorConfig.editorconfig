@@ -20,16 +20,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/News/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/articleList/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcYXJ0aWNsZUxpc3RcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/footer/default.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcZm9vdGVyXGRlZmF1bHQuY3NodG1s
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/Footer/default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRm9vdGVyXGRlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/header/Default.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcaGVhZGVyXERlZmF1bHQuY3NodG1s
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/GroupProduct/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcR3JvdXBQcm9kdWN0XERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/Header/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Error.cshtml]

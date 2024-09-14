@@ -1,5 +1,10 @@
-﻿using BIOLIFE.Service.Redis;
+﻿using BIOLIFE.Controllers.Home.Service;
+using BIOLIFE.Service.Redis;
+using BIOLIFE.ViewComponents.GroupProduct;
+using BIOLIFE.ViewComponents.Header;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Net.Http.Headers;
 
@@ -24,10 +29,19 @@ namespace BIOLIFE
             services.AddMvc();            
             services.AddRazorPages();
 
+            services.AddResponseCaching(); // Cho phép sử dụng Response Caching
+            services.AddMemoryCache(); // Đăng ký Memory Cache
+            services.AddControllersWithViews();
+            services.AddScoped<GroupProductViewComponent>(); // Đảm bảo đã thêm HeaderViewComponent
+            services.AddScoped<HeaderViewComponent>(); // Đảm bảo đã thêm HeaderViewComponent
             // Register services                      
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            // Khởi tạo các dịch vụ cần thiết
+            
+           
+            services.AddSingleton<RedisConn>(); // Đảm bảo RedisConn được khởi tạo
 
             /// Thêm nén các file css/js/... theo chuẩn Br và Gzip --> Web load nhanh hơn
             services.AddResponseCompression(options =>
@@ -35,8 +49,7 @@ namespace BIOLIFE
                 options.Providers.Add<BrotliCompressionProvider>();
                 options.Providers.Add<GzipCompressionProvider>();
             });
-            // Setting Redis                     
-            services.AddSingleton<RedisConn>();
+           
 
         }
 

@@ -1,6 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Biolife";
 }
+
 <section class="section-banner">
     <div class="swiper swiper-banner">
         <div class="swiper-wrapper">
@@ -19,30 +20,9 @@
 <section class="img-about">
     <img src="~/images/hab_center.png" alt="" />
 </section>
-<section class="section-categories">
-    <div class="container">
-        <div class="swiper banner-cat">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <a href=""><img src="~/images/FilmReel.png" alt="" /></a>
-                    <h4 class="title">Màng bọc - màng nhôm</h4>
-                </div>
-                <div class="swiper-slide">
-                    <a href=""><img src="~/images/ShoppingBag.png" alt="" /></a>
-                    <h4 class="title">Túi bảo quản thực phẩm</h4>
-                </div>
-                <div class="swiper-slide">
-                    <a href=""><img src="~/images/ToiletPaper.png" alt="" /></a>
-                    <h4 class="title">Giấy chuyên dụng</h4>
-                </div>
-                <div class="swiper-slide">
-                    <a href=""><img src="~/images/Leaf.png" alt="" /></a>
-                    <h4 class="title">Sản phẩm thân thiện môi trường</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+<section class="section-categories" id="group-product-top">loading...</section>
+
 <section class="section-flashsale">
     <div class="container">
         <div class="wrap-bg">
@@ -471,3 +451,13 @@
         </div>
     </div>
 </section>
+
+
+@section Scripts {
+    <script>
+        if ($(window).width() > 767) {
+
+            $('body').addClass('homepage');
+        }
+    </script>
+}

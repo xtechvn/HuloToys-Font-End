@@ -9,24 +9,24 @@ const swiperBanner = new Swiper('.swiper-banner', {
     },
 
 });
-const swiperADS = new Swiper('.banner-cat', {
-    loop: false,
-    pagination: false,
-    navigation: false,
-    slidesPerView: 1.5,
-    spaceBetween: 8,
-    breakpoints: {
-        540: {
-            slidesPerView: 1.5,
-        },
-        768: {
-            slidesPerView: 2.5,
-        },
-        992: {
-            slidesPerView: 4,
-        }
-    }
-});
+//const swiperADS = new Swiper('.banner-cat', {
+//    loop: false,
+//    pagination: false,
+//    navigation: false,
+//    slidesPerView: 1.5,
+//    spaceBetween: 8,
+//    breakpoints: {
+//        540: {
+//            slidesPerView: 1.5,
+//        },
+//        768: {
+//            slidesPerView: 2.5,
+//        },
+//        992: {
+//            slidesPerView: 4,
+//        }
+//    }
+//});
 
 const swiperAds = new Swiper('.swiper-banner-ads', {
     loop: false,

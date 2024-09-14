@@ -1,39 +1,40 @@
 ﻿using BIOLIFE.Controllers.Home.Service;
 using BIOLIFE.Service.Redis;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
 namespace BIOLIFE.ViewComponents.Header
 {
-    public class headerViewComponent: ViewComponent
+    public class HeaderViewComponent : ViewComponent // Chỉnh sửa tên class
     {
-        private readonly IConfiguration configuration;
-        private readonly RedisConn redisService;
-        public headerViewComponent(IConfiguration _Configuration, RedisConn _redisService)
+        private readonly IConfiguration _configuration;
+        private readonly RedisConn _redisService;
+        private readonly IMemoryCache _cache; // Inject IMemoryCache
+        public HeaderViewComponent(IConfiguration configuration, RedisConn redisService, IMemoryCache cache)
         {
-            configuration = _Configuration;
-            redisService = _redisService;
+            _configuration = configuration;
+            _redisService = redisService;
+            _cache = cache;
         }
 
-        /// <summary>
-        /// load các menu của web
-        /// menu_parent_id: id của menu cha
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IViewComponentResult?> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            try
+            var cacheKey = "headerMenu"; // Đặt khóa cho cache
+            if (!_cache.TryGetValue(cacheKey, out var cachedMenu)) // Kiểm tra xem có trong cache không
             {
-                var obj_menu = new MenuService(configuration, redisService);
-                var obj_lst_menu = await obj_menu.getListMenu(Convert.ToInt32(configuration["menu:biolife_parent_id"]));
-                return obj_lst_menu != null ? View(obj_lst_menu) : Content("");                
+                // Nếu không có trong cache, gọi dịch vụ
+                var objMenu = new MenuService(_configuration, _redisService);
+                cachedMenu = await objMenu.getListMenu(Convert.ToInt32(_configuration["menu:biolife_parent_id"]));
+                if (cachedMenu != null)
+                {
+                    // Lưu vào cache với thời gian hết hạn 60 giây
+                    _cache.Set(cacheKey, cachedMenu, TimeSpan.FromSeconds(60));
+                }
             }
-            catch (Exception ex)
-            {
-                string error_msg = Assembly.GetExecutingAssembly().GetName().Name + "->" + MethodBase.GetCurrentMethod().Name + "=>" + ex.Message;
-                Utilities.LogHelper.InsertLogTelegramByUrl(configuration["log_telegram:token"], configuration["log_telegram:group_id"], error_msg);
-                return null;
-            }
+
+            return View(cachedMenu);
         }
     }
 }

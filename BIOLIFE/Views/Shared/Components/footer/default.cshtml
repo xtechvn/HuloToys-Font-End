@@ -8,8 +8,8 @@
                     <p class="time">(từ 8h30-17h30 Thứ 2 đến Thứ 6)</p>
                 </div>
 
-                @await Component.InvokeAsync("articleList", new {category_id = 26})
-                @await Component.InvokeAsync("articleList", new {category_id = 10})
+                @await Component.InvokeAsync("articleList", new {category_id = 26, top = 3})
+                @await Component.InvokeAsync("articleList", new {category_id = 10, top = 2})
 
                 <div class="col-md-3 col-sm-6">
                     <h4 class="title">hình thức thanh toán</h4>

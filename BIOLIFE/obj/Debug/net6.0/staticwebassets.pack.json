@@ -249,6 +249,18 @@
       "PackagePath": "staticwebassets\\js\\common.js"
     },
     {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\footer\\main.js",
+      "PackagePath": "staticwebassets\\js\\footer\\main.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\group_product\\main.js",
+      "PackagePath": "staticwebassets\\js\\group_product\\main.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\header\\main.js",
+      "PackagePath": "staticwebassets\\js\\header\\main.js"
+    },
+    {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\jquery-ui.js",
       "PackagePath": "staticwebassets\\js\\jquery-ui.js"
     },

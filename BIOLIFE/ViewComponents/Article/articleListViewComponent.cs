@@ -20,13 +20,13 @@ namespace BIOLIFE.ViewComponents.Article
         /// <summary>       
         /// </summary>
         /// <returns>Load cac bai viet theo chuyen muc</returns>
-        public async Task<IViewComponentResult?> InvokeAsync(int category_id)
+        public async Task<IViewComponentResult?> InvokeAsync(int category_id,int top)
         {
             try
             {
                 var obj_cate = new NewsService(configuration, redisService);                
 
-                var _obj_article_list = await obj_cate.getArticleByCategoryId(category_id);               
+                var _obj_article_list = await obj_cate.getArticleByCategoryId(category_id, top);               
 
                 return _obj_article_list != null ? View(_obj_article_list) : Content("");
             }
