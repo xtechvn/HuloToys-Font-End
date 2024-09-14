@@ -1,11 +1,16 @@
-﻿using HuloToys_Front_End.Models.Client;
+﻿using HuloToys_Front_End.Models.Authentication;
+using HuloToys_Front_End.Models.Client;
+using HuloToys_Front_End.Models.Products;
 using HuloToys_Front_End.Utilities.Contants;
 using HuloToys_Service.Models;
 using HuloToys_Service.Utilities.Lib;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Security.AccessControl;
 using System.Text;
+using Utilities.Contants;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HuloToys_Front_End.Utilities.Lib
 {
@@ -15,6 +20,8 @@ namespace HuloToys_Front_End.Utilities.Lib
         private HttpClient _HttpClient;
         private const string CONST_TOKEN_PARAM = "token";
         private readonly string _ApiSecretKey;
+        private readonly RedisConn _redisService;
+        private int cache_db_index=8;
         private string USER_NAME="test";
         private string PASSWORD="password";
         private string API_GET_TOKEN="/api/auth/login";
@@ -34,6 +41,9 @@ namespace HuloToys_Front_End.Utilities.Lib
             API_GET_TOKEN = configuration["API:GetToken"];
             USER_NAME = configuration["API:username"];
             PASSWORD = configuration["API:password"];
+            cache_db_index = Convert.ToInt32(configuration["Redis:Database:db_common"]);
+            _redisService = new RedisConn(configuration);
+            _redisService.Connect();
         }
 
         public async Task<string> POST(string endpoint, object request)
@@ -58,6 +68,24 @@ namespace HuloToys_Front_End.Utilities.Lib
         {
             try
             {
+                var cache_name = CacheType.FE_TOKEN;
+                try
+                {
+                    var j_data = await _redisService.GetAsync(cache_name, cache_db_index);
+                    if (j_data != null && j_data.Trim() != "")
+                    {
+                        APITokenCacheModel result = JsonConvert.DeserializeObject<APITokenCacheModel>(j_data);
+                        if (result != null && result.token != null && result.token.Trim() != "" && result.expires > DateTime.Now)
+                        {
+                            return result.token.Trim();
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
+
                 var request = new UserLoginModel()
                 {
                     Username = USER_NAME,
@@ -74,12 +102,27 @@ namespace HuloToys_Front_End.Utilities.Lib
                     var status = int.Parse(json["status"].ToString());
                     if (status != (int)ResponseType.SUCCESS)
                     {
-                        LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetToken - APIService:" + json["msg"].ToString());  
+                        LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetToken - APIService:" + json["msg"].ToString());
+                        return null;
                     }
-                    else
+                    string token = json["token"].ToString();
+                    try
                     {
-                        return json["token"].ToString();
+                        if (token != null && token.Trim() != "")
+                        {
+                            APITokenCacheModel result = new APITokenCacheModel()
+                            {
+                                token = token,
+                                expires = DateTime.Now.AddHours(23)
+                            };
+                            _redisService.Set(cache_name, JsonConvert.SerializeObject(result), cache_db_index);
+                        }
                     }
+                    catch
+                    {
+
+                    }
+                    return token;
 
                 }
             }
