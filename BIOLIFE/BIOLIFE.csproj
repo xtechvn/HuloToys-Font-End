@@ -10,6 +10,7 @@
     <Folder Include="Controllers\ContactUs\Service\" />
     <Folder Include="Controllers\NewsDetail\Service\" />
     <Folder Include="Controllers\ProductList\Service\" />
+    <Folder Include="Views\Shared\Components\Home\" />
     <Folder Include="Views\Shared\PartialView\Menu\" />
   </ItemGroup>
 

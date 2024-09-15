@@ -18,7 +18,7 @@ namespace BIOLIFE.ViewComponents.GroupProduct
         }
 
         /// <summary>
-        // nhom san pham vị trí giữa trang
+        // Nhóm san pham vị trí giữa trang
         /// </summary>
         /// <returns></returns>
         public async Task<IViewComponentResult?> InvokeAsync()

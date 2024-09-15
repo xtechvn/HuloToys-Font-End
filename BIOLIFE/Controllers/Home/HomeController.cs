@@ -19,6 +19,27 @@ namespace BIOLIFE.Controllers.Home
         {
             return View();
         }
+        [Route("san-pham")]
+        [HttpGet]
+        public async Task<IActionResult> Product()
+        {
+            return View();
+        }
+
+        [Route("lien-he")]
+        [HttpGet]
+        public async Task<IActionResult> Contact()
+        {
+            return View();
+        }
+
+        [Route("gioi-thieu")]
+        [HttpGet]
+        public async Task<IActionResult> Intro()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult loadHeaderComponent()
         {

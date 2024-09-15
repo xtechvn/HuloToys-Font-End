@@ -1,307 +1,21 @@
 ﻿@{
     ViewData["Title"] = "Tin tức";
+    int category_id = ViewBag.category_id;
 }
+<input type="hidden" class="category_id" data-categoryid="@category_id" />
 <section class="section-news">
     <div class="container">
         <div class="wrap-news cat-menu">
-            <div class="content">
-                <ul class="list-cat">
-                    <li class="active"> <a href="" class="cat-tag">Tất cả</a></li>
-                    <li> <a href="" class="cat-tag">Mẹo hay</a></li>
-                    <li> <a href="" class="cat-tag">Tin hoạt động</a></li>
-                    <li> <a href="" class="cat-tag">Gợi ý </a></li>
-                    <li> <a href="" class="cat-tag">Sản phẩm</a></li>
-                </ul>
-
-            </div>
-
+            @await Component.InvokeAsync("MenuNews")
         </div>
         <div class="wrap-news">
             <div class="content">
-                <div class="list-news-top list-news">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="top-news">
-                                <div class="item-news">
-                                    <div class="box-news">
-                                        <div class="thumb-art">
-                                            <div class="thumb thumb-news">
-                                                <a href=""><img src="~/images/banner.jpg" alt="" /> </a>
-                                            </div>
-                                        </div>
-                                        <div class="right-content">
-                                            <div class="flex-cat">
-                                                <span class="time">
-                                                    <i class="icon icon-time"></i>
-                                                    19/02/2020
-                                                </span>
-                                                <a href="" class="cat-tag">mẹo hay</a>
-                                            </div>
-                                            <h2 class="title-news">
-                                                <a href="">Top những đồ chơi cho trẻ 7 tháng tuổi hữu ích nhất</a>
-                                            </h2>
-                                            <p class="description">
-                                                Đồ chơi cho bé không chỉ là một phương tiện giải trí, mà còn
-                                                là
-                                                công cụ hỗ trợ phát triển toàn diện cho bé.Hulo Toys cung cấp đa dạng các loại
-                                                đồ
-                                                chơi như đồ chơi nhựa, lego, đồ chơi lắp ráp, đồ chơi điều khiển từ xa, và đồ
-                                                chơi
-                                                nhập vai...
-                                            </p>
-                                            <a href="" class="xemthem">Đọc tiếp</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="next-news">
-                                <div class="item-news">
-                                    <div class="box-news">
-                                        <div class="thumb-art">
-                                            <div class="thumb thumb-news">
-                                                <a href=""><img src="~/images/banner.jpg" alt="" /> </a>
-                                            </div>
-                                        </div>
-                                        <div class="right-content">
-                                            <div class="flex-cat">
-                                                <span class="time">
-                                                    <i class="icon icon-time"></i>
-                                                    19/02/2020
-                                                </span>
-                                                <a href="" class="cat-tag">mẹo hay</a>
-                                            </div>
-                                            <h2 class="title-news">
-                                                <a href="">Top những đồ chơi cho trẻ 7 tháng tuổi hữu ích nhất</a>
-                                            </h2>
-                                            <p class="description">
-                                                Đồ chơi cho bé không chỉ là một phương tiện giải trí, mà còn
-                                                là
-                                                công cụ hỗ trợ phát triển toàn diện cho bé.Hulo Toys cung cấp đa dạng các loại
-                                                đồ
-                                                chơi như đồ chơi nhựa, lego, đồ chơi lắp ráp, đồ chơi điều khiển từ xa, và đồ
-                                                chơi
-                                                nhập vai...
-                                            </p>
-                                            <a href="" class="xemthem">Đọc tiếp</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-news">
-                                    <div class="box-news">
-                                        <div class="thumb-art">
-                                            <div class="thumb thumb-news">
-                                                <a href=""><img src="images/banner.jpg" alt="" /> </a>
-                                            </div>
-                                        </div>
-                                        <div class="right-content">
-                                            <div class="flex-cat">
-                                                <span class="time">
-                                                    <i class="icon icon-time"></i>
-                                                    19/02/2020
-                                                </span>
-                                                <a href="" class="cat-tag">mẹo hay</a>
-                                            </div>
-                                            <h2 class="title-news">
-                                                <a href="">Top những đồ chơi cho trẻ 7 tháng tuổi hữu ích nhất</a>
-                                            </h2>
-                                            <p class="description">
-                                                Đồ chơi cho bé không chỉ là một phương tiện giải trí, mà còn
-                                                là
-                                                công cụ hỗ trợ phát triển toàn diện cho bé.Hulo Toys cung cấp đa dạng các loại
-                                                đồ
-                                                chơi như đồ chơi nhựa, lego, đồ chơi lắp ráp, đồ chơi điều khiển từ xa, và đồ
-                                                chơi
-                                                nhập vai...
-                                            </p>
-                                            <a href="" class="xemthem">Đọc tiếp</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
+                <div class="list-news-top list-news">@*3 tin nổi bật home*@</div>
+                <div class="list-news list-news-top-left">@*các tin nổi bật còn lại home*@</div>
 
-                </div>
-                <div class="list-news">
-                    <div class="item-news">
-                        <div class="box-news">
-                            <div class="thumb-art">
-                                <div class="thumb thumb-news">
-                                    <a href=""><img src="images/banner.jpg" alt="" /> </a>
-                                </div>
-                            </div>
-                            <div class="right-content">
-                                <div class="flex-cat">
-                                    <span class="time">
-                                        <i class="icon icon-time"></i>
-                                        19/02/2020
-                                    </span>
-                                    <a href="" class="cat-tag">mẹo hay</a>
-                                </div>
-                                <h2 class="title-news">
-                                    <a href="">Top những đồ chơi cho trẻ 7 tháng tuổi hữu ích nhất</a>
-                                </h2>
-                                <p class="description">
-                                    Đồ chơi cho bé không chỉ là một phương tiện giải trí, mà còn là
-                                    công cụ hỗ trợ phát triển toàn diện cho bé.Hulo Toys cung cấp đa dạng các loại đồ
-                                    chơi như đồ chơi nhựa, lego, đồ chơi lắp ráp, đồ chơi điều khiển từ xa, và đồ chơi
-                                    nhập vai...
-                                </p>
-                                <a href="" class="xemthem">Đọc tiếp</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-news">
-                        <div class="box-news">
-                            <div class="thumb-art">
-                                <div class="thumb thumb-news">
-                                    <a href=""><img src="images/banner.jpg" alt="" /> </a>
-                                </div>
-                            </div>
-                            <div class="right-content">
-                                <div class="flex-cat">
-                                    <span class="time">
-                                        <i class="icon icon-time"></i>
-                                        19/02/2020
-                                    </span>
-                                    <a href="" class="cat-tag">mẹo hay</a>
-                                </div>
-                                <h2 class="title-news">
-                                    <a href="">Top những đồ chơi cho trẻ 7 tháng tuổi hữu ích nhất</a>
-                                </h2>
-                                <p class="description">
-                                    Đồ chơi cho bé không chỉ là một phương tiện giải trí, mà còn là
-                                    công cụ hỗ trợ phát triển toàn diện cho bé.Hulo Toys cung cấp đa dạng các loại đồ
-                                    chơi như đồ chơi nhựa, lego, đồ chơi lắp ráp, đồ chơi điều khiển từ xa, và đồ chơi
-                                    nhập vai...
-                                </p>
-                                <a href="" class="xemthem">Đọc tiếp</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-news">
-                        <div class="box-news">
-                            <div class="thumb-art">
-                                <div class="thumb thumb-news">
-                                    <a href=""><img src="images/banner.jpg" alt="" /> </a>
-                                </div>
-                            </div>
-                            <div class="right-content">
-                                <div class="flex-cat">
-                                    <span class="time">
-                                        <i class="icon icon-time"></i>
-                                        19/02/2020
-                                    </span>
-                                    <a href="" class="cat-tag">mẹo hay</a>
-                                </div>
-                                <h2 class="title-news">
-                                    <a href="">Top những đồ chơi cho trẻ 7 tháng tuổi hữu ích nhất</a>
-                                </h2>
-                                <p class="description">
-                                    Đồ chơi cho bé không chỉ là một phương tiện giải trí, mà còn là
-                                    công cụ hỗ trợ phát triển toàn diện cho bé.Hulo Toys cung cấp đa dạng các loại đồ
-                                    chơi như đồ chơi nhựa, lego, đồ chơi lắp ráp, đồ chơi điều khiển từ xa, và đồ chơi
-                                    nhập vai...
-                                </p>
-                                <a href="" class="xemthem">Đọc tiếp</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-news">
-                        <div class="box-news">
-                            <div class="thumb-art">
-                                <div class="thumb thumb-news">
-                                    <a href=""><img src="images/banner.jpg" alt="" /> </a>
-                                </div>
-                            </div>
-                            <div class="right-content">
-                                <div class="flex-cat">
-                                    <span class="time">
-                                        <i class="icon icon-time"></i>
-                                        19/02/2020
-                                    </span>
-                                    <a href="" class="cat-tag">mẹo hay</a>
-                                </div>
-                                <h2 class="title-news">
-                                    <a href="">Top những đồ chơi cho trẻ 7 tháng tuổi hữu ích nhất</a>
-                                </h2>
-                                <p class="description">
-                                    Đồ chơi cho bé không chỉ là một phương tiện giải trí, mà còn là
-                                    công cụ hỗ trợ phát triển toàn diện cho bé.Hulo Toys cung cấp đa dạng các loại đồ
-                                    chơi như đồ chơi nhựa, lego, đồ chơi lắp ráp, đồ chơi điều khiển từ xa, và đồ chơi
-                                    nhập vai...
-                                </p>
-                                <a href="" class="xemthem">Đọc tiếp</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner-ads-full">
-                        <a href="">
-                            <img src="images/banner3.jpg" alt="" />
-                        </a>
-                    </div>
-                    <div class="item-news">
-                        <div class="box-news">
-                            <div class="thumb-art">
-                                <div class="thumb thumb-news">
-                                    <a href=""><img src="images/banner.jpg" alt="" /> </a>
-                                </div>
-                            </div>
-                            <div class="right-content">
-                                <div class="flex-cat">
-                                    <span class="time">
-                                        <i class="icon icon-time"></i>
-                                        19/02/2020
-                                    </span>
-                                    <a href="" class="cat-tag">mẹo hay</a>
-                                </div>
-                                <h2 class="title-news">
-                                    <a href="">Top những đồ chơi cho trẻ 7 tháng tuổi hữu ích nhất</a>
-                                </h2>
-                                <p class="description">
-                                    Đồ chơi cho bé không chỉ là một phương tiện giải trí, mà còn là
-                                    công cụ hỗ trợ phát triển toàn diện cho bé.Hulo Toys cung cấp đa dạng các loại đồ
-                                    chơi như đồ chơi nhựa, lego, đồ chơi lắp ráp, đồ chơi điều khiển từ xa, và đồ chơi
-                                    nhập vai...
-                                </p>
-                                <a href="" class="xemthem">Đọc tiếp</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-news">
-                        <div class="box-news">
-                            <div class="thumb-art">
-                                <div class="thumb thumb-news">
-                                    <a href=""><img src="images/banner.jpg" alt="" /> </a>
-                                </div>
-                            </div>
-                            <div class="right-content">
-                                <div class="flex-cat">
-                                    <span class="time">
-                                        <i class="icon icon-time"></i>
-                                        19/02/2020
-                                    </span>
-                                    <a href="" class="cat-tag">mẹo hay</a>
-                                </div>
-                                <h2 class="title-news">
-                                    <a href="">Top những đồ chơi cho trẻ 7 tháng tuổi hữu ích nhất</a>
-                                </h2>
-                                <p class="description">
-                                    Đồ chơi cho bé không chỉ là một phương tiện giải trí, mà còn là
-                                    công cụ hỗ trợ phát triển toàn diện cho bé.Hulo Toys cung cấp đa dạng các loại đồ
-                                    chơi như đồ chơi nhựa, lego, đồ chơi lắp ráp, đồ chơi điều khiển từ xa, và đồ chơi
-                                    nhập vai...
-                                </p>
-                                <a href="" class="xemthem">Đọc tiếp</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="wrap-paging">
-                    <a href="" class="xemthem">Xem thêm</a>
+                    @*<a href="" class="xemthem">Xem thêm</a>*@
                     <ul class="pagination">
                         <li class="page previous disabled"><a href=""><i class="icon icon-page-previous"></i></a></li>
                         <li class="page active"><a href="">1</a></li>
@@ -314,7 +28,7 @@
             </div>
             <div class="siderbar-news">
                 <div class="box-side box-side-ads">
-                    <img src="images/banner-news.png" alt="" />
+                    <img src="~/images/banner-news.png" alt="" />
                 </div>
                 <div class="box-side">
                     <h3 class="title">
@@ -325,7 +39,7 @@
                             <div class="box-news">
                                 <div class="thumb-art">
                                     <div class="thumb thumb-news">
-                                        <a href=""><img src="images/banner.jpg" alt="" /> </a>
+                                        <a href=""><img src="~/images/banner.jpg" alt="" /> </a>
                                     </div>
                                 </div>
                                 <div class="right-content">
@@ -340,7 +54,7 @@
                             <div class="box-news">
                                 <div class="thumb-art">
                                     <div class="thumb thumb-news">
-                                        <a href=""><img src="images/banner.jpg" alt="" /> </a>
+                                        <a href=""><img src="~/images/banner.jpg" alt="" /> </a>
                                     </div>
                                 </div>
                                 <div class="right-content">
@@ -355,7 +69,7 @@
                             <div class="box-news">
                                 <div class="thumb-art">
                                     <div class="thumb thumb-news">
-                                        <a href=""><img src="images/banner.jpg" alt="" /> </a>
+                                        <a href=""><img src="~/images/banner.jpg" alt="" /> </a>
                                     </div>
                                 </div>
                                 <div class="right-content">
@@ -413,3 +127,9 @@
         </div>
     </div>
 </section>
+
+
+
+@section Scripts {
+    <script src="~/js/news/main.js"></script>
+}

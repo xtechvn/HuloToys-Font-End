@@ -1,10 +1,8 @@
-﻿using System.Net;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
-using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
 namespace BIOLIFE.Utilities
 {
     public static class CommonHelper
@@ -161,13 +159,13 @@ namespace BIOLIFE.Utilities
             source_path = source_path.Replace("__", "=");
             return source_path;
         }
-        public static string genLinkNews(string Title, string article_id)
-        {
-            Title = RemoveUnicode(CheckMaxLength(Title.Trim(), 100));
-            Title = RemoveSpecialCharacters(CheckMaxLength(Title.Trim(), 100));
-            Title = Title.Replace(" ", "-").ToLower();
-            return ("/" + Title + "-" + article_id + ".html");
-        }
+        //public static string genLinkNews(string Title, string article_id)
+        //{
+        //    Title = RemoveUnicode(CheckMaxLength(Title.Trim(), 100));
+        //    Title = RemoveSpecialCharacters(CheckMaxLength(Title.Trim(), 100));
+        //    Title = Title.Replace(" ", "-").ToLower();
+        //    return ("/" + Title + "-" + article_id + ".html");
+        //}
    
 
         // xử lý chuỗi quá dài
