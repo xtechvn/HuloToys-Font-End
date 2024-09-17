@@ -12,7 +12,7 @@
                 @foreach (var item in Model)
                 {
                     <div class="swiper-slide">
-                        <a href="@("/" + item.path)"><img src="@Html.GetStaticImageUrl(item.imagepath, Configuration)" alt="@item.name" /></a>
+                        <a href="@(Html.GetStaticUrlGroupProduct(item.name))"><img src="@Html.GetStaticImageUrl(item.imagepath, Configuration)" alt="@item.name" /></a>
                         <h4 class="title">@item.name</h4>
 
                     </div>

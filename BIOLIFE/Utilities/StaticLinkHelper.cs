@@ -12,6 +12,20 @@ namespace BIOLIFE.Utilities
             Title = Title.Replace(" ", "-").ToLower();
             return ("/" + Title + "-" + article_id + ".html");
         }
+        public static string GetStaticUrlProduct(this IHtmlHelper htmlHelper, string name, string id)
+        {
+            name = CommonHelper.RemoveUnicode(CommonHelper.CheckMaxLength(name.Trim(), 100));
+            name = CommonHelper.RemoveSpecialCharacters(CommonHelper.CheckMaxLength(name.Trim(), 100));
+            name = name.Replace(" ", "-").ToLower();
+            return ("/san-pham/"+  name + "-" + id + ".html");
+
+        }
+        public static string GetStaticUrlGroupProduct(this IHtmlHelper htmlHelper, string name)
+        {
+            name = CommonHelper.RemoveUnicode(CommonHelper.CheckMaxLength(name.Trim(), 100));
+            name = CommonHelper.RemoveSpecialCharacters(CommonHelper.CheckMaxLength(name.Trim(), 100));            
+            return ("/nganh-hang/" + name);
+        }
         public static string GetStaticUrlCategory(this IHtmlHelper htmlHelper, string name, long cate_id)
         {
             name = CommonHelper.RemoveUnicode(CommonHelper.CheckMaxLength(name.Trim(), 100));

@@ -33,6 +33,7 @@
         public bool isshowheader { get; set; }
 
         public bool isshowfooter { get; set; }
+        public List<CategoryModel> group_product_child { get; set; }
 
     }
 }

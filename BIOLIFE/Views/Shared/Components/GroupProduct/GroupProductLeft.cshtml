@@ -1,0 +1,23 @@
+﻿@using BIOLIFE.Models;
+@using BIOLIFE.Utilities;
+@model List<CategoryModel>
+@inject IConfiguration Configuration
+
+
+<div id="closeFilter" class="close"><i class="icon icon-close"></i></div>
+<h3 class="tt-filter">Danh mục</h3>
+
+@foreach (var item in Model)
+{
+    <div class="box-filter">
+        <h3 class="tt-box">@item.name</h3>
+        <ul class="list-filter">
+            @foreach (var item_child in item.group_product_child)
+            {
+                <li>
+                    <a href="">@item_child.name</a>
+                </li>
+            }
+        </ul>
+    </div>
+}

@@ -113,8 +113,16 @@
       "PackagePath": "staticwebassets\\icofont\\icofont.min.css"
     },
     {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Eye.png",
+      "PackagePath": "staticwebassets\\images\\Eye.png"
+    },
+    {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\FilmReel.png",
       "PackagePath": "staticwebassets\\images\\FilmReel.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Leaf-w.png",
+      "PackagePath": "staticwebassets\\images\\Leaf-w.png"
     },
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Leaf.png",
@@ -127,6 +135,14 @@
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\ShoppingBag.png",
       "PackagePath": "staticwebassets\\images\\ShoppingBag.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\SketchLogo.png",
+      "PackagePath": "staticwebassets\\images\\SketchLogo.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Target.png",
+      "PackagePath": "staticwebassets\\images\\Target.png"
     },
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\ToiletPaper.png",
@@ -151,6 +167,10 @@
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\banner3.jpg",
       "PackagePath": "staticwebassets\\images\\banner3.jpg"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\big-logo.png",
+      "PackagePath": "staticwebassets\\images\\big-logo.png"
     },
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\check.svg",
@@ -187,6 +207,14 @@
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\icon-err.png",
       "PackagePath": "staticwebassets\\images\\icon-err.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\img1.png",
+      "PackagePath": "staticwebassets\\images\\img1.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\img2.png",
+      "PackagePath": "staticwebassets\\images\\img2.png"
     },
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\jcb.png",
@@ -227,6 +255,10 @@
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\twiter.png",
       "PackagePath": "staticwebassets\\images\\twiter.png"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\video.png",
+      "PackagePath": "staticwebassets\\images\\video.png"
     },
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\visa.png",
@@ -279,6 +311,10 @@
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\popper.min.js",
       "PackagePath": "staticwebassets\\js\\popper.min.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\product\\main.js",
+      "PackagePath": "staticwebassets\\js\\product\\main.js"
     },
     {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\swiper-bundle.min.js",

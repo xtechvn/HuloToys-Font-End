@@ -1,6 +1,4 @@
-﻿using BIOLIFE.ViewComponents.Header;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Encodings.Web;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace BIOLIFE.Controllers.Home
 {
@@ -8,11 +6,12 @@ namespace BIOLIFE.Controllers.Home
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IServiceProvider _serviceProvider;
-
-        public HomeController(ILogger<HomeController> logger, IServiceProvider serviceProvider)
+        private readonly IConfiguration configuration;
+        public HomeController(ILogger<HomeController> logger, IServiceProvider serviceProvider, IConfiguration _Configuration)
         {
             _logger = logger;
             _serviceProvider = serviceProvider;
+            configuration = _Configuration;
         }
 
         public IActionResult Index()
@@ -70,13 +69,52 @@ namespace BIOLIFE.Controllers.Home
                 return StatusCode(500); // Trả về lỗi 500 nếu có lỗi
             }
         }
+        /// <summary>
+
+        /// Load danh sách nhóm 4 sản phẩm vị trí top
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult loadGroupProductComponent()
         {
             try
             {
                 // Gọi ViewComponent trực tiếp và trả về kết quả
-                return ViewComponent("GroupProduct");
+                return ViewComponent("GroupProduct", new { view_name = "~/Views/Shared/Components/GroupProduct/GroupProductTop.cshtml", group_product_parent_id = Convert.ToInt32(configuration["menu:group_product_parent_id"]) });
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi nếu cần
+                _logger.LogError(ex, "Error loading GroupProduct");
+                return StatusCode(500); // Trả về lỗi 500 nếu có lỗi
+            }
+        }
+        /// Load danh sách danh sách mục sản phẩm vị trí left
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult loadGroupProductLeftComponent()
+        {
+            try
+            {                
+                return ViewComponent("GroupProduct", new { view_name = "~/Views/Shared/Components/GroupProduct/GroupProductLeft.cshtml", group_product_parent_id = Convert.ToInt32(configuration["menu:group_product_left_parent_id"]) });
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi nếu cần
+                _logger.LogError(ex, "Error loading loadGroupProductLeftComponent");
+                return StatusCode(500); // Trả về lỗi 500 nếu có lỗi
+            }
+        }
+
+        // Load nhóm sản phẩm nổi bật
+        [HttpPost]
+        public IActionResult loadProductTopComponent(int group_product_id, int page_index, int page_size,string view_name )
+        {
+            try
+            {
+                // Gọi ViewComponent trực tiếp và trả về kết quả
+                return ViewComponent("ProductList", new { _group_product_id = group_product_id, _page_index = page_index, _page_size = page_size, view_name = view_name });
             }
             catch (Exception ex)
             {
