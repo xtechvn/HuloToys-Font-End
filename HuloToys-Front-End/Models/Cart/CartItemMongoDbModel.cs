@@ -21,5 +21,7 @@ namespace Models.MongoDb
         public DateTime created_date { get; set; }
 
         public ProductMongoDbModel product { get; set; }
+        //public IList<ProductMongoDbModel> products { get; set; }
+
     }
 }

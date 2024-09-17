@@ -35,6 +35,25 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             }
             return -1;
 
+        } 
+        public async Task<string> ChangeQuanity(AddToCartRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:cart_quanity_change"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return jsonData["data"].ToString();
+                }
+            }
+            catch
+            {
+            }
+            return null;
+
         }
         public async Task<int> GetCartCount(CartGeneralRequestModel request)
         {
@@ -90,6 +109,37 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             return -1;
 
         } 
-        
+        public async Task<int> DeleteByOrder(CartDeleteRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:cart_delete_by_order"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+                return status;
+               
+            }
+            catch
+            {
+            }
+            return -1;
+
+        } 
+      
+        public async Task<CartCheckProductResponseModel> CheckProduct(CartCheckProductRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:order_confirm"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+                return JsonConvert.DeserializeObject<CartCheckProductResponseModel>(result);
+            }
+            catch
+            {
+            }
+            return null;
+
+        }
     }
 }

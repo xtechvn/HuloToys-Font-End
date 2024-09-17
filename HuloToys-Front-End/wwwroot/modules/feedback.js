@@ -12,14 +12,13 @@ var _feedback =
         sessionStorage.setItem("CreateFeedbackAction", 1);//Dùng để xác nhận hành động tạo feedback khi hành động đăng nhập chen ngang
         let comment = $('#comment-text').val();
         if (!comment) {
-            document.getElementById("CommentSucces").style.display = "block";
-            document.getElementById("CommentSucces").textContent = "Vui lòng nhập nội dung góp ý !";
-            sessionStorage.setItem("CreateFeedbackAction", 0);
-            setTimeout(() => {
-                document.getElementById("CommentSucces").style.display = 'none';
-            }, 1000);
+            var Invalid_Noti = document.getElementById("invalid-comment");
+            Invalid_Noti.style.display = 'block';
+            return;
         }
         else if (global_service.CheckLogin()) {
+            var Invalid_Noti = document.getElementById("invalid-comment");
+            Invalid_Noti.style.display = 'none';
             let Id = global_service.CheckLogin().account_client_id;
             $('.btn-Send').addClass('disabled');
             var obj =
@@ -32,13 +31,15 @@ var _feedback =
                 type: 'post',
                 data: { obj: obj },
                 success: function (data) {
-                    document.getElementById("CommentSucces").style.display = "block";
-                    document.getElementById("CommentSucces").textContent = "Cảm ơn vì đã góp ý!";
+                    document.getElementById("Comment_success").classList.add('overlay-active');
+                    
                     sessionStorage.setItem("Saved_Input", '');
                     sessionStorage.setItem("CreateFeedbackAction", 0);
+                    $('.btn-Send').removeClass('disabled');
+                    $('#comment-text').val('');
                     setTimeout(() => {
-                        location.reload();
-                    }, 1000);
+                        document.getElementById("Comment_success").classList.remove('overlay-active');
+                    }, 3000);
                 },
                 error: function (xhr, status, error) {
                     sessionStorage.setItem("CreateFeedbackAction", 0);
@@ -48,6 +49,8 @@ var _feedback =
         }
         else {
             $('.client-login').click();
+            var Invalid_Noti = document.getElementById("invalid-comment");
+            Invalid_Noti.style.display = 'none';
             var LoginForm = $('#dangnhap');
             var RegisterForm = $('#dangky');
             RegisterForm.removeClass('overlay-active');
@@ -72,19 +75,23 @@ var _feedback =
                 type: 'post',
                 data: { obj: obj },
                 success: function (data) {
-                    document.getElementById("CommentSucces").style.display = "block";
-                    document.getElementById("CommentSucces").textContent = "Cảm ơn vì đã góp ý!";
+                    document.getElementById("Comment_success").classList.add('overlay-active');
                     sessionStorage.setItem("Saved_Input", '');
                     sessionStorage.setItem("CreateFeedbackAction", 0);
                     setTimeout(() => {
-                        location.reload();
-                    }, 1000);
+                        document.getElementById("Comment_success").classList.remove('overlay-active');
+                    }, 3000);
                 },
                 error: function (xhr, status, error) {
                     sessionStorage.setItem("CreateFeedbackAction", 0);
                     location.reload();
                 }
             });
+        }
+        else
+        {
+            sessionStorage.setItem("Saved_Input", '');
+            sessionStorage.setItem("CreateFeedbackAction", 0);
         }
     },
     //Lưu trữ content khi sự kiện textchange xảy ra
@@ -106,7 +113,7 @@ var _feedback =
             document.getElementById("PromotionNoti").textContent = "Xin vui lòng nhập đúng định dạng Email!";
             setTimeout(() => {
                 document.getElementById("PromotionNoti").style.display = 'none';
-            }, 1000);
+            }, 3000);
         }
         else {
             $.ajax({
@@ -115,10 +122,11 @@ var _feedback =
                 data: { obj: obj },
                 success: function (data) {
                     document.getElementById("PromotionNoti").style.display = "block";
+                    $('#Email-text').val('');
                     document.getElementById("PromotionNoti").textContent = "Chúng tôi đã nhận được Email của bạn!";
                     setTimeout(() => {
-                        location.reload();
-                    }, 1000);
+                        document.getElementById("PromotionNoti").style.display = 'none';
+                    }, 3000);
                 },
 
             });

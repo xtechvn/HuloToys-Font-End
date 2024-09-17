@@ -191,4 +191,8 @@ $(document).ready(function () {
                 .slideDown(300);
         }
     });
+    $("select").select2({
+        placeholder: "Vui lòng chọn...",
+        // dropdownParent: $('.form-group')
+    });
 });

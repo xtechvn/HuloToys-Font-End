@@ -18,7 +18,7 @@
                         <div class="product-checkall">
                             <div class="box-checkbox">
                                 <input type="checkbox" id="checkbox11" class="checkbox" />
-                                <label for="checkbox11"></label>
+                                <label class="box-checkbox-all" for="checkbox11"></label>
                             </div>
                         </div>
                         <label class="product-image">Tên sản phẩm <span class="total-sp">(2 sản phẩm)</span></label>
@@ -119,9 +119,9 @@
             <div class="right-cart">
                 <div class="address">
                     <h4 class="name">
-                        Phạm ái phương <span></span> 098878779
+                        <nw id="address-receivername">Phạm ái phương</nw> <span></span> <nw id="address-phone">098878779</nw>
                     </h4>
-                    <p class="add">Tầng 5, tòa nhà Diamond Flower, số 1 Hoàng Đạo Thúy, Hà Nội</p>
+                    <p class="add"><nw id="address">Tầng 5, tòa nhà Diamond Flower, số 1 Hoàng Đạo Thúy, Hà Nội</nw></p>
                     <div class="delivery">
                         <span class="tt">Hình thức giao hàng:</span>
                         <div class="select-delivery select-option active">
@@ -167,7 +167,8 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="#update-address" class="edit">Thay đổi</a>
+                    <a href="javascript:;" class="edit update-address-order">Thay đổi</a>
+
                 </div>
                 <div class="voucher">
                     <div class="box-tt">
@@ -317,7 +318,8 @@
 </div>
 
 @section Scripts {
-    <script type="text/javascript" src="/modules/cart.js"></script>
-    <script type="text/javascript" src="/modules/order_address.js"></script>
+    <script type="text/javascript" src="/modules/cart.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="/modules/order_address.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="/modules/address_client.js" asp-append-version="true"></script>
 
 }

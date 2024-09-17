@@ -24,7 +24,10 @@ var order_history = {
         });
     },
     Detail: function () {
-      
+        var usr = global_service.CheckLogin()
+        if (usr == undefined || usr.account_client_id == undefined) {
+            return
+        }
         var request = {
             "client_id": usr.account_client_id,
             "status": $('.list-tab .active a').attr('data-id'),
@@ -51,7 +54,7 @@ var order_history = {
                 return obj.order_id == item.orderid
             })
             var status_name = GLOBAL_CONSTANTS.OrderStatus.filter(obj => {
-                return obj.id == item.status
+                return obj.id == item.orderstatus
             })
             var html_products = ''
             $(order_data[0].carts).each(function (index_cart, cart_item) {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HuloToys_Service.Models.Client;
 
 namespace HuloToys_Service.Models.Orders
 {
@@ -16,7 +12,11 @@ namespace HuloToys_Service.Models.Orders
 
         public DateTime createddate { get; set; }
 
+        public int? createdby { get; set; }
+
         public DateTime? updatelast { get; set; }
+
+        public int? userupdateid { get; set; }
 
         public double? price { get; set; }
 
@@ -26,7 +26,7 @@ namespace HuloToys_Service.Models.Orders
 
         public double? amount { get; set; }
 
-        public int status { get; set; }
+        public int orderstatus { get; set; }
 
         public short paymenttype { get; set; }
 
@@ -35,6 +35,10 @@ namespace HuloToys_Service.Models.Orders
         public string utmsource { get; set; }
 
         public string utmmedium { get; set; }
+
+        /// <summary>
+        /// chính là label so với wiframe
+        /// </summary>
         public string note { get; set; }
 
         public int? voucherid { get; set; }
@@ -44,5 +48,8 @@ namespace HuloToys_Service.Models.Orders
         public int? userid { get; set; }
 
         public string usergroupids { get; set; }
+
+        public long address_id { get; set; }
+        public AddressClientESModel address { get; set; }
     }
 }
