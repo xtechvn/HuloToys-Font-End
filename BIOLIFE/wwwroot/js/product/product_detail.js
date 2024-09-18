@@ -4,15 +4,11 @@
 })
 var product_detail = {
     Initialization: function () {
-        $('#thanhcong').removeClass('overlay-active')
-
         product_detail.ShowLoading()
         sessionStorage.removeItem(STORAGE_NAME.ProductDetail)
-
         sessionStorage.removeItem(STORAGE_NAME.SubProduct)
         product_detail.Detail()
         product_detail.DynamicBind()
-        global_service.LoadHomeProductGrid($('#combo-discount .list-product'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
     },
     DynamicBind: function () {
         $("body").on('click', ".attribute-detail", function () {
@@ -62,6 +58,7 @@ var product_detail = {
                 product_detail.RenderDetail(result.data.product_main, result.data.product_sub)
             }
             else {
+                debugger
                 window.location.href ='/Home/NotFound' 
             }
         })
@@ -130,7 +127,7 @@ var product_detail = {
         html = ''
         //html += HTML_CONSTANTS.Detail.Tr_Voucher.replaceAll('{span}', '')
         //html += HTML_CONSTANTS.Detail.Tr_Combo.replaceAll('{span}', '')
-        html += HTML_CONSTANTS.Detail.Tr_Shipping
+        //html += HTML_CONSTANTS.Detail.Tr_Shipping
         //html += HTML_CONSTANTS.Detail.Tr_Combo.replaceAll('{span}', '')
         if (product_sub != undefined && product_sub.length > 0) {
             $(product.attributes).each(function (index, attribute) {
@@ -157,8 +154,8 @@ var product_detail = {
         }
         //html += HTML_CONSTANTS.Detail.Tr_Quanity.replaceAll('{stock}', global_service.Comma(total_stock))
         
-        $('.box-info-details tbody').html(html)
-        $('#description').html(product.description.replaceAll('\n','<br />'))
+        $('.box-info-details .attribute-table').html(html)
+        $('.section-details-product .box-description .content').html(product.description.replaceAll('\n','<br />'))
 
         //--hide voucher (implement later):
         $('#voucher').hide()
@@ -168,7 +165,22 @@ var product_detail = {
             if (index < 5) return true
             else element.hide()
         })
-        product_detail.RenderBuyNowButton()
+        html = ''
+        $(product.specification).each(function (index, specification) {
+            if (specification.value != null &&specification.value != 'null' && specification.value != undefined && specification.value.trim() != '') {
+                var spec_name = GLOBAL_CONSTANTS.DefaultSpecificationValue.filter(obj => {
+                    return obj.id === specification.attribute_id
+                })
+                var template = `  <tr>
+                                <td>Thương hiệu</td>
+                                <td>Las Palms</td>
+                            </tr>`
+                html += template.replaceAll('Thương hiệu', spec_name[0].name)
+                    .replaceAll('Las Palms', specification.value)
+            }
+        });
+        $('#tb-info-table tbody').html(html)
+        //product_detail.RenderBuyNowButton()
         product_detail.RenderSavedProductDetailAttributeSelected()
         product_detail.RemoveLoading()
     },
@@ -185,7 +197,7 @@ var product_detail = {
             var list = JSON.parse(json)
             var sub_list = list
             var options = []
-            $('.box-info-details tbody .attributes').each(function (index, item) {
+            $('.box-info-details .attribute-table .attributes').each(function (index, item) {
                 var element = $(this)
                 var value = element.find('.box-tag').find('.active').attr('data-id')
                 var level = element.attr('data-level')
@@ -209,7 +221,7 @@ var product_detail = {
     },
     RenderChangedAttributeSelected: function (product) {
         var options=[]
-        $('.box-info-details tbody .attributes').each(function (index, item) {
+        $('.box-info-details .attribute-table .attributes').each(function (index, item) {
             var element = $(this)
             var value = element.find('.box-tag').find('.active').attr('data-id')
             var level = element.attr('data-level')
@@ -233,7 +245,7 @@ var product_detail = {
     },
     RenderBuyNowButton: function () {
         var no_select_all = false
-        if ($('.box-info-details tbody .attributes').length <= 0) {
+        if ($('.box-info-details .attribute-table .attributes').length <= 0) {
 
         }
         else {
