@@ -1226,7 +1226,9 @@
         display: flex;
         gap: 24px;
         margin-bottom: 25px;
-
+        .row{
+            width: 100%;
+        }
         @media (max-width:991px) and (min-width:768px) {
             display: flex;
         }
