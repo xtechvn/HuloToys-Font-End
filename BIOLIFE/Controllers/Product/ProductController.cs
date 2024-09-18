@@ -1,8 +1,11 @@
 ﻿using BIOLIFE.Controllers.News.Service;
+using BIOLIFE.Controllers.Product.Service;
 using BIOLIFE.Models;
 using BIOLIFE.Service.Redis;
+using HuloToys_Front_End.Models.Products;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Telegram.Bot.Requests.Abstractions;
 
 namespace BIOLIFE.Controllers.Product
 {
@@ -10,10 +13,12 @@ namespace BIOLIFE.Controllers.Product
     {
         private readonly IConfiguration configuration;
         private readonly RedisConn redisService;
+        private readonly ProductsService productsService;
         public ProductController(IConfiguration _configuration, RedisConn _redisService)
         {
             configuration = _configuration;
             redisService = _redisService;
+            productsService=new ProductsService(_configuration, redisService);
         }
         /// <summary>
         ///Sản phẩm nổi bật
@@ -38,18 +43,11 @@ namespace BIOLIFE.Controllers.Product
             }
         }
         [HttpGet("san-pham/{title}-{product_code}.html")]
-        public async Task<ActionResult> getProductDetail(string title, string product_code)
+        public async Task<ActionResult> Detail(string title, string product_code)
         {
-            try
-            {
-                //var article_sv = new NewsService(configuration, redisService);
-                //var article = await article_sv.getArticleDetailById(article_id);
-                return View("~/Views/Product/Detail.cshtml");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500); // Trả về lỗi 500 nếu có lỗi                
-            }
+            ViewBag.ProductCode = product_code;
+            return View();
+
         }
 
         [HttpGet("nganh-hang/{group_product_name}")]
@@ -66,7 +64,15 @@ namespace BIOLIFE.Controllers.Product
                 return StatusCode(500); // Trả về lỗi 500 nếu có lỗi                
             }
         }
+        public async Task<IActionResult> ProductDetail(ProductDetailRequestModel request)
+        {
+            var result = await productsService.GetProductDetail(request);
 
-
+            return Ok(new
+            {
+                is_success = result != null,
+                data = result
+            });
+        }
     }
 }

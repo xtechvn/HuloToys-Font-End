@@ -97,6 +97,13 @@ namespace BIOLIFE
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("Default", "{controller=Home}/{action=Index}/{id?}");
+            }); 
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "san-pham",
+                    pattern: "/san-pham/{title}--{product_code}",
+                    defaults: new { controller = "Product", action = "Detail" });
             });
         }
     }
