@@ -1,4 +1,10 @@
-﻿<section class="banner-product">
+﻿@{
+    var group_product_parent_id =  ViewBag.group_product_parent_id;
+}
+
+<input type="hidden" id="group_product_parent_id" value="@group_product_parent_id" />
+
+<section class="banner-product">
     <div class="container">
         <div class="swiper swiper-banner">
             <div class="swiper-wrapper">
@@ -19,60 +25,11 @@
     <div class="container">
         <div class="wrap-list-product" id="productList">
             <div class="left-sidebar">
+
                 <div id="closeFilter" class="close"><i class="icon icon-close"></i></div>
                 <h3 class="tt-filter">Danh mục</h3>
-                <div class="box-filter">
-                    <h3 class="tt-box">Màng bọc - màng nhôm</h3>
-                    <ul class="list-filter">
-                        <li class="active">
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="box-filter">
-                    <h3 class="tt-box">Túi bảo quản thực phẩm</h3>
-                    <ul class="list-filter">
-                        <li class="active">
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                    </ul>
-                </div>
+                <div id="group-product-left"></div>
+
                 <div class="box-filter">
                     <h3 class="tt-box gia">Giá</h3>
                     <form>
@@ -87,26 +44,9 @@
                     <h3 class="tt-box thuonghieu">Thương hiệu</h3>
                     <ul class="list-filter">
                         <li class="active">
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
+                            <a href="/">BIOLIFE</a>
                         </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
-                        <li>
-                            <a href="">Đồ chơi phát triển trí tuệ</a>
-                        </li>
+
                     </ul>
                 </div>
             </div>

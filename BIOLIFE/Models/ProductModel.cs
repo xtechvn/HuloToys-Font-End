@@ -1,6 +1,4 @@
-﻿using BIOLIFE.Models.Product;
-
-namespace BIOLIFE.Models
+﻿namespace BIOLIFE.Models
 {
     public class ProductModel
     {
@@ -16,12 +14,7 @@ namespace BIOLIFE.Models
         public List<string> videos { get; set; }
         public string name { get; set; }
         public string group_product_id { get; set; }
-        public string description { get; set; }
-        public List<ProductDetailVariationAttributesModel> variation_detail { get; set; }
-        public List<ProductSpecificationDetaiModel> specification { get; set; }
-        public List<ProductAttributeModel> attributes { get; set; }
-        public List<ProductAttributeModelItem> attributes_detail { get; set; }
-        public List<ProductDiscountOnGroupsBuyModel> discount_group_buy { get; set; }
+        public string description { get; set; }     
         public int preorder_status { get; set; }
         public float star { get; set; }
         public int condition_of_product { get; set; }

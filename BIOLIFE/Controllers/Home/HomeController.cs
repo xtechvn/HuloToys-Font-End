@@ -22,7 +22,8 @@ namespace BIOLIFE.Controllers.Home
         [HttpGet]
         public async Task<IActionResult> Product()
         {
-            return View();
+            ViewBag.group_product_parent_id = -1;
+            return View("~/Views/Product/GroupProductList.cshtml");
         }
 
         [Route("lien-he")]
@@ -93,11 +94,11 @@ namespace BIOLIFE.Controllers.Home
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult loadGroupProductLeftComponent()
+        public IActionResult loadGroupProductLeftComponent(int group_product_parent_id)
         {
             try
             {                
-                return ViewComponent("GroupProduct", new { view_name = "~/Views/Shared/Components/GroupProduct/GroupProductLeft.cshtml", group_product_parent_id = Convert.ToInt32(configuration["menu:group_product_left_parent_id"]) });
+                return ViewComponent("GroupProduct", new { view_name = "~/Views/Shared/Components/GroupProduct/GroupProductLeft.cshtml", group_product_parent_id = group_product_parent_id });
             }
             catch (Exception ex)
             {

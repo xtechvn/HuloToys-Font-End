@@ -73,8 +73,12 @@
 <section class="section-product">
     <div class="container">
         <div class="wrap-list-product" id="productList">
-            <div class="left-sidebar" id="group-product-left">
-               @*load danh mục sản phẩm*@
+            
+            @*Ajax render viewcomponent load danh mục sản phẩm*@
+            <div class="left-sidebar">               
+                <div id="closeFilter" class="close"><i class="icon icon-close"></i></div>
+                <h3 class="tt-filter">Danh mục</h3>
+                <div id="group-product-left"></div>
             </div>
 
             <div class="product-category" id="group-product-bottom-left">

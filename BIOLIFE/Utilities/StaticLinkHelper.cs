@@ -20,11 +20,12 @@ namespace BIOLIFE.Utilities
             return ("/san-pham/"+  name + "-" + id + ".html");
 
         }
-        public static string GetStaticUrlGroupProduct(this IHtmlHelper htmlHelper, string name)
+        public static string GetStaticUrlGroupProduct(this IHtmlHelper htmlHelper, string name, int group_product_id)
         {
             name = CommonHelper.RemoveUnicode(CommonHelper.CheckMaxLength(name.Trim(), 100));
-            name = CommonHelper.RemoveSpecialCharacters(CommonHelper.CheckMaxLength(name.Trim(), 100));            
-            return ("/nganh-hang/" + name);
+            name = CommonHelper.RemoveSpecialCharacters(CommonHelper.CheckMaxLength(name.Trim(), 100));
+            name = name.Replace(" ", "-").ToLower();
+            return ("/nganh-hang/" + name + "/" + group_product_id);
         }
         public static string GetStaticUrlCategory(this IHtmlHelper htmlHelper, string name, long cate_id)
         {

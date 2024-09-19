@@ -11,6 +11,41 @@
     <link rel="stylesheet" href="~/css/jquery-ui.css">
     <link rel="stylesheet" href="~/icofont/icofont.min.css" />
     <link rel="stylesheet" href="~/css/main.css">
+
+    <style type="text/css">
+       /* Định nghĩa placeholder */
+.placeholder_custom {
+    background-color: #e0e0e0; /* Màu nền xám */
+    color: transparent; /* Ẩn text bên trong */
+    border-radius: 4px; /* Bo góc nếu cần */
+    width: 100%; /* Chiều rộng sẽ tự động theo kích thước của DOM */
+    height: auto; /* Chiều cao tự điều chỉnh */
+    position: relative;
+}
+
+/* Hiệu ứng loading (nếu cần) */
+.placeholder_custom::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(224,224,224,0) 0%, rgba(224,224,224,0.4) 50%, rgba(224,224,224,0) 100%);
+    animation: loading 1.5s infinite;
+}
+
+@@keyframes loading {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+    </style>
+
     @await RenderSectionAsync("SocialMetaTags", required: false)
 
   @*  <environment include="Development">    

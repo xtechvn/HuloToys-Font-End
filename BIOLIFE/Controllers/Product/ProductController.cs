@@ -50,13 +50,12 @@ namespace BIOLIFE.Controllers.Product
 
         }
 
-        [HttpGet("nganh-hang/{group_product_name}")]
-        public async Task<ActionResult> getListGroupProduct(string group_product_name)
+        [HttpGet("nganh-hang/{group_product_name}/{group_product_id}")]
+        public async Task<ActionResult> getListGroupProduct(string group_product_name, int group_product_id)
         {
             try
-            {
-                //var article_sv = new NewsService(configuration, redisService);
-                //var article = await article_sv.getArticleDetailById(article_id);
+            {                
+                ViewBag.group_product_parent_id = group_product_id;
                 return View("~/Views/Product/GroupProductList.cshtml");
             }
             catch (Exception ex)

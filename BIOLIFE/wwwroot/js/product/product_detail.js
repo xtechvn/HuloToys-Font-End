@@ -4,7 +4,7 @@
 })
 var product_detail = {
     Initialization: function () {
-        product_detail.ShowLoading()
+      //  product_detail.ShowLoading()
         sessionStorage.removeItem(STORAGE_NAME.ProductDetail)
         sessionStorage.removeItem(STORAGE_NAME.SubProduct)
         product_detail.Detail()
@@ -157,9 +157,6 @@ var product_detail = {
         $('.box-info-details .attribute-table').html(html)
         $('.section-details-product .box-description .content').html(product.description.replaceAll('\n','<br />'))
 
-        //--hide voucher (implement later):
-        $('#voucher').hide()
-        //$('#combo-discount').hide()
         $('#combo-discount .list-product .item-product').each(function (index, item) {
             var element = $(this)
             if (index < 5) return true
