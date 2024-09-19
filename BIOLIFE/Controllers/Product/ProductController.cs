@@ -25,6 +25,9 @@ namespace BIOLIFE.Controllers.Product
             _cache = cache;
 
         }
+
+
+
         /// <summary>
         ///Sản phẩm nổi bật
 
@@ -60,6 +63,7 @@ namespace BIOLIFE.Controllers.Product
         {
             try
             {                
+
                 ViewBag.group_product_parent_id = group_product_id;
                 return View("~/Views/Product/GroupProductList.cshtml");
             }

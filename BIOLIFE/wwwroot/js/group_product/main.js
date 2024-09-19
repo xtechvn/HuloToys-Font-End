@@ -2,13 +2,53 @@ $(document).ready(function () {
     
     group_product.bind_list_group_product();
     group_product.bind_list_product_top();
-    group_product.bind_list_menu_product_home_left(); // danh mục sản phẩm trang chủ bên trái /Home
+    group_product.bind_list_menu_product(); // danh mục sản phẩm trang chủ bên trái /Home
     group_product.bind_list_product_bottom_top();
 
-    //group_product.bind_list_menu_product_category_left(); // danh mục sản phẩm trang chuyên mục bên trái. /san-pham
+
+    // Page load render data by group product id
+    var view_name = "~/Views/Shared/Components/Product/ProductListViewComponent.cshtml";
+    var skip = 0;
+    var take = 12;
+    var div_location_render_data = ".component-product-list";
+    var location_type = "CATEGORY";    
+    group_product.render_product_list(-1, div_location_render_data, view_name, skip, take, location_type);
+      
 })
+$(document.body).on('click', '.menu_group_product', function (e) {
+
+    var group_product_id = $(this).data('groupproduct');
+    var view_name = "~/Views/Shared/Components/Product/ProductListViewComponent.cshtml";
+    var skip = 0;
+    var take = 12;
+    var div_location_render_data = ".component-product-list";
+    var location_type = "HOME";
+    group_product.render_product_list(group_product_id, div_location_render_data, view_name, skip, take, location_type);
+});
+
 
 var group_product = {
+
+    render_product_list: function (group_product_id, div_location_render_data, view_name, skip, take, location_type) { //render data sản phẩm theo ngành hàng call ajax
+       
+        if (location_type == "HOME") {
+
+        } else if (location_type == "CATEGORY") { // Page ngành hàng
+            group_product_id = $("#group_product_parent_id").val() == undefined ? -1 : parseInt($("#group_product_parent_id").val()); // load theo chuyen trang        
+        }
+        $.ajax({
+            dataType: 'html',
+            type: 'POST',
+            url: '/home/loadProductTopComponent',
+            data: { group_product_id: group_product_id, _page_index: skip, page_size: take, view_name: view_name },
+            success: function (data) {
+                $(div_location_render_data).html(data);
+            },
+            error: function (xhr, status, error) {
+                console.log("Error: " + error); // Thay đổi từ 'failure' sang 'error'
+            }
+        });
+    },
     bind_list_product_top: function () { // bind box nhóm sản phẩm nổi bật trang home
 
         $.ajax({
@@ -165,7 +205,7 @@ var group_product = {
     },
     //location_dom: vị trí cần render data
     //group_product_parent_id:  id của menu cha cho phần danh mục sản phẩm
-    bind_list_menu_product_home_left: function () { // bind box nhóm danh mục ngành hàng vị trí left 
+    bind_list_menu_product: function () { // bind box nhóm danh mục ngành hàng vị trí left 
         
         var group_product_parent_id = $("#group_product_parent_id").val() == undefined ? -1 : parseInt($("#group_product_parent_id").val()); // load theo chuyen trang
         var div_location_render_data = "";
@@ -210,38 +250,7 @@ var group_product = {
                 console.log("Error: " + error); // Thay đổi từ 'failure' sang 'error'
             }
         });
-    },
-    //bind_list_menu_product_category_left: function () { 
-    //    var group_product_parent_id = $("#group_product_parent_id").val(); // load theo chuyen trang
-    //    $.ajax({
-    //        dataType: 'html',
-    //        type: 'POST',
-    //        url: '/home/loadGroupProductLeftComponent',
-    //        data: { group_product_parent_id: group_product_parent_id },
-    //        success: function (data) { // render ra các chuyên mục con
-    //            $('#menu_product_category_left').html(data);
-    //            const swiperADS = new Swiper('.banner-cat', {
-    //                loop: false,
-    //                pagination: false,
-    //                navigation: false,
-    //                slidesPerView: 1.5,
-    //                spaceBetween: 8,
-    //                breakpoints: {
-    //                    540: {
-    //                        slidesPerView: 1.5,
-    //                    },
-    //                    768: {
-    //                        slidesPerView: 2.5,
-    //                    },
-    //                    992: {
-    //                        slidesPerView: 4,
-    //                    }
-    //                }
-    //            });
-    //        },
-    //        error: function (xhr, status, error) {
-    //            console.log("Error: " + error); // Thay đổi từ 'failure' sang 'error'
-    //        }
-    //    });
-    //}
+    }
+   
+    
 }
