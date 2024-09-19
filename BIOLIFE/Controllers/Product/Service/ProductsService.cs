@@ -5,7 +5,7 @@ using BIOLIFE.Utilities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using HuloToys_Front_End.Utilities.Contants;
-using HuloToys_Front_End.Models.Products;
+using BIOLIFE.Models.Products;
 using HuloToys_Front_End.Utilities.Lib;
 
 namespace BIOLIFE.Controllers.Product.Service

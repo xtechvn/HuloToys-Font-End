@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HuloToys_Front_End.Models.Products
+namespace BIOLIFE.Models.Products
 {
     public class ProductSpecificationDetailMongoDbModel
     {

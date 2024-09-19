@@ -13,7 +13,7 @@ var product = {
             dataType: 'html',
             type: 'POST',
             url: '/home/loadProductTopComponent',
-            data: { group_product_id: 31, _page_index: 0, page_size: 12, view_name: "~/Views/Shared/Components/Product/BoxProductTopList.cshtml" },
+            data: { group_product_id: 54, _page_index: 0, page_size: 12, view_name: "~/Views/Shared/Components/Product/BoxProductTopList.cshtml" },
             success: function (data) {
                 $('#product-top-list').html(data);                
                 const swiperFlash = new Swiper('.section-flashsale .product-slide', {
@@ -49,7 +49,7 @@ var product = {
             dataType: 'html',
             type: 'POST',
             url: '/home/loadProductTopComponent',
-            data: { group_product_id: 31, _page_index: 0, page_size: 12, view_name: "~/Views/Shared/Components/Product/BoxProductBottomRight.cshtml" },
+            data: { group_product_id: 54, _page_index: 0, page_size: 12, view_name: "~/Views/Shared/Components/Product/BoxProductBottomRight.cshtml" },
             success: function (data) {
                 $('#group-product-bottom-left').html(data);
                 const swiperFlash = new Swiper('.section-flashsale .product-slide', {

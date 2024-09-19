@@ -18,7 +18,7 @@ namespace BIOLIFE.Controllers.News
         // Layout trang chủ news dùng chung với trang Category cấp 2
         [Route("tin-tuc")]        
         [HttpGet]
-        public async Task<IActionResult> Index(string path, string category_path_child = "", int category_id = -1)
+        public async Task<IActionResult> Index(string path, string category_path_child = "", int category_id = 39)
         {
             ViewBag.category_id = category_id;
             return View();

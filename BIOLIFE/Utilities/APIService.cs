@@ -17,7 +17,7 @@ namespace HuloToys_Front_End.Utilities.Lib
         private const string CONST_TOKEN_PARAM = "token";
         private readonly string _ApiSecretKey;
         private readonly RedisConn _redisService;
-        private int cache_db_index=8;
+        private int cache_db_index=6;
         private string USER_NAME="test";
         private string PASSWORD="password";
         private string API_GET_TOKEN="/api/auth/login";

@@ -8,13 +8,9 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\NewsDetail\**" />
-    <Compile Remove="Controllers\ProductList\Service\**" />
     <Content Remove="Controllers\NewsDetail\**" />
-    <Content Remove="Controllers\ProductList\Service\**" />
     <EmbeddedResource Remove="Controllers\NewsDetail\**" />
-    <EmbeddedResource Remove="Controllers\ProductList\Service\**" />
     <None Remove="Controllers\NewsDetail\**" />
-    <None Remove="Controllers\ProductList\Service\**" />
   </ItemGroup>
 
   <ItemGroup>

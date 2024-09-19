@@ -4,7 +4,6 @@
 })
 var product_detail = {
     Initialization: function () {
-        product_detail.ShowLoading()
         sessionStorage.removeItem(STORAGE_NAME.ProductDetail)
         sessionStorage.removeItem(STORAGE_NAME.SubProduct)
         product_detail.Detail()
@@ -25,21 +24,21 @@ var product_detail = {
                 window.location.reload()
             }
         });
-        $("body").on('click', ".attribute-detail", function () {
-            product_detail.RenderBuyNowButton()
-        });
-        $("body").on('click', ".add-cart", function () {
-            product_detail.AddToCart()
+    //    $("body").on('click', ".attribute-detail", function () {
+    //        product_detail.RenderBuyNowButton()
+    //    });
+    //    $("body").on('click', ".add-cart", function () {
+    //        product_detail.AddToCart()
 
-        });
-        $("body").on('click', ".buy-now", function () {
-            product_detail.BuyNow()
+    //    });
+    //    $("body").on('click', ".buy-now", function () {
+    //        product_detail.BuyNow()
 
-        });
-        $("body").on('click', ".btn-go-to-cart", function () {
-            window.location.href='/cart'
+    //    });
+    //    $("body").on('click', ".btn-go-to-cart", function () {
+    //        window.location.href='/cart'
 
-        });
+        //});
     },
     Detail: function () {
         var code = $('.section-details-product').attr('data-code')
@@ -51,138 +50,40 @@ var product_detail = {
         $.when(
             global_service.POST(API_URL.ProductDetail, request)
         ).done(function (result) {
-            
+            if (result != null && result != undefined) {
+                $('.section-details-product').removeClass('placeholder')
+                $('.section-details-product').html(result)
+                var swiperSmallThumb = new Swiper(".thumb-small", {
+                    spaceBetween: 15,
+                    slidesPerView: 4,
+                    freeMode: true,
+                    watchSlidesProgress: true,
+                    navigation: {
+                        nextEl: '.thumb-small .swiper-button-next',
+                        prevEl: '.thumb-small .swiper-button-prev',
+                    },
+                });
+                var swiperBigThumb = new Swiper(".thumb-big", {
+                    spaceBetween: 15,
+                    navigation: false,
+                    thumbs: {
+                        swiper: swiperSmallThumb,
+                    },
+                });
+            }
+            else {
+               window.location.href='/error'
+
+            }
+        })
+        $.when(
+            global_service.POST(API_URL.GetProductDetail, request)
+        ).done(function (result) {
             if (result.is_success && result.data && result.data.product_main) {
                 sessionStorage.setItem(STORAGE_NAME.ProductDetail, JSON.stringify(result.data))
                 sessionStorage.setItem(STORAGE_NAME.SubProduct, JSON.stringify(result.data.product_sub))
-                product_detail.RenderDetail(result.data.product_main, result.data.product_sub)
-            }
-            else {
-                debugger
-                window.location.href ='/Home/NotFound' 
             }
         })
-    },
-    RenderDetail: function (product,product_sub) {
-        var html = ''
-        var img_src = product.avatar
-        img_src = global_service.CorrectImage(product.avatar)
-
-
-        html += HTML_CONSTANTS.Detail.Images
-            .replaceAll('{src}', img_src)
-
-        $(product.images).each(function (index, item) {
-
-           img_src= global_service.CorrectImage(item)
-            html += HTML_CONSTANTS.Detail.Images
-                .replaceAll('{src}', img_src)
-
-        });
-        $('.section-details-product .gallery-product .swiper-wrapper').html(html)
-
-        $('.section-details-product .name-product').html(product.name)
-        if (product.product_sold_count == undefined || product.product_sold_count <= 0) {
-            $('.section-details-product .total-sold').hide()
-        } else {
-            $('.section-details-product .total-sold').html(global_service.Comma(product.product_sold_count) + ' Đã bán')
-        }
-        if (product.reviews_count == undefined || product.reviews_count <= 0) {
-            $('.section-details-product .total-sold').hide()
-        } else {
-            $('.section-details-product .total-review').html( global_service.Comma(product.reviews_count) + ' Đánh giá')
-        }
-      
-
-        html = ''
-        for (var i = 0; i < (product.star <= 0 ? 5 : product.star); i++) {
-            html += HTML_CONSTANTS.Detail.Star
-        }
-        html += '' + (product.star <= 0 ? 5 : product.star)
-        $('.box-review .review').html(html)
-
-        if (product_sub != undefined && product_sub.length > 0) {
-            const max_obj = product_sub.reduce(function (prev, current) {
-                return (prev && prev.amount > current.amount) ? prev : current
-            })
-            const min_obj = product_sub.reduce(function (prev, current) {
-                return (prev && prev.amount < current.amount) ? prev : current
-            })
-            if (max_obj.amount <= min_obj.amount)
-                $('.section-details-product .price').html(global_service.Comma(min_obj.amount))
-            else
-                $('.section-details-product .price').html(global_service.Comma(min_obj.amount) + ' - ' + global_service.Comma(max_obj.amount))
-        }
-        else {
-            $('.section-details-product .price').html(global_service.Comma(product.amount))
-
-        }
-        if (product.discount > 0) {
-            $('#price-old').html(global_service.Comma(product.amount + product.discount))
-        } else {
-            $('#price-old').closest('.price-old').hide()
-        }
-        var total_stock = product.quanity_of_stock
-
-        html = ''
-        //html += HTML_CONSTANTS.Detail.Tr_Voucher.replaceAll('{span}', '')
-        //html += HTML_CONSTANTS.Detail.Tr_Combo.replaceAll('{span}', '')
-        //html += HTML_CONSTANTS.Detail.Tr_Shipping
-        //html += HTML_CONSTANTS.Detail.Tr_Combo.replaceAll('{span}', '')
-        if (product_sub != undefined && product_sub.length > 0) {
-            $(product.attributes).each(function (index, attribute) {
-                var attr_detail =  product.attributes_detail.filter(obj => {
-                    return obj.attribute_id === attribute._id
-                })
-                var html_item=''
-                if (attr_detail != undefined && attr_detail.length > 0) {
-                    $(attr_detail).each(function (index_detail, attribute_detail) {
-                        img_src = global_service.CorrectImage(attribute_detail.img)
-
-                        html_item += HTML_CONSTANTS.Detail.Tr_Attributes_Td_li
-                            .replaceAll('{active}', '')
-                            .replaceAll('{src}', attribute_detail.img != undefined && attribute_detail.img.trim() != '' ? '<img src="' + img_src +'" />':'')
-                            .replaceAll('{name}', attribute_detail.name)
-                    })
-                }
-                html += HTML_CONSTANTS.Detail.Tr_Attributes
-                    .replaceAll('{level}', attribute._id)
-                    .replaceAll('{name}', attribute.name)
-                    .replaceAll('{li}', html_item)
-            });
-            total_stock = product_sub.reduce((n, { amount }) => n + amount, 0)
-        }
-        //html += HTML_CONSTANTS.Detail.Tr_Quanity.replaceAll('{stock}', global_service.Comma(total_stock))
-        
-        $('.box-info-details .attribute-table').html(html)
-        $('.section-details-product .box-description .content').html(product.description.replaceAll('\n','<br />'))
-
-        //--hide voucher (implement later):
-        $('#voucher').hide()
-        //$('#combo-discount').hide()
-        $('#combo-discount .list-product .item-product').each(function (index, item) {
-            var element = $(this)
-            if (index < 5) return true
-            else element.hide()
-        })
-        html = ''
-        $(product.specification).each(function (index, specification) {
-            if (specification.value != null &&specification.value != 'null' && specification.value != undefined && specification.value.trim() != '') {
-                var spec_name = GLOBAL_CONSTANTS.DefaultSpecificationValue.filter(obj => {
-                    return obj.id === specification.attribute_id
-                })
-                var template = `  <tr>
-                                <td>Thương hiệu</td>
-                                <td>Las Palms</td>
-                            </tr>`
-                html += template.replaceAll('Thương hiệu', spec_name[0].name)
-                    .replaceAll('Las Palms', specification.value)
-            }
-        });
-        $('#tb-info-table tbody').html(html)
-        //product_detail.RenderBuyNowButton()
-        product_detail.RenderSavedProductDetailAttributeSelected()
-        product_detail.RemoveLoading()
     },
     GetProductDetailSession: function () {
         var json = sessionStorage.getItem(STORAGE_NAME.ProductDetail)
@@ -410,29 +311,6 @@ var product_detail = {
         const arraysEqual = (a1, a2) =>
             a1.length === a2.length && a1.every((o, idx) => objectsEqual(o, a2[idx]));
         return arraysEqual(arr1, arr2)
-
-    },
-    ShowLoading: function () {
-        $('.section-details-product').addClass('placeholder')
-        $('.section-description-product').addClass('placeholder')
-        $('.section-category').addClass('placeholder')
-        $('.gallery-product .swiper-wrapper').addClass('placeholder')
-        $('.gallery-product swiper-slide').addClass('placeholder')
-        $('.box-name-product').addClass('placeholder')
-        $('.price').addClass('placeholder')
-        $('.box-info-details').addClass('placeholder')
-        $('.box-action').addClass('placeholder')
-    },
-    RemoveLoading: function () {
-        $('.section-details-product').removeClass('placeholder')
-        $('.section-description-product').removeClass('placeholder')
-        $('.section-category').removeClass('placeholder')
-        $('.gallery-product .swiper-wrapper').removeClass('placeholder')
-        $('.gallery-product swiper-slide').removeClass('placeholder')
-        $('.box-name-product').removeClass('placeholder')
-        $('.price').removeClass('placeholder')
-        $('.box-info-details').removeClass('placeholder')
-        $('.box-action').removeClass('placeholder')
 
     }
 }

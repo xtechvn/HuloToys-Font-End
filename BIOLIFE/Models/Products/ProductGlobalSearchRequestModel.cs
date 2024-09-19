@@ -1,4 +1,4 @@
-﻿namespace HuloToys_Front_End.Models.Products
+﻿namespace BIOLIFE.Models.Products
 {
     public class ProductGlobalSearchRequestModel
     {
