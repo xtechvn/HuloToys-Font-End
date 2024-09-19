@@ -23,6 +23,7 @@
         public DateTime updated_last { get; set; }
         public double? amount_max { get; set; }
         public double? amount_min { get; set; }
+        public string label_price { get; set; }
 
         public string parent_product_id { get; set; }
         public int status { get; set; }

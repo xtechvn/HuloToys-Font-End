@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HuloToys_Front_End.Models.Products
+namespace BIOLIFE.Models.Products
 {
     public class ProductMongoDbModel
     {
@@ -44,6 +44,8 @@ namespace HuloToys_Front_End.Models.Products
         public DateTime updated_last { get; set; }
         public double? amount_max { get; set; }
         public double? amount_min { get; set; }
+        public string label_price { get; set; }
+
         public string parent_product_id { get; set; }
         public int status { get; set; }
 

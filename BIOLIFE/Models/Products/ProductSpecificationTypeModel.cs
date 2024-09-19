@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace BIOLIFE.Models.Products
 {
-    public class ProductMongoDbSummitModel: ProductMongoDbModel
+    public class ProductSpecificationTypeModel
     {
-        public List<ProductDetailVariationMongoDbModel> variations { get; set; }
-
-
+        public int _id { get; set; }
+        public string name { get; set; }
+        public int type { get; set; }
     }
 }

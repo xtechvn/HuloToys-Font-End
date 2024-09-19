@@ -1,4 +1,16 @@
+<<<<<<< HEAD
 ﻿namespace HuloToys_Front_End.Models.Products
+=======
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BIOLIFE.Models.Products
+>>>>>>> e4390f388b01d07d4cab6cd478629144fd7bc6ba
 {
     public class ProductAttributeMongoDbModel
     {

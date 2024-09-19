@@ -13,6 +13,7 @@ var API_URL = {
     Login:'/Client/Login',
     Register:'/Client/Register',
     ProductDetail:'/Product/ProductDetail',
+    GetProductDetail:'/Product/GetProductDetail',
     ProductList:'/Product/GetList',
     AddToCart: '/Cart/AddToCart',
     CartCount: '/Cart/CartCount',
@@ -238,51 +239,7 @@ var HTML_CONSTANTS = {
                         </a>
                     </div>`
     },
-    Detail: {
-        Images: `<div class="swiper-slide">
-                                <img src="{src}" alt="" />
-                            </div>`,
-        Star: `<i class="icon icon-star"></i>`,
-        Tr_Voucher: ` <tr>
-                                 <td>Mã giảm giá</td>
-                                <td>
-                                   {span}
-                                </td> 
-                            </tr>`,
-        Tr_Voucher_Td_span: `<span class="coupon" data-id="{id}">{name}</span>`,
-        Tr_Combo: ` <tr>
-                                <td>Combo khuyến mại</td>
-                                <td> {span} </td>
-                            </tr>`,
-        Tr_Combo_Td_span: ` <span class="combo" data-id="{id}">{name}</span>`,
 
-        Tr_Shipping: ` <tr>
-                                <td>Vận chuyển</td>
-                                <td>Miễn phí vận chuyển</td>
-                            </tr>`,
-        Tr_Attributes: `<tr class="attributes" data-level="{level}">
-                                <td>{name}</td>
-                                <td>
-                                    <ul class="box-tag">
-                                       {li}
-
-                                    </ul>
-                                </td>
-                            </tr>`,
-        Tr_Attributes_Td_li: `<li class="attribute-detail {active}" data-id="{name}">{src} {name}</li>`,
-        Tr_Quanity: `<tr class="box-detail-stock">
-                                <td>Số lượng:</td>
-                                <td>
-                                    <div class="number-input">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                        <input class="quantity" min="1" name="quantity" value="1" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                                    </div>
-
-                                    <span class="soluong">{stock} sản phẩm có sẵn</span>
-                                </td>
-                            </tr>`
-    },
     Cart: {
         Product:`<div class="product" data-cart-id="{id}" data-product-id="{product_id}" data-amount="{amount}">
                             <div class="product-checkall">

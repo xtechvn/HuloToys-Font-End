@@ -1,6 +1,6 @@
-﻿using HuloToys_Front_End.Models.Products;
+﻿using BIOLIFE.Models.Products;
 
-namespace HuloToys_Front_End.Models.Products
+namespace BIOLIFE.Models.Products
 {
     public class ProductListResponseModel
     {

@@ -2,7 +2,7 @@
 using MongoDB.Bson;
 using System.Collections.Generic;
 
-namespace HuloToys_Front_End.Models.Products
+namespace BIOLIFE.Models.Products
 {
     public class ProductDetailVariationMongoDbModel
     {
