@@ -1,19 +1,61 @@
 $(document).ready(function () {
     
-    product.bind_list_group_product();
-    product.bind_list_product_top();
-    product.bind_list_group_product_left();
-    product.bind_list_product_bottom_top();
-})
+    group_product.bind_list_group_product();
+    group_product.bind_list_product_top();
+    group_product.bind_list_menu_product(); // danh mục sản phẩm trang chủ bên trái /Home
+    group_product.bind_list_product_bottom_top();
 
-var product = {
+
+    // Page load render data by group product id
+    var view_name = "~/Views/Shared/Components/Product/ProductListViewComponent.cshtml";
+    var skip = 0;
+    var take = 12;
+    var div_location_render_data = ".component-product-list";
+    var location_type = "CATEGORY";    
+    group_product.render_product_list(-1, div_location_render_data, view_name, skip, take, location_type);
+      
+})
+$(document.body).on('click', '.menu_group_product', function (e) {
+
+    var group_product_id = $(this).data('groupproduct');
+    var view_name = "~/Views/Shared/Components/Product/ProductListViewComponent.cshtml";
+    var skip = 0;
+    var take = 12;
+    var div_location_render_data = ".component-product-list";
+    var location_type = "HOME";
+    group_product.render_product_list(group_product_id, div_location_render_data, view_name, skip, take, location_type);
+});
+
+
+var group_product = {
+
+    render_product_list: function (group_product_id, div_location_render_data, view_name, skip, take, location_type) { //render data sản phẩm theo ngành hàng call ajax
+       
+        if (location_type == "HOME") {
+
+        } else if (location_type == "CATEGORY") { // Page ngành hàng
+            group_product_id = $("#group_product_parent_id").val() == undefined ? -1 : parseInt($("#group_product_parent_id").val()); // load theo chuyen trang        
+        }
+        $.ajax({
+            dataType: 'html',
+            type: 'POST',
+            url: '/home/loadProductTopComponent',
+            data: { group_product_id: group_product_id, _page_index: skip, page_size: take, view_name: view_name },
+            success: function (data) {
+                $(div_location_render_data).html(data);
+            },
+            error: function (xhr, status, error) {
+                console.log("Error: " + error); // Thay đổi từ 'failure' sang 'error'
+            }
+        });
+    },
     bind_list_product_top: function () { // bind box nhóm sản phẩm nổi bật trang home
 
         $.ajax({
             dataType: 'html',
             type: 'POST',
             url: '/home/loadProductTopComponent',
-            data: { group_product_id: 15, _page_index: 0, page_size: 12, view_name: "~/Views/Shared/Components/Product/BoxProductTopList.cshtml" },
+            data: { group_product_id: 54, _page_index: 0, page_size: 12, view_name: "~/Views/Shared/Components/Product/BoxProductTopList.cshtml" },
             success: function (data) {
                 $('#product-top-list').html(data);                
                 const swiperFlash = new Swiper('.section-flashsale .product-slide', {
@@ -49,7 +91,7 @@ var product = {
             dataType: 'html',
             type: 'POST',
             url: '/home/loadProductTopComponent',
-            data: { group_product_id: 15, _page_index: 0, page_size: 12, view_name: "~/Views/Shared/Components/Product/BoxProductBottomRight.cshtml" },
+            data: { group_product_id: 54, _page_index: 0, page_size: 12, view_name: "~/Views/Shared/Components/Product/BoxProductBottomRight.cshtml" },
             success: function (data) {
                 $('#group-product-bottom-left').html(data);
                 const swiperFlash = new Swiper('.section-flashsale .product-slide', {
@@ -161,15 +203,31 @@ var product = {
         });
 
     },
-    bind_list_group_product_left: function () { // bind box nhóm danh mục ngành hàng vị trí left 
-
+    //location_dom: vị trí cần render data
+    //group_product_parent_id:  id của menu cha cho phần danh mục sản phẩm
+    bind_list_menu_product: function () { // bind box nhóm danh mục ngành hàng vị trí left 
+        
+        var group_product_parent_id = $("#group_product_parent_id").val() == undefined ? -1 : parseInt($("#group_product_parent_id").val()); // load theo chuyen trang
+        var div_location_render_data = "";
+      //  alert($("#group_product_parent_id").val());
+        if (group_product_parent_id == -1) {           
+            group_product_parent_id = 32;   //Load danh muc trang chu
+            div_location_render_data = "#group-product-left";
+            swiper_name = ".banner-cat";
+        } else {
+            // Load động danh mục trang chuyên mục            
+            div_location_render_data = "#group-product-left";
+            swiper_name = ".banner-cat";
+        }
+        
         $.ajax({
             dataType: 'html',
             type: 'POST',
             url: '/home/loadGroupProductLeftComponent',            
-            success: function (data) {
-                $('#group-product-left').html(data);
-                const swiperADS = new Swiper('.banner-cat', {
+            data: { group_product_parent_id: group_product_parent_id }, 
+            success: function (data) { // render ra các chuyên mục con
+                $(div_location_render_data).html(data);
+                const swiperADS = new Swiper(swiper_name, {
                     loop: false,
                     pagination: false,
                     navigation: false,
@@ -192,5 +250,7 @@ var product = {
                 console.log("Error: " + error); // Thay đổi từ 'failure' sang 'error'
             }
         });
-    },
+    }
+   
+    
 }
