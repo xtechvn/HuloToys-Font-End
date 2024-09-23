@@ -25,11 +25,11 @@ var order_history = {
     },
     Detail: function () {
         var usr = global_service.CheckLogin()
-        if (usr == undefined || usr.account_client_id == undefined) {
+        if (usr == undefined || usr.token == undefined) {
             return
         }
         var request = {
-            "client_id": usr.account_client_id,
+            "token": usr.token,
             "status": $('.list-tab .active a').attr('data-id'),
             "page_index": order_history.Data.Index,
             "page_size": order_history.Data.Size

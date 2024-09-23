@@ -128,11 +128,11 @@ var cart = {
     },
     RenderDefaultAddress: function () {
         var usr = global_service.CheckLogin()
-        if (usr == undefined || usr.account_client_id == undefined) {
+        if (usr == undefined || usr.token == undefined) {
             return
         }
         var request = {
-            "account_client_id": usr.account_client_id
+            "token": usr.token
         }
         $.when(
             global_service.POST(API_URL.DefaultAddress, request)
@@ -156,7 +156,7 @@ var cart = {
         var usr = global_service.CheckLogin()
         if (usr) {
             var request = {
-                "account_client_id": usr.account_client_id
+                "token": usr.token
             }
             $.when(
                 global_service.POST(API_URL.CartList, request)
@@ -329,7 +329,7 @@ var cart = {
               
                 var request = {
                     "carts": carts,
-                    "account_client_id": usr.account_client_id,
+                    "token": usr.token,
                     "payment_type": $('input[name="select-bank"]:checked').val(),
                     "delivery_type": $('input[name="select-delivery"]:checked').val(),
                     "address": JSON.parse(sessionStorage.getItem(STORAGE_NAME.CartAddress)) 
@@ -369,13 +369,11 @@ var cart = {
         var product_id = element.attr('data-product-id')
         if (product_id == undefined || product_id.trim() == '') return
         var usr = global_service.CheckLogin()
-        var account_client_id = 0
         if (usr) {
-            account_client_id = usr.account_client_id
             var request = {
                 "product_id": product_id,
                 "quanity": parseInt(element.find('.product-quantity').find('input').val()),
-                "account_client_id": account_client_id
+                "token": usr.token
             }
             $.when(
                 global_service.POST(API_URL.CartChangeQuanity, request)

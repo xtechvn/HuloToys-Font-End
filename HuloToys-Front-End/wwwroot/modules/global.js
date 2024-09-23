@@ -102,7 +102,7 @@ var global_service = {
                 type: 'post',
                 data: {
                     request: {
-                        account_client_id: usr.account_client_id
+                        token: usr.token
                     }
                 },
                 success: function (result) {
@@ -308,14 +308,14 @@ var global_service = {
     },
     RenderSearchBox: function () {
         var usr = global_service.CheckLogin()
-        var account_client_id = 0
+        var token = ''
         if (usr) {
-            account_client_id = usr.account_client_id
+            token = usr.token
            
         }
         var request = {
             "keyword": $('.global-search').val(),
-            "account_client_id": account_client_id
+            "token": token
         }
         $.when(
             global_service.POST(API_URL.GlobalSearch, request)
