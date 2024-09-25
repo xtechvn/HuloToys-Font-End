@@ -1,0 +1,65 @@
+﻿@using HuloToys_Front_End.Models.Raiting
+@{
+    Layout = null;
+}
+@model HuloToys_Front_End.Models.Raiting.ProductRaitingResponseModel
+@if(Model.comments!=null && Model.comments.Count > 0)
+{
+    foreach(var comment in Model.comments)
+    {
+        <div class="item-commnet">
+            <div class="flex-comment">
+                <div class="avatar">
+                    <img src="@(comment.client_avatar==null ||comment.client_avatar.Trim()==""?"/images/product.jp":comment.client_avatar)" alt="" />
+                </div>
+                <div class="comment-user">
+                    <h4 class="name">@comment.client_name</h4>
+                    <div class="review">
+                        @for (int i = 0; i < (int)Math.Round((decimal)comment.star); i++)
+                        {
+                            <i class="icon icon-star"></i>
+
+                        }
+                    </div>
+                    <div class="meta">
+                        <span class="time">@(((DateTime)comment.createddate).ToString("dd/MM/yyyy HH:mm"))</span>
+                        <span class="cat">@comment.variation_detail</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="cmt-review">
+               @comment.comment
+            </div>
+            <div class="img-product">
+                @if (comment.imglink != null && comment.imglink.Trim() != "")
+                {
+                    @foreach (var img in comment.imglink.Split(","))
+                    {
+                        if (img != null && img.Trim() != "")
+                        {
+                            <img src="@img" alt="" />
+
+                        }
+                    }
+                }
+              
+            </div>
+            @if (comment.replies != null && comment.replies.Count>0)
+            {
+                @foreach (var reply in comment.replies)
+                {
+                    <div class="reply-comment">
+                        <span class="time">@(((DateTime)reply.CreatedDate).ToString("dd/MM/yyyy HH:mm"))</span>
+                        <h4 class="name">@reply.UserName</h4>
+                        <div class="cmt">
+                           @reply.Comment
+                        </div>
+                    </div>
+                }
+            }
+            
+        </div>
+    }
+}
+

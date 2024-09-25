@@ -36,6 +36,7 @@ var API_URL = {
     CartChangeQuanity: '/Cart/ChangeQuanity',
     CartCheckProductDetail: '/Cart/CheckProduct',
     GlobalSearch: '/Product/Search',
+    ProductReviewComment: '/Product/ReviewComment',
 
 
 }
@@ -78,7 +79,8 @@ var GLOBAL_CONSTANTS = {
         { id: 2, name:'Đang giao hàng'},
         { id: 3, name:'Hoàn thành'},
         { id: 4, name:'Đã hủy'},
-    ]
+    ],
+    RaitingPageSize:5,
 }
 var HTML_CONSTANTS = {
     GoogleAccountNotRegistered: '<span class="err err-gg-account" style=" width: 100%; text-align: -webkit-center; ">Tài khoản Google chưa được đăng ký, vui lòng điền đầy đủ thông tin và nhấn tạo tài khoản</span>',
