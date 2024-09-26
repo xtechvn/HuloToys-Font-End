@@ -90,7 +90,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             return null;
 
         }
-        public async Task<ProductRaitingResponseModel> Raiting(ProductRaitingRequestModel request)
+        public async Task<List<RatingESResponseModel>> Raiting(ProductRaitingRequestModel request)
         {
             try
             {
@@ -100,7 +100,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
 
                 if (status == (int)ResponseType.SUCCESS)
                 {
-                    return JsonConvert.DeserializeObject<ProductRaitingResponseModel>(jsonData["data"].ToString());
+                    return JsonConvert.DeserializeObject<List<RatingESResponseModel>>(jsonData["data"].ToString());
                 }
             }
             catch

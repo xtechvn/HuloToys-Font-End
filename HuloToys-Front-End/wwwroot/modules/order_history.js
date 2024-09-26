@@ -42,6 +42,7 @@ var order_history = {
                 $('.list-tab .active .tab-count').html('(' + global_service.Comma(result.data.total)+')')
             }
             else {
+                debugger
                 window.location.href = '/Home/NotFound'
             }
         })

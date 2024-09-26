@@ -306,16 +306,16 @@
                                     </div>
                                 </div>
                                 <div class="overview__filters">
-                                    <div id="overview_filter_all" class="overview__filter active">
-                                        Tất cả (<nw class="review-count">0</nw>)
+                                    <div id="overview_filter_all" class="overview__filter active" data-value="all">
+                                        Tất cả (<nw class="count">0</nw>)
                                     </div>
-                                    <div id="overview_filter_5" class="overview__filter">5 Sao (<nw class="count">0</nw>)</div>
-                                    <div id="overview_filter_4" class="overview__filter">4 Sao (<nw class="count">0</nw>)</div>
-                                    <div id="overview_filter_3" class="overview__filter">3 Sao (<nw class="count">0</nw>)</div>
-                                    <div id="overview_filter_2" class="overview__filter">2 Sao (<nw class="count">0</nw>)</div>
-                                    <div id="overview_filter_1" class="overview__filter">1 Sao (<nw class="count">0</nw>)</div>
-                                    <div id="overview_filter_hascomment" class="overview__filter">Có Bình luận (<nw class="count">0</nw>)</div>
-                                    <div id="overview_filter_hasmedia" class="overview__filter">Có hình ảnh / video (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_5" class="overview__filter" data-value="5">5 Sao (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_4" class="overview__filter" data-value="4">4 Sao (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_3" class="overview__filter" data-value="3">3 Sao (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_2" class="overview__filter" data-value="2">2 Sao (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_1" class="overview__filter" data-value="1">1 Sao (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_hascomment" class="overview__filter" data-value="comment">Có Bình luận (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_hasmedia" class="overview__filter" data-value="media">Có hình ảnh / video (<nw class="count">0</nw>)</div>
                                 </div>
                             </div>
                             <div class="product-ratings__list">
@@ -328,7 +328,18 @@
 
                     </div>
                     <div class="wrap-paging">
-                       
+                        <ul class="pagination">
+                            <li class="page first"><a href=""><i class="icon icon-page-first"></i></a></li>
+                            <li class="page previous disabled">
+                                <a href=""><i class="icon icon-page-previous"></i></a>
+                            </li>
+                            <li class="page active"><a href="">1</a></li>
+                            <li class="page"><a href="">2</a></li>
+                            <li class="page"><a href="">...</a></li>
+                            <li class="page"><a href="">3</a></li>
+                            <li class="page next"><a href=""><i class="icon icon-page-next"></i></a></li>
+                            <li class="page last"><a href=""><i class="icon icon-page-last"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -614,5 +625,6 @@
 </div> 
 @section Scripts {
     <script type="text/javascript" src="/modules/product_detail.js"></script>
+    <script type="text/javascript" src="/modules/product_raiting.js"></script>
 
 }

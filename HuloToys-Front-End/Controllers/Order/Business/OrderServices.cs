@@ -8,6 +8,7 @@ using Models.APIRequest;
 using HuloToys_Front_End.Models.Products;
 using HuloToys_Front_End.Models.Orders;
 using HuloToys_Service.Models.Orders;
+using HuloToys_Front_End.Models.Raiting;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
 {
@@ -117,6 +118,26 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             {
             }
             return null;
+
+        }
+        public async Task<bool> InsertRaiting(ProductInsertRaitingRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:order_insert_raiting"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return true;
+
+                }
+
+            }
+            catch
+            {
+            }
+            return false;
 
         }
     }

@@ -12,14 +12,10 @@
     public class ProductRaitingResponseModel
     {
         public List<RatingESResponseModel> comments { get; set; }
-
-        public long star_5_count { get; set; }
-        public long star_4_count { get; set; }
-        public long star_3_count { get; set; }
-        public long star_2_count { get; set; }
-        public long star_1_count { get; set; }
+        public Dictionary<int, long> comment_count_by_star { get; set; }
         public long has_comment_count { get; set; }
         public long has_media_count { get; set; }
+        public long total_count { get; set; }
 
         public int page_index { get; set; }
         public int page_size { get; set; }

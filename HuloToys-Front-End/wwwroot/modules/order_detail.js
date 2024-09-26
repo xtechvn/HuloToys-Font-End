@@ -10,15 +10,14 @@ var order_detail = {
         $('.content-left-user').addClass('placeholder')
         $('.content-left-user .list-tab-menu .my-order-detail').addClass('active')
         $('.content-left-user .list-tab-menu .my-order-detail').addClass('active')
-
         order_detail.DynamicBind()
         order_detail.Detail()
-
         
-       
     },
     DynamicBind: function () {
-       
+        $("body").on('click', ".btn-review", function () {
+            $('#danhgia').addClass('overlay-active')
+        });
     },
     OrderAddress: function () {
         var request = {
@@ -43,6 +42,7 @@ var order_detail = {
         ).done(function (result) {
             if (result.is_success && result.data) {
                 order_detail.RenderDetail(result.data)
+                order_raiting.InitializationPopup(result.data)
             }
             else {
                 $('.box-payment-info').hide()
@@ -58,7 +58,7 @@ var order_detail = {
         $('#process-step-order').show()
 
         $('.btn-buy-again').hide()
-        $('.btn-review').hide()
+        //$('.btn-review').hide()
         $('#order-no').html(order.orderno)
         var status_name = GLOBAL_CONSTANTS.OrderStatus.filter(obj => {
             return obj.id == order.orderstatus
@@ -193,4 +193,5 @@ var order_detail = {
         }
         
     },
+
 }

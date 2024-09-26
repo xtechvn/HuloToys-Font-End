@@ -2,15 +2,15 @@
 @{
     Layout = null;
 }
-@model HuloToys_Front_End.Models.Raiting.ProductRaitingResponseModel
-@if(Model.comments!=null && Model.comments.Count > 0)
+@model List<RatingESResponseModel>
+@if (Model!=null  && Model.Count > 0)
 {
-    foreach(var comment in Model.comments)
+    foreach(var comment in Model)
     {
         <div class="item-commnet">
             <div class="flex-comment">
                 <div class="avatar">
-                    <img src="@(comment.client_avatar==null ||comment.client_avatar.Trim()==""?"/images/product.jp":comment.client_avatar)" alt="" />
+                    <img src="@(comment.client_avatar==null ||comment.client_avatar.Trim()==""?"/images/logo.png":comment.client_avatar)" alt="" />
                 </div>
                 <div class="comment-user">
                     <h4 class="name">@comment.client_name</h4>
