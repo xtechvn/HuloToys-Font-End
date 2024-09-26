@@ -1,6 +1,7 @@
 ﻿@using HuloToys_Front_End.Models.Raiting
 @{
     Layout = null;
+    string StaticDomain = "https://static-image.adavigo.com";
 }
 @model List<RatingESResponseModel>
 @if (Model!=null  && Model.Count > 0)
@@ -38,7 +39,10 @@
                     {
                         if (img != null && img.Trim() != "")
                         {
-                            <img src="@img" alt="" />
+                            var img_src = img;
+                            if (!img_src.Contains(StaticDomain) && !img_src.Contains("data:image") && !img_src.Contains("http") && !img_src.Contains("base64,"))
+                                img_src = StaticDomain + img;
+                            <img src="@img_src" alt="" />
 
                         }
                     }

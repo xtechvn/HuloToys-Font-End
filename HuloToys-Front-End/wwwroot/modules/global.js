@@ -409,6 +409,6 @@ var global_service = {
         $('#thatbai .content p').html(description)
         $('#thatbai .content a').attr('href', redirect_url)
         $('#thatbai').addClass('overlay-active')
-    }
+    },
 
 }
