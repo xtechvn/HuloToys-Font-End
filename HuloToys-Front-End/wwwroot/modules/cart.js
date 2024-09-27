@@ -332,7 +332,8 @@ var cart = {
                     "token": usr.token,
                     "payment_type": $('input[name="select-bank"]:checked').val(),
                     "delivery_type": $('input[name="select-delivery"]:checked').val(),
-                    "address": JSON.parse(sessionStorage.getItem(STORAGE_NAME.CartAddress)) 
+                    "address": JSON.parse(sessionStorage.getItem(STORAGE_NAME.CartAddress)) ,
+                    "address_id": $('#address-receivername').attr('data-id')
                 }
                 $.when(
                     global_service.POST(API_URL.CartConfirm, request)

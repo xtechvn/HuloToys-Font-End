@@ -15,6 +15,8 @@ namespace Models.APIRequest
 
         public List<CartConfirmItemRequestModel> carts { get; set; }
         public AddressClientFEModel address { get; set; }
+        public long address_id { get; set; }
+
     }
     public class CartConfirmItemRequestModel
     {
