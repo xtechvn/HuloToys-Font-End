@@ -23,7 +23,11 @@
                         }
                     </div>
                     <div class="meta">
-                        <span class="time">@(((DateTime)comment.createddate).ToString("dd/MM/yyyy HH:mm"))</span>
+                        @{
+                            TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+                            DateTime newDateTime = TimeZoneInfo.ConvertTime((DateTime)comment.createddate, timeZoneInfo);
+                        }
+                        <span class="time">@(newDateTime.ToString("dd/MM/yyyy HH:mm"))</span>
                         <span class="cat">@comment.variation_detail</span>
                     </div>
 
