@@ -42,19 +42,21 @@ var product_raiting = {
         })
     },
     Paging: function (page) {
-
-        var request = {
-            "function_name": 'product_raiting.DetailPaging',
-            "page": page,
-            "max_page": product_raiting.GetMaxPage()
-        }
-        $.when(
-            global_service.POST(API_URL.ProductRaitingPaging, request)
-        ).done(function (result) {
-            if (result != undefined) {
-                $('#container-comment .wrap-paging').html(result)
+        if (page > 0) {
+            var request = {
+                "function_name": 'product_raiting.DetailPaging',
+                "page": page,
+                "max_page": product_raiting.GetMaxPage()
             }
-        })
+            $.when(
+                global_service.POST(API_URL.ProductRaitingPaging, request)
+            ).done(function (result) {
+                if (result != undefined) {
+                    $('#container-comment .wrap-paging').html(result)
+                }
+            })
+        }
+       
     },
     RaitingCount: function (page) {
         var request = {
