@@ -8,7 +8,7 @@ namespace Models.APIRequest
 {
     public class OrderHistoryRequestModel
     {
-        public long client_id { get; set; }
+        public string  token { get; set; }
         public string order_no { get; set; }
         public string status { get; set; }
         public int page_index { get; set; }

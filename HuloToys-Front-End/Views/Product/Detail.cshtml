@@ -41,10 +41,10 @@
                         <i class="icon icon-star"></i>
                         <i class="icon icon-star"></i>
                         <i class="icon icon-star"></i>
-                        5
+                        (<nw class="star">0</nw>)
                     </div>
-                    <div class="total-sold">0 Đã bán</div>
-                    <div class="total-review">0 Đánh giá</div>
+                    <div class="total-sold"> (<nw class="buy-count">0</nw>) Đã bán</div>
+                    <div class="total-review"> (<nw class="review-count">0</nw>) Đánh giá</div>
                 </div>
                 <div class="box-price">
                     <span class="price">0 đ</span>
@@ -275,141 +275,79 @@
                 <div class="box-des">
                     <h3 class="title">Chi tiết sản phẩm</h3>
                     <p id="description">
-                        
+
                     </p>
                 </div>
-                @* <div class="box-comment">
-                    <h3 class="title">Đánh giá sản phẩm</h3>
-                    <div class="box-review">
-                        <div class="overview">
-                            <div class="overview__briefing">
-                                <div class="overview__score-wrapper">
-                                    <span class="overview__rating-score">5</span>
-                                    <span class="overview__rating-score-out-of"> trên 5 </span>
-                                </div>
-                                <div class="rating-stars overview__stars">
-                                    <div class="rating-stars__stars">
-                                        <i class="icon icon-star"></i>
-                                        <i class="icon icon-star"></i>
-                                        <i class="icon icon-star"></i>
-                                        <i class="icon icon-star"></i>
-                                        <i class="icon icon-star"></i>
+            </div>
+          
+        </div>
+    </div>
+    <div id="container-comment" class="container">
+        <div class="box-description">
+            <div class="content-comment">
+                <div class="box-des">
+                    <div class="box-comment">
+                        <h3 class="title">Đánh giá sản phẩm</h3>
+                        <div class="box-review">
+                            <div class="overview">
+                                <div class="overview__briefing">
+                                    <div class="overview__score-wrapper">
+                                        <span class="overview__rating-score">(<nw class="star">0</nw>)</span>
+                                        <span class="overview__rating-score-out-of"> trên 5 </span>
+                                    </div>
+                                    <div class="rating-stars overview__stars">
+                                        <div class="rating-stars__stars">
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                            <i class="icon icon-star"></i>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="overview__filters">
-                                <div class="overview__filter active">
-                                    Tất
-                                    cả
+                                <div class="overview__filters">
+                                    <div id="overview_filter_all" class="overview__filter active" data-value="all">
+                                        Tất cả (<nw class="count">0</nw>)
+                                    </div>
+                                    <div id="overview_filter_5" class="overview__filter" data-value="5">5 Sao (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_4" class="overview__filter" data-value="4">4 Sao (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_3" class="overview__filter" data-value="3">3 Sao (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_2" class="overview__filter" data-value="2">2 Sao (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_1" class="overview__filter" data-value="1">1 Sao (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_hascomment" class="overview__filter" data-value="comment">Có Bình luận (<nw class="count">0</nw>)</div>
+                                    <div id="overview_filter_hasmedia" class="overview__filter" data-value="media">Có hình ảnh / video (<nw class="count">0</nw>)</div>
                                 </div>
-                                <div class="overview__filter">5 Sao (0)</div>
-                                <div class="overview__filter">4 Sao (0)</div>
-                                <div class="overview__filter">3 Sao (0)</div>
-                                <div class="overview__filter">2 Sao (0)</div>
-                                <div class="overview__filter">1 Sao (0)</div>
-                                <div class="overview__filter">Có Bình luận (0)</div>
-                                <div class="overview__filter">Có hình ảnh / video (0)</div>
                             </div>
-                            <a href="" class="write-review">Viết đánh giá</a>
-                        </div>
-                        <div class="product-ratings__list">
-                            <div class="product-comment-list">
-                            <div class="item-commnet">
-                            <div class="flex-comment">
-                            <div class="avatar">
-                            <img src="/images/product.jpg" alt="" />
-                            </div>
-                            <div class="comment-user">
-                            <h4 class="name">Nguyễn văn A</h4>
-                            <div class="review">
-                            <i class="icon icon-star"></i>
-                            <i class="icon icon-star"></i>
-                            <i class="icon icon-star"></i>
-                            <i class="icon icon-star"></i>
-                            <i class="icon icon-star"></i>
-                            </div>
-                            <div class="meta">
-                            <span class="time">2024-03-29 11:12</span>
-                            <span class="cat">Phân loại hàng: Gấu Trúc, 40cm</span>
-                            </div>
+                            <div class="product-ratings__list">
+                                <div class="product-comment-list">
+                                   
 
-                            </div>
-                            </div>
-                            <div class="cmt-review">
-                            Giao hành siu nhanh trong 2h luôn á, nhân viên gọi xác nhận
-                            order dth, đóng gói đơn giản, tiết kiệm được cái hộp giấy.
-                            </div>
-                            <div class="img-product">
-                            <img src="/images/product.jpg" alt="" />
-                            <img src="/images/product.jpg" alt="" />
-                            </div>
-                            <div class="reply-comment">
-                            <span class="time">2024-03-29 11:12</span>
-                            <h4 class="name">Nguyễn văn A</h4>
-                            <div class="cmt">
-                            Giao hành siu nhanh trong 2h luôn á, nhân viên gọi xác nhận
-                            order dth, đóng gói đơn giản, tiết kiệm được cái hộp giấy.
-                            </div>
-                            </div>
-                            </div>
-                            <div class="item-commnet">
-                            <div class="flex-comment">
-                            <div class="avatar">
-                            <img src="/images/product.jpg" alt="" />
-                            </div>
-                            <div class="comment-user">
-                            <h4 class="name">Nguyễn văn A</h4>
-                            <div class="review">
-                            <i class="icon icon-star"></i>
-                            <i class="icon icon-star"></i>
-                            <i class="icon icon-star"></i>
-                            <i class="icon icon-star"></i>
-                            <i class="icon icon-star"></i>
-                            </div>
-                            <div class="meta">
-                            <span class="time">2024-03-29 11:12</span>
-                            <span class="cat">Phân loại hàng: Gấu Trúc, 40cm</span>
-                            </div>
-
-                            </div>
-                            </div>
-                            <div class="cmt-review">
-                            Giao hành siu nhanh trong 2h luôn á, nhân viên gọi xác nhận
-                            order dth, đóng gói đơn giản, tiết kiệm được cái hộp giấy.
-                            </div>
-                            <div class="img-product">
-                            <img src="/images/product.jpg" alt="" />
-                            </div>
-                            <div class="reply-comment">
-                            <span class="time">2024-03-29 11:12</span>
-                            <h4 class="name">Nguyễn văn A</h4>
-                            <div class="cmt">
-                            Giao hành siu nhanh trong 2h luôn á, nhân viên gọi xác nhận
-                            order dth, đóng gói đơn giản, tiết kiệm được cái hộp giấy.
-                            </div>
-                            </div>
-                            </div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
-
-                </div> *@
-                <div class="wrap-paging">
-                    @*  <a href="" class="xemthem">Xem thêm</a>
-                    <ul class="pagination">
-                    <li class="page first"><a href=""><i class="icon icon-page-first"></i></a></li>
-                    <li class="page previous disabled">
-                    <a href=""><i class="icon icon-page-previous"></i></a>
-                    </li>
-                    <li class="page active"><a href="">1</a></li>
-                    <li class="page"><a href="">2</a></li>
-                    <li class="page"><a href="">...</a></li>
-                    <li class="page"><a href="">3</a></li>
-                    <li class="page next"><a href=""><i class="icon icon-page-next"></i></a></li>
-                    <li class="page last"><a href=""><i class="icon icon-page-last"></i></a></li>
-                    </ul> *@
+                    <div class="wrap-paging">
+                        <ul class="pagination">
+                            <li class="page first"><a href=""><i class="icon icon-page-first"></i></a></li>
+                            <li class="page previous disabled">
+                                <a href=""><i class="icon icon-page-previous"></i></a>
+                            </li>
+                            <li class="page active"><a href="">1</a></li>
+                            <li class="page"><a href="">2</a></li>
+                            <li class="page"><a href="">...</a></li>
+                            <li class="page"><a href="">3</a></li>
+                            <li class="page next"><a href=""><i class="icon icon-page-next"></i></a></li>
+                            <li class="page last"><a href=""><i class="icon icon-page-last"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="box-description">
             <div class="coupon-list">
                 <div id="voucher" class="boxside" style="display:none;">
                     <div class="title-box">Voucher</div>
@@ -687,5 +625,6 @@
 </div> 
 @section Scripts {
     <script type="text/javascript" src="/modules/product_detail.js"></script>
+    <script type="text/javascript" src="/modules/product_raiting.js"></script>
 
 }

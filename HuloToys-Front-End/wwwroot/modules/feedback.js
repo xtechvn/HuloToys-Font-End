@@ -19,11 +19,11 @@ var _feedback =
         else if (global_service.CheckLogin()) {
             var Invalid_Noti = document.getElementById("invalid-comment");
             Invalid_Noti.style.display = 'none';
-            let Id = global_service.CheckLogin().account_client_id;
+            let Id = global_service.CheckLogin().token;
             $('.btn-Send').addClass('disabled');
             var obj =
             {
-                "AccountClientId": Id,
+                "token": Id,
                 "Content": comment
             }
             $.ajax({
@@ -62,12 +62,12 @@ var _feedback =
     CreateFeedbackAfterLogin: function () {
         let comment = sessionStorage.getItem("Saved_Input");
         const currentPath = window.location.pathname;
-        let Id = global_service.CheckLogin().account_client_id;
+        let Id = global_service.CheckLogin().token;
         let CreateAction = sessionStorage.getItem("CreateFeedbackAction");
         if (comment && Id && CreateAction == 1 && currentPath.startsWith('/dong-gop-y-kien')) {
             var obj =
             {
-                "AccountClientId": Id,
+                "token": Id,
                 "Content": comment
             }
             $.ajax({

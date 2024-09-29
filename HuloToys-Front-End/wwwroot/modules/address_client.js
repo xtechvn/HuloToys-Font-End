@@ -88,12 +88,12 @@ var address_client = {
     },
     Detail: function (selected_id = undefined) {
         var usr = global_service.CheckLogin()
-        if (usr == undefined || usr.account_client_id == undefined) {
+        if (usr == undefined || usr.token == undefined) {
             return
         }
        
         var request = {
-            "account_client_id": usr.account_client_id
+            "token": usr.token
         }
         $.when(
             global_service.POST(API_URL.AddressList, request)
@@ -163,7 +163,7 @@ var address_client = {
         }
 
         var usr = global_service.CheckLogin()
-        if (usr == undefined || usr.account_client_id == undefined) {
+        if (usr == undefined || usr.token == undefined) {
             return
         }
         $('#update-address').attr('data-id', id)
@@ -171,13 +171,14 @@ var address_client = {
            
 
             var request = {
-                "account_client_id": usr.account_client_id,
+                "token": usr.token,
                 "id": id
             }
             $.when(
                 global_service.POST(API_URL.AddressDetail, request)
             ).done(function (result) {
                 if (result.is_success) {
+                    $('#update-address .err').hide()
                     var item = result.data
                     $('#update-address').addClass('overlay-active')
                     $('#update-address .user input').val(item.receivername)
@@ -328,12 +329,12 @@ var address_client = {
     },
     Confirm: function () {
         var usr = global_service.CheckLogin()
-        if (usr == undefined || usr.account_client_id == undefined) {
+        if (usr == undefined || usr.token == undefined) {
             return
         }
         var request = {
             "Id": $('#update-address').attr('data-id'),
-            "AccountClientId": usr.account_client_id,
+            "token": usr.token,
             "ReceiverName": $('#update-address .user input').val(),
             "Phone": $('#update-address .tel input').val(),
             "ProvinceId": $('#update-address .province select').find(':selected').val(),
@@ -390,7 +391,7 @@ var address_client = {
         var usr = global_service.CheckLogin()
         var request = {
             "id": $('#update-address').attr('data-id'),
-            "accountclientid": usr.account_client_id,
+            "token": usr.token,
             "receivername": $('#update-address .user input').val(),
             "phone": $('#update-address .tel input').val(),
             "provinceid": $('#update-address .province select').find(':selected').val(),

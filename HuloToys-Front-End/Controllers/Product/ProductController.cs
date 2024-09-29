@@ -1,6 +1,8 @@
 ﻿using HuloToys_Front_End.Controllers.Client.Business;
 using HuloToys_Front_End.Models.Client;
 using HuloToys_Front_End.Models.Products;
+using HuloToys_Front_End.Models.Raiting;
+using HuloToys_Front_End.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HuloToys_Front_End.Controllers.Product
@@ -65,7 +67,27 @@ namespace HuloToys_Front_End.Controllers.Product
                 data = result
             });
         }
+        public async Task<IActionResult> RaitingPaging(PagingFeViewModel request)
+        {
 
+            return View("~/Views/Shared/Components/Paging/Default.cshtml", request);
+        }
+        public async Task<IActionResult> RaitingCount(ProductRaitingRequestModel request)
+        {
+            var result = await _productServices.RaitingCount(request);
+
+            return Ok(new
+            {
+                is_success = result != null,
+                data = result
+            });
+        }
+        public async Task<IActionResult> ReviewComment(ProductRaitingRequestModel request)
+        {
+            var result = await _productServices.Raiting(request);
+            return View(result);
+
+        }
 
     }
 }

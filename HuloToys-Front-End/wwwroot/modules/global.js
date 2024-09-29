@@ -102,7 +102,7 @@ var global_service = {
                 type: 'post',
                 data: {
                     request: {
-                        account_client_id: usr.account_client_id
+                        token: usr.token
                     }
                 },
                 success: function (result) {
@@ -170,6 +170,22 @@ var global_service = {
                 }
             });
         });
+    },
+    POSTSynchorus: function (url, model) {
+        var data = undefined
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: model,
+            success: function (result) {
+                data = result;
+            },
+            error: function (err) {
+                console.log(err)
+            },
+            async: false
+        });
+        return data
     },
     DecodeGSIToken: function (token) {
         let base64Url = token.split('.')[1]
@@ -308,14 +324,14 @@ var global_service = {
     },
     RenderSearchBox: function () {
         var usr = global_service.CheckLogin()
-        var account_client_id = 0
+        var token = ''
         if (usr) {
-            account_client_id = usr.account_client_id
+            token = usr.token
            
         }
         var request = {
             "keyword": $('.global-search').val(),
-            "account_client_id": account_client_id
+            "token": token
         }
         $.when(
             global_service.POST(API_URL.GlobalSearch, request)
@@ -387,6 +403,12 @@ var global_service = {
                 callback.apply(context, args);
             }, ms || 0);
         };
-    }
+    },
+    LightBoxFailed: function (title, description,redirect_url='javascript:;') {
+        $('#thatbai .content h4').html(title)
+        $('#thatbai .content p').html(description)
+        $('#thatbai .content a').attr('href', redirect_url)
+        $('#thatbai').addClass('overlay-active')
+    },
 
 }

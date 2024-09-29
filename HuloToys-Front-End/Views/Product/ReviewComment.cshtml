@@ -1,0 +1,73 @@
+﻿@using HuloToys_Front_End.Models.Raiting
+@{
+    Layout = null;
+    string StaticDomain = "https://static-image.adavigo.com";
+}
+@model List<RatingESResponseModel>
+@if (Model!=null  && Model.Count > 0)
+{
+    foreach(var comment in Model)
+    {
+        <div class="item-commnet">
+            <div class="flex-comment">
+                <div class="avatar">
+                    <img src="@(comment.client_avatar==null ||comment.client_avatar.Trim()==""?"/images/logo.png":comment.client_avatar)" alt="" />
+                </div>
+                <div class="comment-user">
+                    <h4 class="name">@comment.client_name</h4>
+                    <div class="review">
+                        @for (int i = 0; i < (int)Math.Round((decimal)comment.star); i++)
+                        {
+                            <i class="icon icon-star"></i>
+
+                        }
+                    </div>
+                    <div class="meta">
+                        @{
+                            TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+                            DateTime newDateTime = TimeZoneInfo.ConvertTime((DateTime)comment.createddate, timeZoneInfo);
+                        }
+                        <span class="time">@(newDateTime.ToString("dd/MM/yyyy HH:mm"))</span>
+                        <span class="cat">@comment.variation_detail</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="cmt-review">
+               @comment.comment
+            </div>
+            <div class="img-product">
+                @if (comment.imglink != null && comment.imglink.Trim() != "")
+                {
+                    @foreach (var img in comment.imglink.Split(","))
+                    {
+                        if (img != null && img.Trim() != "")
+                        {
+                            var img_src = img;
+                            if (!img_src.Contains(StaticDomain) && !img_src.Contains("data:image") && !img_src.Contains("http") && !img_src.Contains("base64,"))
+                                img_src = StaticDomain + img;
+                            <img src="@img_src" alt="" />
+
+                        }
+                    }
+                }
+              
+            </div>
+            @if (comment.replies != null && comment.replies.Count>0)
+            {
+                @foreach (var reply in comment.replies)
+                {
+                    <div class="reply-comment">
+                        <span class="time">@(((DateTime)reply.CreatedDate).ToString("dd/MM/yyyy HH:mm"))</span>
+                        <h4 class="name">@reply.UserName</h4>
+                        <div class="cmt">
+                           @reply.Comment
+                        </div>
+                    </div>
+                }
+            }
+            
+        </div>
+    }
+}
+

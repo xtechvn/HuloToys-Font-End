@@ -1,5 +1,6 @@
 ﻿using HuloToys_Front_End.Controllers.Client.Business;
 using HuloToys_Front_End.Models.Cart;
+using HuloToys_Front_End.Models.Raiting;
 using HuloToys_Service.Models.Orders;
 using Microsoft.AspNetCore.Mvc;
 using Models.APIRequest;
@@ -84,6 +85,15 @@ namespace HuloToys_Front_End.Controllers.Product
             {
                 is_success = result != null,
                 data = result
+            });
+        }
+        public async Task<IActionResult> InsertRaiting(ProductInsertRaitingRequestModel request)
+        {
+            var result = await _orderServices.InsertRaiting(request);
+
+            return Ok(new
+            {
+                is_success = result,
             });
         }
     }

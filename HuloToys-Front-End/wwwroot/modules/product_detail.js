@@ -155,7 +155,7 @@ var product_detail = {
             });
             total_stock = product_sub.reduce((n, { amount }) => n + amount, 0)
         }
-        //html += HTML_CONSTANTS.Detail.Tr_Quanity.replaceAll('{stock}', global_service.Comma(total_stock))
+        html += HTML_CONSTANTS.Detail.Tr_Quanity.replaceAll('{stock}', global_service.Comma(total_stock))
         
         $('.box-info-details tbody').html(html)
         $('#description').html(product.description.replaceAll('\n','<br />'))
@@ -272,13 +272,13 @@ var product_detail = {
             window.location.reload()
         }
         var usr = global_service.CheckLogin()
-        var account_client_id=0
+        var token =''
         if (usr) {
-            account_client_id = usr.account_client_id
+            token = usr.token
             var request = {
                 "product_id": product._id,
                 "quanity": parseInt($('.box-detail-stock .quantity').val()),
-                "account_client_id": account_client_id
+                "token": token
             }
             $.when(
                 global_service.POST(API_URL.AddToCart, request)
@@ -317,13 +317,13 @@ var product_detail = {
             window.location.reload()
         }
         var usr = global_service.CheckLogin()
-        var account_client_id = 0
+        var token = ''
         if (usr) {
-            account_client_id = usr.account_client_id
+            token = usr.token
             var request = {
                 "product_id": product._id,
                 "quanity": parseInt($('.box-detail-stock .quantity').val()),
-                "account_client_id": account_client_id
+                "token": token
             }
             $.when(
                 global_service.POST(API_URL.AddToCart, request)
