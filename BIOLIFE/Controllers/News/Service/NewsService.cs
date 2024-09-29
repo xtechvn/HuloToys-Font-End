@@ -135,6 +135,7 @@ namespace BIOLIFE.Controllers.News.Service
                     var _list_article = JsonConvert.DeserializeObject<List<CategoryArticleModel>>(JsonParent[0]["data"].ToString());
                     var model = new ArticleViewModel
                     {
+                        category_id = category_id,
                         obj_article_list = _list_article
                     };
                     return model;

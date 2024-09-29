@@ -32,7 +32,7 @@ namespace BIOLIFE.Utilities
             name = CommonHelper.RemoveUnicode(CommonHelper.CheckMaxLength(name.Trim(), 100));
             name = CommonHelper.RemoveSpecialCharacters(CommonHelper.CheckMaxLength(name.Trim(), 100));
             name = name.Replace(" ", "-").ToLower();
-            return ("/" + name + "/" + cate_id );
+            return ("/tin-tuc" + "/" + name + "/" + cate_id );
         }
     }
 }

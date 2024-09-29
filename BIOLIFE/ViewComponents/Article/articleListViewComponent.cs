@@ -32,7 +32,6 @@ namespace BIOLIFE.ViewComponents.Article
 
                 if (!_cache.TryGetValue(cacheKey, out var cached_view)) // Kiểm tra xem có trong cache không
                 {
-
                     var obj_cate = new NewsService(configuration, redisService);
 
                     // Tin theo chuyên mục
