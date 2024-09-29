@@ -31,7 +31,7 @@ namespace HuloToys_Front_End.Utilities.Lib
                 ServerCertificateCustomValidationCallback = (message, certificate2, arg3, arg4) => true
             })
             {
-                BaseAddress = new Uri(configuration["API:Domain"])
+                BaseAddress = new Uri(configuration["api_data:domain"])
             };
             _ApiSecretKey = configuration["API:SecretKey"];
             API_GET_TOKEN = configuration["API:GetToken"];
