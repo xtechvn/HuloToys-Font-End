@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Tin tức";
     int category_id = ViewBag.category_id;
+    int current_page = ViewBag.page;
+    int page_size = ViewBag.page_size;
+    int total_items = ViewBag.total_items;// Tổng toàn bộ bản ghi theo 1 cate
 }
 <input type="hidden" class="category_id" data-categoryid="@category_id" />
 <section class="section-news">
@@ -11,20 +14,12 @@
         <div class="wrap-news">
             <div class="content">
 
-                <div class="list-news-top list-news">@*3 tin nổi bật home*@</div>
-                <div class="list-news list-news-top-left">@*các tin nổi bật còn lại home*@</div>
+                @*Load nhóm tin*@
+                <div class="list-news-home"></div>                
 
-                <div class="wrap-paging">
-                    @*<a href="" class="xemthem">Xem thêm</a>*@
-                    <ul class="pagination">
-                        <li class="page previous disabled"><a href=""><i class="icon icon-page-previous"></i></a></li>
-                        <li class="page active"><a href="">1</a></li>
-                        <li class="page"><a href="">2</a></li>
-                        <li class="page"><a href="">...</a></li>
-                        <li class="page"><a href="">3</a></li>
-                        <li class="page next"><a href=""><i class="icon icon-page-next"></i></a></li>
-                    </ul>
-                </div>
+                @*Phân trang*@
+                @await Component.InvokeAsync("Pagination",new {page = current_page, total_items = total_items, page_size = page_size })
+
             </div>
             <div class="siderbar-news">
                 <div class="box-side box-side-ads">

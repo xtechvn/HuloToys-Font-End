@@ -7,41 +7,40 @@ using System.Reflection;
 
 namespace BIOLIFE.ViewComponents.Article
 {
-    public class ArticleListViewComponent : ViewComponent
+    /// <summary>
+    /// Load các tin ngoài trang chủ news
+    /// </summary>
+    public class ArticleListHomeViewComponent : ViewComponent
     {
         private readonly IConfiguration configuration;
         private readonly RedisConn redisService;
         private readonly IMemoryCache _cache; // Inject IMemoryCache
-        public ArticleListViewComponent(IConfiguration _Configuration, RedisConn _redisService, IMemoryCache cache)
+        public ArticleListHomeViewComponent(IConfiguration _Configuration, RedisConn _redisService, IMemoryCache cache)
         {
             configuration = _Configuration;
             redisService = _redisService;
             _cache = cache;
         }
-
-        /// <summary>       
-        /// type_view = 0 : box footer trang chủ | 1: box news
-        /// zone_info: là 1 chuỗi json dựa vào đây để hiển thị tin theo cấu hình
+        /// <summary>               
         /// </summary>
         /// <returns>Load cac bai viet theo chuyen muc</returns>
         public async Task<IViewComponentResult?> InvokeAsync(CategoryConfigModel _zone_info) //(int category_id,int top,int type_view)
         {
             try
             {
-                var cacheKey = "CATEGORY_BOX_VIEW" + _zone_info.category_id + _zone_info.skip + _zone_info.take; //Cache view trang tin home
+                var cacheKey = "CATEGORY_HOME_VIEW" + _zone_info.category_id; //Cache view trang tin home
 
                 if (!_cache.TryGetValue(cacheKey, out var cached_view)) // Kiểm tra xem có trong cache không
                 {
-
-                    var obj_cate = new NewsService(configuration, redisService);
+                    var obj_cate = new NewsService(configuration, redisService);                    
 
                     // Tin theo chuyên mục
-                    cached_view = await obj_cate.getListNews(_zone_info.category_id, _zone_info.skip, _zone_info.take);
+                    cached_view = await obj_cate.getListNews(_zone_info.category_id, _zone_info.take, _zone_info.skip);
 
                     if (cached_view != null)
                     {
                         // Lưu vào cache với thời gian hết hạn dc set. 
-                        _cache.Set(cacheKey, cached_view, TimeSpan.FromSeconds(Convert.ToInt32(configuration["redis:cate_time_view:second_list_box_news"])));
+                        _cache.Set(cacheKey, cached_view, TimeSpan.FromSeconds(1));
                     }
                 }
                 return cached_view != null ? View(_zone_info.view_name, cached_view) : Content("");

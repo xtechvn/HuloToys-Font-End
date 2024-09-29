@@ -16,7 +16,7 @@ namespace BIOLIFE.Utilities
                 var model = new CategoryConfigModel
                 {
                     category_id = section.GetValue<int>("category_id"),
-                    top = section.GetValue<int>("top"),
+                    take = section.GetValue<int>("top"),
                     view_name = section.GetValue<string>("view_name"),
                     position_name = zone_name
                 };

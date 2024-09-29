@@ -31,7 +31,7 @@ namespace BIOLIFE.Controllers.News.Service
                 var connect_api_us = new ConnectApi(configuration, redisService);
                 var input_request = new Dictionary<string, long>
                 {
-                    {"article_id",article_id }                     
+                    {"article_id",article_id }
                 };
 
                 response_api = await connect_api_us.CreateHttpRequest("/api/news/get-article-detail.json", input_request);
@@ -41,8 +41,8 @@ namespace BIOLIFE.Controllers.News.Service
                 int status = Convert.ToInt32(JsonParent[0]["status"]);
 
                 if (status == ((int)ResponseType.SUCCESS))
-                {                    
-                    var article = JsonConvert.DeserializeObject<ArticleDetailModel>(JsonParent[0]["data"].ToString());                  
+                {
+                    var article = JsonConvert.DeserializeObject<ArticleDetailModel>(JsonParent[0]["data"].ToString());
                     return article;
                 }
                 else
@@ -58,20 +58,73 @@ namespace BIOLIFE.Controllers.News.Service
                 return null;
             }
         }
-        public async Task<ArticleViewModel?> getArticleByCategoryId(int category_id, int top, int skip)
+        //public async Task<ArticleViewModel?> getArticleByCategoryId(int category_id, int top, int skip)
+        //{
+        //    try
+        //    {
+        //        string response_api = string.Empty;
+        //        var connect_api_us = new ConnectApi(configuration, redisService);
+        //        var input_request = new Dictionary<string, string>
+        //        {
+        //            {"category_id",category_id.ToString() },
+        //             {"skip",skip.ToString() },
+        //             {"take", top.ToString()}
+        //        };
+
+        //        response_api = await connect_api_us.CreateHttpRequest("/api/news/get-list-by-categoryid.json", input_request);
+
+        //        // Nhan ket qua tra ve                            
+        //        var JsonParent = JArray.Parse("[" + response_api + "]");
+        //        int status = Convert.ToInt32(JsonParent[0]["status"]);
+
+        //        if (status == ((int)ResponseType.SUCCESS))
+        //        {
+        //            var _category_detail = JsonConvert.DeserializeObject<CategoryModel>(JsonParent[0]["category_detail"].ToString());
+        //            var _list_article = JsonConvert.DeserializeObject<List<CategoryArticleModel>>(JsonParent[0]["data"].ToString());
+
+        //            var model = new ArticleViewModel
+        //            {
+        //                obj_article_list = _list_article,
+        //                category_detail = _category_detail
+        //            };
+        //            return model;
+        //        }
+        //        else
+        //        {
+        //            return null;
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        string error_msg = Assembly.GetExecutingAssembly().GetName().Name + "->" + MethodBase.GetCurrentMethod().Name + "=>" + ex.Message;
+        //        Utilities.LogHelper.InsertLogTelegramByUrl(configuration["log_telegram:token"], configuration["log_telegram:group_id"], error_msg);
+        //        return null;
+        //    }
+        //}
+        /// <summary>
+        /// Lấy ra các tin mới nhất trang chủ dc set top của tất cả các chuyên mục
+        /// </summary>
+        /// <param name="category_id"></param>
+        /// <param name="top"></param>ssjujuuj
+        /// <param name="skip"></param>
+        /// <returns></returns>
+        public async Task<ArticleViewModel?> getListNews(int category_id, int skip, int top)
         {
             try
             {
                 string response_api = string.Empty;
                 var connect_api_us = new ConnectApi(configuration, redisService);
-                var input_request = new Dictionary<string, string>
+                var input_request = new Dictionary<string, int>
                 {
-                    {"category_id",category_id.ToString() },
-                     {"skip",skip.ToString() },
-                     {"take", top.ToString()}
+                     {"skip", skip},
+                     {"top", top},
+                     {"category_id", category_id}
                 };
 
-                response_api = await connect_api_us.CreateHttpRequest("/api/news/get-list-by-categoryid.json", input_request);
+
+                // Lấy các tin được đăng gần nhất
+                response_api = await connect_api_us.CreateHttpRequest("/api/news/get-list-news.json", input_request);
 
                 // Nhan ket qua tra ve                            
                 var JsonParent = JArray.Parse("[" + response_api + "]");
@@ -79,13 +132,10 @@ namespace BIOLIFE.Controllers.News.Service
 
                 if (status == ((int)ResponseType.SUCCESS))
                 {
-                    var _category_detail = JsonConvert.DeserializeObject<CategoryModel>(JsonParent[0]["category_detail"].ToString());
                     var _list_article = JsonConvert.DeserializeObject<List<CategoryArticleModel>>(JsonParent[0]["data"].ToString());
-
                     var model = new ArticleViewModel
                     {
-                        obj_article_list = _list_article,
-                        category_detail = _category_detail
+                        obj_article_list = _list_article
                     };
                     return model;
                 }
@@ -103,45 +153,35 @@ namespace BIOLIFE.Controllers.News.Service
             }
         }
         /// <summary>
-        /// Lấy ra các tin mới nhất trang chủ dc set top của tất cả các chuyên mục
+        /// Tổng bài viết của 1 cate để phân trang
         /// </summary>
         /// <param name="category_id"></param>
-        /// <param name="top"></param>
-        /// <param name="skip"></param>
         /// <returns></returns>
-        public async Task<ArticleViewModel?> getTopStory(int top, int skip)
+        public async Task<int> getTotalNews(int category_id)
         {
             try
             {
                 string response_api = string.Empty;
                 var connect_api_us = new ConnectApi(configuration, redisService);
-                var input_request = new Dictionary<string, string>
+                var input_request = new Dictionary<string, int>
                 {
-                     {"skip",skip.ToString() },
-                     {"take", top.ToString()}
+                     {"category_id",category_id }
                 };
 
-
-                // Lấy các tin được đăng gần nhất
-                response_api = await connect_api_us.CreateHttpRequest("/api/news/get-top-story.json", input_request);
+                response_api = await connect_api_us.CreateHttpRequest("/api/news/get-total-news.json", input_request);
 
                 // Nhan ket qua tra ve                            
                 var JsonParent = JArray.Parse("[" + response_api + "]");
                 int status = Convert.ToInt32(JsonParent[0]["status"]);
 
                 if (status == ((int)ResponseType.SUCCESS))
-                {                    
-                    var _list_article = JsonConvert.DeserializeObject<List<CategoryArticleModel>>(JsonParent[0]["data"].ToString());
-
-                    var model = new ArticleViewModel
-                    {
-                        obj_article_list = _list_article                        
-                    };
-                    return model;
+                {
+                    int total_items = Convert.ToInt32(JsonParent[0]["data"]);
+                    return total_items;
                 }
                 else
                 {
-                    return null;
+                    return 0;
                 }
 
             }
@@ -149,7 +189,7 @@ namespace BIOLIFE.Controllers.News.Service
             {
                 string error_msg = Assembly.GetExecutingAssembly().GetName().Name + "->" + MethodBase.GetCurrentMethod().Name + "=>" + ex.Message;
                 Utilities.LogHelper.InsertLogTelegramByUrl(configuration["log_telegram:token"], configuration["log_telegram:group_id"], error_msg);
-                return null;
+                return 0;
             }
         }
 

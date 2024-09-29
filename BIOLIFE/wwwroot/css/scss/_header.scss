@@ -29,6 +29,9 @@
                     width: 150px;
                 }
             }
+            .white{
+                display: none;
+            }
         }
         .navbar-nav{
             font-size: 18px;
@@ -38,19 +41,22 @@
             @media (max-width:767px) {
                 margin-top: 20px;
             }
+            .nav-item{
+                padding-left: 10px;
+                padding-right: 10px;
+            }
             a{
                 color: var(--color-base);
-                padding-left: 20px;
-                padding-right: 20px;
+                padding-left: 10px;
+                padding-right: 10px;
+                border-bottom: 1px solid transparent;
                 @media (max-width:767px) {
                     padding: 10px 0;
                 }
             }
-            .active{
+            .active, .nav-item:hover{
                 a{
-                    font-weight: bold;
-                    text-decoration: underline;
-                    text-underline-position: under;
+                   border-bottom: 1px solid;
                 }
             }
         }
@@ -93,10 +99,22 @@
         a{
             color: #fff !important;
         }
+        .navbar{
+            .logo{
+                .green{
+                    display: none;
+                }
+                .white{
+                    display: block;
+                }
+            }
+        }
         .btn{
             background-color: #fff !important;
             color: var(--color-base) !important;
         }
+        
+        
     }
 }
 .homepage{
@@ -124,6 +142,16 @@
             background-color: #fff !important;
             color: var(--color-base) !important;
         }
+        .navbar{
+            .logo{
+                .green{
+                    display: none;
+                }
+                .white{
+                    display: block;
+                }
+            }
+        }
         a{
             color: #fff !important;
         }
@@ -144,6 +172,16 @@
                     color: #fff;
                 }
                 border: 1px solid #fff;
+            }
+            .navbar{
+                .logo{
+                    .green{
+                        display: none;
+                    }
+                    .white{
+                        display: block;
+                    }
+                }
             }
             a{
                 color: #fff !important;

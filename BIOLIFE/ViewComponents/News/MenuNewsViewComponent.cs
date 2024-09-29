@@ -1,10 +1,7 @@
 ﻿using BIOLIFE.Controllers.Home.Service;
-using BIOLIFE.Controllers.News.Service;
-using BIOLIFE.Models;
 using BIOLIFE.Service.Redis;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using System.Reflection;
 
 
 namespace BIOLIFE.ViewComponents.News

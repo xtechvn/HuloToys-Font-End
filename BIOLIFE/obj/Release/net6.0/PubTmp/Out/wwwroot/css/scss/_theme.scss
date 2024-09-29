@@ -898,22 +898,6 @@
     }
 }
 
-@media (max-width:767px) {
-    .form-diekien {
-        .popup {
-            .item-voucher {
-                padding-right: 0;
-
-                .info {
-                    padding: 15px;
-                }
-
-            }
-        }
-    }
-
-}
-
 .section-news {
     padding: 48px 0;
     @media (max-width:991px) {
@@ -1018,8 +1002,6 @@
     .top-news {
         display: block;
         position: relative;
-        border-radius: 16px;
-        overflow: hidden;
 
         .item-news {
             margin-bottom: 0 !important;
@@ -1227,7 +1209,8 @@
         gap: 24px;
         margin-bottom: 25px;
         .row{
-            width: 100%;
+            width: auto;
+            min-width: 100%;
         }
         @media (max-width:991px) and (min-width:768px) {
             display: flex;
