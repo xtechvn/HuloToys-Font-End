@@ -7,7 +7,6 @@
     <RootNamespace>HuloToys_Front_End</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'HuloToys-Front-End' " />
   <ItemGroup>
     <Content Remove="wwwroot\modules\address_client.js" />
     <Content Remove="wwwroot\modules\feedback.js" />
