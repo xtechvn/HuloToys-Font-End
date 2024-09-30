@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using HuloToys_Front_End.Utilities.Contants;
 using HuloToys_Front_End.Models.Products;
+using HuloToys_Front_End.Models.Raiting;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
 {
@@ -51,6 +52,63 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             return null;
 
         }
-       
+        public async Task<ProductListResponseModel> Search(ProductGlobalSearchRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:product_search"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<ProductListResponseModel>(jsonData["data"].ToString());
+                }
+            }
+            catch
+            {
+            }
+            return null;
+
+        }
+        public async Task<ProductRaitingResponseModel> RaitingCount(ProductRaitingRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:product_raiting_count"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<ProductRaitingResponseModel>(jsonData["data"].ToString());
+                }
+            }
+            catch
+            {
+            }
+            return null;
+
+        }
+        public async Task<List<RatingESResponseModel>> Raiting(ProductRaitingRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:product_raiting"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<List<RatingESResponseModel>>(jsonData["data"].ToString());
+                }
+            }
+            catch
+            {
+            }
+            return null;
+
+        } 
+        
     }
 }

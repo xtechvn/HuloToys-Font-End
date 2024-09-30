@@ -3,7 +3,7 @@
 @model List<ArticleResponse>
 @if (Model != null)
 {
-    <div class="top-news" style="width:65%;">
+    <div class="top-news">
         <div class="item-news">
             <div class="box-news" id="article-1">
                 @foreach (var item in Model.Where(s => s.position == 1).ToList())
@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="next-news" style="width:25%">
+    <div class="next-news">
         <div class="item-news">
             <div class="box-news" id="article-2">
                 @foreach (var item in Model.Where(s => s.position == 2).ToList())

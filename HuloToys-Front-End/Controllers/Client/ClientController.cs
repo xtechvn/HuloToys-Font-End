@@ -41,8 +41,6 @@ namespace HuloToys_Front_End.Controllers.Client
             if (result != null)
             {
                 result.ip = HttpContext.Connection.RemoteIpAddress == null ? "Unknown" : HttpContext.Connection.RemoteIpAddress.ToString();
-                result.time_expire = DateTime.Now.AddDays(30);
-                result.validate_token = EncodeHelpers.Encode(JsonConvert.SerializeObject(result), _configuration["API:SecretKey"]);
             }
             return Ok(new
             {
@@ -57,7 +55,7 @@ namespace HuloToys_Front_End.Controllers.Client
 
             return Ok(new
             {
-                is_success = result != null,
+                is_success = (result != null && result.data!=null),
                 data = result
             });
         } 
@@ -70,7 +68,6 @@ namespace HuloToys_Front_End.Controllers.Client
         public ActionResult AddressPopup()
         {
             return View();
-
         }
         public async Task<IActionResult> AddressList(ClientAddressGeneralRequestModel request)
         {
@@ -129,6 +126,16 @@ namespace HuloToys_Front_End.Controllers.Client
             return Ok(new
             {
                 is_success = result
+            });
+        }
+        public async Task<IActionResult> DefaultAddress(ClientAddressGeneralRequestModel request)
+        {
+            var result = await _addressClientServices.DefaultAddress(request);
+
+            return Ok(new
+            {
+                is_success = (result != null),
+                data = result
             });
         }
     }

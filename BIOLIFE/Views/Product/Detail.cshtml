@@ -1,0 +1,86 @@
+﻿@{
+    // Layout = null;
+    var product_code = (string)ViewBag.ProductCode;
+}
+
+<section class="section-details-product placeholder" data-code="@product_code" >
+    <div class="container placeholder">
+        <div class="wrap-details">
+            <div class="gallery-product">
+                <div class="swiper thumb-big">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                           
+                        </div>
+                        <div class="swiper-slide">
+                         
+                        </div>
+                        <div class="swiper-slide">
+                          
+                        </div>
+                        <div class="swiper-slide">
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper thumb-small">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                         
+                        </div>
+                        <div class="swiper-slide">
+                           
+                        </div>
+                        <div class="swiper-slide">
+                          
+                        </div>
+                        <div class="swiper-slide">
+                           
+                        </div>
+                        <div class="swiper-slide">
+                          
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            <div class="info-product">
+                <div class="box-name-product">
+                    <h1 class="name-product"></h1>
+                </div>
+
+                <div class="box-price">
+                    <span class="price"></span>
+
+                </div>
+                
+                <div class="box-info-details">
+                    <table class="attribute-table">
+                        <tbody>
+                            <tr></tr>
+                            <tr></tr>
+                        </tbody>
+                    </table>
+                    <h4 class="tt-info">Thông tin sản phẩm</h4>
+                    <table id="tb-info-table" class="tb-info">
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="box-description">
+            <h3 class="title">Chi tiết sản phẩm</h3>
+            <div class="content">               
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <script src="~/js/product/constants.js"></script>
+    <script src="~/js/product/global.js"></script>
+    <script src="~/js/product/product_detail.js"></script>
+
+}

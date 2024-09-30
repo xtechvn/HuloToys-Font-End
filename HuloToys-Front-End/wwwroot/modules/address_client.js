@@ -6,7 +6,8 @@
 })
 var address_client = {
     Initialization: function () {
-       
+        sessionStorage.removeItem(STORAGE_NAME.AddressClient)
+
         if (!$('#address-book').hasClass('overlay')) {
             $('.menu-left-user .list-tab-menu .client-address').addClass('active')
             $('.menu-left-user .list-tab-menu .client-address').closest('.sub-menu').addClass('active')
@@ -26,7 +27,7 @@ var address_client = {
             var id = element.closest('.address-item').attr('data-id')
             address_client.CreateOrUpdateAddress(id)
         });
-        $("body").on('click', "#address-book .item .defauld", function () {
+        $("body").on('click', "#address-book .list-add .item .defauld", function () {
             var element = $(this)
             $('#address-book .item').removeClass('active')
             $('#address-book .defauld').show()
@@ -70,35 +71,29 @@ var address_client = {
 
     },
     DynamicConfirmAddress: function (callback) {
-        $("body").on('click', "#address-book .btn-confirm-address", function () {
-            var id = $('#address-book .list-add .active').attr('data-id')
-            $('#address-book').removeClass('overlay-active')
-            var usr = global_service.CheckLogin()
-            if (usr == undefined || usr.account_client_id == undefined) {
-                return
-            }
+        $("body").on('click', "#update-address .btn-save", function () {
+            var element = $(this)
+            var selected_item = address_client.GetUpdatedAddress()
 
-            var request = {
-                "account_client_id": usr.account_client_id,
-                "id": id
-            }
-            $.when(
-                global_service.POST(API_URL.AddressDetail, request)
-            ).done(function (result) {
-                if (result.is_success) {
-                    callback(result.data)
+            callback(selected_item)
 
-                }
-            })
         });
+        $("body").on('click', "#address-book .list-add .item", function () {
+            var element = $(this)
+            var id = element.attr('data-id')
+            var item = address_client.GetSelectedAddress(id)
+            callback(item)
+        });
+       
     },
     Detail: function (selected_id = undefined) {
         var usr = global_service.CheckLogin()
-        if (usr == undefined || usr.account_client_id == undefined) {
+        if (usr == undefined || usr.token == undefined) {
             return
         }
+       
         var request = {
-            "account_client_id": usr.account_client_id
+            "token": usr.token
         }
         $.when(
             global_service.POST(API_URL.AddressList, request)
@@ -106,6 +101,7 @@ var address_client = {
             var html = ''
 
             if (result.is_success) {
+                sessionStorage.setItem(STORAGE_NAME.AddressClient, JSON.stringify(result.data.list))
                 if (selected_id != undefined) {
                     $(result.data.list).each(function (index, item) {
                         html += HTML_CONSTANTS.Address.GridItem
@@ -113,7 +109,7 @@ var address_client = {
                             .replaceAll('{id}', item.id)
                             .replaceAll('{default-address-style}', item.isactive == true ? 'display:none;' : '')
                             .replaceAll('{name}', item.receivername)
-                            .replaceAll('{address}', item.address)
+                            .replaceAll('{address}', address_client.RenderDetailAddress(item))
                             .replaceAll('{tel}', item.phone.trim())
                     });
                 }
@@ -124,7 +120,7 @@ var address_client = {
                             .replaceAll('{id}', item.id)
                             .replaceAll('{default-address-style}', item.isactive == true ? 'display:none;' : '')
                             .replaceAll('{name}', item.receivername)
-                            .replaceAll('{address}', item.address)
+                            .replaceAll('{address}', address_client.RenderDetailAddress(item))
                             .replaceAll('{tel}', item.phone==null?'': item.phone.trim())
                     });
                 }
@@ -141,6 +137,22 @@ var address_client = {
         })
 
     },
+    RenderDetailAddress: function (data) {
+        var address_select = ''
+        if (data.ward_detail != null && data.ward_detail != undefined && data.ward_detail.id != undefined) {
+            address_select += data.ward_detail.name
+        }
+        if (data.district_detail != null && data.district_detail != undefined && data.district_detail.id != undefined) {
+            if (address_select.trim() != '') address_select += ', '
+            address_select += data.district_detail.name
+        }
+        if (data.province_detail != null && data.province_detail != undefined && data.province_detail.id != undefined) {
+            if (address_select.trim() != '') address_select += ', '
+            address_select += data.province_detail.name
+        }
+
+        return data.address + '<br /> ' + address_select
+    },
     CreateOrUpdateAddress: function (id) {
         var overlay_box = false
         if ($('#address-book').hasClass('overlay')) {
@@ -151,7 +163,7 @@ var address_client = {
         }
 
         var usr = global_service.CheckLogin()
-        if (usr == undefined || usr.account_client_id == undefined) {
+        if (usr == undefined || usr.token == undefined) {
             return
         }
         $('#update-address').attr('data-id', id)
@@ -159,13 +171,14 @@ var address_client = {
            
 
             var request = {
-                "account_client_id": usr.account_client_id,
+                "token": usr.token,
                 "id": id
             }
             $.when(
                 global_service.POST(API_URL.AddressDetail, request)
             ).done(function (result) {
                 if (result.is_success) {
+                    $('#update-address .err').hide()
                     var item = result.data
                     $('#update-address').addClass('overlay-active')
                     $('#update-address .user input').val(item.receivername)
@@ -316,12 +329,12 @@ var address_client = {
     },
     Confirm: function () {
         var usr = global_service.CheckLogin()
-        if (usr == undefined || usr.account_client_id == undefined) {
+        if (usr == undefined || usr.token == undefined) {
             return
         }
         var request = {
             "Id": $('#update-address').attr('data-id'),
-            "AccountClientId": usr.account_client_id,
+            "token": usr.token,
             "ReceiverName": $('#update-address .user input').val(),
             "Phone": $('#update-address .tel input').val(),
             "ProvinceId": $('#update-address .province select').find(':selected').val(),
@@ -331,22 +344,80 @@ var address_client = {
             "Status": 0,
             "IsActive": 0
         }
+        var updated_item = address_client.GetUpdatedAddress()
+        var list = sessionStorage.getItem(STORAGE_NAME.AddressClient)
+        if (list) {
+            var data = JSON.parse(list)
+            if (data && data[0]) {
+                var index = data.findIndex(obj => obj.id == updated_item.id);
+                if (index >= 0) {
+                    data[index] = updated_item
+                }
+                sessionStorage.setItem(STORAGE_NAME.AddressClient, data)
+            }
+        }
         $.when(
             global_service.POST(API_URL.UpdateAddress, request)
         ).done(function (result) {
             if (result.is_success) {
                 $('#update-address').removeClass('overlay-active')
 
-                var overlay_box = false
-                if ($('#address-book').hasClass('overlay')) {
-                    overlay_box = true
-                }
-                if (overlay_box) {
-                    $('#address-book').addClass('overlay-active')
-                }
-                address_client.Detail()
+                //var overlay_box = false
+                //if ($('#address-book').hasClass('overlay')) {
+                //    overlay_box = true
+                //}
+                //if (overlay_box) {
+                //    $('#address-book').addClass('overlay-active')
+                //}
+                setTimeout(() => {
+                    address_client.Detail($('#update-address').attr('data-id'))
+                }, 1000);
 
             }
         })
+    },
+    GetSelectedAddress: function (id) {
+        var list= sessionStorage.getItem(STORAGE_NAME.AddressClient)
+        if (list) {
+            var data = JSON.parse(list)
+            var selected = data.filter(obj => {
+                return obj.id == id
+            })
+            return selected[0]
+        }
+
+    },
+    GetUpdatedAddress: function () {
+        var usr = global_service.CheckLogin()
+        var request = {
+            "id": $('#update-address').attr('data-id'),
+            "token": usr.token,
+            "receivername": $('#update-address .user input').val(),
+            "phone": $('#update-address .tel input').val(),
+            "provinceid": $('#update-address .province select').find(':selected').val(),
+            "districtid": $('#update-address .district select').find(':selected').val(),
+            "wardid": $('#update-address .wards select').find(':selected').val(),
+            "address": $('#update-address .address input').val(),
+            "status": 0,
+            "isactive": 0,
+            province_detail: {
+                "id": $('#update-address .province select').find(':selected').val(),
+                "provinceId": $('#update-address .province select').find(':selected').val(),
+
+                name: $('#update-address .province select').find(':selected').text()
+            },
+            district_detail: {
+                "id": $('#update-address .district select').find(':selected').val(),
+                "districtId": $('#update-address .district select').find(':selected').val(),
+                name: $('#update-address .district select').find(':selected').text()
+            },
+            ward_detail: {
+                "id": $('#update-address .wards select').find(':selected').val(),
+                "wardId": $('#update-address .wards select').find(':selected').val(),
+
+                name: $('#update-address .wards select').find(':selected').text()
+            },
+        }
+        return request
     }
 }

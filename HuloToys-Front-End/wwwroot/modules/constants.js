@@ -4,8 +4,12 @@
     CartCount: 'CartCount',
     BuyNowItem: 'BuyNowItem',
     SubProduct: 'SubProduct',
-    Order: 'Order'
-
+    Order: 'Order',
+    AddressClient: 'AddressClient',
+    CartAddress: 'CartAddress',
+    ProductDetailSelected: 'ProductDetailSelected',
+    ProductCommentCount: 'ProductCommentCount',
+    OrderDetail: 'OrderDetail'
 }
 var API_URL = {
     Login:'/Client/Login',
@@ -16,6 +20,7 @@ var API_URL = {
     CartCount: '/Cart/CartCount',
     CartList: '/Cart/GetList',
     CartDelete: '/Cart/Delete',
+    CartDeleteByOrder: '/Cart/DeleteByOrder',
     CartConfirm: '/Order/Confirm',
     OrderDetail: '/Order/GetDetail',
     OrderHistoryDetail: '/Order/GetHistoryDetail',
@@ -29,6 +34,17 @@ var API_URL = {
     AddressDistrict: '/Client/District',
     AddressWard: '/Client/Ward',
     UpdateAddress: '/Client/SubmitAddress',
+    DefaultAddress: '/Client/DefaultAddress',
+    CartChangeQuanity: '/Cart/ChangeQuanity',
+    CartCheckProductDetail: '/Cart/CheckProduct',
+    GlobalSearch: '/Product/Search',
+    ProductReviewComment: '/Product/ReviewComment',
+    ProductRaitingCount: '/Product/RaitingCount',
+    ProductRaitingPaging: '/Product/RaitingPaging',
+    OrderRaitingUploadImage: '/Files/SummitImages',
+    OrderRaitingUploadVideo: '/Files/SummitVideo',
+    OrderRaitingSubmmit: '/Order/InsertRaiting',
+
 
 }
 var NOTIFICATION_MESSAGE = {
@@ -70,15 +86,24 @@ var GLOBAL_CONSTANTS = {
         { id: 2, name:'Đang giao hàng'},
         { id: 3, name:'Hoàn thành'},
         { id: 4, name:'Đã hủy'},
-    ]
+    ],
+    RaitingPageSize: 5,
+    OrderReviewCreate: {
+        MaxImage: 5,
+        MaxVideo: 1,
+        ImageExtension: ['jpeg', 'jpg', 'png', 'bmp'],
+        VideoExtension: ['mp4'],
+        MaxImageSize: 1572864,
+        MaxVideoSize: 52428800
+    }
 }
 var HTML_CONSTANTS = {
-    GoogleAccountNotRegistered : '<span class="err err-gg-account" style=" width: 100%; text-align: -webkit-center; ">Tài khoản Google chưa được đăng ký, vui lòng điền đầy đủ thông tin và nhấn tạo tài khoản</span>',
+    GoogleAccountNotRegistered: '<span class="err err-gg-account" style=" width: 100%; text-align: -webkit-center; ">Tài khoản Google chưa được đăng ký, vui lòng điền đầy đủ thông tin và nhấn tạo tài khoản</span>',
     Global: {
-        SelectOption:`<option value="{value}">{name}</option>`
+        SelectOption: `<option value="{value}">{name}</option>`
     },
     Home: {
-        SlideProductItem:` <div class="swiper-slide">
+        SlideProductItem: ` <div class="swiper-slide">
                             <div class="item-product">
                                 <a href="{url}">
                                     <div class="box-thumb">
@@ -93,7 +118,7 @@ var HTML_CONSTANTS = {
                                             <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">{review_count}</span></div>
                                         </div>
                                         <div class="price-old" style="{old_price_style}">
-                                            So với giá cũ {price} <i class="icon icon-info"></i>
+                                            <nw style="display:none;">So với giá cũ {price} <i class="icon icon-info"></i></nw>
                                             <div class="info-detail">
                                                 Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
                                                 được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
@@ -103,6 +128,100 @@ var HTML_CONSTANTS = {
                                 </a>
                             </div>
                         </div>`,
+        GlobalSearchProductItem:` <div class="item-product">
+            <a href="{url}">
+                <div class="box-thumb">
+                    <div class="thumb-product">
+                        <img src="{avt}" width="100px" height="100px" alt="">
+                    </div>
+                </div>
+                <div class="box-info">
+                    <h3 class="name-product">{name}</h3>
+                    <div class="flex-price">
+                    <div class="price-sale">{amount}</div>
+                     <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">{review_count}</span></div>
+                    </div>
+                    <div class="price-old">
+                     <nw style="display:none;">So với giá cũ {price} <i class="icon icon-info"></i></nw>
+                        <div class="info-detail">
+                            Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                            được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>`,
+        GlobalSearchBoxLoading:` <div class="list-product-recomment">
+        <div class="item-product">
+            <a href="">
+                <div class="box-thumb">
+                    <div class="thumb-product">
+                        <img src="/images/product.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box-info">
+                    <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                    <div class="flex-price">
+                        <div class="price-sale">689,098đ</div>
+                        <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                    </div>
+                    <div class="price-old">
+                        So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                        <div class="info-detail">
+                            Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                            được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item-product">
+            <a href="">
+                <div class="box-thumb">
+                    <div class="thumb-product">
+                        <img src="/images/product.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box-info">
+                    <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                    <div class="flex-price">
+                        <div class="price-sale">689,098đ</div>
+                        <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                    </div>
+                    <div class="price-old">
+                        So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                        <div class="info-detail">
+                            Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                            được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item-product">
+            <a href="">
+                <div class="box-thumb">
+                    <div class="thumb-product">
+                        <img src="/images/product.jpg" alt="">
+                    </div>
+                </div>
+                <div class="box-info">
+                    <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                    <div class="flex-price">
+                        <div class="price-sale">689,098đ</div>
+                        <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                    </div>
+                    <div class="price-old">
+                        So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                        <div class="info-detail">
+                            Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                            được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>`,
         GridProductItem:`<div class="item-product">
                         <a href="">
                             <div class="box-thumb">
@@ -117,7 +236,7 @@ var HTML_CONSTANTS = {
                                     <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">{review_count}</span></div>
                                 </div>
                                 <div class="price-old" style="{old_price_style}">
-                                    So với giá cũ {price} <i class="icon icon-info"></i>
+                                    <nw style="display:none;">So với giá cũ {price} <i class="icon icon-info"></i></nw>
                                     <div class="info-detail">
                                         Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
                                         được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
@@ -173,7 +292,7 @@ var HTML_CONSTANTS = {
                             </tr>`
     },
     Cart: {
-        Product:`<div class="product" data-cart-id="{id}" data-amount="{amount}">
+        Product:`<div class="product" data-cart-id="{id}" data-product-id="{product_id}" data-amount="{amount}">
                             <div class="product-checkall">
                                 <div class="box-checkbox">
                                     <input type="checkbox" name="checkbox-cart-product" class="checkbox-cart" />
@@ -277,6 +396,69 @@ var HTML_CONSTANTS = {
                             <p class="tel">Điện thoại: {tel}</p>
                             <a href="javascript:;" class="btn btn-update btn-update-address">Cập nhật</a>
                         </div>`
+    },
+  
+    OrderDetailRaiting: {
+        ReviewImage:`<div class="item review-img">
+                                <img src="{src}" alt="">
+                                <div class="del"></div>
+                            </div>`,
+        ReviewVideo:`<div class="item review-video">
+                                  <video  width="64" height="64">
+                                      <source src="{src}" type="video/mp4">
+                                      Your browser does not support the video tag.
+                                    </video>
+                                <div class="del"></div>
+                            </div>`,
+        Item: ` <div class="item review-item" data-product-id="{product_id}">
+                    <div class="box-product">
+                        <div class="img">
+                            <img src="{img}" alt="" />
+                        </div>
+                        <div class="info">
+                            <h3 class="name-product">
+                                {name}
+                            </h3>
+                            <div class="cat">{variation_detail}</div>
+                        </div>
+                    </div>
+                    <div class="star" data-value="5">
+                        <span>Chất lượng sản phẩm</span>
+                        <span class="rate five">
+                            <i class="star-number" data-class="one">★</i>
+                            <i class="star-number" data-class="two">★</i>
+                            <i class="star-number" data-class="three">★</i>
+                            <i class="star-number" data-class="four">★</i>
+                            <i class="star-number" data-class="five">★</i> 
+                            <nw class="star-label">Tuyệt vời</nw>
+                        </span>
+                    </div>
+                    <textarea rows="4" class="form-control"
+                              placeholder="Hãy chia sẽ điều bạn thích về sản phẩm với những người mua khác nhé."></textarea>
+                   
+                    <div class="upload-file">
+                        <div class="uploadIMG ">
+                            <input type="file" class="upload image_input" data-type="images" />
+                            <span>Thêm hình ảnh</span>
+                        </div>
+                        <div class="uploadVIDEO ">
+                            <input type="file" class="upload image_input" data-type="videos" />
+                            <span>Thêm video</span>
+                        </div>
+                    </div>
+                     <p class="error" style="display:none; color:red;"></p>
+                    <div class="wrap-img-upload" style="display:none;">
+                        <div class="uploadIMG " >
+                            <input type="file" class="upload image_input" data-type="images" />
+                            <span><nw class="count">0</nw>/5</span>
+                        </div>
+                        <div class="uploadVIDEO ">
+                            <input type="file" class="upload image_input" data-type="videos" />
+                            <span><nw class="count">0</nw>/1</span>
+                        </div>
+                    </div>
+                </div>`,
+
     }
 
 }

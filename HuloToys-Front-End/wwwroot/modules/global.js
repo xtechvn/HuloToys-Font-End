@@ -8,7 +8,17 @@
 })
 var global_service = {
     Initialization: function () {
-     
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.location.reload()
+            });
+
+        }
+        $('#thanhcong').removeClass('overlay-active')
+        $('#thatbai').removeClass('overlay-active')
+        $('#dangnhap').removeClass('overlay-active')
+        $('#dangky').removeClass('overlay-active')
+        $('#quenmk').removeClass('overlay-active')
     },
     DynamicBind: function () {
         $("body").on('click', ".client-login", function (event) {
@@ -23,7 +33,27 @@ var global_service = {
             event.preventDefault()
             element.closest('.overlay').removeClass('overlay-active')
         });
-      
+        //$("body").on('keyup', ".global-search", function (event) {
+        //    var element = $(this)
+        //    global_service.RenderSearchBoxLoading()
+        //    if (element.val() != undefined && element.val().trim() != '') {
+        //        $('.box-search-list').fadeIn()
+        //        global_service.RenderSearchBox()
+        //    } else {
+        //        $('.box-search-list').fadeOut()
+        //    }
+            
+        //});
+        $("body").on('keyup', ".global-search", global_service.DelayEventBinding(function (e) {
+            var element = $(this)
+            global_service.RenderSearchBoxLoading()
+            if (element.val() != undefined && element.val().trim() != '') {
+                $('.box-search-list').fadeIn()
+                global_service.RenderSearchBox()
+            } else {
+                $('.box-search-list').fadeOut()
+            }
+        }, 800));
     },
     LoadPolicy: function () {
         $.ajax({
@@ -67,26 +97,20 @@ var global_service = {
     LoadCartCount: function () {
         var usr = global_service.CheckLogin()
         if (usr) {
-            var cart_count = sessionStorage.getItem(STORAGE_NAME.CartCount)
-            if (cart_count) {
-                $('#carts .badge').html(cart_count)
-            } else {
-                $.ajax({
-                    url: API_URL.CartCount,
-                    type: 'post',
-                    data: {
-                        request: {
-                            account_client_id: usr.account_client_id
-                        }
-                    },
-                    success: function (result) {
-                        if (result.is_success && result.data) {
-                            $('#carts .badge').html(result.data)
-                            sessionStorage.setItem(STORAGE_NAME.CartCount, result.data)
-                        } else { $('#carts .badge').html('0') }
-                    },
-                });
-            }
+            $.ajax({
+                url: API_URL.CartCount,
+                type: 'post',
+                data: {
+                    request: {
+                        token: usr.token
+                    }
+                },
+                success: function (result) {
+                    if (result.is_success && result.data) {
+                        $('#carts .badge').html(result.data)
+                    } else { $('#carts .badge').html('0') }
+                },
+            });
         }
         else {
             $('#carts .badge').html('0')
@@ -146,6 +170,22 @@ var global_service = {
                 }
             });
         });
+    },
+    POSTSynchorus: function (url, model) {
+        var data = undefined
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: model,
+            success: function (result) {
+                data = result;
+            },
+            error: function (err) {
+                console.log(err)
+            },
+            async: false
+        });
+        return data
     },
     DecodeGSIToken: function (token) {
         let base64Url = token.split('.')[1]
@@ -224,41 +264,7 @@ var global_service = {
 
             var html = ''
             if (result.is_success) {
-
-                $(result.data).each(function (index, item) {
-                    var img_src = item.avatar
-                    if (!img_src.includes(API_URL.StaticDomain)
-                        && !img_src.includes("data:image")
-                        && !img_src.includes("http"))
-                        img_src = API_URL.StaticDomain + item.avatar
-                    var amount_html = 'Giá liên hệ'
-                    var has_price=false
-                    if (item.amount_max != undefined
-                        && item.amount_max != null
-                        && item.amount_min != undefined
-                        && item.amount_min != null) {
-                        amount_html = global_service.Comma(item.amount_min) + ' - ' + global_service.Comma(item.amount_max)
-                        has_price=true
-                    }
-                    else if (item.amount != undefined
-                        && item.amount != null && item.amount > 0) {
-                        amount_html = global_service.Comma(item.amount)
-                        has_price=true
-                    }
-                    if (has_price) {
-                        html += HTML_CONSTANTS.Home.SlideProductItem
-                            .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(item.name).replaceAll(' ', '-') + '--' + item._id)
-                            .replaceAll('{avt}', img_src)
-                            .replaceAll('{name}', item.name)
-                            .replaceAll('{amount}', amount_html)
-                            //.replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
-                            .replaceAll('{review_point}', '5')
-                            .replaceAll('{review_count}', '')
-                            .replaceAll('{old_price_style}', '')
-                            .replaceAll('{price}', (item.amount == null || item.amount == undefined || item.amount <= 0) ? global_service.Comma(item.amount) + ' đ' : '')
-
-                    }
-                });
+                html = global_service.RenderSlideProductItem(result.data, HTML_CONSTANTS.Home.SlideProductItem)
             }
             element.html(html)
             element.removeClass('placeholder')
@@ -277,24 +283,7 @@ var global_service = {
             return
         }
     },
-    IncreaseCartCount: function () {
-        var cart_count = sessionStorage.getItem(STORAGE_NAME.CartCount)
-        if (cart_count) {
-            sessionStorage.setItem(STORAGE_NAME.CartCount, (parseInt(cart_count) + 1))
-        } else {
-            sessionStorage.setItem(STORAGE_NAME.CartCount, 1)
-        }
-        global_service.LoadCartCount()
-    },
-    DecreaseCartCount: function () {
-        var cart_count = sessionStorage.getItem(STORAGE_NAME.CartCount)
-        if (cart_count) {
-            sessionStorage.setItem(STORAGE_NAME.CartCount, (parseInt(cart_count) - 1))
-        } else {
-            sessionStorage.setItem(STORAGE_NAME.CartCount, 0)
-        }
-        global_service.LoadCartCount()
-    },
+  
     DateTimeToString: function (date, has_time=false) {
         var text = ("0" + date.getDate()).slice(-2) + '/' + ("0" + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear() ;
         if (has_time == true) {
@@ -329,5 +318,97 @@ var global_service = {
         });
     },
     
+    RemoveSpecialCharacters: function(value) {
+        value = value.replace(/[^a-zA-Z0-9 ]/g, '');
+        return value.trim();
+    },
+    RenderSearchBox: function () {
+        var usr = global_service.CheckLogin()
+        var token = ''
+        if (usr) {
+            token = usr.token
+           
+        }
+        var request = {
+            "keyword": $('.global-search').val(),
+            "token": token
+        }
+        $.when(
+            global_service.POST(API_URL.GlobalSearch, request)
+        ).done(function (result) {
+            if (result.is_success && result.data && result.data.items) {
+                if (result.data.items.length > 0) {
+                    var html = `<div class="list-product-recomment">` + global_service.RenderSlideProductItem(result.data.items, HTML_CONSTANTS.Home.GlobalSearchProductItem) +`</div>`
+                    $('.box-search-list').html(html)
+                    return
+                } 
+            }
+            $('.box-search-list').html('Không tìm thấy kết quả')
+
+        })
+     
+    },
+    RenderSearchBoxLoading: function () {
+        $('.box-search-list').html(HTML_CONSTANTS.Home.GlobalSearchBoxLoading)
+        $('.box-search-list .item-product').addClass('placeholder')
+        $('.box-search-list .flex-price').addClass('placeholder')
+        $('.box-search-list .name-product').addClass('placeholder')
+        $('.box-search-list .price-old').addClass('placeholder')
+    },
+    RenderSlideProductItem: function (list, template) {
+        var html = ''
+        $(list).each(function (index, item) {
+            var img_src = item.avatar
+            if (!img_src.includes(API_URL.StaticDomain)
+                && !img_src.includes("data:image")
+                && !img_src.includes("http"))
+                img_src = API_URL.StaticDomain + item.avatar
+            var amount_html = 'Giá liên hệ'
+            var has_price = false
+            if (item.amount_max != undefined
+                && item.amount_max != null
+                && item.amount_min != undefined
+                && item.amount_min != null) {
+                amount_html = global_service.Comma(item.amount_min) + ' - ' + global_service.Comma(item.amount_max)
+                has_price = true
+            }
+            else if (item.amount != undefined
+                && item.amount != null && item.amount > 0) {
+                amount_html = global_service.Comma(item.amount)
+                has_price = true
+            }
+            if (has_price) {
+                html += template
+                    .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(global_service.RemoveSpecialCharacters(item.name)).replaceAll(' ', '-') + '--' + item._id)
+                    .replaceAll('{avt}', img_src)
+                    .replaceAll('{name}', item.name)
+                    .replaceAll('{amount}', amount_html)
+                    //.replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
+                    .replaceAll('{review_point}', '5')
+                    .replaceAll('{review_count}', '')
+                    .replaceAll('{old_price_style}', '')
+                    .replaceAll('{price}', (item.amount == null || item.amount == undefined || item.amount <= 0) ? global_service.Comma(item.amount) + ' đ' : '')
+
+            }
+        });
+
+        return html
+    },
+    DelayEventBinding: function (callback, ms) {
+        var timer = 0;
+        return function () {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    },
+    LightBoxFailed: function (title, description,redirect_url='javascript:;') {
+        $('#thatbai .content h4').html(title)
+        $('#thatbai .content p').html(description)
+        $('#thatbai .content a').attr('href', redirect_url)
+        $('#thatbai').addClass('overlay-active')
+    },
 
 }

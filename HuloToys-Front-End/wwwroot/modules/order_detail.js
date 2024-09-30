@@ -10,15 +10,14 @@ var order_detail = {
         $('.content-left-user').addClass('placeholder')
         $('.content-left-user .list-tab-menu .my-order-detail').addClass('active')
         $('.content-left-user .list-tab-menu .my-order-detail').addClass('active')
-
         order_detail.DynamicBind()
         order_detail.Detail()
-
         
-       
     },
     DynamicBind: function () {
-       
+        $("body").on('click', ".btn-review", function () {
+            $('#danhgia').addClass('overlay-active')
+        });
     },
     OrderAddress: function () {
         var request = {
@@ -43,6 +42,7 @@ var order_detail = {
         ).done(function (result) {
             if (result.is_success && result.data) {
                 order_detail.RenderDetail(result.data)
+                order_raiting.InitializationPopup(result.data)
             }
             else {
                 $('.box-payment-info').hide()
@@ -58,7 +58,7 @@ var order_detail = {
         $('#process-step-order').show()
 
         $('.btn-buy-again').hide()
-        $('.btn-review').hide()
+        //$('.btn-review').hide()
         $('#order-no').html(order.orderno)
         var status_name = GLOBAL_CONSTANTS.OrderStatus.filter(obj => {
             return obj.id == order.orderstatus
@@ -173,6 +173,25 @@ var order_detail = {
         return variation_value
     },
     ConfirmOrderAddress: function (data) {
-        debugger
+        if (data != undefined && data.id != undefined) {
+            $('#address-receivername').attr('data-id', data.id)
+            $('#address-receivername').html(data.receivername)
+            $('#address-phone').html(data.phone)
+            var address = data.address
+            var address_select = '<br /> '
+            if (data.province_detail != null && data.province_detail != undefined && data.province_detail.id != undefined) {
+                address_select += data.province_detail.name
+            }
+            if (data.district_detail != null && data.district_detail != undefined && data.district_detail.id != undefined) {
+                address_select += data.district_detail.name
+            }
+            if (data.ward_detail != null && data.ward_detail != undefined && data.ward_detail.id != undefined) {
+                address_select += data.ward_detail.name
+            }
+            $('#address').html(data.address + address_select)
+
+        }
+        
     },
+
 }

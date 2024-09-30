@@ -1,5 +1,6 @@
 {
   "profiles": {
+<<<<<<< HEAD
     "HuloToys_Front_End": {
       "commandName": "Project",
       "launchBrowser": true,
@@ -7,6 +8,15 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+=======
+    "HuloToys-Front-End": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:60495;http://localhost:60496"
+>>>>>>> 1bd4d69fefe7e230c74c70a3cddb567e15e36871
     }
   }
 }

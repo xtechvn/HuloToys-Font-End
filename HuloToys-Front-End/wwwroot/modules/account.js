@@ -22,6 +22,9 @@ var account = {
         $('.err').hide()
         var usr = global_service.CheckLogin()
         if (usr) {
+            if (usr.token == null || usr.token == undefined) {
+                account.Logout()
+            }
             $('#client-account-name').html(usr.name +' '/*+ `<a href="javascript:;" id="account-logout"> [ Đăng xuất ]</a>`*/)
             $('#client-account-name').closest('a').attr('href', '/order')
             $('.right-mainheader .client-login').removeAttr('data-id')
@@ -140,11 +143,25 @@ var account = {
                 if (res.is_success) {
                     $('.client-login-popup').removeClass('overlay-active')
                     $('#success').addClass('overlay-active')
+                    setTimeout(() => {
+                        if ($('#dangnhap .checkbox').is(":checked")) {
+                            localStorage.setItem(STORAGE_NAME.Login, JSON.stringify(res.data.data))
+                        } else {
+                            sessionStorage.setItem(STORAGE_NAME.Login, JSON.stringify(res.data.data))
+                        }
+                        window.location.reload()
+                    }, 2000);
                 }
                 else {
                     $(':input[type="submit"]').prop('disabled', false);
-                    $('#dangky .user input').closest('.form-group').find('.err').show()
-                    $('#dangky .user input').closest('.form-group').find('.err').html(NOTIFICATION_MESSAGE.RegisterIncorrect)
+                    if (res.data.msg.toLowerCase().includes('email')) {
+                        $('#dangky .email input').closest('.form-group').find('.err').show()
+                        $('#dangky .email input').closest('.form-group').find('.err').html(res.data.msg)
+                    } else {
+                        $('#dangky .user input').closest('.form-group').find('.err').show()
+                        $('#dangky .user input').closest('.form-group').find('.err').html(res.data.msg)
+                    }
+                   
                     element.html('Đăng ký')
 
                 }

@@ -1,6 +1,8 @@
-﻿namespace HuloToys_Service.Models.Address
+﻿using HuloToys_Service.Models.Client;
+
+namespace HuloToys_Service.Models.Address
 {
-    public class AddressUpdateRequestModel
+    public class AddressUpdateRequestModel: ClientAddressGeneralRequestModel
     {
         public long Id { get; set; }
         public long AccountClientId { get; set; }
