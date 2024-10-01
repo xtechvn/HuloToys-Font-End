@@ -142,6 +142,12 @@ var order_detail = {
         $('.content-left-user').removeClass('placeholder')
         order_detail.OrderAddress()
 
+        var has_raiting = result.has_raiting
+        if (has_raiting == true) {
+            $('.btn-review').html('Xem đánh giá')
+            $('.btn-review').prop('disabled', true)
+            $('.btn-review').removeClass('btn-review')
+        }
     },
     RenderOrderProduct: function ( order_detail_object) {
         var html_products = ''
@@ -189,7 +195,7 @@ var order_detail = {
                 address_select += data.ward_detail.name
             }
             $('#address').html(data.address + address_select)
-
+           
         }
         
     },

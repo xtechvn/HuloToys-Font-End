@@ -187,6 +187,24 @@ var global_service = {
         });
         return data
     },
+    POSTFileSynchorus: function (url, model) {
+        var data = undefined
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: model,
+            processData: false,  // Prevent jQuery from processing the data
+            contentType: false,  // Prevent jQuery from setting contentType
+            success: function (result) {
+                data = result;
+            },
+            error: function (err) {
+                console.log(err)
+            },
+            async: false
+        });
+        return data
+    },
     DecodeGSIToken: function (token) {
         let base64Url = token.split('.')[1]
         let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

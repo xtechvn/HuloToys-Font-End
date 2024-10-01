@@ -35,12 +35,13 @@ var order_raiting = {
             var element = $(this)
             var parent_element = element.closest('.review-item')
             element.closest('.review-img').remove()
-            var image_count = parent_element.find('.review-img').length
-            var video_count = parent_element.find('.review-video').length
-            if ((image_count + video_count)< 1) {
-                parent_element.find('.upload-file').show()
-                parent_element.find('.wrap-img-upload').hide()
-            }
+            order_raiting.RenderUploadImageCount(parent_element)
+
+        });
+        $("body").on('click', "#danhgia .review-video .del", function () {
+            var element = $(this)
+            var parent_element = element.closest('.review-item')
+            element.closest('.review-video').remove()
             order_raiting.RenderUploadImageCount(parent_element)
 
         });
@@ -118,22 +119,18 @@ var order_raiting = {
                 star = 5
             } break;
         }
-        //parent.addClass(class_name)
-        //parent.find('.star-label').html(label_by_star)
-        $('#danhgia .rate').removeClass('one')
-        $('#danhgia .rate').removeClass('two')
-        $('#danhgia .rate').removeClass('three')
-        $('#danhgia .rate').removeClass('four')
-        $('#danhgia .rate').removeClass('five')
+        parent.addClass(class_name)  
         $('#danhgia .star-label').html(label_by_star)
         $('#danhgia .star').attr('data-value', star)
     },
     RenderReviewMedia: function (element) {
         var parent_element = element.closest('.review-item').find('.wrap-img-upload')
         element.closest('.review-item').find('.error').hide()
+        var max_item = GLOBAL_CONSTANTS.OrderReviewCreate.MaxImage
+
         switch (element.attr('data-type')) {
             case 'images': {
-                var max_item = GLOBAL_CONSTANTS.OrderReviewCreate.MaxImage
+                 max_item = GLOBAL_CONSTANTS.OrderReviewCreate.MaxImage
                 if (parent_element.find('.review-img').length >= max_item) {
                     order_raiting.NotifyFailed(element.closest('.review-item'), 'Số lượng ảnh vượt quá giới hạn')
                     element.val(null)
@@ -164,7 +161,7 @@ var order_raiting = {
                 }
             } break
             case 'videos': {
-                var max_item = GLOBAL_CONSTANTS.OrderReviewCreate.MaxVideo
+                 max_item = GLOBAL_CONSTANTS.OrderReviewCreate.MaxVideo
                 if (parent_element.find('.review-video').length >= max_item) {
                     order_raiting.NotifyFailed(element.closest('.review-item'), 'Số lượng video vượt quá giới hạn')
                     element.val(null)
@@ -201,6 +198,12 @@ var order_raiting = {
         }
     },
     RenderUploadImageCount: function (parent_element) {
+        var image_count = parent_element.find('.review-img').length
+        var video_count = parent_element.find('.review-video').length
+        if ((image_count + video_count) < 1) {
+            parent_element.find('.upload-file').show()
+            parent_element.find('.wrap-img-upload').hide()
+        }
         parent_element.find('.uploadIMG').find('.count').html(parent_element.find('.review-img').length)
         parent_element.find('.uploadVIDEO').find('.count').html(parent_element.find('.review-video').length)
     },
@@ -246,7 +249,21 @@ var order_raiting = {
                 var data_src = element_image.find('video').find('source').attr('src')
                 if (data_src == null || data_src == undefined || data_src.trim() == '') return true
                 if (order_raiting.CheckIfImageVideoIsLocal(data_src)) {
-                    var result = global_service.POSTSynchorus(API_URL.OrderRaitingUploadVideo, { data_video: data_src })
+                    const byteCharacters = atob(data_src.split('base64,')[1]);
+                    const byteNumbers = new Array(byteCharacters.length);
+                    for (let i = 0; i < byteCharacters.length; i++) {
+                        byteNumbers[i] = byteCharacters.charCodeAt(i);
+                    }
+                    const byteArray = new Uint8Array(byteNumbers);
+                    const blob = new Blob([byteArray], { type: "video/mp4" });
+
+                    //// Create a FormData object to send via AJAX
+                    var formData = new FormData();
+                    formData.append('request', blob, 'video.mp4'); // Append the Blob as a file
+                   
+                    //var result = global_service.POSTSynchorus(API_URL.OrderRaitingUploadVideo, { request: formData })
+                    var result = global_service.POSTFileSynchorus(API_URL.OrderRaitingUploadVideo, formData)
+
                     if (result != undefined && result.data != undefined && result.data.trim() != '') {
                         videos.push(result.data)
                     } 

@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_AccountManagementLayout.cshtml";
     string data_id = (string)ViewBag.Id;
 }
+@Html.AntiForgeryToken()
 <input id="order-detail" style="display:none;" value="@data_id" />
 <div class="wrap-order-details">
     <a href="/order" class="link-back">Quay lại đơn hàng của tôi</a>

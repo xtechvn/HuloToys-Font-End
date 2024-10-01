@@ -4,7 +4,7 @@ namespace HuloToys_Service.Models.Orders
 {
     public class OrderHistoryResponseModel
     {
-        public List<OrderESModel> data { get; set; }
+        public List<OrderESHistoryResponseModel> data { get; set; }
         public List<OrderDetailMongoDbModel> data_order { get; set; }
 
         public int page_index { get; set; }
