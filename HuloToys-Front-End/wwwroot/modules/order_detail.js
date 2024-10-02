@@ -34,21 +34,29 @@ var order_detail = {
         })
     },
     Detail: function () {
-        var request = {
-            "id": $('#order-detail').val()
+        var usr = global_service.CheckLogin()
+        if (usr) {
+            var request = {
+                "id": $('#order-detail').val(),
+                "token": usr.token
+            }
+            $.when(
+                global_service.POST(API_URL.OrderHistoryDetail, request)
+            ).done(function (result) {
+                if (result.is_success && result.data) {
+                    order_detail.RenderDetail(result.data)
+                    order_raiting.InitializationPopup(result.data)
+                }
+                else {
+                    $('.box-payment-info').hide()
+                    $('.box-payment-failed').show()
+                }
+            })
+        } else {
+            window.location.href='/'
         }
-        $.when(
-            global_service.POST(API_URL.OrderHistoryDetail, request)
-        ).done(function (result) {
-            if (result.is_success && result.data) {
-                order_detail.RenderDetail(result.data)
-                order_raiting.InitializationPopup(result.data)
-            }
-            else {
-                $('.box-payment-info').hide()
-                $('.box-payment-failed').show()
-            }
-        })
+       
+       
     },
     RenderDetail: function (result) {
         var order = result.data
