@@ -25,7 +25,7 @@ namespace BIOLIFE.Controllers.Product.Service
         /// </summary>
         /// <param name="parent_id"></param>
         /// <returns>
-        public async Task<List<ProductModel>?> getProductListByGroupProductId(int group_product_id, int page_index, int page_size)
+        public async Task<ProductListResponseModel?> getProductListByGroupProductId(int group_product_id, int page_index, int page_size)
         {
             try
             {
@@ -44,8 +44,16 @@ namespace BIOLIFE.Controllers.Product.Service
 
                 if (status == ((int)ResponseType.SUCCESS))
                 {
-                    string data = JsonParent[0]["data"]["items"].ToString();
-                    return JsonConvert.DeserializeObject<List<ProductModel>>(data);
+                    string data = JsonParent[0]["data"].ToString();
+                    int total = Convert.ToInt32(JsonParent[0]["total"]);
+                    var model = new ProductListResponseModel
+                    {
+                        items = JsonConvert.DeserializeObject<List<ProductMongoDbModel>>(data),
+                        count = total,
+                        page_index = page_index,
+                        page_size = page_size
+                    };
+                    return model;
                 }
                 else
                 {

@@ -1,6 +1,6 @@
-﻿@using BIOLIFE.ViewModels;
+﻿@using BIOLIFE.Models.Products;
 @using BIOLIFE.Utilities;
-@model List<ProductModel>
+@model ProductListResponseModel
 
 @if (Model != null)
 {
@@ -14,7 +14,7 @@
                 <div class="swiper product-slide">
                     <div class="swiper-wrapper">
 
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.items)
                         {
                             string link = @Html.GetStaticUrlProduct(item.name, item._id);
                             <div class="swiper-slide">
@@ -29,7 +29,7 @@
                                         <div class="box-info">
                                             <h3 class="name-product">@item.name</h3>
                                             <div class="flex-price">
-                                                <div class="price-sale">@item.price.ToString("N0") đ</div>
+                                                <div class="price-sale">@item.label_price</div>
                                                 @* <div class="price-old">@item.price</div>*@
                                             </div>
                                         </div>

@@ -1,12 +1,15 @@
-﻿@using BIOLIFE.ViewModels;
+﻿@using BIOLIFE.Models.Products;
 @using BIOLIFE.Utilities;
-@model List<ProductModel>
+@model ProductListResponseModel
 @{
+    int current_page = Model.page_index;
+    int total_items = Model.count;// Tổng toàn bộ bản ghi theo 1 cate
+    int page_size = Model.page_size;
     if (Model != null)
     {
         <div class="list-product">
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.items)
             {
                 string link = @Html.GetStaticUrlProduct(item.name, item._id);
                 <div class="item-product">
@@ -17,7 +20,7 @@
                         <div class="box-info">
                             <h3 class="name-product">@item.name </h3>
                             <div class="flex-price">
-                                <div class="price-sale">@item.price.ToString("N0") đ</div>
+                                <div class="price-sale">@item.label_price</div>
                                 @*<div class="price-old">689,098đ</div>*@
                             </div>
                         </div>
@@ -25,18 +28,9 @@
                 </div>
             }
         </div>
-        <div class="wrap-paging">
-            <a href="" class="xemthem">Xem thêm</a>
-            <ul class="pagination">
-                <!-- <li class="page first"><a href=""><i class="icon icon-page-first"></i></a></li> -->
-                <li class="page previous disabled"><a href=""><i class="icon icon-page-previous"></i></a></li>
-                <li class="page active"><a href="">1</a></li>
-                <li class="page"><a href="">2</a></li>
-                <li class="page"><a href="">...</a></li>
-                <li class="page"><a href="">3</a></li>
-                <li class="page next"><a href=""><i class="icon icon-page-next"></i></a></li>
-                <!-- <li class="page last"><a href=""><i class="icon icon-page-last"></i></a></li> -->
-            </ul>
-        </div>
+
+        @*Phân trang*@
+        @await Component.InvokeAsync("Pagination",new {page = current_page, total_items = total_items, page_size = page_size })
+      
     }
 }
