@@ -1,38 +1,12 @@
 {
-<<<<<<< HEAD
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:21825",
-      "sslPort": 44308
-    }
-  },
-=======
->>>>>>> 1bd4d69fefe7e230c74c70a3cddb567e15e36871
   "profiles": {
     "BIOLIFE": {
       "commandName": "Project",
       "launchBrowser": true,
-<<<<<<< HEAD
-      "applicationUrl": "https://localhost:7268;http://localhost:5083",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": true
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-=======
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:51843;http://localhost:51844"
->>>>>>> 1bd4d69fefe7e230c74c70a3cddb567e15e36871
     }
   }
 }

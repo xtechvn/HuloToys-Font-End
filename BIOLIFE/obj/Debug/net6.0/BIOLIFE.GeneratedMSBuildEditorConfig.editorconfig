@@ -16,12 +16,84 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Home/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Db250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Home/Intro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbnRyby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/News/ArticleDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmV3cy9BcnRpY2xlRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/News/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmV3cy9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Product/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9EZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Product/GroupProductList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9Hcm91cFByb2R1Y3RMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Product/ProductDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9Qcm9kdWN0RGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/footer/default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvZm9vdGVyL2RlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/GroupProduct/GroupProductLeft.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvR3JvdXBQcm9kdWN0L0dyb3VwUHJvZHVjdExlZnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/GroupProduct/GroupProductTop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvR3JvdXBQcm9kdWN0L0dyb3VwUHJvZHVjdFRvcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/header/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvaGVhZGVyL0RlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/News/FooterHvHome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvTmV3cy9Gb290ZXJIdkhvbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/News/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvTmV3cy9Ib21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/News/Menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvTmV3cy9NZW51LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/News/TopLeft.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvTmV3cy9Ub3BMZWZ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/Pagination/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvUGFnaW5hdGlvbi9EZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/Product/BoxProductBottomRight.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvUHJvZHVjdC9Cb3hQcm9kdWN0Qm90dG9tUmlnaHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/Product/BoxProductTopList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvUHJvZHVjdC9Cb3hQcm9kdWN0VG9wTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/Product/ProductListViewComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvUHJvZHVjdC9Qcm9kdWN0TGlzdFZpZXdDb21wb25lbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Error.cshtml]
