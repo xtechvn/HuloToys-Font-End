@@ -3,13 +3,20 @@
 })
 var account = {
     Initialization: function () {
-        account.RenderHTML()
-        account.DynamicBind()
+        if ($('#doimk').length > 0) {
+            account.RenderChangePasswordHTML()
+            account.DynamicBindChangePassword()
+        }
+        else {
+            account.RenderHTML()
+            account.DynamicBind()
+        }
+      
 		//window.onload = function () {
-  //          google.accounts.id.initialize({
-  //              client_id: THIRDPARTY_CONSTANTS.GSI.ClientID,
-  //              callback: this.GoogleSignIn
-  //          });
+  //   google.accounts.id.initialize({
+  //   client_id: THIRDPARTY_CONSTANTS.GSI.ClientID,
+  //       callback: this.GoogleSignIn
+  //    });
   //          google.accounts.id.prompt();
   //      }
         //FB.init({
@@ -17,6 +24,12 @@ var account = {
         //    xfbml: true,
         //    version: THIRDPARTY_CONSTANTS.Facebook.Version
         //});  
+    },
+    RenderChangePasswordHTML: function () {
+
+    },
+    DynamicBindChangePassword: function () {
+
     },
     RenderHTML: function () {
         $('.err').hide()
@@ -78,6 +91,10 @@ var account = {
                 FacebookLogin();
 
             });
+        });
+        $("body").on('keyup', "#forgot-password-email", function () {
+            $("#forgot-password-email").closest('.box-email').find('.err').hide()
+
         });
     },
     Login: function () {
@@ -304,6 +321,31 @@ var account = {
             }
 
         })
+    },
+    ConfirmForgotPassword: function () {
+        var validate = account.ValidateForgotPassword()
+        if (validate) {
+            var request = {
+                "name": $("#forgot-password-email").val()
+            }
+            $.when(
+                global_service.POST(API_URL.ClientForgotPassword, request)
+            ).done(function (res) {
+                $('#quenmk').removeClass('overlay-active')
+                $('#success h4').html(res.msg)
+                $('#success').addClass('overlay-active')
+            })
+        }
+    },
+    ValidateForgotPassword: function () {
+        var validate=true
+        var email = $("#forgot-password-email").val();
+        var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        validate = emailPattern.test(email)
+        if (!validate) {
+            $("#forgot-password-email").closest('.box-email').find('.err').show()
+        }
+        return validate
     }
 }
 window.GoogleSignIn = (response) => {
