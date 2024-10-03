@@ -1,6 +1,9 @@
 ﻿using HuloToys_Front_End.Models.Files;
+using HuloToys_Front_End.Utilities.Contants;
 using HuloToys_Front_End.Utilities.Lib;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace HuloToys_Front_End.Controllers.Files.Bussiness
@@ -48,27 +51,32 @@ namespace HuloToys_Front_End.Controllers.Files.Bussiness
             }
             return null;
         }
-        public async Task<string> UploadVideoBase64(ImageBase64 modelVideo)
+        public async Task<string> UploadVideo(IFormFile request)
         {
             try
             {
-                var j_param = new Dictionary<string, string> {
-                    { "data_file", modelVideo.ImageData },
-                    { "extend", modelVideo.ImageExtension }};
-                string tokenData = EncodeHelpers.Encode(JsonConvert.SerializeObject(j_param), KEY);
-                using (HttpClient httpClient = new HttpClient())
-                {
-                    var contentObj = new { token = tokenData };
-                    var content = new StringContent(JsonConvert.SerializeObject(contentObj), Encoding.UTF8, "application/json");
-                    var result = await httpClient.PostAsync(API_VIDEO, content);
-                    dynamic resultContent = Newtonsoft.Json.Linq.JObject.Parse(result.Content.ReadAsStringAsync().Result);
-                    if (resultContent.status == "success")
-                    {
-                        return resultContent.url_path;
-                    }
-                    else
-                    {
+                using var form = new MultipartFormDataContent();
 
+                if (request != null && request.Length > 0)
+                {
+                    var streamContent = new StreamContent(request.OpenReadStream());
+                    streamContent.Headers.ContentType = new MediaTypeHeaderValue(request.ContentType);
+                    form.Add(streamContent, "model.VideoFile", request.FileName);
+                }
+                string token = EncodeHelpers.Encode(JsonConvert.SerializeObject(new { exprire = DateTime.Now.AddMinutes(15) }), KEY);
+                form.Add(new StringContent(token), "model.token");
+                var client = new HttpClient();
+                var response = await client.PostAsync(API_VIDEO, form);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var jsonData = JObject.Parse(content);
+                    var status = int.Parse(jsonData["status"].ToString());
+
+                    if (status == (int)ResponseType.SUCCESS)
+                    {
+                        return jsonData["url_path"].ToString();
                     }
                 }
             }
@@ -97,24 +105,6 @@ namespace HuloToys_Front_End.Controllers.Files.Bussiness
             }
             return null;
         }
-        public ImageBase64 GetVideoSrcBase64Object(string imgSrc)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(imgSrc) && imgSrc.StartsWith("data:video"))
-                {
-                    var ImageBase64 = new ImageBase64();
-                    var base64Data = imgSrc.Split(',')[0];
-                    ImageBase64.ImageData = imgSrc.Split(',')[1];
-                    ImageBase64.ImageExtension = base64Data.Split(';')[0].Split('/')[1];
-                    return ImageBase64;
-                }
-            }
-            catch (FormatException)
-            {
-
-            }
-            return null;
-        }
+      
     }
 }

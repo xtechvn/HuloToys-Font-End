@@ -34,21 +34,29 @@ var order_detail = {
         })
     },
     Detail: function () {
-        var request = {
-            "id": $('#order-detail').val()
+        var usr = global_service.CheckLogin()
+        if (usr) {
+            var request = {
+                "id": $('#order-detail').val(),
+                "token": usr.token
+            }
+            $.when(
+                global_service.POST(API_URL.OrderHistoryDetail, request)
+            ).done(function (result) {
+                if (result.is_success && result.data) {
+                    order_detail.RenderDetail(result.data)
+                    order_raiting.InitializationPopup(result.data)
+                }
+                else {
+                    $('.box-payment-info').hide()
+                    $('.box-payment-failed').show()
+                }
+            })
+        } else {
+            window.location.href='/'
         }
-        $.when(
-            global_service.POST(API_URL.OrderHistoryDetail, request)
-        ).done(function (result) {
-            if (result.is_success && result.data) {
-                order_detail.RenderDetail(result.data)
-                order_raiting.InitializationPopup(result.data)
-            }
-            else {
-                $('.box-payment-info').hide()
-                $('.box-payment-failed').show()
-            }
-        })
+       
+       
     },
     RenderDetail: function (result) {
         var order = result.data
@@ -142,6 +150,12 @@ var order_detail = {
         $('.content-left-user').removeClass('placeholder')
         order_detail.OrderAddress()
 
+        var has_raiting = result.has_raiting
+        if (has_raiting == true) {
+            $('.btn-review').html('Xem đánh giá')
+            $('.btn-review').prop('disabled', true)
+            $('.btn-review').removeClass('btn-review')
+        }
     },
     RenderOrderProduct: function ( order_detail_object) {
         var html_products = ''
@@ -189,7 +203,7 @@ var order_detail = {
                 address_select += data.ward_detail.name
             }
             $('#address').html(data.address + address_select)
-
+           
         }
         
     },

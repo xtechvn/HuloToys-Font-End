@@ -50,6 +50,15 @@ namespace HuloToys_Service.Models.Orders
         public string usergroupids { get; set; }
 
         public long address_id { get; set; }
+    }
+    public class OrderESDetailModel: OrderESModel
+    {
         public AddressClientESModel address { get; set; }
+
+    }
+    public class OrderESHistoryResponseModel : OrderESModel
+    {
+        public string address { get; set; }
+
     }
 }

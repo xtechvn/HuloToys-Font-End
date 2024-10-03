@@ -5,13 +5,13 @@ var account = {
     Initialization: function () {
         account.RenderHTML()
         account.DynamicBind()
-		window.onload = function () {
-            google.accounts.id.initialize({
-                client_id: THIRDPARTY_CONSTANTS.GSI.ClientID,
-                callback: this.GoogleSignIn
-            });
-            google.accounts.id.prompt();
-        }
+		//window.onload = function () {
+  //          google.accounts.id.initialize({
+  //              client_id: THIRDPARTY_CONSTANTS.GSI.ClientID,
+  //              callback: this.GoogleSignIn
+  //          });
+  //          google.accounts.id.prompt();
+  //      }
         //FB.init({
         //    appId: THIRDPARTY_CONSTANTS.Facebook.AppId,
         //    xfbml: true,
@@ -53,6 +53,9 @@ var account = {
         });
         $("body").on('click', "#account-logout", function () {
             account.Logout()
+        });
+        $("body").on('click', "#logout-action", function () {
+            $('#dangxuat').addClass('overlay-active')
         });
         $("body").on('click', "#btn-client-register", function () {
             account.Register()
@@ -118,7 +121,7 @@ var account = {
     Logout: function () {
         localStorage.removeItem(STORAGE_NAME.Login)
         sessionStorage.removeItem(STORAGE_NAME.Login)
-        window.location.reload()
+        window.location.href='/'
     },
     Register: function () {
         var element = $('#btn-client-register')

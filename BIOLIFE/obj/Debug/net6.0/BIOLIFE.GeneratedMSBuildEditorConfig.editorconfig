@@ -9,13 +9,14 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BIOLIFE
 build_property.RootNamespace = BIOLIFE
-build_property.ProjectDir = /Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/
+build_property.ProjectDir = F:\PROJECT\HULOTOYS\HuloToys-FrontEnd-Git\BIOLIFE\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE
+build_property.MSBuildProjectDirectory = F:\PROJECT\HULOTOYS\HuloToys-FrontEnd-Git\BIOLIFE
 build_property._RazorSourceGeneratorDebug = 
 
+<<<<<<< HEAD
 [/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Home/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Db250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -94,24 +95,104 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Components/Product/ProductListViewComponent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvUHJvZHVjdC9Qcm9kdWN0TGlzdFZpZXdDb21wb25lbnQuY3NodG1s
+=======
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Home/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+>>>>>>> 3f79d4f6fbd4334eabdc43d0638672723a0aa2ac
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Home/Intro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbnRyby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/News/ArticleDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xBcnRpY2xlRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/News/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-er0cr1h7cx
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Product/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Product/GroupProductList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHcm91cFByb2R1Y3RMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Product/ProductDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0RGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/Footer/default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRm9vdGVyXGRlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/GroupProduct/GroupProductLeft.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcR3JvdXBQcm9kdWN0XEdyb3VwUHJvZHVjdExlZnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/GroupProduct/GroupProductTop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcR3JvdXBQcm9kdWN0XEdyb3VwUHJvZHVjdFRvcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/Header/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/News/FooterHvHome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTmV3c1xGb290ZXJIdkhvbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/News/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTmV3c1xIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/News/Menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTmV3c1xNZW51LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/News/TopLeft.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTmV3c1xUb3BMZWZ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/Pagination/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUGFnaW5hdGlvblxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/Product/BoxProductBottomRight.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUHJvZHVjdFxCb3hQcm9kdWN0Qm90dG9tUmlnaHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/Product/BoxProductTopList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUHJvZHVjdFxCb3hQcm9kdWN0VG9wTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/Product/ProductListViewComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUHJvZHVjdFxQcm9kdWN0TGlzdFZpZXdDb21wb25lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-b5ssyvvgkm
