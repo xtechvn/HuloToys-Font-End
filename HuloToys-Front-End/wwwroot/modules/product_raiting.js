@@ -254,7 +254,7 @@ var product_raiting = {
         //    $('.section-details-product .total-review').html(global_service.Comma(product.reviews_count) + ' Đánh giá')
         //}
         $('.box-review .review').html(html)
-        $('.box-review .total-sold').html(global_service.Comma(result.data.total_count) + ' Đã bán')
+        $('.box-review .total-sold').html(global_service.Comma(result.data.total_sold) + ' Đã bán')
         $('.box-review .total-review').html(global_service.Comma(result.data.total_count)+' Đánh giá')
     },
     GetFilter: function (page) {
