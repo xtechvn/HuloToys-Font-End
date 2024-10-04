@@ -18,7 +18,7 @@
                 <div class="list-news-home"></div>                
 
                 @*Phân trang*@
-                @await Component.InvokeAsync("Pagination",new {page = current_page, total_items = total_items, page_size = page_size })
+                @await Component.InvokeAsync("Pagination",new {page = current_page, total_items = total_items, page_size = page_size, view="~/Views/Shared/Components/Pagination/Default.cshtml" })
 
             </div>
             <div class="siderbar-news">

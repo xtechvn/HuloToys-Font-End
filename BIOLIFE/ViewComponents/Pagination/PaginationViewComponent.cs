@@ -12,7 +12,7 @@ namespace BIOLIFE.ViewComponents.Pagination
         /// <param name="page">index page</param>
         /// <param name="page_size">Số tin trên 1 page</param>
         /// <returns></returns>
-        public async Task<IViewComponentResult?> InvokeAsync(int total_items, int page_size, int page = 1)
+        public async Task<IViewComponentResult?> InvokeAsync(int total_items, int page_size, string view, int page = 1)
         {
 			try
 			{                
@@ -24,7 +24,7 @@ namespace BIOLIFE.ViewComponents.Pagination
 					CurrentPage = page,
 					TotalPages = totalPages
                 };
-				return View(view_model);
+				return View(view, view_model);
 			}
 			catch (Exception ex)
 			{
