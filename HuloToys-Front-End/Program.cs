@@ -71,4 +71,8 @@ app.MapControllerRoute(
     name: "thanh-toan",
     pattern: "/order/detail/{id}",
     defaults: new { controller = "Order", action = "OrderDetail" });
+app.MapControllerRoute(
+    name: "san-pham-new",
+    pattern: "/product/detailnew/{title}--{product_code}",
+    defaults: new { controller = "Product", action = "DetailNew" });
 app.Run();

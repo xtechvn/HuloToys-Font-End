@@ -161,7 +161,7 @@ var order_detail = {
         var html_products = ''
         $(order_detail_object.carts).each(function (index_cart, cart_item) {
             html_products += HTML_CONSTANTS.OrderHistory.ItemProduct
-                .replaceAll('{src}', cart_item.product.avatar)
+                .replaceAll('{src}', global_service.CorrectImage(cart_item.product.avatar))
                 .replaceAll('{name}', cart_item.product.name)
                 .replaceAll('{attributes}', order_detail.RenderVariationDetail(cart_item))
                 .replaceAll('{price}', global_service.Comma(cart_item.product.amount) + ' đ')

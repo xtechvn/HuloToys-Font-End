@@ -30,39 +30,53 @@ var product_raiting = {
         }, 500);
     },
     ListingComment: function (page) {
-        $("#container-comment .product-ratings__list").addClass('placeholder')
-        $("#container-comment .product-ratings__list").addClass('box-placeholder')
+        $('.section-description-product .product-ratings__list .product-comment-list').addClass('placeholder')
+        $('.section-description-product .product-ratings__list .product-comment-list').addClass('box-placeholder')
         var request = product_raiting.GetFilter(page)
         $.when(
             global_service.POST(API_URL.ProductReviewComment, request)
         ).done(function (result) {
-            if (result != undefined) {
-                $('#container-comment .product-ratings__list .product-comment-list').html(result)
-            }
-            $("#container-comment .product-ratings__list").removeClass('placeholder')
-            $("#container-comment .product-ratings__list").removeClass('box-placeholder')
-            $('.img-product').lightGallery({
-                speed: 500,
-                plugins: [lgVideo],
+            if (result == undefined) result=''
+            $('.section-description-product .product-ratings__list .product-comment-list').html(result)
+
+            $('.section-description-product .product-ratings__list .product-comment-list').removeClass('placeholder')
+            $('.section-description-product .product-ratings__list .product-comment-list').removeClass('box-placeholder')
+            $('.section-description-product .product-ratings__list .img-product').each(function (index, value) {
+                var element=$(this)
+                lightGallery(element[0], {
+                    plugins: [lgVideo],
+                    videojs: true,
+                    speed: 500,
+                    thumbnail: true,
+                });
+
+
             });
+            
 
         })
     },
     Paging: function (page) {
-        if (page > 0) {
+        var max_page = product_raiting.GetMaxPage()
+        var total_count = product_raiting.GetTotalCount()
+        if (page > 0 && max_page > 1 && total_count > 1) {
             var request = {
                 "function_name": 'product_raiting.DetailPaging',
                 "page": page,
-                "max_page": product_raiting.GetMaxPage(),
-                "total_count": product_raiting.GetTotalCount()
+                "max_page": max_page,
+                "total_count": total_count
             }
             $.when(
                 global_service.POST(API_URL.ProductRaitingPaging, request)
             ).done(function (result) {
                 if (result != undefined) {
-                    $('#container-comment .wrap-paging').html(result)
+                    $('.section-description-product .wrap-paging').html(result)
                 }
             })
+        }
+        else {
+            $('.section-description-product .wrap-paging').html('')
+
         }
 
     },
@@ -91,8 +105,10 @@ var product_raiting = {
     GetMaxPage: function () {
         var max_page = 1
         var value = product_raiting.GetRaitingFilterValue()
+        if (value == undefined || value == '') value = 'all'
+
         var page_count = sessionStorage.getItem(STORAGE_NAME.ProductCommentCount)
-        if (page_count != undefined && value.trim() != '') {
+        if (page_count != undefined && value != undefined && value.trim() != '') {
             var page_object = JSON.parse(page_count)
             switch (value) {
                 case '5': {
@@ -188,16 +204,58 @@ var product_raiting = {
             total_star += (key * value)
 
         });
-        var avarage = parseFloat(total_star / count).toFixed(1)
-        $('#container-comment .overview__rating-score').html(global_service.Comma(parseFloat(total_star / count).toFixed(1)))
-        var avarage_value = parseInt(total_star / count)
-        $('#container-comment .rating-stars__stars i').each(function (index, item) {
+        var avarage = parseFloat(total_star / count)
+        if (isNaN(avarage)) avarage=0
+        $('.section-description-product  .overview__rating-score').html(avarage.toFixed(1))
+        var avarage_value = parseInt(avarage)
+        $('.section-description-product  .rating-stars__stars i').each(function (index, item) {
             var element = $(this)
-            if (index > avarage_value) {
-                element.hide()
+            if (index < avarage_value) {
+                element.addClass('icon-star')
+                element.removeClass('half-star')
+                element.removeClass('icon-star-empty')
+            }
+            else if (index > avarage_value && index < avarage) {
+                element.removeClass('icon-star')
+                element.addClass('half-star')
+                element.removeClass('icon-star-empty')
+            }
+            else {
+                element.removeClass('icon-star')
+                element.removeClass('half-star')
+                element.addClass('icon-star-empty')
             }
 
         });
+
+        var html = ''
+        for (var i = 0; i < 5; i++) {
+            if (i < avarage_value) {
+                html += HTML_CONSTANTS.Detail.Star
+            }
+            else if (i > avarage_value && i < avarage) {
+                html += HTML_CONSTANTS.Detail.Half_Star
+
+            }
+            else {
+                html += HTML_CONSTANTS.Detail.Empty_Star
+
+            }
+        }
+        html += '' + (avarage <= 0 ? '' : avarage.toFixed(1))
+        //if (product.product_sold_count == undefined || product.product_sold_count <= 0) {
+        //    $('.section-details-product .total-sold').hide()
+        //} else {
+        //    $('.section-details-product .total-sold').html(global_service.Comma(product.product_sold_count) + ' Đã bán')
+        //}
+        //if (product.reviews_count == undefined || product.reviews_count <= 0) {
+        //    $('.section-details-product .total-sold').hide()
+        //} else {
+        //    $('.section-details-product .total-review').html(global_service.Comma(product.reviews_count) + ' Đánh giá')
+        //}
+        $('.box-review .review').html(html)
+        $('.box-review .total-sold').html(global_service.Comma(result.data.total_count) + ' Đã bán')
+        $('.box-review .total-review').html(global_service.Comma(result.data.total_count)+' Đánh giá')
     },
     GetFilter: function (page) {
         var request = {
@@ -241,6 +299,7 @@ var product_raiting = {
                 return false
             }
         });
-        return selected_element.attr('data-value')
+        if (selected_element != undefined) return selected_element.attr('data-value')
+        else return undefined
     }
 }

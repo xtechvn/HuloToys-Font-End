@@ -197,5 +197,15 @@ $(document).ready(function () {
     });
 
     // lightgallery
-    $("#lightgallery").lightGallery();
+    // $("#lightgallery").lightGallery({
+    //     speed: 500,
+    //     videojs: true,
+    //     plugins: [lgVideo]
+    // });
+    lightGallery(document.getElementById('lightgallery'), {
+        plugins: [lgVideo],
+        videojs: true,
+        speed: 500,
+        thumbnail: true,
+    });
 });
