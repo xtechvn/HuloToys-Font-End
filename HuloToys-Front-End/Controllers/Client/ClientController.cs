@@ -138,5 +138,44 @@ namespace HuloToys_Front_End.Controllers.Client
                 data = result
             });
         }
+        public async Task<IActionResult> ForgotPassword(ClientForgotPasswordRequestModel request)
+        {
+            var result = await _addressClientServices.ForgotPassword(request);
+
+            return Ok(new
+            {
+                is_success = result,
+                msg= "Email hướng dẫn đổi mật khẩu sẽ được gửi đến địa chỉ email mà bạn đã nhập. <br /> vui lòng kiểm tra hộp thư đến và làm theo hướng dẫn."
+            });
+        }
+        public ActionResult ChangePassword(string token)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(token) || token.Trim() == "")
+                {
+                    return View("/Error");
+                }
+                string forgot = EncodeHelpers.Decode(token, _configuration["API:SecretKey"]);
+                if(forgot == null || forgot.Trim() == "")
+                {
+                    return View("/Error");
+                }
+                var model = JsonConvert.DeserializeObject<ClientForgotPasswordTokenModel>(forgot);
+                if(model == null|| model.account_client_id <= 0 || model.exprire_time<DateTime.Now || model.created_time>DateTime.Now)
+                {
+                    return View("/Error");
+                }
+                ViewBag.Token = token;
+                return View();
+            }
+            catch
+            {
+
+            }
+            return View("/Error");
+
+
+        }
     }
 }

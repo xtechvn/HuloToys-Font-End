@@ -59,6 +59,7 @@ F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/obj/Debug/net6.0/ref/BIOLIFE.d
 /Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/obj/Debug/net6.0/BIOLIFE.pdb
 /Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/obj/Debug/net6.0/BIOLIFE.genruntimeconfig.cache
 /Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/obj/Debug/net6.0/ref/BIOLIFE.dll
+<<<<<<< HEAD
 F:\PROJECT\HULOTOYS\HuloToys-FrontEnd-Git\BIOLIFE\bin\Debug\net6.0\appsettings.Development.json
 F:\PROJECT\HULOTOYS\HuloToys-FrontEnd-Git\BIOLIFE\bin\Debug\net6.0\appsettings.json
 F:\PROJECT\HULOTOYS\HuloToys-FrontEnd-Git\BIOLIFE\bin\Debug\net6.0\BIOLIFE.staticwebassets.runtime.json
@@ -104,3 +105,20 @@ F:\PROJECT\HULOTOYS\HuloToys-FrontEnd-Git\BIOLIFE\obj\Debug\net6.0\refint\BIOLIF
 F:\PROJECT\HULOTOYS\HuloToys-FrontEnd-Git\BIOLIFE\obj\Debug\net6.0\BIOLIFE.pdb
 F:\PROJECT\HULOTOYS\HuloToys-FrontEnd-Git\BIOLIFE\obj\Debug\net6.0\BIOLIFE.genruntimeconfig.cache
 F:\PROJECT\HULOTOYS\HuloToys-FrontEnd-Git\BIOLIFE\obj\Debug\net6.0\ref\BIOLIFE.dll
+=======
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/Microsoft.Extensions.Configuration.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/MongoDB.Bson.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/Newtonsoft.Json.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/Pipelines.Sockets.Unofficial.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/StackExchange.Redis.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/bin/Debug/net6.0/Telegram.Bot.dll
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/obj/Debug/net6.0/BIOLIFE.csproj.AssemblyReference.cache
+/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/obj/Debug/net6.0/BIOLIFE.csproj.CopyComplete
+>>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f

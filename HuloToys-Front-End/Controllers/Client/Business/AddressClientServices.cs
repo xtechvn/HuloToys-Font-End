@@ -95,5 +95,24 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             return null;
 
         }
+        public async Task<bool> ForgotPassword(ClientForgotPasswordRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:client_forgot_password"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+            return false;
+
+        }
     }
 }

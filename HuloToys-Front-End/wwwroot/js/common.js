@@ -195,4 +195,7 @@ $(document).ready(function () {
         placeholder: "Vui lòng chọn...",
         // dropdownParent: $('.form-group')
     });
+
+    // lightgallery
+    $("#lightgallery").lightGallery();
 });

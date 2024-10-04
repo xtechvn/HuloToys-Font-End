@@ -44,6 +44,7 @@ var API_URL = {
     OrderRaitingUploadImage: '/Files/SummitImages',
     OrderRaitingUploadVideo: '/Files/SummitVideo',
     OrderRaitingSubmmit: '/Order/InsertRaiting',
+    ClientForgotPassword: '/Client/ForgotPassword',
 
 
 }

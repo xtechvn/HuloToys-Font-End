@@ -41,6 +41,11 @@ var product_raiting = {
             }
             $("#container-comment .product-ratings__list").removeClass('placeholder')
             $("#container-comment .product-ratings__list").removeClass('box-placeholder')
+            $('.img-product').lightGallery({
+                speed: 500,
+                plugins: [lgVideo],
+            });
+
         })
     },
     Paging: function (page) {

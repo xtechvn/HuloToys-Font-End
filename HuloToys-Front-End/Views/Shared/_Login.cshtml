@@ -171,7 +171,7 @@
         </div>
     </div>
 </div>
-<!-- đăng kí -->
+<!-- Quên mật khẩu -->
 <div id="quenmk" class="overlay client-forgot-popup">
     <div class="popup">
         <a class="close" href="javascript:;">
@@ -189,12 +189,13 @@
                         <label>Email</label>
                         <div class="box-email">
                             <div class="box-input email">
-                                <input class="form-control" type="text" placeholder="Nhập địa chỉ Email " />
+                                <input id="forgot-password-email" class="form-control" type="text" placeholder="Nhập địa chỉ Email " />
                             </div>
+                            <span class="err">Email không đúng định dạng</span>
                         </div>
                         <span class="err">Vui lòng không để trống</span>
                     </div>
-                    <button id="btn-client-forgot" class="btn-submit">Gửi email đổi mật khẩu</button>
+                    <button id="forgot-password-btn" class="btn-submit">Gửi email đổi mật khẩu</button>
                 </div>
             </ul>
         </div>

@@ -81,8 +81,10 @@ namespace BIOLIFE.Controllers.Product.Service
                     return JsonConvert.DeserializeObject<ProductDetailResponseModel>(jsonData["data"].ToString());
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                Utilities.LogHelper.InsertLogTelegramByUrl(configuration["telegram_log_error_fe:Token"], configuration["telegram_log_error_fe:GroupId"], "GetProductDetail " + ex.Message);
+                return null;
             }
             return null;
 
