@@ -215,7 +215,7 @@ var product_raiting = {
                 element.removeClass('half-star')
                 element.removeClass('icon-star-empty')
             }
-            else if (index > avarage_value && index < avarage) {
+            else if (index >= avarage_value && index < avarage) {
                 element.removeClass('icon-star')
                 element.addClass('half-star')
                 element.removeClass('icon-star-empty')
@@ -233,7 +233,7 @@ var product_raiting = {
             if (i < avarage_value) {
                 html += HTML_CONSTANTS.Detail.Star
             }
-            else if (i > avarage_value && i < avarage) {
+            else if (i >= avarage_value && i < avarage) {
                 html += HTML_CONSTANTS.Detail.Half_Star
 
             }
