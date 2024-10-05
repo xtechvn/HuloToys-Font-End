@@ -253,7 +253,7 @@ var HTML_CONSTANTS = {
                             </div>`,
         Star: `<i class="icon icon-star"></i>`,
         Half_Star: `<i class="icon half-star"></i>`,
-        Empty_Star: `<i class="icon icon-star-empty"></i>`,
+        Empty_Star: `<i class="icon empty-star"></i>`,
         Tr_Voucher: ` <tr>
                                  <td>Mã giảm giá</td>
                                 <td>

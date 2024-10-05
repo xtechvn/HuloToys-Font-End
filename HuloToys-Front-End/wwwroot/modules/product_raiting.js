@@ -213,17 +213,17 @@ var product_raiting = {
             if (index < avarage_value) {
                 element.addClass('icon-star')
                 element.removeClass('half-star')
-                element.removeClass('icon-star-empty')
+                element.removeClass('empty-star')
             }
             else if (index >= avarage_value && index < avarage) {
                 element.removeClass('icon-star')
                 element.addClass('half-star')
-                element.removeClass('icon-star-empty')
+                element.removeClass('empty-star')
             }
             else {
                 element.removeClass('icon-star')
                 element.removeClass('half-star')
-                element.addClass('icon-star-empty')
+                element.addClass('empty-star')
             }
 
         });
