@@ -124,5 +124,7 @@ namespace BIOLIFE.Controllers.Home
                 return StatusCode(500); // Trả về lỗi 500 nếu có lỗi
             }
         }
+
+
     }
 }

@@ -1,0 +1,124 @@
+﻿@using BIOLIFE.Models.Products;
+@using BIOLIFE.Utilities;
+@model List<ProductMongoDbModel>
+@{
+    string keyword = ViewBag.keyword;
+}
+<section class="section-category">
+    <div class="container">
+        <div class="list-product-category">
+            <div class="title-box">
+                <h3 class="name-tt"><a href="">KẾT QUẢ TÌM KIẾM CHO <span class="text-lowercase">"@keyword"</span></a></h3>
+            </div>
+            <div class="product-category">
+                <div class="list-product">
+                    @{
+                        foreach (var item in Model)
+                        {
+                            string link = @Html.GetStaticUrlProduct(item.name, item._id);
+                            <div class="item-product">
+                                <a href="@link">
+                                    <div class="thumb thumb-product">
+                                        <img src="@item.avatar" alt="@item.name" />
+                                    </div>
+                                    <div class="box-info">
+                                        <h3 class="name-product">@item.name</h3>
+                                        <div class="flex-price">
+                                            <div class="price-sale">@item.label_price</div>                                            
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-category">
+    <div class="container">
+        <div class="list-product-category">
+            <div class="title-box">
+                <h3 class="name-tt"><a href="">CÓ thể bạn quan tâm</a></h3>
+                <a href="" class="xemthem">Xem thêm</a>
+            </div>
+            <div class="product-category">
+                <div class="list-product scroll-product">
+                    <div class="item-product">
+                        <a href="">
+                            <div class="thumb thumb-product">
+                                <img src="images/product.jpg" alt="" />
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Màng bọc Thực phẩm Las Palms dao nhựa xanh </h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="price-old">689,098đ</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="">
+                            <div class="thumb thumb-product">
+                                <img src="images/product.jpg" alt="" />
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Màng bọc Thực phẩm Las Palms dao nhựa xanh </h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="price-old">689,098đ</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="">
+                            <div class="thumb thumb-product">
+                                <img src="images/product.jpg" alt="" />
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Màng bọc Thực phẩm Las Palms dao nhựa xanh </h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="price-old">689,098đ</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="">
+                            <div class="thumb thumb-product">
+                                <img src="images/product.jpg" alt="" />
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Màng bọc Thực phẩm Las Palms dao nhựa xanh </h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="price-old">689,098đ</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="">
+                            <div class="thumb thumb-product">
+                                <img src="images/product.jpg" alt="" />
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Màng bọc Thực phẩm Las Palms dao nhựa xanh </h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="price-old">689,098đ</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

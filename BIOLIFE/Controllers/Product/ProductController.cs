@@ -23,30 +23,22 @@ namespace BIOLIFE.Controllers.Product
             redisService = _redisService;
             productsService=new ProductsService(_configuration, redisService);
             _cache = cache;
-
         }
-
-
 
         /// <summary>
         ///Sản phẩm nổi bật
-
         /// </summary>
         /// <returns></returns>
         [HttpPost]
         public IActionResult loadProductTopComponent(long group_product_id)
         {
             try
-            {
-                // var article_sv = new NewsService(configuration, redisService);
-                // var article = await article_sv.getArticleDetailById(article_id);
-
+            {  
                 return ViewComponent("ProductList");
             }
             catch (Exception ex)
             {
-                // Ghi log lỗi nếu cần
-                //_logger.LogError(ex, "Error loading header component");
+                // Ghi log lỗi nếu cần             
                 return StatusCode(500); // Trả về lỗi 500 nếu có lỗi
             }
         }
@@ -72,6 +64,11 @@ namespace BIOLIFE.Controllers.Product
                 return StatusCode(500); // Trả về lỗi 500 nếu có lỗi                
             }
         }
+        /// <summary>
+        /// Load thông tin sản phẩm
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public async Task<IActionResult> ProductDetail(ProductDetailRequestModel request)
         {
             
@@ -88,6 +85,12 @@ namespace BIOLIFE.Controllers.Product
             }
             return View(cached_view);
         }
+       
+        /// <summary>
+        /// Load các biến thể
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public async Task<IActionResult> GetProductDetail(ProductDetailRequestModel request)
         {
             // Nếu không có trong cache, gọi dịch vụ
@@ -107,6 +110,16 @@ namespace BIOLIFE.Controllers.Product
                 is_success = cached_view != null,
                 data = cached_view
             });
+        }
+
+        [HttpGet("/san-pham/tim-kiem")]
+        public async Task<IActionResult> search(string p)
+        {
+            // Nếu không có trong cache, gọi dịch vụ
+            ViewBag.keyword = p;
+            var data_result = await productsService.Search(p);
+
+            return View(data_result);
         }
     }
 }

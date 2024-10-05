@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0RGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Product/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/PROJECT/HULOTOYS/HuloToys-FrontEnd-Git/BIOLIFE/Views/Shared/Components/Footer/default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRm9vdGVyXGRlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

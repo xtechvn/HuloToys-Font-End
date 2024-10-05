@@ -118,25 +118,38 @@ namespace BIOLIFE.Controllers.Product.Service
             return null;
 
         }
-        //public async Task<ProductListResponseModel> Search(ProductGlobalSearchRequestModel request)
-        //{
-        //    try
-        //    {
-        //        var result = await POST(configuration["API:product_search"], request);
-        //        var jsonData = JObject.Parse(result);
-        //        var status = int.Parse(jsonData["status"].ToString());
+        
+        public async Task<List<ProductMongoDbModel>> Search(string keyword)
+        {
+            try
+            {
+                string response_api = string.Empty;
+                var connect_api_us = new ConnectApi(configuration, redisService);
+                var input_request = new Dictionary<string, string>
+                {
+                    {"keyword",keyword }
+                };
 
-        //        if (status == (int)ResponseType.SUCCESS)
-        //        {
-        //            return JsonConvert.DeserializeObject<ProductListResponseModel>(jsonData["data"].ToString());
-        //        }
-        //    }
-        //    catch
-        //    {
-        //    }
-        //    return null;
+                response_api = await connect_api_us.CreateHttpRequest("/api/product/search.json", input_request);
 
-        //}
+                // Nhan ket qua tra ve                            
+                var JsonParent = JArray.Parse("[" + response_api + "]");
+                int status = Convert.ToInt32(JsonParent[0]["status"]);
 
+                if (status == ((int)ResponseType.SUCCESS))
+                {
+                    var product_list = JsonConvert.DeserializeObject<List<ProductMongoDbModel>>(JsonParent[0]["data"].ToString());
+                    return product_list;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
