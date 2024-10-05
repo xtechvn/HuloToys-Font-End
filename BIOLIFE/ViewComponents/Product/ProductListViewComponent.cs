@@ -32,8 +32,7 @@ namespace BIOLIFE.ViewComponents.Product
                 var cacheKey = "product_list_" + _group_product_id + "_" + _page_index + _page_size; // Đặt khóa cho cache
                 if (!_cache.TryGetValue(cacheKey, out var cached_view)) // Kiểm tra xem có trong cache không
                 {
-                    var objMenu = new ProductsService(configuration, _redisService);
-                    //cached_view = await objMenu.getProductListByGroupProductId(_group_product_id, _page_index, _page_size);
+                    var objMenu = new ProductsService(configuration, _redisService);                   
                     cached_view = await productsService.getProductListByGroupProductId(_group_product_id, _page_index, _page_size);
                     if (cached_view != null)
                     {

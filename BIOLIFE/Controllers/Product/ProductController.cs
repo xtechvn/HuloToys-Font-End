@@ -74,7 +74,7 @@ namespace BIOLIFE.Controllers.Product
         }
         public async Task<IActionResult> ProductDetail(ProductDetailRequestModel request)
         {
-            var result = await productsService.GetProductDetail(request);
+            
             // Nếu không có trong cache, gọi dịch vụ
             var cacheKey = "product_detail_" + request.id; // Đặt khóa cho cache
             if (!_cache.TryGetValue(cacheKey, out var cached_view)) // Kiểm tra xem có trong cache không
@@ -87,6 +87,26 @@ namespace BIOLIFE.Controllers.Product
                 }
             }
             return View(cached_view);
-        }      
+        }
+        public async Task<IActionResult> GetProductDetail(ProductDetailRequestModel request)
+        {
+            // Nếu không có trong cache, gọi dịch vụ
+            var cacheKey = "product_detail_" + request.id; // Đặt khóa cho cache
+            if (!_cache.TryGetValue(cacheKey, out var cached_view)) // Kiểm tra xem có trong cache không
+            {
+                cached_view = await productsService.GetProductDetail(request);
+                if (cached_view != null)
+                {
+                    // Lưu vào cache với thời gian hết hạn 
+                    _cache.Set(cacheKey, cached_view, TimeSpan.FromSeconds(20));
+                }
+            }
+
+            return Ok(new
+            {               
+                is_success = cached_view != null,
+                data = cached_view
+            });
+        }
     }
 }

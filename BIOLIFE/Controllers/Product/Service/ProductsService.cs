@@ -1,4 +1,5 @@
 ﻿using BIOLIFE.Contants;
+using BIOLIFE.Models;
 using BIOLIFE.Models.Products;
 using BIOLIFE.Service.Redis;
 using BIOLIFE.Utilities;
@@ -69,23 +70,34 @@ namespace BIOLIFE.Controllers.Product.Service
         {
             try
             {
-
-                var result = await POST(configuration["API:get_product_detail"], request);
-                var jsonData = JObject.Parse(result);
-                var status = int.Parse(jsonData["status"].ToString());
-
-                if (status == (int)ResponseType.SUCCESS)
+                string response_api = string.Empty;
+                var connect_api_us = new ConnectApi(configuration, redisService);
+                var input_request = new Dictionary<string, string>
                 {
-                    return JsonConvert.DeserializeObject<ProductDetailResponseModel>(jsonData["data"].ToString());
+                    {"product_id",request.id }
+                };
+
+                response_api = await connect_api_us.CreateHttpRequest(configuration["API:get_product_detail"].ToString(), input_request);
+
+                // Nhan ket qua tra ve                            
+                var JsonParent = JArray.Parse("[" + response_api + "]");
+                int status = Convert.ToInt32(JsonParent[0]["status"]);
+
+                if (status == ((int)ResponseType.SUCCESS))
+                {
+                    var product = JsonConvert.DeserializeObject<ProductDetailResponseModel>(JsonParent[0]["data"].ToString());
+                    return product;
+                }
+                else
+                {
+                    return null;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Utilities.LogHelper.InsertLogTelegramByUrl(configuration["telegram_log_error_fe:Token"], configuration["telegram_log_error_fe:GroupId"], "GetProductDetail " + ex.Message);
                 return null;
             }
-            return null;
-
         }
         public async Task<ProductListResponseModel> GetProductList(ProductListRequestModel request)
         {
