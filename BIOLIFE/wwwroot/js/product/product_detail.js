@@ -34,7 +34,7 @@ var product_detail = {
             "id": code
         }
         $.when(
-            global_service.POST(API_URL.GetProductDetail, request)
+            global_service.POST(API_URL.ProductDetail, request)
         ).done(function (result) {
             if (result != null && result != undefined) {
                 $('.section-details-product').removeClass('placeholder')

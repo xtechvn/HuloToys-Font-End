@@ -1,10 +1,6 @@
 {
   "Version": 1,
-<<<<<<< HEAD
   "Hash": "JIZ3MlHwoyfpIwcOMbY2ix4ZCBq0zJ5lTSrhYNPYfl4=",
-=======
-  "Hash": "Uk9MErN61IMIVAYkhASSgNvEWyXmdKw1s4HvcuAjaEs=",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
   "Source": "BIOLIFE",
   "BasePath": "_content/BIOLIFE",
   "Mode": "Default",
@@ -55,11 +51,7 @@
       "OriginalItemSpec": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\BIOLIFE.bundle.scp.css"
     },
     {
-<<<<<<< HEAD
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\bootstrap.min.css",
-=======
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/bootstrap.min.css",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -73,300 +65,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.min.css"
-=======
-      "OriginalItemSpec": "wwwroot/css/bootstrap.min.css"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/images/bg-img-about.jpg",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/images/bg-img-about.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/images/bg-img-about.jpg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/jquery-ui.css",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/jquery-ui.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/jquery-ui.css"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/main.css",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/main.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/main.css"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/maps/main.css.map",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/maps/main.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/maps/main.css.map"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/maps/swiper-vars.css.map",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/maps/swiper-vars.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/maps/swiper-vars.css.map"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/scss/_footer.scss",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/scss/_footer.scss",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/scss/_footer.scss"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/scss/_header.scss",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/scss/_header.scss",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/scss/_header.scss"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/scss/_icon.scss",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/scss/_icon.scss",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/scss/_icon.scss"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/scss/_reset.scss",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/scss/_reset.scss",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/scss/_reset.scss"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/scss/_swiper.scss",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/scss/_swiper.scss",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/scss/_swiper.scss"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/scss/_theme.scss",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/scss/_theme.scss",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/scss/_theme.scss"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/scss/main.scss",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/scss/main.scss",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/scss/main.scss"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/scss/swiper-vars.css",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/scss/swiper-vars.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/scss/swiper-vars.css"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/scss/swiper-vars.css.map",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/scss/swiper-vars.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/scss/swiper-vars.css.map"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/scss/swiper-vars.scss",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/scss/swiper-vars.scss",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/scss/swiper-vars.scss"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/swiper-bundle.min.css",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/swiper-bundle.min.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/swiper-bundle.min.css"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/css/swiper-vars.css",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
-      "BasePath": "_content/BIOLIFE",
-      "RelativePath": "css/swiper-vars.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/swiper-vars.css"
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\css\\images\\bg-img-about.jpg",
@@ -675,11 +374,7 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-<<<<<<< HEAD
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\demo.html",
-=======
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/icofont/demo.html",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -693,17 +388,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\icofont\\demo.html"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\fonts\\icofont.eot",
-=======
-      "OriginalItemSpec": "wwwroot/icofont/demo.html"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/icofont/fonts/icofont.eot",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -717,17 +405,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\icofont\\fonts\\icofont.eot"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\fonts\\icofont.svg",
-=======
-      "OriginalItemSpec": "wwwroot/icofont/fonts/icofont.eot"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/icofont/fonts/icofont.svg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -741,17 +422,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\icofont\\fonts\\icofont.svg"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\fonts\\icofont.ttf",
-=======
-      "OriginalItemSpec": "wwwroot/icofont/fonts/icofont.svg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/icofont/fonts/icofont.ttf",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -765,17 +439,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\icofont\\fonts\\icofont.ttf"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\fonts\\icofont.woff",
-=======
-      "OriginalItemSpec": "wwwroot/icofont/fonts/icofont.ttf"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/icofont/fonts/icofont.woff",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -789,17 +456,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\icofont\\fonts\\icofont.woff"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\fonts\\icofont.woff2",
-=======
-      "OriginalItemSpec": "wwwroot/icofont/fonts/icofont.woff"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/icofont/fonts/icofont.woff2",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -813,17 +473,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\icofont\\fonts\\icofont.woff2"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\icofont.css",
-=======
-      "OriginalItemSpec": "wwwroot/icofont/fonts/icofont.woff2"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/icofont/icofont.css",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -837,17 +490,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\icofont\\icofont.css"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\icofont\\icofont.min.css",
-=======
-      "OriginalItemSpec": "wwwroot/icofont/icofont.css"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/icofont/icofont.min.css",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -861,26 +507,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\icofont\\icofont.min.css"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\banner.jpg",
-=======
-      "OriginalItemSpec": "wwwroot/icofont/icofont.min.css"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/banner-contact.jpg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/banner.jpg",
-=======
-      "RelativePath": "images/banner-contact.jpg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -889,26 +524,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\banner.jpg"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\banner2.jpg",
-=======
-      "OriginalItemSpec": "wwwroot/images/banner-contact.jpg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/banner-news.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/banner2.jpg",
-=======
-      "RelativePath": "images/banner-news.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -917,26 +541,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\banner2.jpg"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\banner3.jpg",
-=======
-      "OriginalItemSpec": "wwwroot/images/banner-news.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/banner.jpg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/banner3.jpg",
-=======
-      "RelativePath": "images/banner.jpg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -945,26 +558,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\banner3.jpg"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\banner-contact.jpg",
-=======
-      "OriginalItemSpec": "wwwroot/images/banner.jpg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/banner2.jpg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/banner-contact.jpg",
-=======
-      "RelativePath": "images/banner2.jpg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -973,26 +575,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\banner-contact.jpg"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\banner-news.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/banner2.jpg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/banner3.jpg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/banner-news.png",
-=======
-      "RelativePath": "images/banner3.jpg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1001,17 +592,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\banner-news.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\big-logo.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/banner3.jpg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/big-logo.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -1025,26 +609,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\big-logo.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\bio_icon.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/big-logo.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/check.svg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/bio_icon.png",
-=======
-      "RelativePath": "images/check.svg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1053,26 +626,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\bio_icon.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\check.svg",
-=======
-      "OriginalItemSpec": "wwwroot/images/check.svg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/copy.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/check.svg",
-=======
-      "RelativePath": "images/copy.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1081,26 +643,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\check.svg"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\copy.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/copy.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/error-1.svg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/copy.png",
-=======
-      "RelativePath": "images/error-1.svg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1109,17 +660,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\copy.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\error.svg",
-=======
-      "OriginalItemSpec": "wwwroot/images/error-1.svg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/error.svg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -1133,26 +677,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\error.svg"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\error-1.svg",
-=======
-      "OriginalItemSpec": "wwwroot/images/error.svg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/Eye.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/error-1.svg",
-=======
-      "RelativePath": "images/Eye.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1161,26 +694,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\error-1.svg"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Eye.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/Eye.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/facebook.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/Eye.png",
-=======
-      "RelativePath": "images/facebook.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1189,26 +711,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\Eye.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\facebook.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/facebook.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/fb.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/facebook.png",
-=======
-      "RelativePath": "images/fb.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1217,26 +728,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\facebook.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\fb.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/fb.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/FilmReel.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/fb.png",
-=======
-      "RelativePath": "images/FilmReel.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1245,26 +745,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\fb.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\FilmReel.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/FilmReel.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/hab_center.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/FilmReel.png",
-=======
-      "RelativePath": "images/hab_center.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1273,26 +762,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\FilmReel.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\hab_center.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/hab_center.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/icon-check.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/hab_center.png",
-=======
-      "RelativePath": "images/icon-check.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1301,26 +779,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\hab_center.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\icon-check.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/icon-check.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/icon-err.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/icon-check.png",
-=======
-      "RelativePath": "images/icon-err.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1329,26 +796,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\icon-check.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\icon-err.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/icon-err.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/img1.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/icon-err.png",
-=======
-      "RelativePath": "images/img1.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1357,26 +813,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\icon-err.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\img1.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/img1.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/img2.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/img1.png",
-=======
-      "RelativePath": "images/img2.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1385,26 +830,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\img1.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\img2.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/img2.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/jcb.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/img2.png",
-=======
-      "RelativePath": "images/jcb.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1413,26 +847,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\img2.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\jcb.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/jcb.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/Leaf-w.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/jcb.png",
-=======
-      "RelativePath": "images/Leaf-w.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1441,17 +864,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\jcb.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Leaf.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/Leaf-w.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/Leaf.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -1465,26 +881,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\Leaf.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Leaf-w.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/Leaf.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/Logo_BIOLIFE-white.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/Leaf-w.png",
-=======
-      "RelativePath": "images/Logo_BIOLIFE-white.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1493,17 +898,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\Leaf-w.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Logo_BIOLIFE.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/Logo_BIOLIFE-white.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/Logo_BIOLIFE.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -1517,26 +915,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\Logo_BIOLIFE.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Logo_BIOLIFE-white.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/Logo_BIOLIFE.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/logoSaleNoti.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/Logo_BIOLIFE-white.png",
-=======
-      "RelativePath": "images/logoSaleNoti.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1545,26 +932,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\Logo_BIOLIFE-white.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\logoSaleNoti.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/logoSaleNoti.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/mastercard.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/logoSaleNoti.png",
-=======
-      "RelativePath": "images/mastercard.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1573,26 +949,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\logoSaleNoti.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\mastercard.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/mastercard.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/pinterest.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/mastercard.png",
-=======
-      "RelativePath": "images/pinterest.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1601,26 +966,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\mastercard.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\pinterest.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/pinterest.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/product.jpg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/pinterest.png",
-=======
-      "RelativePath": "images/product.jpg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1629,26 +983,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\pinterest.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\product.jpg",
-=======
-      "OriginalItemSpec": "wwwroot/images/product.jpg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/shera.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/product.jpg",
-=======
-      "RelativePath": "images/shera.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1657,26 +1000,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\product.jpg"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\shera.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/shera.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/shoppe.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/shera.png",
-=======
-      "RelativePath": "images/shoppe.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1685,26 +1017,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\shera.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\shoppe.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/shoppe.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/ShoppingBag.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/shoppe.png",
-=======
-      "RelativePath": "images/ShoppingBag.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1713,26 +1034,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\shoppe.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\ShoppingBag.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/ShoppingBag.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/SketchLogo.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/ShoppingBag.png",
-=======
-      "RelativePath": "images/SketchLogo.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1741,26 +1051,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\ShoppingBag.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\SketchLogo.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/SketchLogo.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/success.svg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/SketchLogo.png",
-=======
-      "RelativePath": "images/success.svg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1769,26 +1068,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\SketchLogo.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\success.svg",
-=======
-      "OriginalItemSpec": "wwwroot/images/success.svg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/Target.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/success.svg",
-=======
-      "RelativePath": "images/Target.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1797,26 +1085,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\success.svg"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\Target.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/Target.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/tiktok.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/Target.png",
-=======
-      "RelativePath": "images/tiktok.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1825,26 +1102,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\Target.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\tiktok.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/tiktok.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/ToiletPaper.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/tiktok.png",
-=======
-      "RelativePath": "images/ToiletPaper.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1853,26 +1119,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\tiktok.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\ToiletPaper.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/ToiletPaper.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/twiter.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/ToiletPaper.png",
-=======
-      "RelativePath": "images/twiter.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1881,26 +1136,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\ToiletPaper.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\twiter.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/twiter.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/video.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/twiter.png",
-=======
-      "RelativePath": "images/video.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1909,26 +1153,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\twiter.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\video.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/video.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/visa.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/video.png",
-=======
-      "RelativePath": "images/visa.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1937,26 +1170,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\video.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\visa.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/visa.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/warning.svg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/visa.png",
-=======
-      "RelativePath": "images/warning.svg",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1965,26 +1187,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\visa.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\warning.svg",
-=======
-      "OriginalItemSpec": "wwwroot/images/warning.svg"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/images/yt.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/warning.svg",
-=======
-      "RelativePath": "images/yt.png",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1993,26 +1204,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\warning.svg"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\images\\yt.png",
-=======
-      "OriginalItemSpec": "wwwroot/images/yt.png"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/bootstrap.min.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "images/yt.png",
-=======
-      "RelativePath": "js/bootstrap.min.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2021,26 +1221,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\images\\yt.png"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\bootstrap.min.js",
-=======
-      "OriginalItemSpec": "wwwroot/js/bootstrap.min.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/common.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "js/bootstrap.min.js",
-=======
-      "RelativePath": "js/common.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2049,26 +1238,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.min.js"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\common.js",
-=======
-      "OriginalItemSpec": "wwwroot/js/common.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/footer/main.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "js/common.js",
-=======
-      "RelativePath": "js/footer/main.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2077,26 +1255,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\common.js"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\footer\\main.js",
-=======
-      "OriginalItemSpec": "wwwroot/js/footer/main.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/group_product/main.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "js/footer/main.js",
-=======
-      "RelativePath": "js/group_product/main.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2105,26 +1272,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\footer\\main.js"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\group_product\\main.js",
-=======
-      "OriginalItemSpec": "wwwroot/js/group_product/main.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/header/main.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "js/group_product/main.js",
-=======
-      "RelativePath": "js/header/main.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2133,26 +1289,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\group_product\\main.js"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\header\\main.js",
-=======
-      "OriginalItemSpec": "wwwroot/js/header/main.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/jquery-ui.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "js/header/main.js",
-=======
-      "RelativePath": "js/jquery-ui.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2161,17 +1306,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\header\\main.js"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\jquery.min.js",
-=======
-      "OriginalItemSpec": "wwwroot/js/jquery-ui.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/jquery.min.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
@@ -2185,26 +1323,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\jquery.min.js"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\jquery-ui.js",
-=======
-      "OriginalItemSpec": "wwwroot/js/jquery.min.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/news/main.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "js/jquery-ui.js",
-=======
-      "RelativePath": "js/news/main.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2213,26 +1340,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\jquery-ui.js"
     },
     {
       "Identity": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\news\\main.js",
-=======
-      "OriginalItemSpec": "wwwroot/js/news/main.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/news/news_detail.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
       "BasePath": "_content/BIOLIFE",
-<<<<<<< HEAD
       "RelativePath": "js/news/main.js",
-=======
-      "RelativePath": "js/news/news_detail.js",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2241,7 +1357,6 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\news\\main.js"
     },
     {
@@ -2266,15 +1381,6 @@
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
-=======
-      "OriginalItemSpec": "wwwroot/js/news/news_detail.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/popper.min.js",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "BasePath": "_content/BIOLIFE",
       "RelativePath": "js/popper.min.js",
       "AssetKind": "All",
@@ -2285,7 +1391,6 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\popper.min.js"
     },
     {
@@ -2293,15 +1398,6 @@
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
-=======
-      "OriginalItemSpec": "wwwroot/js/popper.min.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/product/constants.js",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "BasePath": "_content/BIOLIFE",
       "RelativePath": "js/product/constants.js",
       "AssetKind": "All",
@@ -2312,7 +1408,6 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\product\\constants.js"
     },
     {
@@ -2320,15 +1415,6 @@
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
-=======
-      "OriginalItemSpec": "wwwroot/js/product/constants.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/product/global.js",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "BasePath": "_content/BIOLIFE",
       "RelativePath": "js/product/global.js",
       "AssetKind": "All",
@@ -2339,7 +1425,6 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\product\\global.js"
     },
     {
@@ -2347,15 +1432,6 @@
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
-=======
-      "OriginalItemSpec": "wwwroot/js/product/global.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/product/product_detail.js",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "BasePath": "_content/BIOLIFE",
       "RelativePath": "js/product/product_detail.js",
       "AssetKind": "All",
@@ -2366,7 +1442,6 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\product\\product_detail.js"
     },
     {
@@ -2374,15 +1449,6 @@
       "SourceId": "BIOLIFE",
       "SourceType": "Discovered",
       "ContentRoot": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\",
-=======
-      "OriginalItemSpec": "wwwroot/js/product/product_detail.js"
-    },
-    {
-      "Identity": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/js/swiper-bundle.min.js",
-      "SourceId": "BIOLIFE",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lecuong/Source_Code/hulotoys-front-end/BIOLIFE/wwwroot/",
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
       "BasePath": "_content/BIOLIFE",
       "RelativePath": "js/swiper-bundle.min.js",
       "AssetKind": "All",
@@ -2393,11 +1459,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\js\\swiper-bundle.min.js"
-=======
-      "OriginalItemSpec": "wwwroot/js/swiper-bundle.min.js"
->>>>>>> 8db4abae8342bdb388869111c22db6ef8b8c435f
     }
   ]
 }

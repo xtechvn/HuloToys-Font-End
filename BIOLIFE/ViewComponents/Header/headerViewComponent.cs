@@ -22,6 +22,8 @@ namespace BIOLIFE.ViewComponents.Header
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var cacheKey = "headerMenu"; // Đặt khóa cho cache
+            var referer = Request.Headers["Referer"].ToString();
+
             if (!_cache.TryGetValue(cacheKey, out var cachedMenu)) // Kiểm tra xem có trong cache không
             {
                 // Nếu không có trong cache, gọi dịch vụ
@@ -30,10 +32,10 @@ namespace BIOLIFE.ViewComponents.Header
                 if (cachedMenu != null)
                 {
                     // Lưu vào cache với thời gian hết hạn 60 giây
-                    _cache.Set(cacheKey, cachedMenu, TimeSpan.FromSeconds(60));
+                    _cache.Set(cacheKey, cachedMenu, TimeSpan.FromSeconds(30));
                 }
             }
-
+            ViewBag.current_url = referer;
             return View(cachedMenu);
         }
     }

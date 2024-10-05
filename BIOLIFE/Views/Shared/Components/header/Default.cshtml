@@ -1,5 +1,9 @@
 ﻿@using BIOLIFE.Models;
 @model List<CategoryModel>
+@{
+    string current_url = ViewBag.current_url;
+    current_url = current_url.Split("/").Last();
+}
 @if (Model != null)
 {
     <header class="header">
@@ -18,12 +22,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item @Html.Raw(current_url==""?"active":"")">
                             <a class="nav-link" href="/">Trang chủ</a>
                         </li>
                         @foreach (var item in Model)
                         {
-                            <li class="nav-item">
+
+                            <li class="nav-item @Html.Raw((item.path.IndexOf(current_url) >=0 && current_url!="")  ?"active":"")">
                                 <a class="nav-link" href="@("/" + item.path.Replace("-"+ item.id,"" ) )">@item.name</a>
                             </li>
                         }

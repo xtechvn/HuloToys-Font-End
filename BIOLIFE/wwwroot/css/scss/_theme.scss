@@ -387,13 +387,13 @@
         gap: 25px;
 
         .left-sidebar {
-            width: 220px;
+            width: 350px;
 
             @media (max-width:1200px) {
                 position: fixed;
                 top: 0;
                 transform: translateX(-100vw);
-                z-index: 9;
+                z-index: 99;
                 transition: all 0.5s ease-in-out;
                 background: #fcfcfc;
                 bottom: 0;
@@ -449,7 +449,6 @@
                     font-weight: 700;
                     position: relative;
                     line-height: 150%;
-                    text-transform: uppercase;
                     margin-bottom: 12px;
                     @media (max-width:767px) {
                         font-size: 14px;
@@ -481,7 +480,6 @@
                 }
                 a {
                     color: #51555F;
-                    font-weight: bold;
                     @media (max-width:767px) {
                         font-weight: normal;
                     }
@@ -515,7 +513,6 @@
                         &:hover,
                         &.active {
                             color: var(--color-base);
-                            font-weight: bold;
 
                             a {
                                 color: var(--color-base);

@@ -1,12 +1,10 @@
 ﻿using BIOLIFE.Contants;
-using BIOLIFE.Models;
+using BIOLIFE.Models.Products;
 using BIOLIFE.Service.Redis;
 using BIOLIFE.Utilities;
+using HuloToys_Front_End.Utilities.Lib;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using HuloToys_Front_End.Utilities.Contants;
-using BIOLIFE.Models.Products;
-using HuloToys_Front_End.Utilities.Lib;
 
 namespace BIOLIFE.Controllers.Product.Service
 {
@@ -108,25 +106,25 @@ namespace BIOLIFE.Controllers.Product.Service
             return null;
 
         }
-        public async Task<ProductListResponseModel> Search(ProductGlobalSearchRequestModel request)
-        {
-            try
-            {
-                var result = await POST(configuration["API:product_search"], request);
-                var jsonData = JObject.Parse(result);
-                var status = int.Parse(jsonData["status"].ToString());
+        //public async Task<ProductListResponseModel> Search(ProductGlobalSearchRequestModel request)
+        //{
+        //    try
+        //    {
+        //        var result = await POST(configuration["API:product_search"], request);
+        //        var jsonData = JObject.Parse(result);
+        //        var status = int.Parse(jsonData["status"].ToString());
 
-                if (status == (int)ResponseType.SUCCESS)
-                {
-                    return JsonConvert.DeserializeObject<ProductListResponseModel>(jsonData["data"].ToString());
-                }
-            }
-            catch
-            {
-            }
-            return null;
+        //        if (status == (int)ResponseType.SUCCESS)
+        //        {
+        //            return JsonConvert.DeserializeObject<ProductListResponseModel>(jsonData["data"].ToString());
+        //        }
+        //    }
+        //    catch
+        //    {
+        //    }
+        //    return null;
 
-        }
+        //}
 
     }
 }
