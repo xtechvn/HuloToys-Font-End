@@ -4,8 +4,13 @@
 })
 var product_detail = {
     Initialization: function () {
-        $('#thanhcong').removeClass('overlay-active')
+        //--Init:
+        $('.coupon-list').remove()
+        $('.write-review').remove()
+        $('#product-alike').remove()
 
+
+        $('#thanhcong').removeClass('overlay-active')
         product_detail.ShowLoading()
         sessionStorage.removeItem(STORAGE_NAME.ProductDetail)
 
@@ -13,6 +18,8 @@ var product_detail = {
         product_detail.Detail()
         product_detail.DynamicBind()
         global_service.LoadHomeProductGrid($('#combo-discount .list-product'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
+
+       
     },
     DynamicBind: function () {
         $("body").on('click', ".attribute-detail", function () {
@@ -66,12 +73,12 @@ var product_detail = {
             }
         })
     },
-    RenderDetail: function (product,product_sub) {
+    RenderDetail: function (product, product_sub) {
+
         var html = ''
         var img_src = product.avatar
         img_src = global_service.CorrectImage(product.avatar)
-
-
+        // gallery
         html += HTML_CONSTANTS.Detail.Images
             .replaceAll('{src}', img_src)
 
@@ -82,28 +89,24 @@ var product_detail = {
                 .replaceAll('{src}', img_src)
 
         });
-        $('.section-details-product .gallery-product .swiper-wrapper').html(html)
+        $('.thumb-big .swiper-wrapper').html(html)
+        $('.thumb-small .swiper-wrapper').html(html)
+         swiperSmallThumb = new Swiper(".thumb-small", {
+            spaceBetween: 15,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesProgress: true,
+        });
+         swiperBigThumb = new Swiper(".thumb-big", {
+            spaceBetween: 15,
+            navigation: false,
+            thumbs: {
+                swiper: swiperSmallThumb,
+            },
+         });
 
         $('.section-details-product .name-product').html(product.name)
-        if (product.product_sold_count == undefined || product.product_sold_count <= 0) {
-            $('.section-details-product .total-sold').hide()
-        } else {
-            $('.section-details-product .total-sold').html(global_service.Comma(product.product_sold_count) + ' Đã bán')
-        }
-        if (product.reviews_count == undefined || product.reviews_count <= 0) {
-            $('.section-details-product .total-sold').hide()
-        } else {
-            $('.section-details-product .total-review').html( global_service.Comma(product.reviews_count) + ' Đánh giá')
-        }
-      
-
-        html = ''
-        for (var i = 0; i < (product.star <= 0 ? 5 : product.star); i++) {
-            html += HTML_CONSTANTS.Detail.Star
-        }
-        html += '' + (product.star <= 0 ? 5 : product.star)
-        $('.box-review .review').html(html)
-
+     
         if (product_sub != undefined && product_sub.length > 0) {
             const max_obj = product_sub.reduce(function (prev, current) {
                 return (prev && prev.amount > current.amount) ? prev : current
@@ -158,7 +161,7 @@ var product_detail = {
         html += HTML_CONSTANTS.Detail.Tr_Quanity.replaceAll('{stock}', global_service.Comma(total_stock))
         
         $('.box-info-details tbody').html(html)
-        $('#description').html(product.description.replaceAll('\n','<br />'))
+        $('.section-description-product .box-des p').html(product.description.replaceAll('\n','<br />'))
 
         //--hide voucher (implement later):
         $('#voucher').hide()
@@ -410,6 +413,15 @@ var product_detail = {
         $('.price').addClass('placeholder')
         $('.box-info-details').addClass('placeholder')
         $('.box-action').addClass('placeholder')
+        $('.total-sold').html('')
+        $('.total-review').html('')
+        $('.review').html('')
+        $('.total-sold').addClass('placeholder')
+        $('.total-review').addClass('placeholder')
+        $('.review').addClass('placeholder')
+
+        $('.info-product .box-price .price-old').hide()
+
     },
     RemoveLoading: function () {
         $('.section-details-product').removeClass('placeholder')
@@ -421,7 +433,9 @@ var product_detail = {
         $('.price').removeClass('placeholder')
         $('.box-info-details').removeClass('placeholder')
         $('.box-action').removeClass('placeholder')
-
+        $('.total-sold').removeClass('placeholder')
+        $('.total-review').removeClass('placeholder')
+        $('.review').removeClass('placeholder')
     }
 }
 

@@ -157,7 +157,7 @@ var HTML_CONSTANTS = {
             <a href="">
                 <div class="box-thumb">
                     <div class="thumb-product">
-                        <img src="/images/product.jpg" alt="">
+                        <img src="/assets/images/product.jpg" alt="">
                     </div>
                 </div>
                 <div class="box-info">
@@ -180,7 +180,7 @@ var HTML_CONSTANTS = {
             <a href="">
                 <div class="box-thumb">
                     <div class="thumb-product">
-                        <img src="/images/product.jpg" alt="">
+                        <img src="/assets/images/product.jpg" alt="">
                     </div>
                 </div>
                 <div class="box-info">
@@ -203,7 +203,7 @@ var HTML_CONSTANTS = {
             <a href="">
                 <div class="box-thumb">
                     <div class="thumb-product">
-                        <img src="/images/product.jpg" alt="">
+                        <img src="/assets/images/product.jpg" alt="">
                     </div>
                 </div>
                 <div class="box-info">
@@ -252,6 +252,8 @@ var HTML_CONSTANTS = {
                                 <img src="{src}" alt="" />
                             </div>`,
         Star: `<i class="icon icon-star"></i>`,
+        Half_Star: `<i class="icon half-star"></i>`,
+        Empty_Star: `<i class="icon empty-star"></i>`,
         Tr_Voucher: ` <tr>
                                  <td>Mã giảm giá</td>
                                 <td>
@@ -343,7 +345,7 @@ var HTML_CONSTANTS = {
             </ul>
         </div>
         <div class="box-empty">
-            <img src="/images/empty.png" alt="" />
+            <img src="/assets/images/empty.png" alt="" />
             <h3 class="title">Giỏ hàng trống</h3>
             <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
             <a href="/" class="btn btn-base">Tiếp tục mua sắm</a>
@@ -459,6 +461,7 @@ var HTML_CONSTANTS = {
                         </div>
                     </div>
                 </div>`,
+      
 
     }
 

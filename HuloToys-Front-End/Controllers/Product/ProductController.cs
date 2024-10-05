@@ -25,6 +25,12 @@ namespace HuloToys_Front_End.Controllers.Product
             return View();
 
         }
+        public ActionResult DetailNew(string product_code, string title)
+        {
+            ViewBag.ProductCode = product_code;
+            return View();
+
+        }
         public async Task<IActionResult> ProductDetail(ProductDetailRequestModel request)
         {
             var result = await _productServices.GetProductDetail(request);

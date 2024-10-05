@@ -91,3 +91,8 @@
 .box-search-list .item-product .box-info{
     width:100% !important;
 }
+
+.box-comment .overview__score-wrapper {
+    min-width:130px !important;
+}
+

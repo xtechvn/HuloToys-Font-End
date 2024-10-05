@@ -54,7 +54,7 @@ var order_raiting = {
             var html=''
             $(order_detail.data_order.carts).each(function (index, item) {
                 html += HTML_CONSTANTS.OrderDetailRaiting.Item
-                    .replaceAll('{img}', item.product.avatar)
+                    .replaceAll('{img}', global_service.CorrectImage(item.product.avatar))
                     .replaceAll('{name}', item.product.name)
                     .replaceAll('{variation_detail}', order_raiting.RenderVariationDetail(item.product))
                     .replaceAll('{product_id}', item.product._id)
@@ -119,9 +119,10 @@ var order_raiting = {
                 star = 5
             } break;
         }
-        parent.addClass(class_name)  
-        $('#danhgia .star-label').html(label_by_star)
-        $('#danhgia .star').attr('data-value', star)
+        parent.addClass(class_name)
+        parent.find('.star-label').html(label_by_star)
+        parent.closest('.star').attr('data-value', star)
+        debugger
     },
     RenderReviewMedia: function (element) {
         var parent_element = element.closest('.review-item').find('.wrap-img-upload')
@@ -149,7 +150,7 @@ var order_raiting = {
                             reader.onload = function (e) {
                                 parent_element.prepend(HTML_CONSTANTS.OrderDetailRaiting.ReviewImage.replaceAll('{src}', e.target.result))
                                 order_raiting.RenderUploadImageCount(parent_element)
-                                $('#danhgia .upload-file').hide()
+                                element.closest('.review-item').find('.upload-file').hide()
                                 parent_element.show()
                             }
                             reader.readAsDataURL(item);
@@ -183,7 +184,7 @@ var order_raiting = {
                             reader.onload = function (e) {
                                 parent_element.prepend(HTML_CONSTANTS.OrderDetailRaiting.ReviewVideo.replaceAll('{src}', e.target.result).replaceAll('{id}', '-1'))
                                 order_raiting.RenderUploadImageCount(parent_element)
-                                $('#danhgia .upload-file').hide()
+                                element.closest('.review-item').find('.upload-file').hide()
                                 parent_element.show()
                             }
                             reader.readAsDataURL(item);
@@ -226,6 +227,7 @@ var order_raiting = {
                 "img_link":'',
                 "video_link":'' ,
             }
+            debugger
             var images=[]
             element.find('.review-img').each(function (index, item) {
                 var element_image = $(this)
