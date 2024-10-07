@@ -309,6 +309,14 @@
       "PackagePath": "staticwebassets\\js\\jquery.min.js"
     },
     {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\lib\\defined_param.js",
+      "PackagePath": "staticwebassets\\js\\lib\\defined_param.js"
+    },
+    {
+      "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\lib\\defined_param.min.js",
+      "PackagePath": "staticwebassets\\js\\lib\\defined_param.min.js"
+    },
+    {
       "Id": "F:\\PROJECT\\HULOTOYS\\HuloToys-FrontEnd-Git\\BIOLIFE\\wwwroot\\js\\news\\main.js",
       "PackagePath": "staticwebassets\\js\\news\\main.js"
     },

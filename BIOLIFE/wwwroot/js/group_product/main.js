@@ -1,5 +1,5 @@
 
-var total_product = 8; // Tổng số sản phẩm của 1 box
+var total_product = 12; // Tổng số sản phẩm của 1 box
 var group_id_product_top = 54;// id nhóm sản phẩm box SẢN PHẨM NỔI BẬT
 
 $(document).ready(function () {
