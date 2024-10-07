@@ -206,7 +206,7 @@ var product_raiting = {
         });
         var avarage = parseFloat(total_star / count)
         if (isNaN(avarage)) avarage=0
-        $('.section-description-product  .overview__rating-score').html(avarage.toFixed(1))
+        $('.section-description-product  .overview__rating-score').html(avarage<=0?'0':avarage.toFixed(1))
         var avarage_value = parseInt(avarage)
         $('.section-description-product  .rating-stars__stars i').each(function (index, item) {
             var element = $(this)
@@ -292,7 +292,7 @@ var product_raiting = {
     GetRaitingFilterValue: function () {
         var selected_element = undefined
 
-        $('#container-comment .overview__filter').each(function (index, item) {
+        $('.overview__filters .overview__filter').each(function (index, item) {
             var element = $(this)
             if (element.hasClass('active')) {
                 selected_element = element

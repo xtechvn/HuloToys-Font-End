@@ -402,7 +402,7 @@ var global_service = {
                     .replaceAll('{name}', item.name)
                     .replaceAll('{amount}', amount_html)
                     //.replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
-                    .replaceAll('{review_point}', '5')
+                    .replaceAll('{review_point}', (item.star == null || item.star == undefined || item.star <= 0) ? '' : item.star.toFixed(1))
                     .replaceAll('{review_count}', '')
                     .replaceAll('{old_price_style}', '')
                     .replaceAll('{price}', (item.amount == null || item.amount == undefined || item.amount <= 0) ? global_service.Comma(item.amount) + ' đ' : '')
