@@ -5,13 +5,13 @@ var home_product = {
     Initialization: function () {
         if ($('.list-product-sale .swiper-wrapper').length > 0) {
             //--Product Sale Slide:
-            //global_service.LoadHomeProductGrid($('.list-product-sale .swiper-wrapper'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
+            global_service.LoadHomeProductGrid($('.list-product-sale .swiper-wrapper'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
             //-- Discount Grid:
             global_service.LoadHomeProductGrid($('#product-discount .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.Discount, GLOBAL_CONSTANTS.GridSize)
             //-- Bear Grid:
-            //global_service.LoadHomeProductGrid($('#bear-collection .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.BEAR_COLLECTION, GLOBAL_CONSTANTS.GridSize)
+            global_service.LoadHomeProductGrid($('#bear-collection .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.BEAR_COLLECTION, GLOBAL_CONSTANTS.GridSize)
             //-- Intelligence Grid:
-            //global_service.LoadHomeProductGrid($('#intelligence-collection .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.INTELLECTUAL_DEVELOPMENT, GLOBAL_CONSTANTS.GridSize)
+            global_service.LoadHomeProductGrid($('#intelligence-collection .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.INTELLECTUAL_DEVELOPMENT, GLOBAL_CONSTANTS.GridSize)
         }
         $('.xemthem').hide()
     },
