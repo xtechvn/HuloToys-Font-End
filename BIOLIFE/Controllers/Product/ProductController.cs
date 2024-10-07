@@ -1,4 +1,5 @@
 ﻿using BIOLIFE.Controllers.Product.Service;
+using BIOLIFE.Models;
 using BIOLIFE.Models.Products;
 using BIOLIFE.Service.Redis;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ namespace BIOLIFE.Controllers.Product
         {
             configuration = _configuration;
             redisService = _redisService;
-            productsService=new ProductsService(_configuration, redisService);
+            productsService = new ProductsService(_configuration, redisService);
             _cache = cache;
         }
 
@@ -29,7 +30,7 @@ namespace BIOLIFE.Controllers.Product
         public IActionResult loadProductTopComponent(long group_product_id)
         {
             try
-            {  
+            {
                 return ViewComponent("ProductList");
             }
             catch (Exception ex)
@@ -55,7 +56,7 @@ namespace BIOLIFE.Controllers.Product
         public async Task<ActionResult> getListGroupProduct(string group_product_name, int group_product_id)
         {
             try
-            {                
+            {
 
                 ViewBag.group_product_parent_id = group_product_id;
                 return View("~/Views/Product/GroupProductList.cshtml");
@@ -72,7 +73,7 @@ namespace BIOLIFE.Controllers.Product
         /// <returns></returns>
         //public async Task<IActionResult> ProductDetail(ProductDetailRequestModel request)
         //{
-            
+
         //    // Nếu không có trong cache, gọi dịch vụ
         //    var cacheKey = "product_detail_" + request.id; // Đặt khóa cho cache
         //    if (!_cache.TryGetValue(cacheKey, out var cached_view)) // Kiểm tra xem có trong cache không
@@ -86,7 +87,7 @@ namespace BIOLIFE.Controllers.Product
         //    }
         //    return View(cached_view);
         //}
-       
+
         /// <summary>
         /// Load các biến thể
         /// </summary>
@@ -128,7 +129,7 @@ namespace BIOLIFE.Controllers.Product
         public async Task<IActionResult> search(string p)
         {
             // Nếu không có trong cache, gọi dịch vụ
-            ViewBag.keyword = string.IsNullOrEmpty(p) ? "": p;
+            ViewBag.keyword = string.IsNullOrEmpty(p) ? "" : p;
             var data_result = await productsService.Search(p);
 
             return View(data_result);
@@ -138,14 +139,87 @@ namespace BIOLIFE.Controllers.Product
         public async Task<IActionResult> renderProductHistory(string j_data)
         {
             try
-            {               
+            {
                 return ViewComponent("ProductHistory", j_data);
             }
             catch (Exception ex)
-            {              
+            {
                 return Content("");
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> loadBrandLeftComponent()
+        {
+            try
+            {
+                var result = await productsService.GetBrandList();
+                return PartialView("~/Views/Shared/Components/Product/BrandLeft.cshtml", result);
+            }
+            catch (Exception)
+            {
+                // Ghi log lỗi nếu cần
+                //_logger.LogError(ex, "Error loading LoadBrandLeftComponent");
+                return StatusCode(500); // Trả về lỗi 500 nếu có lỗi
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> LoadProductsByBrand(string brand_id, int group_product_id, int page_index, int page_size)
+        {
+            try
+            {
+                // Nếu không có trong cache, gọi dịch vụ
+                var cacheKey = $"product_brand_{brand_id}";
+
+                if (!_cache.TryGetValue(cacheKey, out var cached_view)) // Kiểm tra xem có trong cache không
+                {
+                    cached_view = await productsService.GetProductsByBrand(brand_id, group_product_id, page_index, page_size);
+                    if (cached_view != null)
+                    {
+                        // Lưu vào cache với thời gian hết hạn 
+                        _cache.Set(cacheKey, cached_view, TimeSpan.FromSeconds(10));
+                    }
+                }
+                return PartialView("~/Views/Shared/Components/Product/ProductListViewComponent.cshtml", cached_view);
+                //var products = await productsService.GetProductsByBrand(request);
+                //return PartialView("~/Views/Shared/Components/Product/BoxProductBottomRight.cshtml", products);
+            }
+            catch (Exception ex)
+            {
+                //_logger.LogError(ex, "Error loading products by brand");
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetProductsByPriceRange(double amount_min, double amount_max, int group_product_id, int page_index, int page_size)
+        {
+            try
+            {
+                ProductListResponseModel? products;
+
+                // Nếu cả hai amountMin và amountMax đều không có giá trị, trả về tất cả sản phẩm
+                if (amount_min == 0 && amount_max == 0)
+                {
+                    return ViewComponent("ProductList", new { _group_product_id = group_product_id, _page_index = page_index, _page_size = page_size, view_name = "~/Views/Shared/Components/Product/ProductListViewComponent.cshtml" });
+                }
+                else
+                {
+                    products = await productsService.GetProductsByPriceRange(amount_min, amount_max, group_product_id, page_index, page_size);
+                    if (products == null)
+                    {
+                        return StatusCode(500, new { message = "Lỗi khi lấy sản phẩm" });
+                    }
+                    return PartialView("~/Views/Shared/Components/Product/ProductListViewComponent.cshtml", products);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi nếu cần
+                return StatusCode(500, new { message = "Lỗi khi lấy sản phẩm", error = ex.Message });
+            }
+        }
+
 
     }
 }

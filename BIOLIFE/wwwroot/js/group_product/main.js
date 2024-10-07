@@ -7,7 +7,17 @@ $(document).ready(function () {
     group_product.bind_list_group_product();
     group_product.bind_list_product_top();
     group_product.bind_list_menu_product(); // danh mục sản phẩm trang chủ bên trái /Home
+    group_product.bind_list_brand();
     group_product.bind_list_product_bottom_top();
+    var debounceTimeout;
+    $('#amountMin, #amountMax').on('input', function () {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(function () {
+            var amountMin = parseFloat($('#amountMin').val()) || 0;
+            var amountMax = parseFloat($('#amountMax').val()) || 0;
+            group_product.bind_search_products_by_price_range(amountMin, amountMax);
+        }, 300); // Adjust the delay as needed
+    });
 
 
     // Page load render data by group product id
@@ -20,6 +30,8 @@ $(document).ready(function () {
 
     group_product.bind_list_product_flashSale();
 })
+
+
 $(document.body).on('click', '.menu_group_product', function (e) {
 
     var group_product_id = $(this).data('groupproduct');
@@ -36,8 +48,8 @@ $(document.body).on('click', '.menu_group_product', function (e) {
 $(document.body).on('click', '.ajax_action_page', function (e) {
 
     var page_index = (parseInt($(this).data("page")) - 1) * total_product;
-     //// Sau khi bắn link, lấy giá trị group_id
-    debugger;
+    //// Sau khi bắn link, lấy giá trị group_id
+  
     var groupId = lib.getUrlParameter('group_id');
     var group_product_id = groupId == null ? -1 : parseInt(groupId);
     var view_name = "~/Views/Shared/Components/Product/ProductListViewComponent.cshtml";
@@ -62,7 +74,7 @@ var lib = {
             }
         }
         return null; // Trả về null nếu không tìm thấy tham số
-    }   
+    }
 }
 var group_product = {
 

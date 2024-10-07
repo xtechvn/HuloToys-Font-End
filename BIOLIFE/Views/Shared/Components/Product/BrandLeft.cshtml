@@ -1,0 +1,18 @@
+﻿<!-- Views/Shared/Components/Product/BrandLeft.cshtml -->
+@model List<BrandModel>
+
+@if (Model != null && Model.Count > 0)
+{
+    <ul class="list-filter">
+        @foreach (var brand in Model)
+        {
+            <li data-_id="@brand._id">
+                <a href="#">@brand.attribute_name</a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No brands available.</p>
+}

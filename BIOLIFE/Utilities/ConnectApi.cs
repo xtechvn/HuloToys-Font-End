@@ -42,6 +42,7 @@ namespace BIOLIFE.Utilities
                 string key_user_name_cache = configuration["api_data:username"];       
                 // Lấy access token từ cache
                 var data_access_token = await redisService.GetAsync(key_user_name_cache, Convert.ToInt32(configuration["redis:Database:db_common"]));
+                string token1 = CommonHelper.Encode(JsonConvert.SerializeObject(input_request), configuration["api_data:secret_key"]);
 
                 if (!string.IsNullOrEmpty(data_access_token))
                 {

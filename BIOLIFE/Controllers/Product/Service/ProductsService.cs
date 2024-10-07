@@ -118,7 +118,7 @@ namespace BIOLIFE.Controllers.Product.Service
             return null;
 
         }
-        
+
         public async Task<List<ProductMongoDbModel>> Search(string keyword)
         {
             try
@@ -151,5 +151,156 @@ namespace BIOLIFE.Controllers.Product.Service
                 return null;
             }
         }
+
+
+        public async Task<List<BrandModel>?> GetBrandList()
+        {
+            try
+            {
+                var input_request = new Dictionary<string, string>
+        {
+            {"token", "F08wO1QJPR4nJktCFGMo"}
+        };
+
+                var connect_api_us = new ConnectApi(configuration, redisService);
+                var response_api = await connect_api_us.CreateHttpRequest("/api/Product/brand.json", input_request);
+
+                var JsonResponse = JObject.Parse(response_api);
+                int status = Convert.ToInt32(JsonResponse["status"]);
+
+                if (status == 0)
+                {
+                    var data = JsonResponse["data"].ToString();
+                    return JsonConvert.DeserializeObject<List<BrandModel>>(data);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Utilities.LogHelper.InsertLogTelegramByUrl(configuration["telegram_log_error_fe:Token"], configuration["telegram_log_error_fe:GroupId"], "GetBrandList " + ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<ProductListResponseModel?> GetProductsByBrand(string brand_id, int group_product_id, int page_index, int page_size)
+        {
+            try
+            {
+                var connect_api_us = new ConnectApi(configuration, redisService);
+
+                var input_request = new Dictionary<string, object>
+        {
+            {"brand_id", brand_id},
+            {"group_product_id", group_product_id},
+            {"page_index", page_index},
+            {"page_size", page_size}
+        };
+
+                var result = await connect_api_us.CreateHttpRequest(configuration["API:product_by_brand"], input_request);
+
+                if (string.IsNullOrEmpty(result))
+                {
+                    throw new Exception("API response is null or empty");
+                }
+
+                var JsonParent = JArray.Parse("[" + result + "]");
+
+                if (JsonParent.Count == 0)
+                {
+                    throw new Exception("API response does not contain any elements");
+                }
+
+                int status = Convert.ToInt32(JsonParent[0]["status"]);
+
+                if (status == ((int)ResponseType.SUCCESS))
+                {
+                    var data = JsonParent[0]["data"];
+                    var items = data["items"].ToString();
+                    int total = Convert.ToInt32(data["total"]);
+
+                    var model = new ProductListResponseModel
+                    {
+                        items = JsonConvert.DeserializeObject<List<ProductMongoDbModel>>(items),
+                        count = total,
+                        page_index = page_index,
+                        page_size = page_size
+                    };
+
+                    return model;
+                }
+                else
+                {
+                    throw new Exception($"API response status is not success. Status: {status}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Utilities.LogHelper.InsertLogTelegramByUrl(configuration["telegram_log_error_fe:Token"], configuration["telegram_log_error_fe:GroupId"], "GetProductsByBrand " + ex.Message + " | StackTrace: " + ex.StackTrace);
+                return null;
+            }
+        }
+
+        public async Task<ProductListResponseModel?> GetProductsByPriceRange(double amount_min, double amount_max, int group_product_id, int page_index, int page_size)
+        {
+            try
+            {
+                var connect_api_us = new ConnectApi(configuration, redisService);
+
+                var input_request = new Dictionary<string, object>
+        {
+            {"amount_min", amount_min},
+            {"amount_max", amount_max},
+            {"group_product_id", group_product_id},
+            {"page_index", page_index},
+            {"page_size", page_size}
+        };
+
+                var response_api = await connect_api_us.CreateHttpRequest("/api/product/product-by-pricerange.json", input_request);
+
+                if (string.IsNullOrEmpty(response_api))
+                {
+                    throw new Exception("API response is null or empty");
+                }
+
+                var JsonParent = JArray.Parse("[" + response_api + "]");
+
+                if (JsonParent.Count == 0)
+                {
+                    throw new Exception("API response does not contain any elements");
+                }
+
+                int status = Convert.ToInt32(JsonParent[0]["status"]);
+
+                if (status == ((int)ResponseType.SUCCESS))
+                {
+                    var data = JsonParent[0]["data"];
+                    var items = data["items"].ToString();
+                    int total = Convert.ToInt32(data["total"]);
+
+                    var model = new ProductListResponseModel
+                    {
+                        items = JsonConvert.DeserializeObject<List<ProductMongoDbModel>>(items),
+                        count = total,
+                        page_index = page_index,
+                        page_size = page_size
+                    };
+
+                    return model;
+                }
+                else
+                {
+                    throw new Exception($"API response status is not success. Status: {status}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Utilities.LogHelper.InsertLogTelegramByUrl(configuration["telegram_log_error_fe:Token"], configuration["telegram_log_error_fe:GroupId"], "GetProductsByPriceRange " + ex.Message + " | StackTrace: " + ex.StackTrace);
+                return null;
+            }
+        }
+
     }
 }
