@@ -1,13 +1,17 @@
 ﻿@using BIOLIFE.Models;
 @using BIOLIFE.Utilities;
 @model List<CategoryModel>
-<div class="content">
-    <ul class="list-cat">
-        <li class="active"> <a href="/tin-tuc" class="cat-tag">Tất cả</a></li>
-        @foreach (var item in Model)
-        {
-            <li> <a href="@(Html.GetStaticUrlCategory(item.name, item.id) )" class="cat-tag">@item.name</a></li>
-        }
-    </ul>
-
-</div>
+@{
+    if (Model != null)
+    {
+        <div class="content">
+            <ul class="list-cat">
+                <li class="active"> <a href="/tin-tuc" class="cat-tag">Tất cả</a></li>
+                @foreach (var item in Model)
+                {
+                    <li> <a href="@(Html.GetStaticUrlCategory(item.name, item.id) )" class="cat-tag">@item.name</a></li>
+                }
+            </ul>
+        </div>
+    }
+}
