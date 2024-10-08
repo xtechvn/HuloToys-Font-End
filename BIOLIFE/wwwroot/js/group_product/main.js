@@ -18,6 +18,10 @@ $(document).ready(function () {
             group_product.bind_search_products_by_price_range(amountMin, amountMax);
         }, 300); // Adjust the delay as needed
     });
+    // Reset giá trị khi trang được tải lại
+    $('#amountMin').val('');
+    $('#amountMax').val('');
+
 
 
     // Page load render data by group product id
@@ -30,6 +34,8 @@ $(document).ready(function () {
 
     group_product.bind_list_product_flashSale();
 })
+
+
 
 
 $(document.body).on('click', '.menu_group_product', function (e) {
@@ -49,7 +55,7 @@ $(document.body).on('click', '.ajax_action_page', function (e) {
 
     var page_index = (parseInt($(this).data("page")) - 1) * total_product;
     //// Sau khi bắn link, lấy giá trị group_id
-  
+
     var groupId = lib.getUrlParameter('group_id');
     var group_product_id = groupId == null ? -1 : parseInt(groupId);
     var view_name = "~/Views/Shared/Components/Product/ProductListViewComponent.cshtml";
@@ -308,12 +314,91 @@ var group_product = {
             url: '/home/loadProductTopComponent',
             data: { group_product_id: group_id_product_top, _page_index: 0, page_size: total_product, view_name: "~/Views/Shared/Components/Product/BoxProductSale.cshtml" },
             success: function (data) {
-                debugger;
-                $('.box_product_sale').html(data);                
+
+                $('.box_product_sale').html(data);
             },
             error: function (xhr, status, error) {
                 console.log("Error: " + error); // Thay đổi từ 'failure' sang 'error'
             }
         });
-    }
+    },
+
+    bind_list_brand: function () {
+        $.ajax({
+            dataType: 'html',
+            type: 'POST',
+            url: '/product/loadBrandLeftComponent',
+            //data: { group_product_id: 15, _page_index: 0, page_size: 12 },
+            success: function (data) {
+                $('#brandList').html(data);
+                const swiperADS = new Swiper('.banner-cat', {
+                    loop: false,
+                    pagination: false,
+                    navigation: false,
+                    slidesPerView: 1.5,
+                    spaceBetween: 8,
+                    breakpoints: {
+                        540: {
+                            slidesPerView: 1.5,
+                        },
+                        768: {
+                            slidesPerView: 2.5,
+                        },
+                        992: {
+                            slidesPerView: 4,
+                        }
+                    }
+                });
+                // Thêm sự kiện click vào thương hiệu
+
+                $('#brandList').on('click', 'li', function (e) {
+                    e.preventDefault();
+                    var brandId = $(this).data('_id');
+                    console.log(brandId)
+                    group_product.bind_load_ProductsByBrand(brandId);
+                });
+            },
+            error: function (xhr, status, error) {
+                console.log("Error: " + error); // Thay đổi từ 'failure' sang 'error'
+            }
+        });
+    },
+    bind_load_ProductsByBrand: function (brandId) {
+       
+
+        $.ajax({
+            dataType: 'html',
+            type: 'POST',
+            url: '/product/loadProductsByBrand',
+            data: { brand_id: brandId, group_product_id: 0, page_index: 1, page_size: 10 },
+            success: function (data) {
+                $(".component-product-list").html(data);
+            },
+            error: function (xhr, status, error) {
+                console.log("Error: " + error);
+            }
+        });
+    },
+    bind_search_products_by_price_range: function (amountMin, amountMax) {
+       
+
+        $.ajax({
+            dataType: 'html',
+            type: 'POST',
+            url: '/product/GetProductsByPriceRange',
+            data: {
+                amount_min: amountMin,
+                amount_max: amountMax,
+                group_product_id: 0,
+                page_index: 1,
+                page_size: 10
+            },
+            success: function (data) {
+                $(".component-product-list").html(data);
+            },
+            error: function (xhr, status, error) {
+                console.log("Error: " + error);
+            }
+        });
+    },
 }
