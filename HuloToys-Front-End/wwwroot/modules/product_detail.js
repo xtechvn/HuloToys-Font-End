@@ -395,15 +395,17 @@ var product_detail = {
                         var selected_value = data.attributes.filter(obj => {
                             return obj.level == level
                         })
+                        if (selected_value.length > 0) {
+                            tr_attributes.find('li').each(function (index_detail, attribute_detail) {
+                                var li_attribute = $(this)
+                                if (li_attribute.attr('data-id') == selected_value[0].data) {
+                                    li_attribute.trigger('click')
+                                    return false
+                                }
 
-                        tr_attributes.find('li').each(function (index_detail, attribute_detail) {
-                            var li_attribute = $(this)
-                            if (li_attribute.attr('data-id') == selected_value[0].data) {
-                                li_attribute.trigger('click')
-                                return false
-                            }
-
-                        })
+                            })
+                        }
+                       
                     })
                 }
                 if (data.quanity != undefined && data.quanity.trim() != '') {
