@@ -248,9 +248,33 @@ var HTML_CONSTANTS = {
                     </div>`
     },
     Detail: {
-        Images: `<div class="swiper-slide">
-                                <img src="{src}" alt="" />
-                            </div>`,
+        Images: `
+                              <a  class="swiper-slide" href="{src}" data-lg-id="3e1fbec2-9c35-461a-b9cc-79fd1d885438">
+                                <img src="{src}" width="500" height="300">
+                            </a>
+
+                            `,
+        Videos: `
+                            <a class="swiper-slide" data-video='{"source": [{"src":"{src}", "type":"video/mp4"}],"attributes": {"preload": false, "controls": false}}'
+                               data-poster="/assets/images/product.jpg">
+                                <i class="icon-video"></i>
+                                  <video>
+                                      <source src="{src}" type="video/mp4">
+                                      Your browser does not support the video tag.
+                                    </video>
+                            </a>
+
+
+                            `,
+        ThumbnailImages: `<div class="swiper-slide">
+                            <img src="{src}" alt="" />
+                            </div > `,
+        ThumbnailVideos: `<div class="swiper-slide">
+                                <video>
+                                      <source src="{src}" type="video/mp4">
+                                      Your browser does not support the video tag.
+                                    </video>
+                            </div >`,
         Star: `<i class="icon icon-star"></i>`,
         Half_Star: `<i class="icon half-star"></i>`,
         Empty_Star: `<i class="icon empty-star"></i>`,

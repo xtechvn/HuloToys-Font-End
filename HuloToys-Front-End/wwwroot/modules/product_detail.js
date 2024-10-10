@@ -76,10 +76,21 @@ var product_detail = {
     RenderDetail: function (product, product_sub) {
 
         var html = ''
+        var html_thumb=''
         var img_src = product.avatar
+        $(product.videos).each(function (index, item) {
+            img_src = global_service.CorrectImage(item)
+            html += HTML_CONSTANTS.Detail.Videos
+                .replaceAll('{src}', img_src)
+            html_thumb += HTML_CONSTANTS.Detail.ThumbnailVideos
+                .replaceAll('{src}', img_src)
+        });
+
         img_src = global_service.CorrectImage(product.avatar)
         // gallery
         html += HTML_CONSTANTS.Detail.Images
+            .replaceAll('{src}', img_src)
+        html_thumb += HTML_CONSTANTS.Detail.ThumbnailImages
             .replaceAll('{src}', img_src)
 
         $(product.images).each(function (index, item) {
@@ -87,10 +98,12 @@ var product_detail = {
            img_src= global_service.CorrectImage(item)
             html += HTML_CONSTANTS.Detail.Images
                 .replaceAll('{src}', img_src)
+            html_thumb += HTML_CONSTANTS.Detail.ThumbnailImages
+                .replaceAll('{src}', img_src)
 
         });
         $('.thumb-big .swiper-wrapper').html(html)
-        $('.thumb-small .swiper-wrapper').html(html)
+        $('.thumb-small .swiper-wrapper').html(html_thumb)
          swiperSmallThumb = new Swiper(".thumb-small", {
             spaceBetween: 15,
             slidesPerView: 4,
@@ -102,8 +115,16 @@ var product_detail = {
             navigation: false,
             thumbs: {
                 swiper: swiperSmallThumb,
-            },
+             },
+
          });
+        lightGallery($('.thumb-big .swiper-wrapper')[0], {
+            plugins: [lgVideo],
+            videojs: true,
+            speed: 500,
+            thumbnail: true,
+        });
+
 
         $('.section-details-product .name-product').html(product.name)
      
