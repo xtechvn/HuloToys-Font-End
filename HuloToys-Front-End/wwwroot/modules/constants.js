@@ -275,14 +275,7 @@ var HTML_CONSTANTS = {
                                       Your browser does not support the video tag.
                                     </video>
                             </div >`,
-        ImagesBig: `<div class="swiper-slide">
-                    <a href="{largeSrc}" data-lightbox="product-images" class="main-image">
-                        <img src="{src}" alt="" />
-                    </a>
-                </div>`,
-        ImagesSmall: `<div class="swiper-slide">
-                    <img src="{src}" alt="" data-large-src="{largeSrc}" />
-                </div>`,
+     
         Star: `<i class="icon icon-star"></i>`,
         Half_Star: `<i class="icon half-star"></i>`,
         Empty_Star: `<i class="icon empty-star"></i>`,

@@ -74,12 +74,9 @@ var product_detail = {
         })
     },
     RenderDetail: function (product, product_sub) {
-        var htmlBig = '';
-        var htmlSmall = '';
-        var img_src = global_service.CorrectImage(product.avatar);
 
         var html = ''
-        var html_thumb=''
+        var html_thumb = ''
         var img_src = product.avatar
         $(product.videos).each(function (index, item) {
             img_src = global_service.CorrectImage(item)
@@ -96,15 +93,10 @@ var product_detail = {
         html_thumb += HTML_CONSTANTS.Detail.ThumbnailImages
             .replaceAll('{src}', img_src)
 
-        // Cập nhật html cho ảnh nhỏ
-        htmlSmall += HTML_CONSTANTS.Detail.ImagesSmall
-            .replaceAll('{src}', img_src)
-            .replaceAll('{largeSrc}', img_src); // Thêm {largeSrc} cho ảnh nhỏ
-
-        // Lặp qua các ảnh trong sản phẩm
         $(product.images).each(function (index, item) {
-            img_src = global_service.CorrectImage(item);
-            htmlSmall += HTML_CONSTANTS.Detail.ImagesSmall
+
+            img_src = global_service.CorrectImage(item)
+            html += HTML_CONSTANTS.Detail.Images
                 .replaceAll('{src}', img_src)
             html_thumb += HTML_CONSTANTS.Detail.ThumbnailImages
                 .replaceAll('{src}', img_src)
@@ -112,37 +104,20 @@ var product_detail = {
         });
         $('.thumb-big .swiper-wrapper').html(html)
         $('.thumb-small .swiper-wrapper').html(html_thumb)
-         swiperSmallThumb = new Swiper(".thumb-small", {
+        swiperSmallThumb = new Swiper(".thumb-small", {
             spaceBetween: 15,
             slidesPerView: 4,
             freeMode: true,
             watchSlidesProgress: true,
-            on: {
-                click: function (swiper) {
-                    var clickedIndex = swiper.clickedIndex;
-
-                    // Lấy ảnh nhỏ mà người dùng vừa nhấp vào
-                    var newSmallImageSrc = swiper.slides[clickedIndex].querySelector('img').getAttribute('data-large-src');
-
-                    // Cập nhật ảnh lớn nếu ảnh nhỏ vừa nhấp vào
-                    var bigImageElement = $('.thumb-big .swiper-slide-active img');
-                    bigImageElement.attr('src', newSmallImageSrc);
-
-                    // Cập nhật href của thẻ a để lightbox hoạt động đúng
-                    bigImageElement.closest('a').attr('href', newSmallImageSrc);
-                },
-            },
         });
-
-        // Khởi tạo Swiper cho ảnh lớn
         swiperBigThumb = new Swiper(".thumb-big", {
             spaceBetween: 15,
             navigation: false,
             thumbs: {
                 swiper: swiperSmallThumb,
-             },
+            },
 
-         });
+        });
         lightGallery($('.thumb-big .swiper-wrapper')[0], {
             plugins: [lgVideo],
             videojs: true,
@@ -151,72 +126,75 @@ var product_detail = {
         });
 
 
+        $('.section-details-product .name-product').html(product.name)
+
         if (product_sub != undefined && product_sub.length > 0) {
             const max_obj = product_sub.reduce(function (prev, current) {
-                return (prev && prev.amount > current.amount) ? prev : current;
-            });
+                return (prev && prev.amount > current.amount) ? prev : current
+            })
             const min_obj = product_sub.reduce(function (prev, current) {
-                return (prev && prev.amount < current.amount) ? prev : current;
-            });
-            if (max_obj.amount <= min_obj.amount) {
-                $('.section-details-product .price').html(global_service.Comma(min_obj.amount));
-            } else {
-                $('.section-details-product .price').html(global_service.Comma(min_obj.amount) + ' - ' + global_service.Comma(max_obj.amount));
-            }
-        } else {
-            $('.section-details-product .price').html(global_service.Comma(product.amount));
+                return (prev && prev.amount < current.amount) ? prev : current
+            })
+            if (max_obj.amount <= min_obj.amount)
+                $('.section-details-product .price').html(global_service.Comma(min_obj.amount))
+            else
+                $('.section-details-product .price').html(global_service.Comma(min_obj.amount) + ' - ' + global_service.Comma(max_obj.amount))
         }
+        else {
+            $('.section-details-product .price').html(global_service.Comma(product.amount))
 
+        }
         if (product.discount > 0) {
-            $('#price-old').html(global_service.Comma(product.amount + product.discount));
+            $('#price-old').html(global_service.Comma(product.amount + product.discount))
         } else {
-            $('#price-old').closest('.price-old').hide();
+            $('#price-old').closest('.price-old').hide()
         }
+        var total_stock = product.quanity_of_stock
 
-        var total_stock = product.quanity_of_stock;
-        var html = '';
-
-        // Thêm thông tin vận chuyển
-        html += HTML_CONSTANTS.Detail.Tr_Shipping;
-
+        html = ''
+        //html += HTML_CONSTANTS.Detail.Tr_Voucher.replaceAll('{span}', '')
+        //html += HTML_CONSTANTS.Detail.Tr_Combo.replaceAll('{span}', '')
+        html += HTML_CONSTANTS.Detail.Tr_Shipping
+        //html += HTML_CONSTANTS.Detail.Tr_Combo.replaceAll('{span}', '')
         if (product_sub != undefined && product_sub.length > 0) {
             $(product.attributes).each(function (index, attribute) {
                 var attr_detail = product.attributes_detail.filter(obj => {
-                    return obj.attribute_id === attribute._id;
-                });
-                var html_item = '';
+                    return obj.attribute_id === attribute._id
+                })
+                var html_item = ''
                 if (attr_detail != undefined && attr_detail.length > 0) {
                     $(attr_detail).each(function (index_detail, attribute_detail) {
-                        img_src = global_service.CorrectImage(attribute_detail.img);
+                        img_src = global_service.CorrectImage(attribute_detail.img)
 
                         html_item += HTML_CONSTANTS.Detail.Tr_Attributes_Td_li
                             .replaceAll('{active}', '')
                             .replaceAll('{src}', attribute_detail.img != undefined && attribute_detail.img.trim() != '' ? '<img src="' + img_src + '" />' : '')
-                            .replaceAll('{name}', attribute_detail.name);
-                    });
+                            .replaceAll('{name}', attribute_detail.name)
+                    })
                 }
                 html += HTML_CONSTANTS.Detail.Tr_Attributes
                     .replaceAll('{level}', attribute._id)
                     .replaceAll('{name}', attribute.name)
-                    .replaceAll('{li}', html_item);
+                    .replaceAll('{li}', html_item)
             });
-            total_stock = product_sub.reduce((n, { amount }) => n + amount, 0);
+            total_stock = product_sub.reduce((n, { amount }) => n + amount, 0)
         }
-        html += HTML_CONSTANTS.Detail.Tr_Quanity.replaceAll('{stock}', global_service.Comma(total_stock));
+        html += HTML_CONSTANTS.Detail.Tr_Quanity.replaceAll('{stock}', global_service.Comma(total_stock))
 
-        $('.box-info-details tbody').html(html);
-        $('.section-description-product .box-des p').html(product.description.replaceAll('\n', '<br />'));
+        $('.box-info-details tbody').html(html)
+        $('.section-description-product .box-des p').html(product.description.replaceAll('\n', '<br />'))
 
-        // Ẩn voucher nếu không sử dụng
-        $('#voucher').hide();
+        //--hide voucher (implement later):
+        $('#voucher').hide()
+        //$('#combo-discount').hide()
         $('#combo-discount .list-product .item-product').each(function (index, item) {
-            var element = $(this);
-            if (index < 5) return true;
-            else element.hide();
-        });
-        product_detail.RenderBuyNowButton();
-        product_detail.RenderSavedProductDetailAttributeSelected();
-        product_detail.RemoveLoading();
+            var element = $(this)
+            if (index < 5) return true
+            else element.hide()
+        })
+        product_detail.RenderBuyNowButton()
+        product_detail.RenderSavedProductDetailAttributeSelected()
+        product_detail.RemoveLoading()
     },
     GetProductDetailSession: function () {
         var json = sessionStorage.getItem(STORAGE_NAME.ProductDetail)
