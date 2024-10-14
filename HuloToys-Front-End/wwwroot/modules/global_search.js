@@ -1,15 +1,8 @@
 ﻿var global_search = {
     DetailPaging: function (page) {
-        global_search.Paging(page)
-
-        $([document.documentElement, document.body]).animate({
-            scrollTop: $("#container-comment").offset().top
-        }, 500);
-    },
-    DetailPaging: function (page) {
-        global_search.Paging(page)
         global_search.RenderDetail(page)
-
+        global_search.Paging(page)
+      
     },
     RenderDetail: function (page) {
         var group_id = $('.danhmuc').closest('.box-filter').find('.active').attr('data-group-id')
@@ -59,12 +52,19 @@
     },
     GetMaxPage: function () {
         var max_page = 1
-
+        var total_count = 0
+        if (isNaN(parseInt($('.wrap-paging').attr('data-count'))) || parseInt($('.wrap-paging').attr('data-count')) <= 0) total_count = 0
+        else total_count = parseInt($('.wrap-paging').attr('data-count'))
+        if (total_count > 0) {
+            max_page = parseInt((total_count / 12))
+        }
         return max_page
     },
     GetTotalCount: function () {
 
         var total_count = 0
+        if (isNaN(parseInt($('.wrap-paging').attr('data-count'))) || parseInt($('.wrap-paging').attr('data-count')) <= 0) total_count = 0
+        else total_count = parseInt($('.wrap-paging').attr('data-count'))
 
         return total_count
     },

@@ -113,7 +113,26 @@ namespace HuloToys_Front_End.Controllers.Client.Business
         {
             try
             {
-                var result = await POST(_configuration["API:product_search"], request);
+                var result = await POST(_configuration["API:product_global_search"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<ProductGlobalSearchResponseModel>(jsonData.ToString());
+                }
+            }
+            catch
+            {
+            }
+            return null;
+
+        }
+        public async Task<ProductGlobalSearchResponseModel> GlobalSearchFilter(ProductGlobalSearchRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:product_global_search_filter"], request);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
 

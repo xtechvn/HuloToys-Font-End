@@ -422,9 +422,9 @@ var global_service = {
         var html = ''
         var template = HTML_CONSTANTS.Home.GlobalSearchByKeyword
         var keyword = global_service.GetGlobalSearchKeyword()
-        //html += template
-        //    .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(global_service.RemoveSpecialCharacters(item.name)).replaceAll(' ', '-') + '--' + item._id)
-        //    .replaceAll('{name}', 'Tìm kiếm "' + keyword + '"')
+        html += template
+            .replaceAll('{url}', '/tim-kiem/' + keyword)
+            .replaceAll('{name}', 'Tìm kiếm "' + keyword + '"')
 
         $(list).each(function (index, item) {
             html += template

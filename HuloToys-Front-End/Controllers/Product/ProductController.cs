@@ -1,9 +1,12 @@
-﻿using HuloToys_Front_End.Controllers.Client.Business;
+﻿using Azure.Core;
+using HuloToys_Front_End.Controllers.Client.Business;
 using HuloToys_Front_End.Models.Client;
 using HuloToys_Front_End.Models.Products;
 using HuloToys_Front_End.Models.Raiting;
 using HuloToys_Front_End.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace HuloToys_Front_End.Controllers.Product
 {
@@ -95,15 +98,23 @@ namespace HuloToys_Front_End.Controllers.Product
             return View(result);
 
         }
-        public ActionResult SearchListing(string keyword)
+        public async Task<ActionResult> SearchListing(string keyword)
         {
             ViewBag.Keyword = keyword;
-            return View();
+            var request = new ProductGlobalSearchRequestModel()
+            {
+                keyword = keyword
+            };
+            var model = await _productServices.GlobalSearchFilter(request);
+            ViewBag.Static = _configuration["API:StaticURL"];
+            return View(model);
 
         }
         public async Task<ActionResult> SearchListingPaging(ProductGlobalSearchRequestModel request)
         {
             var model = await _productServices.GlobalSearch(request);
+            ViewBag.Keyword = request.keyword;
+            ViewBag.Static = _configuration["API:StaticURL"];
 
             return View(model);
         }
