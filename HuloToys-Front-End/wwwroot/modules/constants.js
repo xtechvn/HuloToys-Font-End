@@ -45,6 +45,7 @@ var API_URL = {
     OrderRaitingUploadVideo: '/Files/SummitVideo',
     OrderRaitingSubmmit: '/Order/InsertRaiting',
     ClientForgotPassword: '/Client/ForgotPassword',
+    ProductSearchListingPaging: '/Product/SearchListingPaging',
 
 
 }
@@ -149,6 +150,13 @@ var HTML_CONSTANTS = {
                             được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
                         </div>
                     </div>
+                </div>
+            </a>
+        </div>`,
+        GlobalSearchByKeyword: ` <div class="item-product">
+            <a href="{url}">
+                <div class="box-info">
+                    <h3 class="name-product">{name}</h3>
                 </div>
             </a>
         </div>`,
@@ -465,7 +473,7 @@ var HTML_CONSTANTS = {
                    
                     <div class="upload-file">
                         <div class="uploadIMG ">
-                            <input type="file" class="upload image_input" data-type="images" />
+                            <input type="file" class="upload image_input" data-type="images" multiple />
                             <span>Thêm hình ảnh</span>
                         </div>
                         <div class="uploadVIDEO ">
@@ -476,7 +484,7 @@ var HTML_CONSTANTS = {
                      <p class="error" style="display:none; color:red;"></p>
                     <div class="wrap-img-upload" style="display:none;">
                         <div class="uploadIMG " >
-                            <input type="file" class="upload image_input" data-type="images" />
+                            <input type="file" class="upload image_input" data-type="images" multiple/>
                             <span><nw class="count">0</nw>/5</span>
                         </div>
                         <div class="uploadVIDEO ">

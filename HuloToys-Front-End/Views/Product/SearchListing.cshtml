@@ -1,0 +1,543 @@
+﻿@{
+    ViewData["Title"] = "Tìm kiếm sản phẩm";
+    string keyword = (string)ViewBag.Keyword;
+}
+<partial name="_BannerLarge" />
+
+<section class="section-product">
+    <input style="display:none;" id="kw" value="@keyword" />
+    <div class="container">
+        <div class="wrap-list-product" id="productList">
+            <div class="left-sidebar">
+                <div id="closeFilter" class="close"><i class="icon icon-close"></i></div>
+                <div class="box-filter">
+                    <h3 class="tt-filter danhmuc">Danh mục sản phẩm</h3>
+                    <ul class="list-filter">
+                        <li class="active">
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box-filter">
+                    <h3 class="tt-filter danhgia">Đánh giá</h3>
+                    <ul class="list-filter-star">
+                        <li>
+                            <a href="javascript:;">
+                                <span class="list-star star5" data-star="5">
+                                    <i class="icon icon-star"></i>
+                                    <i class="icon icon-star"></i>
+                                    <i class="icon icon-star"></i>
+                                    <i class="icon icon-star"></i>
+                                    <i class="icon icon-star"></i>
+                                </span>
+                                <span class="des">(5 sao)</span>
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </div>
+
+                <div class="box-filter">
+                    <h3 class="tt-filter gia">Giá</h3>
+                    <form>
+                        <div class="flex-form">
+                            <input type="number" />
+                            <i class="icon icon-arrow-right"></i>
+                            <input type="number" />
+                        </div>
+                    </form>
+                </div>
+                <div class="box-filter">
+                    <h3 class="tt-filter thuonghieu">Thương hiệu</h3>
+                    <ul class="list-filter">
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Đồ chơi phát triển trí tuệ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="product-category">
+                <button class="btn-filter">Bộ lọc</button>
+                <div class="list-product">
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="wrap-paging">
+                    <a href="javascript:;" class="xemthem">Xem thêm</a>
+                    <ul class="pagination">
+                        <li class="page first"><a href="javascript:;"><i class="icon icon-page-first"></i></a></li>
+                        <li class="page previous disabled"><a href="javascript:;"><i class="icon icon-page-previous"></i></a></li>
+                        <li class="page active"><a href="javascript:;">1</a></li>
+                        <li class="page"><a href="javascript:;">2</a></li>
+                        <li class="page"><a href="javascript:;">...</a></li>
+                        <li class="page"><a href="javascript:;">3</a></li>
+                        <li class="page next"><a href="javascript:;"><i class="icon icon-page-next"></i></a></li>
+                        <li class="page last"><a href="javascript:;"><i class="icon icon-page-last"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@* <div class="section-category">
+    <div class="container">
+        <div class="list-product-category">
+            <div class="title-box">
+                <h3 class="name-tt"><a href="javascript:;">SẢN PHẨM BẠN ĐÃ XEM</a></h3>
+                <a href="javascript:;" class="xemthem">Xem thêm</a>
+            </div>
+            <div class="product-category">
+                <div class="list-product scroll-product">
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item-product">
+                        <a href="javascript:;">
+                            <div class="box-thumb">
+                                <div class="thumb-product">
+                                    <img src="./assets/images/product.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="box-info">
+                                <h3 class="name-product">Đồ Chơi Lắp Ráp Tàu Vũ Trụ Lele Brother, Xếp Hình Cho Bé Từ 6 Tuổi</h3>
+                                <div class="flex-price">
+                                    <div class="price-sale">689,098đ</div>
+                                    <div class="review">4.8<i class="icon icon-star"></i><span class="total-review">(322)</span></div>
+                                </div>
+                                <div class="price-old">
+                                    So với giá cũ 767,009đ <i class="icon icon-info"></i>
+                                    <div class="info-detail">
+                                        Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
+                                        được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> *@

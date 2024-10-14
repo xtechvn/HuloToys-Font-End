@@ -18,7 +18,14 @@ var product_detail = {
         product_detail.Detail()
         product_detail.DynamicBind()
         global_service.LoadHomeProductGrid($('#combo-discount .list-product'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
-
+        $('#thanhcong .lightbox-description').html('Thêm sản phẩm vào giỏ hàng thành công')
+        $('#thanhcong .btn-close').addClass('btn-go-to-cart')
+        $('#thanhcong .btn-close').removeClass('btn-close')
+        $('#thanhcong .btn-go-to-cart').html('Xem giỏ hàng')
+        $('#thanhcong .btn-go-to-cart').hide()
+        $('#thanhcong .popup').css('width', '500px')
+        $('#thanhcong .popup').css('margin-top', '15%')
+        $('#thanhcong .popup').css('text-align', '-webkit-center')
        
     },
     DynamicBind: function () {
@@ -322,11 +329,12 @@ var product_detail = {
        
     },
     SuccessAddToCart: function () {
-        $('#thanhcong .lightbox-description').html('Thêm sản phẩm vào giỏ hàng thành công')
+       
         $('#thanhcong').addClass('overlay-active')
-        $('#thanhcong .btn-close').addClass('btn-go-to-cart')
-        $('#thanhcong .btn-close').removeClass('btn-close')
-        $('#thanhcong .btn-go-to-cart').html('Xem giỏ hàng')
+        setTimeout(function () {
+            $('#thanhcong').removeClass('overlay-active')
+
+        }, 1500);
     },
     BuyNow: function () {
         var product = product_detail.GetSubProductSessionByAttributeSelected()

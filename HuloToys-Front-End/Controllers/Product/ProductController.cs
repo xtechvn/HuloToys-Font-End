@@ -31,6 +31,7 @@ namespace HuloToys_Front_End.Controllers.Product
             return View();
 
         }
+      
         public async Task<IActionResult> ProductDetail(ProductDetailRequestModel request)
         {
             var result = await _productServices.GetProductDetail(request);
@@ -94,6 +95,17 @@ namespace HuloToys_Front_End.Controllers.Product
             return View(result);
 
         }
+        public ActionResult SearchListing(string keyword)
+        {
+            ViewBag.Keyword = keyword;
+            return View();
 
+        }
+        public async Task<ActionResult> SearchListingPaging(ProductGlobalSearchRequestModel request)
+        {
+            var model = await _productServices.GlobalSearch(request);
+
+            return View(model);
+        }
     }
 }

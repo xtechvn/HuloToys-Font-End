@@ -141,6 +141,10 @@ var order_raiting = {
                         order_raiting.NotifyFailed(element.closest('.review-item'), "Vui lòng chỉ upload các định dạng sau: " + GLOBAL_CONSTANTS.OrderReviewCreate.ImageExtension.join(', '));
                         return
                     }
+                    if ((parent_element.find('.review-img').length + element[0].files.length) > max_item) {
+                        order_raiting.NotifyFailed(element.closest('.review-item'), 'Số lượng ảnh vượt quá giới hạn')
+                        element.val(null)
+                    }
                     $(element[0].files).each(function (index, item) {
                         var size = item.size;
                         if (size > GLOBAL_CONSTANTS.OrderReviewCreate.MaxImageSize) {
