@@ -6,6 +6,31 @@ var home_product = {
         if ($('.list-product-sale .swiper-wrapper').length > 0) {
             //--Product Sale Slide:
             global_service.LoadHomeProductGrid($('.list-product-sale .swiper-wrapper'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
+            const swiperFlashsale = new Swiper('.section-flashsale .product-slide', {
+                loop: false,
+                pagination: false,
+                navigation: false,
+                spaceBetween: 15,
+                slidesPerView: 1.5,
+                breakpoints: {
+                    540: {
+                        slidesPerView: 2.5,
+                    },
+                    768: {
+                        slidesPerView: 3.5,
+                    },
+                    1024: {
+                        slidesPerView: 4.5,
+                    },
+                    1400: {
+                        slidesPerView: 5,
+                    }
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
             //-- Discount Grid:
             global_service.LoadHomeProductGrid($('#product-discount .scroll-product'), GLOBAL_CONSTANTS.GroupProduct.Discount, GLOBAL_CONSTANTS.GridSize)
             //-- Bear Grid:

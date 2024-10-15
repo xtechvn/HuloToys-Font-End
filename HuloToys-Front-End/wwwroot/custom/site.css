@@ -96,3 +96,6 @@
     min-width:130px !important;
 }
 
+.button-disabled{
+    background-color:lightgrey !important;
+}

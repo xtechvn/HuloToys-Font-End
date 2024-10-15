@@ -75,4 +75,8 @@ app.MapControllerRoute(
     name: "san-pham-new",
     pattern: "/product/detailnew/{title}--{product_code}",
     defaults: new { controller = "Product", action = "DetailNew" });
+app.MapControllerRoute(
+    name: "tim-kiem",
+    pattern: "/tim-kiem/{keyword}",
+    defaults: new { controller = "Product", action = "SearchListing" });
 app.Run();

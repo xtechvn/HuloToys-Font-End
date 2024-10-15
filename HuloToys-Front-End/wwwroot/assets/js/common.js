@@ -202,10 +202,10 @@ $(document).ready(function () {
     //     videojs: true,
     //     plugins: [lgVideo]
     // });
-    lightGallery(document.getElementById('lightgallery'), {
-        plugins: [lgVideo],
-        videojs: true,
-        speed: 500,
-        thumbnail: true,
-    });
+    //lightGallery(document.getElementById('lightgallery'), {
+    //    plugins: [lgVideo],
+    //    videojs: true,
+    //    speed: 500,
+    //    thumbnail: true,
+    //});
 });

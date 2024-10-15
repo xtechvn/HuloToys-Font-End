@@ -18,7 +18,14 @@ var product_detail = {
         product_detail.Detail()
         product_detail.DynamicBind()
         global_service.LoadHomeProductGrid($('#combo-discount .list-product'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
-
+        $('#thanhcong .lightbox-description').html('Thêm sản phẩm vào giỏ hàng thành công')
+        $('#thanhcong .btn-close').addClass('btn-go-to-cart')
+        $('#thanhcong .btn-close').removeClass('btn-close')
+        $('#thanhcong .btn-go-to-cart').html('Xem giỏ hàng')
+        $('#thanhcong .btn-go-to-cart').hide()
+        $('#thanhcong .popup').css('width', '500px')
+        $('#thanhcong .popup').css('margin-top', '15%')
+        $('#thanhcong .popup').css('text-align', '-webkit-center')
        
     },
     DynamicBind: function () {
@@ -76,10 +83,21 @@ var product_detail = {
     RenderDetail: function (product, product_sub) {
 
         var html = ''
+        var html_thumb=''
         var img_src = product.avatar
+        $(product.videos).each(function (index, item) {
+            img_src = global_service.CorrectImage(item)
+            html += HTML_CONSTANTS.Detail.Videos
+                .replaceAll('{src}', img_src)
+            html_thumb += HTML_CONSTANTS.Detail.ThumbnailVideos
+                .replaceAll('{src}', img_src)
+        });
+
         img_src = global_service.CorrectImage(product.avatar)
         // gallery
         html += HTML_CONSTANTS.Detail.Images
+            .replaceAll('{src}', img_src)
+        html_thumb += HTML_CONSTANTS.Detail.ThumbnailImages
             .replaceAll('{src}', img_src)
 
         $(product.images).each(function (index, item) {
@@ -87,10 +105,12 @@ var product_detail = {
            img_src= global_service.CorrectImage(item)
             html += HTML_CONSTANTS.Detail.Images
                 .replaceAll('{src}', img_src)
+            html_thumb += HTML_CONSTANTS.Detail.ThumbnailImages
+                .replaceAll('{src}', img_src)
 
         });
         $('.thumb-big .swiper-wrapper').html(html)
-        $('.thumb-small .swiper-wrapper').html(html)
+        $('.thumb-small .swiper-wrapper').html(html_thumb)
          swiperSmallThumb = new Swiper(".thumb-small", {
             spaceBetween: 15,
             slidesPerView: 4,
@@ -102,8 +122,16 @@ var product_detail = {
             navigation: false,
             thumbs: {
                 swiper: swiperSmallThumb,
-            },
+             },
+
          });
+        lightGallery($('.thumb-big .swiper-wrapper')[0], {
+            plugins: [lgVideo],
+            videojs: true,
+            speed: 500,
+            thumbnail: true,
+        });
+
 
         $('.section-details-product .name-product').html(product.name)
      
@@ -301,11 +329,12 @@ var product_detail = {
        
     },
     SuccessAddToCart: function () {
-        $('#thanhcong .lightbox-description').html('Thêm sản phẩm vào giỏ hàng thành công')
+       
         $('#thanhcong').addClass('overlay-active')
-        $('#thanhcong .btn-close').addClass('btn-go-to-cart')
-        $('#thanhcong .btn-close').removeClass('btn-close')
-        $('#thanhcong .btn-go-to-cart').html('Xem giỏ hàng')
+        setTimeout(function () {
+            $('#thanhcong').removeClass('overlay-active')
+
+        }, 1500);
     },
     BuyNow: function () {
         var product = product_detail.GetSubProductSessionByAttributeSelected()
@@ -374,15 +403,17 @@ var product_detail = {
                         var selected_value = data.attributes.filter(obj => {
                             return obj.level == level
                         })
+                        if (selected_value.length > 0) {
+                            tr_attributes.find('li').each(function (index_detail, attribute_detail) {
+                                var li_attribute = $(this)
+                                if (li_attribute.attr('data-id') == selected_value[0].data) {
+                                    li_attribute.trigger('click')
+                                    return false
+                                }
 
-                        tr_attributes.find('li').each(function (index_detail, attribute_detail) {
-                            var li_attribute = $(this)
-                            if (li_attribute.attr('data-id') == selected_value[0].data) {
-                                li_attribute.trigger('click')
-                                return false
-                            }
-
-                        })
+                            })
+                        }
+                       
                     })
                 }
                 if (data.quanity != undefined && data.quanity.trim() != '') {

@@ -45,6 +45,7 @@ var API_URL = {
     OrderRaitingUploadVideo: '/Files/SummitVideo',
     OrderRaitingSubmmit: '/Order/InsertRaiting',
     ClientForgotPassword: '/Client/ForgotPassword',
+    ProductSearchListingPaging: '/Product/SearchListingPaging',
 
 
 }
@@ -152,6 +153,13 @@ var HTML_CONSTANTS = {
                 </div>
             </a>
         </div>`,
+        GlobalSearchByKeyword: ` <div class="item-product">
+            <a href="{url}">
+                <div class="box-info">
+                    <h3 class="name-product">{name}</h3>
+                </div>
+            </a>
+        </div>`,
         GlobalSearchBoxLoading:` <div class="list-product-recomment">
         <div class="item-product">
             <a href="">
@@ -248,9 +256,33 @@ var HTML_CONSTANTS = {
                     </div>`
     },
     Detail: {
-        Images: `<div class="swiper-slide">
-                                <img src="{src}" alt="" />
-                            </div>`,
+        Images: `
+                              <a  class="swiper-slide" href="{src}" data-lg-id="3e1fbec2-9c35-461a-b9cc-79fd1d885438">
+                                <img src="{src}" width="500" height="300">
+                            </a>
+
+                            `,
+        Videos: `
+                            <a class="swiper-slide" data-video='{"source": [{"src":"{src}", "type":"video/mp4"}],"attributes": {"preload": false, "controls": false}}'
+                               data-poster="/assets/images/product.jpg">
+                                <i class="icon-video"></i>
+                                  <video>
+                                      <source src="{src}" type="video/mp4">
+                                      Your browser does not support the video tag.
+                                    </video>
+                            </a>
+
+
+                            `,
+        ThumbnailImages: `<div class="swiper-slide">
+                            <img src="{src}" alt="" />
+                            </div > `,
+        ThumbnailVideos: `<div class="swiper-slide">
+                                <video>
+                                      <source src="{src}" type="video/mp4">
+                                      Your browser does not support the video tag.
+                                    </video>
+                            </div >`,
         Star: `<i class="icon icon-star"></i>`,
         Half_Star: `<i class="icon half-star"></i>`,
         Empty_Star: `<i class="icon empty-star"></i>`,
@@ -441,7 +473,7 @@ var HTML_CONSTANTS = {
                    
                     <div class="upload-file">
                         <div class="uploadIMG ">
-                            <input type="file" class="upload image_input" data-type="images" />
+                            <input type="file" class="upload image_input" data-type="images" multiple />
                             <span>Thêm hình ảnh</span>
                         </div>
                         <div class="uploadVIDEO ">
@@ -452,7 +484,7 @@ var HTML_CONSTANTS = {
                      <p class="error" style="display:none; color:red;"></p>
                     <div class="wrap-img-upload" style="display:none;">
                         <div class="uploadIMG " >
-                            <input type="file" class="upload image_input" data-type="images" />
+                            <input type="file" class="upload image_input" data-type="images" multiple/>
                             <span><nw class="count">0</nw>/5</span>
                         </div>
                         <div class="uploadVIDEO ">

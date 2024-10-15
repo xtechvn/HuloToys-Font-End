@@ -288,6 +288,7 @@ var global_service = {
             element.removeClass('placeholder')
             element.removeClass('box-placeholder')
             element.css('height', 'auto')
+          
         })
     },
     GotoCart: function () {
@@ -340,6 +341,11 @@ var global_service = {
         value = value.replace(/[^a-zA-Z0-9 ]/g, '');
         return value.trim();
     },
+    GetGlobalSearchKeyword: function () {
+        var value = $('.global-search').val()
+        value = value.replace(/[^a-zA-Z0-9àáạảãâầấậẩẫăắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơớờợởỡùúụủũưừứựửữỳýỵỷỹđ+-_@* ]/g, '');
+        return value.trim();
+    },
     RenderSearchBox: function () {
         var usr = global_service.CheckLogin()
         var token = ''
@@ -348,7 +354,7 @@ var global_service = {
            
         }
         var request = {
-            "keyword": $('.global-search').val(),
+            "keyword": global_service.GetGlobalSearchKeyword(),
             "token": token
         }
         $.when(
@@ -356,7 +362,7 @@ var global_service = {
         ).done(function (result) {
             if (result.is_success && result.data && result.data.items) {
                 if (result.data.items.length > 0) {
-                    var html = `<div class="list-product-recomment">` + global_service.RenderSlideProductItem(result.data.items, HTML_CONSTANTS.Home.GlobalSearchProductItem) +`</div>`
+                    var html = `<div class="list-product-recomment">` + global_service.RenderSearchProductItem(result.data.items) +`</div>`
                     $('.box-search-list').html(html)
                     return
                 } 
@@ -408,6 +414,23 @@ var global_service = {
                     .replaceAll('{price}', (item.amount == null || item.amount == undefined || item.amount <= 0) ? global_service.Comma(item.amount) + ' đ' : '')
 
             }
+        });
+
+        return html
+    },
+    RenderSearchProductItem: function (list) {
+        var html = ''
+        var template = HTML_CONSTANTS.Home.GlobalSearchByKeyword
+        var keyword = global_service.GetGlobalSearchKeyword()
+        html += template
+            .replaceAll('{url}', '/tim-kiem/' + keyword)
+            .replaceAll('{name}', 'Tìm kiếm "' + keyword + '"')
+
+        $(list).each(function (index, item) {
+            html += template
+                .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(global_service.RemoveSpecialCharacters(item.name)).replaceAll(' ', '-') + '--' + item._id)
+                .replaceAll('{name}', item.name)
+
         });
 
         return html
