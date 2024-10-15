@@ -1,10 +1,7 @@
-﻿using BIOLIFE.Controllers.Home.Service;
-using BIOLIFE.Service.Redis;
+﻿using BIOLIFE.Service.Redis;
 using BIOLIFE.ViewComponents.GroupProduct;
 using BIOLIFE.ViewComponents.Header;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Net.Http.Headers;
 

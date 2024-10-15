@@ -114,6 +114,10 @@ var group_product = {
                         1400: {
                             slidesPerView: 5,
                         }
+                    },
+                    navigation: {
+                        nextEl: '.product-slide .swiper-button-next',
+                        prevEl: '.product-slide .swiper-button-prev'
                     }
                 });
             },
