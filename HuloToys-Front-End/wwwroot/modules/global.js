@@ -280,12 +280,33 @@ var global_service = {
             global_service.POST(API_URL.ProductList, request)
         ).done(function (result) {
             if (result.is_success) {
-                html = global_service.RenderSlideProductItem(result.data, HTML_CONSTANTS.Home.SlideProductItem)
+                var products = result.data
+                var productPromises = []
+
+                $.each(products, function (index, product) {
+                    var ratingRequest = {
+                        "id": product._id
+                    }
+                    var productPromise = global_service.POST(API_URL.ProductRaitingCount, ratingRequest)
+                        .then(function (ratingResult) {
+                            if (ratingResult.is_success) {
+                                product.review_count = ratingResult.data.total_count || 0
+                            } else {
+                                product.review_count = 0
+                            }
+                        })
+                    productPromises.push(productPromise)
+                })
+                //console.log(products)
+
+                $.when.apply($, productPromises).done(function () {
+                    var html = global_service.RenderSlideProductItem(products, HTML_CONSTANTS.Home.SlideProductItem)
+                    element.html(html)
+                    element.removeClass('placeholder')
+                    element.removeClass('box-placeholder')
+                    element.css('height', 'auto')
+                })
             }
-            element.html(html)
-            element.removeClass('placeholder')
-            element.removeClass('box-placeholder')
-            element.css('height', 'auto')
         })
     },
     GotoCart: function () {
