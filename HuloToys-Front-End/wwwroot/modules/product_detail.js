@@ -83,7 +83,7 @@ var product_detail = {
     RenderDetail: function (product, product_sub) {
 
         var html = ''
-        var html_thumb=''
+        var html_thumb = ''
         var img_src = product.avatar
         $(product.videos).each(function (index, item) {
             img_src = global_service.CorrectImage(item)
@@ -102,7 +102,7 @@ var product_detail = {
 
         $(product.images).each(function (index, item) {
 
-           img_src= global_service.CorrectImage(item)
+            img_src = global_service.CorrectImage(item)
             html += HTML_CONSTANTS.Detail.Images
                 .replaceAll('{src}', img_src)
             html_thumb += HTML_CONSTANTS.Detail.ThumbnailImages
@@ -111,20 +111,20 @@ var product_detail = {
         });
         $('.thumb-big .swiper-wrapper').html(html)
         $('.thumb-small .swiper-wrapper').html(html_thumb)
-         swiperSmallThumb = new Swiper(".thumb-small", {
+        swiperSmallThumb = new Swiper(".thumb-small", {
             spaceBetween: 15,
             slidesPerView: 4,
             freeMode: true,
             watchSlidesProgress: true,
         });
-         swiperBigThumb = new Swiper(".thumb-big", {
+        swiperBigThumb = new Swiper(".thumb-big", {
             spaceBetween: 15,
             navigation: false,
             thumbs: {
                 swiper: swiperSmallThumb,
-             },
+            },
 
-         });
+        });
         lightGallery($('.thumb-big .swiper-wrapper')[0], {
             plugins: [lgVideo],
             videojs: true,
@@ -134,7 +134,7 @@ var product_detail = {
 
 
         $('.section-details-product .name-product').html(product.name)
-     
+
         if (product_sub != undefined && product_sub.length > 0) {
             const max_obj = product_sub.reduce(function (prev, current) {
                 return (prev && prev.amount > current.amount) ? prev : current
@@ -165,17 +165,17 @@ var product_detail = {
         //html += HTML_CONSTANTS.Detail.Tr_Combo.replaceAll('{span}', '')
         if (product_sub != undefined && product_sub.length > 0) {
             $(product.attributes).each(function (index, attribute) {
-                var attr_detail =  product.attributes_detail.filter(obj => {
+                var attr_detail = product.attributes_detail.filter(obj => {
                     return obj.attribute_id === attribute._id
                 })
-                var html_item=''
+                var html_item = ''
                 if (attr_detail != undefined && attr_detail.length > 0) {
                     $(attr_detail).each(function (index_detail, attribute_detail) {
                         img_src = global_service.CorrectImage(attribute_detail.img)
 
                         html_item += HTML_CONSTANTS.Detail.Tr_Attributes_Td_li
                             .replaceAll('{active}', '')
-                            .replaceAll('{src}', attribute_detail.img != undefined && attribute_detail.img.trim() != '' ? '<img src="' + img_src +'" />':'')
+                            .replaceAll('{src}', attribute_detail.img != undefined && attribute_detail.img.trim() != '' ? '<img src="' + img_src + '" />' : '')
                             .replaceAll('{name}', attribute_detail.name)
                     })
                 }
@@ -187,9 +187,9 @@ var product_detail = {
             total_stock = product_sub.reduce((n, { amount }) => n + amount, 0)
         }
         html += HTML_CONSTANTS.Detail.Tr_Quanity.replaceAll('{stock}', global_service.Comma(total_stock))
-        
+
         $('.box-info-details tbody').html(html)
-        $('.section-description-product .box-des p').html(product.description.replaceAll('\n','<br />'))
+        $('.section-description-product .box-des p').html(product.description.replaceAll('\n', '<br />'))
 
         //--hide voucher (implement later):
         $('#voucher').hide()
