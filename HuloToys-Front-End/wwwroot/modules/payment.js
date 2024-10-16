@@ -9,8 +9,7 @@ var payment = {
     },
     DynamicBind: function () {
         $("body").on('click', ".box-payment-info .btn", function () {
-            $('.box-payment-info').hide()
-            $('.box-payment-sucess').show()
+            payment.LoadingSuccess(0)
             
         });
     },
@@ -63,6 +62,7 @@ var payment = {
                         $('.img-qr').removeClass('placeholder')
 
                         $('.box-payment-info .img-qr img').attr('src', result.data)
+                        payment.LoadingSuccess(30)
                     }
                 })
             } break
@@ -75,5 +75,16 @@ var payment = {
         }
 
         $('.box-payment-info').removeClass('placeholder')
+    },
+    LoadingSuccess: function (count) {
+        if (count <= 0) {
+            $('.box-payment-info').hide()
+            $('.box-payment-sucess').show()
+            return
+        }
+        $('.box-payment-info .btn').html('Xác nhận đã chuyển khoản ( <nw class="second-count">' + count + '</nw>s )')
+        setTimeout(function () {
+            payment.LoadingSuccess(--count);
+        }, 1000);
     }
 }
