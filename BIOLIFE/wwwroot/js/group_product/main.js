@@ -300,7 +300,7 @@ var group_product = {
             url: '/home/loadProductTopComponent',
             data: { group_product_id: group_id_product_top, _page_index: 0, page_size: total_product, view_name: "~/Views/Shared/Components/Product/BoxProductSale.cshtml" },
             success: function (data) {
-                debugger;
+                
                 $('.box_product_sale').html(data);                
             },
             error: function (xhr, status, error) {

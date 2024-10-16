@@ -136,7 +136,7 @@ namespace BIOLIFE.Controllers.Product.Service
                 var JsonParent = JArray.Parse("[" + response_api + "]");
                 int status = Convert.ToInt32(JsonParent[0]["status"]);
 
-                if (status == ((int)ResponseType.SUCCESS))
+                if (status == ((int)ResponseType.SUCCESS) && JsonParent[0]["data"]!=null)
                 {
                     var product_list = JsonConvert.DeserializeObject<List<ProductMongoDbModel>>(JsonParent[0]["data"].ToString());
                     return product_list;
