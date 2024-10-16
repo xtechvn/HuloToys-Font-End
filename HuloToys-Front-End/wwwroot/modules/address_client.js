@@ -6,6 +6,9 @@
 })
 var address_client = {
     Initialization: function () {
+        $('#address-receivername').html('')
+        $('#address-phone').html('')
+        $('#address').html('(Chưa chọn địa chỉ giao hàng)')
         sessionStorage.removeItem(STORAGE_NAME.AddressClient)
 
         if (!$('#address-book').hasClass('overlay')) {
@@ -218,12 +221,12 @@ var address_client = {
                 });
             }
             $('#update-address .province select').html(html)
-            try {
-                $('#update-address .province select').select2("destroy");
+            //try {
+            //    $('#update-address .province select').select2("destroy");
 
-            } catch {
+            //} catch {
 
-            }
+            //}
             global_service.Select2WithFixedOptionAndSearch($('#update-address .province select'))
             $('#update-address .province select').val(null).trigger('change')
             if (selected_value != undefined) {
@@ -263,12 +266,12 @@ var address_client = {
                 });
             }
             $('#update-address .district select').html(html)
-            try {
-                $('#update-address .district select').select2("destroy");
+            //try {
+            //    $('#update-address .district select').select2("destroy");
 
-            } catch {
+            //} catch {
 
-            }
+            //}
             global_service.Select2WithFixedOptionAndSearch($('#update-address .district select'))
             $('#update-address .district select').val(null).trigger('change')
             if (selected_value != undefined) {

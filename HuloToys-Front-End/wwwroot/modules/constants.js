@@ -12,10 +12,10 @@
     OrderDetail: 'OrderDetail'
 }
 var API_URL = {
-    Login:'/Client/Login',
-    Register:'/Client/Register',
-    ProductDetail:'/Product/ProductDetail',
-    ProductList:'/Product/GetList',
+    Login: '/Client/Login',
+    Register: '/Client/Register',
+    ProductDetail: '/Product/ProductDetail',
+    ProductList: '/Product/GetList',
     AddToCart: '/Cart/AddToCart',
     CartCount: '/Cart/CartCount',
     CartList: '/Cart/GetList',
@@ -50,21 +50,21 @@ var API_URL = {
 
 }
 var NOTIFICATION_MESSAGE = {
-    LoginIncorrect:'Tài khoản / Mật khẩu không chính xác, vui lòng thử lại',
-    RegisterIncorrect:'Thông tin đăng ký không chính xác, vui lòng thử lại hoặc liên hệ bộ phận chăm sóc',
-    EmailInCorrect:'Vui lòng nhập đúng địa chỉ Email',
-    PhoneNotCorrect:'Vui lòng nhập đúng số điện thoại',
-    PasswordTooShort:'Vui lòng nhập mật khẩu trên {count} ký tự',
-    PasswordConfirmNotEqual:'Xác nhận mật khẩu và mật khẩu không khớp',
-    EmptyField:'Vui lòng không để trống'
+    LoginIncorrect: 'Tài khoản / Mật khẩu không chính xác, vui lòng thử lại',
+    RegisterIncorrect: 'Thông tin đăng ký không chính xác, vui lòng thử lại hoặc liên hệ bộ phận chăm sóc',
+    EmailInCorrect: 'Vui lòng nhập đúng địa chỉ Email',
+    PhoneNotCorrect: 'Vui lòng nhập đúng số điện thoại',
+    PasswordTooShort: 'Vui lòng nhập mật khẩu trên {count} ký tự',
+    PasswordConfirmNotEqual: 'Xác nhận mật khẩu và mật khẩu không khớp',
+    EmptyField: 'Vui lòng không để trống'
 }
 var THIRDPARTY_CONSTANTS = {
     Facebook: {
         AppId: '406702408540759',
-        Version:'v20.0'
+        Version: 'v20.0'
     },
     GSI: {
-        ClientID:'65575993345-u9qk911fs77lls8tgmn2c3gjk04lg78c.apps.googleusercontent.com'
+        ClientID: '65575993345-u9qk911fs77lls8tgmn2c3gjk04lg78c.apps.googleusercontent.com'
     }
 }
 var GLOBAL_CONSTANTS = {
@@ -74,20 +74,20 @@ var GLOBAL_CONSTANTS = {
         FlashSale: 15,
         Discount: 16,
         BEAR_COLLECTION: 17,
-        INTELLECTUAL_DEVELOPMENT:18
+        INTELLECTUAL_DEVELOPMENT: 18
     },
     PaymentType: [
-        { id: 1, name:'Thanh toán khi nhận hàng(COD)'},
-        { id: 2, name:'Chuyển khoản qua ngân hàng'},
-        { id: 3, name:'Thanh toán QR-PAY'},
-        { id: 4, name:'Thẻ Visa - Master Card'},
+        { id: 1, name: 'Thanh toán khi nhận hàng(COD)' },
+        { id: 2, name: 'Chuyển khoản qua ngân hàng' },
+        { id: 3, name: 'Thanh toán QR-PAY' },
+        { id: 4, name: 'Thẻ Visa - Master Card' },
     ],
     OrderStatus: [
-        { id: 0, name:'Chờ thanh toán'},
-        { id: 1, name:'Đang xử lý '},
-        { id: 2, name:'Đang giao hàng'},
-        { id: 3, name:'Hoàn thành'},
-        { id: 4, name:'Đã hủy'},
+        { id: 0, name: 'Chờ thanh toán' },
+        { id: 1, name: 'Đang xử lý ' },
+        { id: 2, name: 'Đang giao hàng' },
+        { id: 3, name: 'Hoàn thành' },
+        { id: 4, name: 'Đã hủy' },
     ],
     RaitingPageSize: 5,
     OrderReviewCreate: {
@@ -117,10 +117,10 @@ var HTML_CONSTANTS = {
                                         <h3 class="name-product">{name}</h3>
                                         <div class="flex-price">
                                             <div class="price-sale">{amount}</div>
-                                            <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">{review_count}</span></div>
+                                            <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">({review_count})</span></div>
                                         </div>
                                         <div class="price-old" style="{old_price_style}">
-                                            <nw style="display:none;">So với giá cũ {price} <i class="icon icon-info"></i></nw>
+                                            <nw >So với: {price} <i class="icon icon-info"></i></nw>
                                             <div class="info-detail">
                                                 Giá sản phẩm <b>rẻ nhất</b> của đơn vị khác
                                                 được Hulo Toys nghiên cứu trên <b>mọi nền tảng</b>
@@ -130,7 +130,7 @@ var HTML_CONSTANTS = {
                                 </a>
                             </div>
                         </div>`,
-        GlobalSearchProductItem:` <div class="item-product">
+        GlobalSearchProductItem: ` <div class="item-product">
             <a href="{url}">
                 <div class="box-thumb">
                     <div class="thumb-product">
@@ -231,7 +231,7 @@ var HTML_CONSTANTS = {
             </a>
         </div>
     </div>`,
-        GridProductItem:`<div class="item-product">
+        GridProductItem: `<div class="item-product">
                         <a href="">
                             <div class="box-thumb">
                                 <div class="thumb-product">
@@ -283,6 +283,7 @@ var HTML_CONSTANTS = {
                                       Your browser does not support the video tag.
                                     </video>
                             </div >`,
+     
         Star: `<i class="icon icon-star"></i>`,
         Half_Star: `<i class="icon half-star"></i>`,
         Empty_Star: `<i class="icon empty-star"></i>`,
@@ -327,7 +328,7 @@ var HTML_CONSTANTS = {
                             </tr>`
     },
     Cart: {
-        Product:`<div class="product" data-cart-id="{id}" data-product-id="{product_id}" data-amount="{amount}">
+        Product: `<div class="product" data-cart-id="{id}" data-product-id="{product_id}" data-amount="{amount}">
                             <div class="product-checkall">
                                 <div class="box-checkbox">
                                     <input type="checkbox" name="checkbox-cart-product" class="checkbox-cart" />
@@ -368,7 +369,7 @@ var HTML_CONSTANTS = {
                                 </button>
                             </div>
                         </div>`,
-        Empty:`<section class="cart-empty" style="margin-top:20px;margin-bottom:100px;">
+        Empty: `<section class="cart-empty" style="margin-top:20px;margin-bottom:100px;">
     <div class="container">
         <div class="breadcrumb">
             <ul>
@@ -386,7 +387,7 @@ var HTML_CONSTANTS = {
 </section>`
     },
     OrderHistory: {
-        Item:` <div class="box-order-detail" data-id="{order_id}">
+        Item: ` <div class="box-order-detail" data-id="{order_id}">
                             <div class="head-box">
                                 <span class="code">Mã đơn hàng: <b>{order_no}</b></span>
                                 <span class="status">Tình trạng: <span class="high">{status}</span></span>
@@ -404,7 +405,7 @@ var HTML_CONSTANTS = {
                                 <div class="total-price">Tổng tiền: <span class="number-price">{total_amount}</span> </div>
                             </div>
                         </div>`,
-        ItemProduct:` <div class="item">
+        ItemProduct: ` <div class="item">
                                     <div class="img">
                                         <img src="{src}" alt="">
                                     </div>
@@ -422,7 +423,7 @@ var HTML_CONSTANTS = {
                                 </div>`
     },
     Address: {
-        GridItem:` <div class="item address-item {active}" data-id="{id}">
+        GridItem: ` <div class="item address-item {active}" data-id="{id}">
                             <span class="defauld" style="{default-address-style}">Đặt làm mặc định</span>
                             <h3 class="name">{name}</h3>
                             <p class="add">
@@ -432,13 +433,13 @@ var HTML_CONSTANTS = {
                             <a href="javascript:;" class="btn btn-update btn-update-address">Cập nhật</a>
                         </div>`
     },
-  
+
     OrderDetailRaiting: {
-        ReviewImage:`<div class="item review-img">
+        ReviewImage: `<div class="item review-img">
                                 <img src="{src}" alt="">
                                 <div class="del"></div>
                             </div>`,
-        ReviewVideo:`<div class="item review-video">
+        ReviewVideo: `<div class="item review-video">
                                   <video  width="64" height="64">
                                       <source src="{src}" type="video/mp4">
                                       Your browser does not support the video tag.
@@ -493,7 +494,7 @@ var HTML_CONSTANTS = {
                         </div>
                     </div>
                 </div>`,
-      
+
 
     }
 

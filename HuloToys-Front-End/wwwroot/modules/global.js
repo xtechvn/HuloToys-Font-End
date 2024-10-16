@@ -279,16 +279,34 @@ var global_service = {
         $.when(
             global_service.POST(API_URL.ProductList, request)
         ).done(function (result) {
-
-            var html = ''
             if (result.is_success) {
-                html = global_service.RenderSlideProductItem(result.data, HTML_CONSTANTS.Home.SlideProductItem)
+                var products = result.data
+                var productPromises = []
+
+                $.each(products, function (index, product) {
+                    var ratingRequest = {
+                        "id": product._id
+                    }
+                    var productPromise = global_service.POST(API_URL.ProductRaitingCount, ratingRequest)
+                        .then(function (ratingResult) {
+                            if (ratingResult.is_success) {
+                                product.review_count = ratingResult.data.total_count || 0
+                            } else {
+                                product.review_count = 0
+                            }
+                        })
+                    productPromises.push(productPromise)
+                })
+                //console.log(products)
+
+                $.when.apply($, productPromises).done(function () {
+                    var html = global_service.RenderSlideProductItem(products, HTML_CONSTANTS.Home.SlideProductItem)
+                    element.html(html)
+                    element.removeClass('placeholder')
+                    element.removeClass('box-placeholder')
+                    element.css('height', 'auto')
+                })
             }
-            element.html(html)
-            element.removeClass('placeholder')
-            element.removeClass('box-placeholder')
-            element.css('height', 'auto')
-          
         })
     },
     GotoCart: function () {
@@ -406,12 +424,12 @@ var global_service = {
                     .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(global_service.RemoveSpecialCharacters(item.name)).replaceAll(' ', '-') + '--' + item._id)
                     .replaceAll('{avt}', img_src)
                     .replaceAll('{name}', item.name)
-                    .replaceAll('{amount}', amount_html)
+                    .replaceAll('{amount}', global_service.Comma(item.amount_min) + ' ' + 'Đ')
                     //.replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
                     .replaceAll('{review_point}', (item.star == null || item.star == undefined || item.star <= 0) ? '' : item.star.toFixed(1))
-                    .replaceAll('{review_count}', '')
-                    .replaceAll('{old_price_style}', '')
-                    .replaceAll('{price}', (item.amount == null || item.amount == undefined || item.amount <= 0) ? global_service.Comma(item.amount) + ' đ' : '')
+                    .replaceAll('{review_count}', item.review_count)
+                    .replaceAll('{old_price_style}', )
+                    .replaceAll('{price}', global_service.Comma(item.amount_max) + ' ' + 'đ')
 
             }
         });
