@@ -22,7 +22,17 @@
                             <div class="box-info">
                                 <h3 class="name-product">@item.name </h3>
                                 <div class="flex-price">
-                                    <div class="price-sale">@item.label_price</div>
+                                    <div class="price-sale">
+                                        @if(item.attributes != null)
+                                        {
+                                            @item.amount_min
+                                        }
+                                        else
+                                        {
+                                            @item.amount
+                                        }
+                                        
+                                    </div>
                                     @*<div class="price-old">689,098đ</div>*@
                                 </div>
                             </div>
