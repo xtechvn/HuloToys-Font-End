@@ -62,8 +62,19 @@ var product_detail = {
     },
     Detail: function () {
         var code = $('.section-details-product').attr('data-code')
-        if (code == undefined || code.trim() == '')
+        if (code == undefined || code.trim() == '') {
+            var part = window.location.href.trim().split('/')
+            if (part != undefined && part.length > 0) {
+                var last = part[(part.length - 1)]
+                var code_part = last.split('.')[0].split('-')
+                if (code_part != undefined && code_part.length > 0) {
+                    code = code_part[(code_part.length - 1)]
+                }
+            }
+        }
+        if (code == undefined || code.trim() == '') {
             window.location.href = '/error'
+        }
         var request = {
             "id": code
         }
