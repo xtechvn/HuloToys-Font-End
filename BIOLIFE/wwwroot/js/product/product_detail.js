@@ -7,7 +7,6 @@ var product_detail = {
     save_product_history_local: function () {
        
         var prod_history = JSON.parse($("#product_json_detail").val());
-        debugger;
         if (prod_history.amount_vnd != "") {
             var list_result = [];
             var j_list_hist = localStorage.getItem(PRODUCT_HISTORY);
@@ -40,7 +39,9 @@ var product_detail = {
 
         sessionStorage.removeItem(STORAGE_NAME.ProductDetail)
         sessionStorage.removeItem(STORAGE_NAME.SubProduct)
-        product_detail.Detail()
+        setTimeout(function () {
+            product_detail.Detail()
+        }, 1000);
         product_detail.DynamicBind()
     },
     DynamicBind: function () {
