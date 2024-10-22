@@ -2,6 +2,10 @@
 @using BIOLIFE.Utilities;
 @model ProductListResponseModel
 @{
+    string static_url = (string)ViewBag.Static;
+
+}
+@{
     if (Model != null)
     {
         int current_page =( Model.page_index/Model.page_size)+1;
@@ -13,11 +17,19 @@
 
                 @foreach (var item in Model.items)
                 {
+                    string url_fixed = item.avatar;
+                    if (!url_fixed.Contains(static_url)
+                    && !url_fixed.Contains("base64")
+                    && !url_fixed.Contains("data:image"))
+                    {
+                        url_fixed = static_url + item.avatar;
+                        url_fixed = url_fixed.Replace(@"//",@"/");
+                    }
                     string link = @Html.GetStaticUrlProduct(item.name, item._id);
                     <div class="item-product">
                         <a href="@link">
                             <div class="thumb thumb-product">
-                                <img src="@item.avatar" alt="@item.name" />
+                                <img src="@url_fixed" alt="@item.name" />
                             </div>
                             <div class="box-info">
                                 <h3 class="name-product">@item.name </h3>

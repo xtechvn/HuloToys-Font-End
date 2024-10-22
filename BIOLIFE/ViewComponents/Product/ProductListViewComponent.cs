@@ -26,6 +26,8 @@ namespace BIOLIFE.ViewComponents.Product
         /// <returns>group_product_id: id của nhóm</returns>
         public async Task<IViewComponentResult?> InvokeAsync(int _group_product_id, int _page_index, int _page_size, string view_name)
         {
+            ViewBag.Static = configuration["common:link_static_img"];
+
             try
             {
                 // Nếu không có trong cache, gọi dịch vụ
