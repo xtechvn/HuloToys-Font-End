@@ -115,8 +115,8 @@ var group_product = {
                         }
                     },
                     navigation: {
-                        nextEl: '.product-slide .swiper-button-next',
-                        prevEl: '.product-slide .swiper-button-prev'
+                        nextEl: '.section-flashsale .swiper-button-next',
+                        prevEl: '.section-flashsale  .swiper-button-prev'
                     }
                 });
             },
