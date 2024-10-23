@@ -407,16 +407,14 @@ var global_service = {
                 img_src = API_URL.StaticDomain + item.avatar
             var amount_html = 'Giá liên hệ'
             var has_price = false
-            if (item.amount_max != undefined
-                && item.amount_max != null
-                && item.amount_min != undefined
-                && item.amount_min != null) {
-                amount_html = global_service.Comma(item.amount_min) + ' - ' + global_service.Comma(item.amount_max)
+            if (item.amount_min != null
+                && item.amount_min != undefined && item.amount_min > 0) {
+                amount_html = global_service.Comma(item.amount_min) + ' Đ'
                 has_price = true
             }
             else if (item.amount != undefined
                 && item.amount != null && item.amount > 0) {
-                amount_html = global_service.Comma(item.amount)
+                amount_html = global_service.Comma(item.amount) + ' Đ'
                 has_price = true
             }
             if (has_price) {
@@ -424,7 +422,7 @@ var global_service = {
                     .replaceAll('{url}', '/san-pham/' + global_service.RemoveUnicode(global_service.RemoveSpecialCharacters(item.name)).replaceAll(' ', '-') + '--' + item._id)
                     .replaceAll('{avt}', img_src)
                     .replaceAll('{name}', item.name)
-                    .replaceAll('{amount}', global_service.Comma(item.amount_min) + ' ' + 'Đ')
+                    .replaceAll('{amount}', amount_html)
                     //.replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
                     .replaceAll('{review_point}', (item.star == null || item.star == undefined || item.star <= 0) ? '' : item.star.toFixed(1))
                     .replaceAll('{review_count}', item.review_count)

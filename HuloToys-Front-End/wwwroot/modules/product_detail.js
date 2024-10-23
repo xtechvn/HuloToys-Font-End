@@ -112,7 +112,7 @@ var product_detail = {
         $('.thumb-big .swiper-wrapper').html(html)
         $('.thumb-small .swiper-wrapper').html(html_thumb)
         swiperSmallThumb = new Swiper(".thumb-small", {
-            spaceBetween: 15,
+            spaceBetween: 8,
             slidesPerView: 4,
             freeMode: true,
             watchSlidesProgress: true,
