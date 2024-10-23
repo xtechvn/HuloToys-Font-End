@@ -407,11 +407,9 @@ var global_service = {
                 img_src = API_URL.StaticDomain + item.avatar
             var amount_html = 'Giá liên hệ'
             var has_price = false
-            if (item.amount_max != undefined
-                && item.amount_max != null
-                && item.amount_min != undefined
-                && item.amount_min != null) {
-                amount_html = global_service.Comma(item.amount_min) + ' - ' + global_service.Comma(item.amount_max)
+            if (item.amount_min != null 
+                && item.amount_min != undefined && item.amount_min > 0 ) {
+                amount_html = global_service.Comma(item.amount_min) 
                 has_price = true
             }
             else if (item.amount != undefined
@@ -429,7 +427,7 @@ var global_service = {
                     .replaceAll('{review_point}', (item.star == null || item.star == undefined || item.star <= 0) ? '' : item.star.toFixed(1))
                     .replaceAll('{review_count}', item.review_count)
                     .replaceAll('{old_price_style}', )
-                    .replaceAll('{price}', global_service.Comma(item.amount_max) + ' ' + 'đ')
+                    .replaceAll('{price}', amount_html + ' ' + 'đ')
 
             }
         });
