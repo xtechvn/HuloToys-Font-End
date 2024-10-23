@@ -16,6 +16,7 @@
         left: 0;
         right: 0;
         margin: 0 auto;
+        z-index: 12;
         a{
             color: #fff;
         }
@@ -73,8 +74,15 @@
                 color: #fff;
                 width: 40px;
                 height: 40px;
+                margin: 0 !important;
                 background: var(--color-base);
             }
+        }
+    }
+    .navbar-toggler{
+        color: var(--color-base);
+        &:focus{
+            outline: none;
         }
     }
     &.pin{
@@ -86,8 +94,8 @@
         z-index: 99;
         right: 0;
         margin: 0 auto;
-        @media (max-width:767px) {
-           background: #fff;
+        .navbar-toggler{
+            color: #fff;
         }
         .form-control{
             color: #fff;
@@ -163,9 +171,7 @@
             left: 0;
             right: 0;
             margin: 0 auto;
-            @media (max-width:767px) {
-                background: #fff;
-             }
+            z-index: 12;
             .form-control{
                 color: #fff;
                 &::placeholder{

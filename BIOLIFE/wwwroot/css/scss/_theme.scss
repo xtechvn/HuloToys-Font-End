@@ -341,7 +341,17 @@
             height: initial;
         }
     }
-
+    .swiper-button-prev {
+        &:after {
+            content: url('data:image/svg+xml,<svg width="67" height="66" viewBox="0 0 67 66" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_dd_145_2591)"><circle cx="17.3617" cy="17.3617" r="17.3617" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 16 46.6443)" fill="white"/><path opacity="0.54" fill-rule="evenodd" clip-rule="evenodd" d="M36.6415 33.7204L35.2911 35.0708L29.5039 29.2836L35.2911 23.4963L36.6415 24.8467L32.2046 29.2836L36.6415 33.7204Z" fill="%231C5025"/></g><defs><filter id="filter0_dd_145_2591" x="0.567374" y="0.346429" width="65.5889" height="65.5886" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="3.85816"/><feGaussianBlur stdDeviation="7.71631"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_145_2591"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dx="3.85816"/><feGaussianBlur stdDeviation="3.85816"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/><feBlend mode="normal" in2="effect1_dropShadow_145_2591" result="effect2_dropShadow_145_2591"/><feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_145_2591" result="shape"/></filter></defs></svg>');
+        }
+    }
+    
+    .swiper-button-next {
+        &:after {
+            content: url('data:image/svg+xml,<svg width="67" height="66" viewBox="0 0 67 66" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_dd_145_2596)"><circle cx="17.3617" cy="17.3617" r="17.3617" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 16.2764 46.6443)" fill="white"/><path opacity="0.54" fill-rule="evenodd" clip-rule="evenodd" d="M30.3595 33.7204L31.7098 35.0708L37.4971 29.2836L31.7098 23.4963L30.3595 24.8467L34.7964 29.2836L30.3595 33.7204Z" fill="%231C5025"/></g><defs><filter id="filter0_dd_145_2596" x="0.843741" y="0.346429" width="65.5889" height="65.5886" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="3.85816"/><feGaussianBlur stdDeviation="7.71631"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_145_2596"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dx="3.85816"/><feGaussianBlur stdDeviation="3.85816"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/><feBlend mode="normal" in2="effect1_dropShadow_145_2596" result="effect2_dropShadow_145_2596"/><feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_145_2596" result="shape"/></filter></defs></svg>');
+        }
+    }
 }
 
 .section-client{
