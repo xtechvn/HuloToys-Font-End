@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Configuration;
 
 namespace BIOLIFE.Utilities
 {
     public static class StaticLinkHelper
-    {
-       
+    {     
+
         public static string GetStaticUrlNews(this IHtmlHelper htmlHelper, string Title, long article_id)
         {
             Title = CommonHelper.RemoveUnicode(CommonHelper.CheckMaxLength(Title.Trim(), 100));
@@ -33,6 +34,20 @@ namespace BIOLIFE.Utilities
             name = CommonHelper.RemoveSpecialCharacters(CommonHelper.CheckMaxLength(name.Trim(), 100));
             name = name.Replace(" ", "-").ToLower();
             return ("/tin-tuc" + "/" + name + "/" + cate_id );
+        }
+        public static string GetStaticUrlImage(this IHtmlHelper htmlHelper, string path_link_image, IConfiguration _configuration)
+        {
+            string domain_static = _configuration["common:link_static_img"];
+            if (path_link_image.IndexOf(domain_static) ==-1 )
+            {
+                return domain_static + path_link_image;
+            }
+            else
+            {
+                return path_link_image;
+              
+            }
+          
         }
     }
 }

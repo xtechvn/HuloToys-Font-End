@@ -1,7 +1,7 @@
 ﻿@using BIOLIFE.Models.Products;
 @using BIOLIFE.Utilities;
 @model ProductListResponseModel
-
+@inject IConfiguration Configuration
 @if (Model != null)
 {
     <div class="container">
@@ -22,7 +22,7 @@
                                     <a href="@link">
                                         <div class="thumb thumb-product">
                                             <div class="thumb-product">
-                                                <img src="@item.avatar" alt="@item.name" />
+                                                <img src="@Html.GetStaticUrlImage( item.avatar,Configuration)" alt="@item.name" />
                                             </div>
                                         </div>
 
