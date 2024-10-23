@@ -97,8 +97,7 @@ var group_product = {
                 $('#product-top-list').html(data);
                 const swiperFlash = new Swiper('.section-flashsale .product-slide', {
                     loop: false,
-                    pagination: false,
-                    navigation: false,
+                    pagination: false,                    
                     spaceBetween: 15,
                     slidesPerView: 1.5,
                     breakpoints: {
@@ -116,8 +115,8 @@ var group_product = {
                         }
                     },
                     navigation: {
-                        nextEl: '.product-slide .swiper-button-next',
-                        prevEl: '.product-slide .swiper-button-prev'
+                        nextEl: '.section-flashsale .swiper-button-next',
+                        prevEl: '.section-flashsale  .swiper-button-prev'
                     }
                 });
             },
