@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace HuloToys_Front_End.Controllers.Client
 {
@@ -148,23 +149,33 @@ namespace HuloToys_Front_End.Controllers.Client
                 msg= "Email hướng dẫn đổi mật khẩu sẽ được gửi đến địa chỉ email mà bạn đã nhập. <br /> vui lòng kiểm tra hộp thư đến và làm theo hướng dẫn."
             });
         }
-        public ActionResult ChangePassword(string token)
+        public async Task<ActionResult> ChangePassword(string token)
         {
             try
             {
                 if (string.IsNullOrEmpty(token) || token.Trim() == "")
                 {
-                    return View("/Error");
+                    return Redirect("/Home/Notfound");
                 }
-                string forgot = EncodeHelpers.Decode(token, _configuration["API:SecretKey"]);
+                string forgot = EncodeHelpers.Decode(token.Replace("-" , "+").Replace("_" , "/"), _configuration["API:SecretKey"]);
                 if(forgot == null || forgot.Trim() == "")
                 {
-                    return View("/Error");
+                    return Redirect("/Home/Notfound");
                 }
                 var model = JsonConvert.DeserializeObject<ClientForgotPasswordTokenModel>(forgot);
                 if(model == null|| model.account_client_id <= 0 || model.exprire_time<DateTime.Now || model.created_time>DateTime.Now)
                 {
-                    return View("/Error");
+                    return Redirect("/Home/Notfound");
+                }
+                if (model == null || model.account_client_id <= 0 || model.exprire_time < DateTime.Now || model.created_time > DateTime.Now)
+                {
+                    return Redirect("/Home/Notfound");
+                }
+                var validate = await _addressClientServices.ValidateForgotPassword(new ClientForgotPasswordRequestModel() { name = token });
+                if (!validate)
+                {
+                    return Redirect("/Home/Notfound");
+
                 }
                 ViewBag.Token = token;
                 return View();
@@ -173,9 +184,61 @@ namespace HuloToys_Front_End.Controllers.Client
             {
 
             }
-            return View("/Error");
+            return Redirect("/Home/Notfound");
 
 
+        }
+        public async Task<IActionResult> ConfirmChangePassword(ClientChangePasswordRequestModel request)
+        {
+            bool result = false;
+            if (string.IsNullOrEmpty(request.token) || request.token.Trim() == "")
+            {
+                return Ok(new
+                {
+                    is_success = result,
+                    msg = "Đổi mật khẩu thất bại, vui lòng kiểm tra lại thông tin hoặc liên hệ với bộ phận CSKH"
+
+                });
+            }
+            string forgot = EncodeHelpers.Decode(request.token.Replace("-", "+").Replace("_", "/"), _configuration["API:SecretKey"]);
+            if (forgot == null || forgot.Trim() == "")
+            {
+                return Ok(new
+                {
+                    is_success = result,
+                    msg = "Đổi mật khẩu thất bại, vui lòng kiểm tra lại thông tin hoặc liên hệ với bộ phận CSKH"
+
+                });
+            }
+            var model = JsonConvert.DeserializeObject<ClientForgotPasswordTokenModel>(forgot);
+            if (model == null || model.account_client_id <= 0 || model.exprire_time < DateTime.Now || model.created_time > DateTime.Now)
+            {
+                return Ok(new
+                {
+                    is_success = result,
+                    msg = "Đổi mật khẩu thất bại, vui lòng kiểm tra lại thông tin hoặc liên hệ với bộ phận CSKH"
+
+                });
+            }
+            var validate = await _addressClientServices.ValidateForgotPassword(new ClientForgotPasswordRequestModel() { name = request.token });
+            if (!validate)
+            {
+                return Ok(new
+                {
+                    is_success = result,
+                    msg = "Đổi mật khẩu thất bại, vui lòng kiểm tra lại thông tin hoặc liên hệ với bộ phận CSKH"
+
+                });
+
+            }
+            request.id = model.account_client_id;
+            result = await _addressClientServices.ChangePassword(request);
+
+            return Ok(new
+            {
+                is_success = result,
+                msg="Đổi mật khẩu thành công, vui lòng đăng nhập lại"
+            });
         }
     }
 }

@@ -114,5 +114,43 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             return false;
 
         }
+        public async Task<bool> ChangePassword(ClientChangePasswordRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:client_change_password"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+            return false;
+
+        }
+        public async Task<bool> ValidateForgotPassword(ClientForgotPasswordRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:client_validate_forgot_password"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+            return false;
+
+        }
     }
 }
