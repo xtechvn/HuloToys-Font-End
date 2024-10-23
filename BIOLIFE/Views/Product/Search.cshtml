@@ -1,6 +1,7 @@
 ﻿@using BIOLIFE.Models.Products;
 @using BIOLIFE.Utilities;
 @model List<ProductMongoDbModel>
+@inject IConfiguration Configuration
 @{
     string keyword = ViewBag.keyword;
 }
@@ -33,7 +34,7 @@
                                 <div class="item-product">
                                     <a href="@link">
                                         <div class="thumb thumb-product">
-                                            <img src="@item.avatar" alt="@item.name" />
+                                            <img src="@Html.GetStaticUrlImage( item.avatar,Configuration)" alt="@item.name" />
                                         </div>
                                         <div class="box-info">
                                             <h3 class="name-product">@item.name</h3>
