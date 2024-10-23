@@ -22,7 +22,7 @@ var address_client = {
         address_client.Detail()
         address_client.RenderProvinces()
         address_client.DynamicBind()
-
+        $('#update-address .err').hide()
     },
     DynamicBind: function () {
         $("body").on('click', "#address-book .btn-update-address", function () {
