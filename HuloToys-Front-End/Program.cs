@@ -79,4 +79,12 @@ app.MapControllerRoute(
     name: "tim-kiem",
     pattern: "/tim-kiem/{keyword}",
     defaults: new { controller = "Product", action = "SearchListing" });
+app.MapControllerRoute(
+    name: "doi-mat-khau",
+    pattern: "/account/change-password/{token}",
+    defaults: new { controller = "Client", action = "ChangePassword" });
+app.MapControllerRoute(
+    name: "error",
+    pattern: "/error",
+    defaults: new { controller = "Home", action = "NotFound" });
 app.Run();

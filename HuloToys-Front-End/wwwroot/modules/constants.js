@@ -13,6 +13,7 @@
 }
 var API_URL = {
     Login: '/Client/Login',
+    ChangePassword: '/Client/ConfirmChangePassword',
     Register: '/Client/Register',
     ProductDetail: '/Product/ProductDetail',
     ProductList: '/Product/GetList',

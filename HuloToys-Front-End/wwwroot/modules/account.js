@@ -3,8 +3,7 @@
 })
 var account = {
     Initialization: function () {
-        if ($('#doimk').length > 0) {
-            account.RenderChangePasswordHTML()
+        if ($('#forgot-password-change').length > 0) {
             account.DynamicBindChangePassword()
         }
         else {
@@ -25,11 +24,51 @@ var account = {
         //    version: THIRDPARTY_CONSTANTS.Facebook.Version
         //});  
     },
-    RenderChangePasswordHTML: function () {
-
-    },
     DynamicBindChangePassword: function () {
-
+        var notification_empty ='Vui lòng không để trống'
+        var notification_diffirent ='Mật khẩu và Xác nhận mật khẩu phải giống nhau'
+        $("body").on('click', "#change-password-confirm", function () {
+            var request = {
+                "token": $('#forgot-password-change').attr('data-token'),
+                "password": $('#forgot-password-change .new-password input').val(),
+                "confirm_password": $('#forgot-password-change .confirm-new-password input').val()
+            }
+            if (request.password == null || request.password.trim() == '') {
+                $('.new-password .err').html(notification_empty)
+                $('.new-password .err').show()
+                return
+            }
+            if (request.confirm_password == null || request.confirm_password.trim() == '') {
+                $('.confirm-new-password .err').html(notification_empty)
+                $('.confirm-new-password .err').show()
+                return
+            }
+            if (request.password != request.confirm_password) {
+                $('.confirm-new-password .err').html(notification_diffirent)
+                $('.confirm-new-password .err').show()
+                return
+            }
+            $.when(
+                global_service.POST(API_URL.ChangePassword, request)
+            ).done(function (res) {
+                if (res.is_success == true) {
+                    $('#success h4').html(res.msg)
+                    $('#success').addClass('overlay-active')
+                    $('#change-password-confirm input').val('')
+                    setTimeout(() => {
+                        window.location.href = '/'
+                    }, 3000);
+                }
+                else {
+                    $('.confirm-new-password .err').html(res.msg)
+                    $('.confirm-new-password .err').show()
+                }
+            })
+        });
+        $("body").on('keyup', "#change-password-confirm input", function () {
+            $('.confirm-new-password .err').hide()
+            $('.new-password .err').hide()
+        });
     },
     RenderHTML: function () {
         $('.err').hide()
@@ -94,6 +133,13 @@ var account = {
         });
         $("body").on('keyup', "#forgot-password-email", function () {
             $("#forgot-password-email").closest('.box-email').find('.err').hide()
+
+        });
+        $("body").on('click', ".forgot-pass", function () {
+            $('#quenmk').addClass('overlay-active')
+        });
+        $("body").on('click', "#forgot-password-btn", function () {
+            account.ConfirmForgotPassword()
 
         });
     },
@@ -332,8 +378,11 @@ var account = {
                 global_service.POST(API_URL.ClientForgotPassword, request)
             ).done(function (res) {
                 $('#quenmk').removeClass('overlay-active')
+                $('#dangnhap').removeClass('overlay-active')
                 $('#success h4').html(res.msg)
                 $('#success').addClass('overlay-active')
+                $('#forgot-password-email').val('')
+
             })
         }
     },
