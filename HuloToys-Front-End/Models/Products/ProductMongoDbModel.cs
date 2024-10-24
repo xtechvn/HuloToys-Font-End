@@ -46,6 +46,9 @@ namespace HuloToys_Front_End.Models.Products
         public double? amount_min { get; set; }
         public string parent_product_id { get; set; }
         public int status { get; set; }
+        public float? review_count { get; set; }
+        public float? rating { get; set; }
+        public long? total_sold { get; set; }
 
     }
 }

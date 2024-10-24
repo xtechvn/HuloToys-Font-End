@@ -427,9 +427,10 @@ var global_service = {
                     .replaceAll('{avt}', img_src)
                     .replaceAll('{name}', item.name)
                     .replaceAll('{amount}', amount_html)
-                    .replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
-                    .replaceAll('{review_point}', (item.star == null || item.star == undefined || item.star <= 0) ? '' : item.star.toFixed(1) +'<i class="icon icon-star"></i>')
+                    .replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '' : item.rating.toFixed(1) + '<i class="icon icon-star"></i>')
+                    //.replaceAll('{review_point}', (item.star == null || item.star == undefined || item.star <= 0) ? '' : item.star.toFixed(1) +'<i class="icon icon-star"></i>')
                     .replaceAll('{review_count}', (item.review_count == null || item.review_count == undefined || item.review_count <= 0) ? '' : '('+ item.review_count.toFixed(0) + ')')
+                    //.replaceAll('{review_count}', (item.total_sold == null || item.total_sold == undefined || item.total_sold <= 0) ? '' : '(' + item.total_sold.toFixed(0) + ')')
                     .replaceAll('{old_price_style}', (item.amount_max <= amount_number ? 'display:none;' : '') )
                     .replaceAll('{price}', global_service.Comma(item.amount_max) + ' ' + 'đ')
 
