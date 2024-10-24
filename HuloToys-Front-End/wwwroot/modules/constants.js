@@ -9,7 +9,9 @@
     CartAddress: 'CartAddress',
     ProductDetailSelected: 'ProductDetailSelected',
     ProductCommentCount: 'ProductCommentCount',
-    OrderDetail: 'OrderDetail'
+    OrderDetail: 'OrderDetail',
+    AddressClientLocal: 'AddressClientLocal',
+
 }
 var API_URL = {
     Login: '/Client/Login',
@@ -118,7 +120,7 @@ var HTML_CONSTANTS = {
                                         <h3 class="name-product">{name}</h3>
                                         <div class="flex-price">
                                             <div class="price-sale">{amount}</div>
-                                            <div class="review">{review_point}<i class="icon icon-star"></i><span class="total-review">({review_count})</span></div>
+                                            <div class="review">{review_point}<span class="total-review">{review_count}</span></div>
                                         </div>
                                         <div class="price-old" style="{old_price_style}">
                                             <nw >So với: {price} <i class="icon icon-info"></i></nw>

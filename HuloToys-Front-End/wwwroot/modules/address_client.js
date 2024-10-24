@@ -58,6 +58,7 @@ var address_client = {
             element.addClass('active')
         });
         $("body").on('select2:select', "#update-address .province select", function () {
+            $('#update-address .wards select').val(null).trigger('change')
             address_client.RenderDistrict()
 
         });
@@ -347,6 +348,8 @@ var address_client = {
             "Status": 0,
             "IsActive": 0
         }
+        sessionStorage.setItem(STORAGE_NAME.AddressClientLocal, JSON.stringify(request))
+
         var updated_item = address_client.GetUpdatedAddress()
         var list = sessionStorage.getItem(STORAGE_NAME.AddressClient)
         if (list) {

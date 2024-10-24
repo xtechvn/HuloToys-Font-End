@@ -406,15 +406,19 @@ var global_service = {
                 && !img_src.includes("http"))
                 img_src = API_URL.StaticDomain + item.avatar
             var amount_html = 'Giá liên hệ'
+            var amount_number = 0
             var has_price = false
             if (item.amount_min != null
                 && item.amount_min != undefined && item.amount_min > 0) {
                 amount_html = global_service.Comma(item.amount_min) + ' Đ'
+                amount_number = item.amount_min
                 has_price = true
             }
             else if (item.amount != undefined
                 && item.amount != null && item.amount > 0) {
                 amount_html = global_service.Comma(item.amount) + ' Đ'
+                amount_number = item.amount
+
                 has_price = true
             }
             if (has_price) {
@@ -423,10 +427,10 @@ var global_service = {
                     .replaceAll('{avt}', img_src)
                     .replaceAll('{name}', item.name)
                     .replaceAll('{amount}', amount_html)
-                    //.replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
-                    .replaceAll('{review_point}', (item.star == null || item.star == undefined || item.star <= 0) ? '' : item.star.toFixed(1))
-                    .replaceAll('{review_count}', item.review_count)
-                    .replaceAll('{old_price_style}', )
+                    .replaceAll('{review_point}', (item.rating == null || item.rating == undefined || item.rating <= 0) ? '5' : item.rating)
+                    .replaceAll('{review_point}', (item.star == null || item.star == undefined || item.star <= 0) ? '' : item.star.toFixed(1) +'<i class="icon icon-star"></i>')
+                    .replaceAll('{review_count}', (item.review_count == null || item.review_count == undefined || item.review_count <= 0) ? '' : '('+ item.review_count.toFixed(0) + ')')
+                    .replaceAll('{old_price_style}', (item.amount_max <= amount_number ? 'display:none;' : '') )
                     .replaceAll('{price}', global_service.Comma(item.amount_max) + ' ' + 'đ')
 
             }
