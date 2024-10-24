@@ -313,6 +313,7 @@ var cart = {
         if ($('#address-receivername').attr('data-id') == null || $('#address-receivername').attr('data-id') == undefined || $('#address-receivername').attr('data-id').trim() =='') {
             $('#lightbox-cannot-add-cart .info-order .notification-content').html('Vui lòng thêm/chọn địa chỉ trước khi tiếp tục')
             $('#lightbox-cannot-add-cart').addClass('overlay-active')
+            cart.HideNotification()
             return
         }
         var usr = global_service.CheckLogin()
@@ -356,6 +357,7 @@ var cart = {
                         $('#lightbox-cannot-add-cart .info-order .notification-content').html('Có lỗi xảy ra trong quá trình xác nhận thông tin')
                         $('#lightbox-cannot-add-cart').addClass('overlay-active')
                         $('.btn-confirm-cart').removeClass('button-disabled')
+                        cart.HideNotification()
 
 
                     }
@@ -407,5 +409,12 @@ var cart = {
         ).done(function (result) {
 
         })
+    },
+    HideNotification: function () {
+        setTimeout(function () {
+            $('#lightbox-cannot-add-cart').removeClass('overlay-active')
+
+
+        }, 3000);
     }
 }
