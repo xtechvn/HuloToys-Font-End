@@ -6,6 +6,20 @@ var payment = {
         payment.DynamicBind()
         payment.Detail()
         $('.img-qr').addClass('placeholder')
+        payment.ClearStorage()
+    },
+    ClearStorage: function () {
+        sessionStorage.removeItem(STORAGE_NAME.ProductDetail)
+        sessionStorage.removeItem(STORAGE_NAME.CartCount)
+        sessionStorage.removeItem(STORAGE_NAME.BuyNowItem)
+        sessionStorage.removeItem(STORAGE_NAME.SubProduct)
+        sessionStorage.removeItem(STORAGE_NAME.Order)
+        sessionStorage.removeItem(STORAGE_NAME.AddressClient)
+        sessionStorage.removeItem(STORAGE_NAME.CartAddress)
+        sessionStorage.removeItem(STORAGE_NAME.ProductDetailSelected)
+        sessionStorage.removeItem(STORAGE_NAME.ProductCommentCount)
+        sessionStorage.removeItem(STORAGE_NAME.OrderDetail)
+        sessionStorage.removeItem(STORAGE_NAME.AddressClientLocal)
     },
     DynamicBind: function () {
         $("body").on('click', ".box-payment-info .btn", function () {
