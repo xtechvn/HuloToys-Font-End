@@ -145,7 +145,7 @@ var cart = {
     },
     ConfirmCartAddress: function (data) {
         if (data != undefined && data.id != undefined) {
-            $('#address-receivername').attr('data-id', (data.id == null || data.id == undefined || data.id == '' ? '-1' : data.id.trim()))
+            $('#address-receivername').attr('data-id', (data.id == null || data.id == undefined || data.id == '' ? '-1' : data.id))
             $('#address-receivername').html(data.receivername)
             $('#address-phone').html(data.phone)
             $('#address').html(address_client.RenderDetailAddress(data))
