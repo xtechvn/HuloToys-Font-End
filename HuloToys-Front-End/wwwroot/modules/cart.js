@@ -312,6 +312,7 @@ var cart = {
     ConfirmCart: function () {
         if ($('#address-receivername').attr('data-id') == null || $('#address-receivername').attr('data-id') == undefined || $('#address-receivername').attr('data-id').trim() =='') {
             $('#lightbox-cannot-add-cart .info-order .notification-content').html('Vui lòng thêm/chọn địa chỉ trước khi tiếp tục')
+            $('#lightbox-cannot-add-cart .title-box').html('Chưa chọn địa chỉ giao hàng')
             $('#lightbox-cannot-add-cart').addClass('overlay-active')
             cart.HideNotification()
             return
