@@ -492,7 +492,6 @@ var cart = {
                        
                     })
                     var result = global_service.POSTSynchorus(API_URL.CartGetShippingFee, request)
-
                     if (result.is_success && result.data != undefined && result.data.total_shipping_fee != undefined && result.data.total_shipping_fee>=0) {
                         element_li.find('.price').html(global_service.Comma(result.data.total_shipping_fee) + 'đ')
                         element_li.attr('data-price', result.data.total_shipping_fee)
@@ -500,71 +499,64 @@ var cart = {
                         element_li.css('color', '')
                         element_li.find('.name').css('color', '')
                         element_li.find('.des').css('color', '')
-                        if ($('#hinhthucgiaohang .active-delivery').length > 0) {
-                            if ($('#hinhthucgiaohang .active-delivery').attr('data-shipping-type').trim() == '2')
-                                $('#hinhthucgiaohang .active-delivery').removeClass('active')
-                                $('#hinhthucgiaohang .active-delivery').removeClass('active-delivery')
-                        }
-                        if ($('#hinhthucgiaohang .active-delivery').length <= 0) {
-                            $('#hinhthucgiaohang li').removeClass('active-delivery')
-                            element_li.addClass('active')
-                            element_li.addClass('active-delivery')
-                        }
+                       
                     } else {
-                        element_li.removeClass('active')
+                        element_li.attr('data-price', '0')
+                        if (element_li.attr('data-shipping-type') != undefined && element_li.attr('data-shipping-type').trim() == '2') {
+                            element_li.find('.price').html('0 đ')
+                        } else {
+                            element_li.addClass('disabled')
+                            element_li.css('color', 'lightgray')
+                            element_li.find('.name').css('color', 'lightgray')
+                            element_li.find('.des').css('color', 'lightgray')
+                            element_li.find('.price').html('Không khả dụng')
+                        }
+                    }
+                    element_li.find('.price').removeClass('placeholder')
+
+                })
+                
+            } else {
+                $('#hinhthucgiaohang .item li').each(function (index, item) {
+                    var element_li = $(this)
+                    element_li.attr('data-price', '0')
+                    if (element_li.attr('data-shipping-type') != undefined && element_li.attr('data-shipping-type').trim() == '2') {
+                        element_li.find('.price').html('0 đ')
+                    } else {
                         element_li.addClass('disabled')
                         element_li.css('color', 'lightgray')
                         element_li.find('.name').css('color', 'lightgray')
                         element_li.find('.des').css('color', 'lightgray')
                         element_li.find('.price').html('Không khả dụng')
-                        element_li.attr('data-price', '0')
-                        $('#hinhthucgiaohang .item li').each(function (index, item) {
-                            var element_li = $(this)
-                            if (element_li.attr('data-shipping-type') != undefined && element_li.attr('data-shipping-type').trim() == '2') {
-                                element_li.attr('data-price', '0')
-                                $('#hinhthucgiaohang li').removeClass('active-delivery')
-                                $('#hinhthucgiaohang li').removeClass('active')
-                                element_li.closest('.item').find('h3').addClass('active')
-                                element_li.closest('.item').find('.answer').show()
-                                element_li.addClass('active')
-                                element_li.addClass('active-delivery')
-                                return false
-                            }
-                        })
                     }
-                    cart.RenderSelectionDelivery()
-                    element_li.find('.price').removeClass('placeholder')
 
-                })
-
-            } else {
-                $('#hinhthucgiaohang .item li').each(function (index, item) {
-                    var element_li = $(this)
-                    if (element_li.attr('data-shipping-type') != undefined && element_li.attr('data-shipping-type').trim() == '2') {
-                        element_li.attr('data-price', '0')
-                        $('#hinhthucgiaohang li').removeClass('active-delivery')
-                        element_li.closest('.item').find('h3').addClass('active')
-                        element_li.closest('.item').find('.answer').show()
-                        element_li.addClass('active')
-                        element_li.addClass('active-delivery')
-                        return true
-                    }
-                    element_li.addClass('disabled')
-                    element_li.css('color', 'lightgray')
-                    element_li.find('.name').css('color', 'lightgray')
-                    element_li.find('.des').css('color', 'lightgray')
-                    element_li.find('.price').html('Không khả dụng')
-                    element_li.find('.price').removeClass('placeholder')
-                    element_li.removeClass('active')
-                    element_li.attr('data-price', '0')
                     element_li.closest('.item').find('h3').removeClass('active')
                     element_li.closest('.item').find('.answer').hide()
                 })
-                cart.RenderSelectionDelivery()
 
             }
           
         })
+        var activated=false
+        $('#hinhthucgiaohang li').each(function (index, item) {
+            var element_li = $(this)
+            if (!element_li.hasClass('disabled') && !activated) {
+                activated=true
+                element_li.addClass('active-delivery')
+                element_li.addClass('active')
+                element_li.closest('.item').find('h3').addClass('active')
+                element_li.closest('.item').find('.answer').show()
+
+            } else {
+                element_li.removeClass('active-delivery')
+                element_li.removeClass('active')
+                element_li.closest('.item').find('h3').removeClass('active')
+                element_li.closest('.item').find('.answer').hide()
+            }
+
+        })
+        cart.RenderSelectionDelivery()
+
     },
     RenderSelectionDelivery: function (element) {
         var selected = $('#hinhthucgiaohang .active-delivery').first()
