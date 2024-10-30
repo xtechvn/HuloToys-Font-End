@@ -347,16 +347,45 @@ var cart = {
                     carts.push(cart)
                 }
             })
+            var delivery_detail = {
+               
+            }
+            var default_address_json = sessionStorage.getItem(STORAGE_NAME.CartAddress)
+            if (default_address_json) {
+                var default_address = JSON.parse(default_address_json)
+                var selected = $('#hinhthucgiaohang .active-delivery').first()
+                var carrier_id = selected.closest('.item').attr('data-carrier-id')
+                var shipping_type = selected.attr('data-shipping-type')
 
+                delivery_detail = {
+                    "from_province_id": 1,
+                    "to_province_id": default_address.provinceid,
+                    "shipping_type": shipping_type,
+                    "carrier_id": carrier_id,
+                    "carts": []
+                }
+                $('.shopping-cart .table-addtocart .product').each(function (index, item) {
+                    var element_cart = $(this)
+                    if (element_cart.find('.checkbox-cart').is(':checked')) {
+                        delivery_detail.carts.push({
+                            "id": element_cart.attr('data-cart-id'),
+                            "product_id": element_cart.attr('data-product-id'),
+                            "quanity": parseInt(element_cart.find('.number-input').find('.quantity').val())
+                        })
+                    }
+
+                })
+            }
+           
             if (carts.length > 0) {
               
                 var request = {
                     "carts": carts,
                     "token": usr.token,
                     "payment_type": $('input[name="select-bank"]:checked').val(),
-                    "delivery_type": $('input[name="select-delivery"]:checked').val(),
                     "address": JSON.parse(sessionStorage.getItem(STORAGE_NAME.CartAddress)) ,
-                    "address_id": $('#address-receivername').attr('data-id')
+                    "address_id": $('#address-receivername').attr('data-id'),
+                    "delivery_detail": delivery_detail
                 }
                 $.when(
                     global_service.POST(API_URL.CartConfirm, request)
@@ -464,7 +493,7 @@ var cart = {
                     })
                     var result = global_service.POSTSynchorus(API_URL.CartGetShippingFee, request)
 
-                    if (result.is_success) {
+                    if (result.is_success && result.data != undefined && result.data.total_shipping_fee != undefined && result.data.total_shipping_fee>=0) {
                         element_li.find('.price').html(global_service.Comma(result.data.total_shipping_fee) + 'đ')
                         element_li.attr('data-price', result.data.total_shipping_fee)
                         element_li.removeClass('disabled')
@@ -474,6 +503,7 @@ var cart = {
                         if ($('#hinhthucgiaohang .active-delivery').length > 0) {
                             if ($('#hinhthucgiaohang .active-delivery').attr('data-shipping-type').trim() == '2')
                                 $('#hinhthucgiaohang .active-delivery').removeClass('active-delivery')
+                                $('#hinhthucgiaohang .active-delivery').removeClass('active')
                         }
                         if ($('#hinhthucgiaohang .active-delivery').length <= 0) {
                             $('#hinhthucgiaohang li').removeClass('active-delivery')
@@ -488,7 +518,20 @@ var cart = {
                         element_li.find('.des').css('color', 'lightgray')
                         element_li.find('.price').html('Không khả dụng')
                         element_li.attr('data-price', '0')
-
+                        $('#hinhthucgiaohang .item li').each(function (index, item) {
+                            var element_li = $(this)
+                            if (element_li.attr('data-shipping-type') != undefined && element_li.attr('data-shipping-type').trim() == '2') {
+                                element_li.attr('data-price', '0')
+                                $('#hinhthucgiaohang li').removeClass('active-delivery')
+                                $('#hinhthucgiaohang li').removeClass('active')
+                                element_li.closest('.item').find('h3').addClass('active')
+                                element_li.closest('.item').find('.answer').show()
+                                element_li.addClass('active')
+                                element_li.addClass('active-delivery')
+                                cart.RenderSelectionDelivery()
+                                return false
+                            }
+                        })
                     }
                     cart.RenderSelectionDelivery()
                     element_li.find('.price').removeClass('placeholder')
@@ -541,10 +584,11 @@ var cart = {
             $('#delivery-carrier').show()
 
         }
-        $('#delivery-shippingtype .select-delivery .tt').text(selected.find('.name').html())
+        $('#delivery-shippingtype .select-delivery .tt').text(selected.find('.name').html() )
         $('#delivery-carrier .select-delivery .tt').text(selected.closest('.item').find('h3').html())
-        $('.total-cart .total-shipping-fee .pr').html(global_service.Comma(parseInt(selected.attr('data-price'))+' đ'))
-        $('.total-cart .total-shipping-fee .pr').attr('data-price', parseInt(selected.attr('data-price')))
+        var total_price = parseInt(selected.attr('data-price'))
+        $('.total-cart .total-shipping-fee .pr').attr('data-price', total_price)
+        $('.total-cart .total-shipping-fee .pr').html(global_service.Comma(total_price) +' đ')
         cart.ReRenderAmount(false)
 
     }
