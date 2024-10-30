@@ -49,6 +49,7 @@ var API_URL = {
     OrderRaitingSubmmit: '/Order/InsertRaiting',
     ClientForgotPassword: '/Client/ForgotPassword',
     ProductSearchListingPaging: '/Product/SearchListingPaging',
+    CartGetShippingFee: '/Cart/GetShippingFee',
 
 
 }

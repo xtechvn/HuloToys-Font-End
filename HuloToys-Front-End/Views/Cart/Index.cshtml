@@ -122,70 +122,21 @@
                         <nw id="address-receivername">Phạm ái phương</nw> <span></span> <nw id="address-phone">098878779</nw>
                     </h4>
                     <p class="add"><nw id="address">Tầng 5, tòa nhà Diamond Flower, số 1 Hoàng Đạo Thúy, Hà Nội</nw></p>
-                    <div class="delivery">
+                    <a href="javascript:;" class="edit update-address-order">Thay đổi</a>
+
+                    <a href="javascript:;" id="delivery-shippingtype" class="delivery ">
                         <span class="tt">Hình thức giao hàng:</span>
                         <div class="select-delivery select-option active">
                             <span class="tt">Giao nhanh</span>
-                            <ul class="list-option">
-                                <li class="item">
-                                    <div class="choose">
-                                        <div class="box-checkbox">
-                                            <input class="checkbox select-delivery-checkbox" name="select-delivery" type="radio" value="1" checked>
-                                            <label class="option-name">Giao nhanh</label>
-                                        </div>
-                                    </div>
-                                    <div class="price-ship" style="display:none;">0đ</div>
-                                </li>
-                                <li class="item">
-                                    <div class="choose">
-                                        <div class="box-checkbox">
-                                            <input class="checkbox select-delivery-checkbox" name="select-delivery" type="radio" value="2">
-                                            <label class="option-name">Lấy tại cửa hàng</label>
-                                        </div>
-                                    </div>
-                                    <div class="price-ship" style="display:none;">0đ</div>
-                                </li>
-                              @*   <li class="item">
-                                    <div class="choose">
-                                        <div class="box-checkbox">
-                                            <input class="checkbox select-delivery-checkbox" name="select-delivery" type="radio" value="3" >
-                                            <label class="option-name">Hỏa tốc</label>
-                                        </div>
-                                    </div>
-                                    <div class="price-ship" style="display:none;">0đ</div>
-                                </li>
-                              
-                                <li class="item">
-                                    <div class="choose">
-                                        <div class="box-checkbox">
-                                            <input class="checkbox select-delivery-checkbox" name="select-delivery" type="radio" value="4">
-                                            <label class="option-name">Giao tiết kiệm</label>
-                                        </div>
-                                    </div>
-                                    <div class="price-ship" style="display:none;">0đ</div>
-                                </li> *@
-                            </ul>
+                            
                         </div>
-                    </div>
-                    <a href="javascript:;" class="edit update-address-order">Thay đổi</a>
-                    <div class="delivery carrier">
+                    </a>
+                    <a href="javascript:;" id="delivery-carrier" class="delivery ">
                         <span class="tt">Đơn vị giao hàng:</span>
                         <div class="select-delivery select-option active">
                             <span class="tt">Ninja Van</span>
-                            <ul class="list-option list-option-carrier">
-                                <li class="item">
-                                    <div class="choose">
-                                        <div class="box-checkbox">
-                                            <input class="checkbox select-delivery-checkbox" name="select-delivery" type="radio" value="1" checked>
-                                            <label class="option-name">Ninja Van</label>
-                                        </div>
-                                    </div>
-                                    <div class="price-ship" style="display:none;">0đ</div>
-                                </li>
-                            </ul>
                         </div>
-                    </div>
-                    <a href="javascript:;" class="edit update-address-order">Thay đổi</a>
+                    </a>
                 </div>
                 <div class="voucher">
                     <div class="box-tt">
@@ -267,7 +218,7 @@
                     </div>
                     <div class="flex-total total-shipping-fee">
                         <div class="tt">Phí vận chuyển</div>
-                        <div class="pr">30.000đ</div>
+                        <div class="pr">0đ</div>
                     </div>
                     <div class="flex-total total-discount" style="display:none;">
                         <div class="tt">Giảm giá</div>
@@ -333,7 +284,186 @@
         </div>
     </div>
 </div>
+<!-- Chọn Chọn hình thức giao hàng  -->
+<div id="hinhthucgiaohang" class="overlay form-voucher">
+    <div class="popup">
+        <a class="close" href="#">
+            <i class="icon icon-close"></i>
+        </a>
+        <div class="content">
+            <h4 class="title-popup">Chọn hình thức giao hàng</h4>
+            <div class="list-giaohang">
+                @* <div class="item">
+                    <h3 class="title">Giao hàng Nhanh </h3>
+                    <div class="answer">
+                        <ul>
+                            <li class="active">
+                                <div class="box-select-ship">
+                                    <div class="name">Giao nhanh</div>
+                                    <div class="des">Đảm bảo nhận hàng từ 1 tháng 11 - 4 tháng 11</div>
+                                </div>
+                                <span class="price">32.900đ</span>
+                            </li>
+                            <li>
+                                <div class="box-select-ship">
+                                    <div class="name">Giao hỏa tốc</div>
+                                    <div class="des">Đảm bảo nhận hàng sau 2h</div>
+                                </div>
+                                <span class="price">32.900đ</span>
+                            </li>
+                        </ul>
 
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="title">Viettel post</h3>
+                    <div class="answer">
+                        <ul>
+                            <li class="active">
+                                <div class="box-select-ship">
+                                    <div class="name">Giao nhanh</div>
+                                    <div class="des">Đảm bảo nhận hàng từ 1 tháng 11 - 4 tháng 11</div>
+                                </div>
+                                <span class="price">32.900đ</span>
+                            </li>
+                            <li>
+                                <div class="box-select-ship">
+                                    <div class="name">Giao hỏa tốc</div>
+                                    <div class="des">Đảm bảo nhận hàng sau 2h</div>
+                                </div>
+                                <span class="price">32.900đ</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="title">J&T Express</h3>
+                    <div class="answer">
+                        <ul>
+                            <li class="active">
+                                <div class="box-select-ship">
+                                    <div class="name">Giao nhanh</div>
+                                    <div class="des">Đảm bảo nhận hàng từ 1 tháng 11 - 4 tháng 11</div>
+                                </div>
+                                <span class="price">32.900đ</span>
+                            </li>
+                            <li>
+                                <div class="box-select-ship">
+                                    <div class="name">Giao hỏa tốc</div>
+                                    <div class="des">Đảm bảo nhận hàng sau 2h</div>
+                                </div>
+                                <span class="price">32.900đ</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div> *@
+                <div class="item" data-carrier-id="1">
+                    <h3 class="title active">Ninja van</h3>
+                    <div class="answer" style="display:block;">
+                        <ul>
+                            <li class="active" data-shipping-type="1">
+                                <div class="box-select-ship">
+                                    <div class="name">Giao nhanh</div>
+                                    <div class="des">Nhận hàng trong 2-7 ngày </div>
+                                </div>
+                                <span class="price placeholder">_______________</span>
+                            </li>
+                           @*  <li>
+                                <div class="box-select-ship">
+                                    <div class="name">Giao hỏa tốc</div>
+                                    <div class="des">Đảm bảo nhận hàng sau 2h</div>
+                                </div>
+                                <span class="price">32.900đ</span>
+                            </li> *@
+                        </ul>
+                    </div>
+                </div>
+                <div class="item" data-carrier-id="1">
+                    <h3 class="title">Lấy tại cửa hàng</h3>
+                    <div class="answer">
+                        <ul>
+                            <li class="" data-shipping-type="2">
+                                <div class="box-select-ship">
+                                    <div class="name">Nhận hàng tại cửa hàng</div>
+                                    <div class="des">Nhận hàng tại chi nhánh Hà Nội</div>
+                                </div>
+                                <span class="price">0đ</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="action">
+            <a href="javascript:;" class="btn btn-back">Trở lại</a>
+            <a href="javascript:;" class="btn btn-base btn-save">OK</a>
+        </div>
+    </div>
+</div>
+
+<!-- Chọn Phương thức thanh toán -->
+<div id="phuongthucthanhtoan" class="overlay form-voucher">
+    <div class="popup">
+        <a class="close" href="#">
+            <i class="icon icon-close"></i>
+        </a>
+        <div class="content">
+            <h4 class="title-popup">Chọn hình thức thanh toán</h4>
+            <ul class="list-option select-bank">
+                <li class="item">
+                    <div class="choose">
+                        <div class="box-radio">
+                            <input class="radio" id="radio1" type="radio">
+                            <label for="radio1">
+                                <img src="./assets/images/icon/COD_Dou.svg" alt="" />
+                                Thanh toán khi nhận hàng(COD)
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="choose">
+                        <div class="box-radio">
+                            <input class="radio" id="radio2" type="radio">
+                            <label for="radio2">
+                                <img src="./assets/images/icon/Bank_Dou.svg" alt="" />
+                                Chuyển khoản qua ngân hàng
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="choose">
+                        <div class="box-radio">
+                            <input class="radio" id="radio3" type="radio">
+                            <label for="radio3">
+                                <img src="./assets/images/icon/QR_Dou.svg" alt="" />Thanh
+                                toán QR-PAY
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="choose">
+                        <div class="box-radio">
+                            <input class="radio" id="radio4" type="radio">
+                            <label for="radio4">
+                                <img src="./assets/images/icon/MasterCard_Dou.svg" alt="" />Thẻ
+                                Visa - Master
+                                Card
+                            </label>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="action">
+            <a href="" class="btn btn-back">Trở lại</a>
+            <a href="" class="btn btn-base btn-save">OK</a>
+        </div>
+    </div>
+</div>
+</div>
 @section Scripts {
     <script type="text/javascript" src="/modules/cart.js" asp-append-version="true"></script>
     <script type="text/javascript" src="/modules/order_address.js" asp-append-version="true"></script>
