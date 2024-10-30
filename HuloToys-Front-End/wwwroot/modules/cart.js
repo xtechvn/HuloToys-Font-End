@@ -528,7 +528,6 @@ var cart = {
                                 element_li.closest('.item').find('.answer').show()
                                 element_li.addClass('active')
                                 element_li.addClass('active-delivery')
-                                cart.RenderSelectionDelivery()
                                 return false
                             }
                         })
@@ -548,7 +547,6 @@ var cart = {
                         element_li.closest('.item').find('.answer').show()
                         element_li.addClass('active')
                         element_li.addClass('active-delivery')
-                        cart.RenderSelectionDelivery()
                         return true
                     }
                     element_li.addClass('disabled')
