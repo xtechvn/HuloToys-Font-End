@@ -502,8 +502,8 @@ var cart = {
                         element_li.find('.des').css('color', '')
                         if ($('#hinhthucgiaohang .active-delivery').length > 0) {
                             if ($('#hinhthucgiaohang .active-delivery').attr('data-shipping-type').trim() == '2')
-                                $('#hinhthucgiaohang .active-delivery').removeClass('active-delivery')
                                 $('#hinhthucgiaohang .active-delivery').removeClass('active')
+                                $('#hinhthucgiaohang .active-delivery').removeClass('active-delivery')
                         }
                         if ($('#hinhthucgiaohang .active-delivery').length <= 0) {
                             $('#hinhthucgiaohang li').removeClass('active-delivery')
