@@ -211,4 +211,21 @@ $(document).ready(function () {
         speed: 500,
         thumbnail: true,
     });
+
+    // Chọn hình thức giao hàng
+    $(".list-giaohang .item > .title").on("click", function () {
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            $(this)
+                .siblings(".answer")
+                .slideUp(300);
+        } else {
+            $(".list-giaohang .item > .title").removeClass("active");
+            $(this).addClass("active");
+            $(".answer").slideUp(300);
+            $(this)
+                .siblings(".answer")
+                .slideDown(300);
+        }
+    });
 });

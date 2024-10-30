@@ -1,6 +1,7 @@
 ﻿using HuloToys_Front_End.Controllers.Client.Business;
 using HuloToys_Front_End.Models.Cart;
 using HuloToys_Front_End.Models.Client;
+using HuloToys_Front_End.Models.NinjaVan;
 using Microsoft.AspNetCore.Mvc;
 using Models.APIRequest;
 
@@ -83,5 +84,16 @@ namespace HuloToys_Front_End.Controllers.Product
                 data = result
             });
         }
+        public async Task<IActionResult> GetShippingFee(ShippingFeeRequestModel request)
+        {
+            var result = await _cartServices.ShippingFee(request);
+
+            return Ok(new
+            {
+                is_success = result != null ,
+                data = result
+            });
+        }
+
     }
 }

@@ -6,6 +6,7 @@ using HuloToys_Front_End.Models.Cart;
 using Models.MongoDb;
 using Models.APIRequest;
 using HuloToys_Front_End.Models.Orders;
+using HuloToys_Front_End.Models.NinjaVan;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
 {
@@ -134,6 +135,25 @@ namespace HuloToys_Front_End.Controllers.Client.Business
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
                 return JsonConvert.DeserializeObject<CartCheckProductResponseModel>(result);
+            }
+            catch
+            {
+            }
+            return null;
+
+        }
+        public async Task<ShippingFeeResponseModel> ShippingFee(ShippingFeeRequestModel request)
+        {
+            try
+            {
+                var result = await POST(_configuration["API:get_shipping_fee"], request);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+                if (status == 0)
+                {
+                    return JsonConvert.DeserializeObject<ShippingFeeResponseModel>(jsonData["data"].ToString());
+
+                }
             }
             catch
             {
