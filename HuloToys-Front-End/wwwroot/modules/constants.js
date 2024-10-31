@@ -73,7 +73,7 @@ var THIRDPARTY_CONSTANTS = {
 }
 var GLOBAL_CONSTANTS = {
     Size: 6,
-    GridSize: 12,
+    GridSize: 10,
     GroupProduct: {
         FlashSale: 15,
         Discount: 16,
