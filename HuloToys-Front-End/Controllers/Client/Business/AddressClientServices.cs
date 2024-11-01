@@ -52,28 +52,25 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             return null;
 
         }
-        public async Task<bool> CreateOrUpdate(AddressUpdateRequestModel request)
+        public async Task<string> CreateOrUpdate(AddressUpdateRequestModel request)
         {
             try
             {
                 var url = _configuration["API:address_create"];
-                if (request.Id > 0)
-                {
-                    url = _configuration["API:address_update"];
-                }
+                
                 var result = await POST(url, request);
                 var jsonData = JObject.Parse(result);
                 var status = int.Parse(jsonData["status"].ToString());
 
                 if (status == (int)ResponseType.SUCCESS)
                 {
-                    return true;
+                    return jsonData["data"].ToString();
                 }
             }
             catch
             {
             }
-            return false;
+            return null;
 
         }
         public async Task<AddressClientFEModel> DefaultAddress(ClientAddressGeneralRequestModel request)
