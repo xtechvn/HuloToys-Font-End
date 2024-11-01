@@ -10,7 +10,6 @@ var address_client = {
         $('#address-phone').html('')
         $('#address').html('(Chưa chọn địa chỉ giao hàng)')
         sessionStorage.removeItem(STORAGE_NAME.AddressClient)
-
         if (!$('#address-book').hasClass('overlay')) {
             $('.menu-left-user .list-tab-menu .client-address').addClass('active')
             $('.menu-left-user .list-tab-menu .client-address').closest('.sub-menu').addClass('active')
@@ -43,8 +42,12 @@ var address_client = {
 
         });
         $("body").on('click', ".update-address-order", function () {
-            address_client.Detail()
+            var list = sessionStorage.getItem(STORAGE_NAME.AddressClient)
+            if (list) {
+                var data = JSON.parse(list)
+                address_client.RenderExistsAddress(data, $('#address-receivername').attr('data-id'))
 
+            }
             if ($('#address-book').hasClass('overlay')) {
                 $('#address-book').addClass('overlay-active')
             }
@@ -90,14 +93,14 @@ var address_client = {
             var item = address_client.GetSelectedAddress(id)
             callback(item)
         });
-       
+
     },
     Detail: function (selected_id = undefined) {
         var usr = global_service.CheckLogin()
         if (usr == undefined || usr.token == undefined) {
             return
         }
-       
+
         var request = {
             "token": usr.token
         }
@@ -105,43 +108,42 @@ var address_client = {
             global_service.POST(API_URL.AddressList, request)
         ).done(function (result) {
             var html = ''
-
             if (result.is_success) {
                 sessionStorage.setItem(STORAGE_NAME.AddressClient, JSON.stringify(result.data.list))
-                if (selected_id != undefined) {
-                    $(result.data.list).each(function (index, item) {
-                        html += HTML_CONSTANTS.Address.GridItem
-                            .replaceAll('{active}', (selected_id == item.id) ? 'active' : '')
-                            .replaceAll('{id}', item.id)
-                            .replaceAll('{default-address-style}', item.isactive == true ? 'display:none;' : '')
-                            .replaceAll('{name}', item.receivername)
-                            .replaceAll('{address}', address_client.RenderDetailAddress(item))
-                            .replaceAll('{tel}', item.phone.trim())
-                    });
-                }
-                else {
-                    $(result.data.list).each(function (index, item) {
-                        html += HTML_CONSTANTS.Address.GridItem
-                            .replaceAll('{active}', item.isactive == true ? 'active' : '')
-                            .replaceAll('{id}', item.id)
-                            .replaceAll('{default-address-style}', item.isactive == true ? 'display:none;' : '')
-                            .replaceAll('{name}', item.receivername)
-                            .replaceAll('{address}', address_client.RenderDetailAddress(item))
-                            .replaceAll('{tel}', item.phone==null?'': item.phone.trim())
-                    });
-                }
+                address_client.RenderExistsAddress(result.data.list, selected_id)
             }
             $('#address-book .list-add').html(html)
-            $('#address-book .box-address').removeClass('placeholder')
-            $('#address-book').removeClass('placeholder')
-            $('.content-left-user').removeClass('placeholder')
+            address_client.RemoveLoading()
+
         }).fail(function (jqXHR, textStatus) {
             $('#address-book .list-add').html('')
-            $('#address-book .box-address').removeClass('placeholder')
-            $('#address-book').removeClass('placeholder')
-            $('.content-left-user').removeClass('placeholder')
+           address_client.RemoveLoading()
         })
 
+    },
+    AddLoading: function () {
+        $('#address-book .box-address').addClass('placeholder')
+        $('#address-book').addClass('placeholder')
+        $('.content-left-user').addClass('placeholder')
+    },
+    RemoveLoading: function () {
+        $('#address-book .box-address').removeClass('placeholder')
+        $('#address-book').removeClass('placeholder')
+        $('.content-left-user').removeClass('placeholder')
+    },
+    RenderExistsAddress: function (list, selected_id = undefined) {
+        var html = ''
+        $(list).each(function (index, item) {
+            html += HTML_CONSTANTS.Address.GridItem
+                .replaceAll('{active}', (selected_id != undefined && selected_id == item.id) ? 'active' : '')
+                .replaceAll('{id}', item.id)
+                .replaceAll('{default-address-style}', item.isactive == true ? 'display:none;' : '')
+                .replaceAll('{name}', item.receivername)
+                .replaceAll('{address}', address_client.RenderDetailAddress(item))
+                .replaceAll('{tel}', item.phone.trim())
+        });
+        $('#address-book .list-add').html(html)
+        
     },
     RenderDetailAddress: function (data) {
         var address_select = ''
@@ -162,7 +164,7 @@ var address_client = {
     CreateOrUpdateAddress: function (id) {
         var overlay_box = false
         if ($('#address-book').hasClass('overlay')) {
-            overlay_box=true
+            overlay_box = true
         }
         if (overlay_box) {
             $('#address-book').removeClass('overlay-active')
@@ -174,31 +176,43 @@ var address_client = {
         }
         $('#update-address').attr('data-id', id)
         if (id != undefined && id.trim() != '') {
-           
+            var json = sessionStorage.getItem(STORAGE_NAME.AddressClient)
+            if (json) {
+                var address_list = JSON.parse(json)
+                var selected = address_list.filter(obj => {
+                    return obj.id == id
+                })
+                var item = selected[0]
+                $('#update-address').addClass('overlay-active')
+                $('#update-address .user input').val(item.receivername)
+                $('#update-address .tel input').val(item.phone)
 
-            var request = {
-                "token": usr.token,
-                "id": id
-            }
-            $.when(
-                global_service.POST(API_URL.AddressDetail, request)
-            ).done(function (result) {
-                if (result.is_success) {
-                    $('#update-address .err').hide()
-                    var item = result.data
-                    $('#update-address').addClass('overlay-active')
-                    $('#update-address .user input').val(item.receivername)
-                    $('#update-address .tel input').val(item.phone)
-                   
-                    $('#update-address .address input').val(item.address)
-                    address_client.RenderProvinces(item.provinceid)
-                    address_client.RenderDistrict(item.provinceid,item.districtid)
-                    address_client.RenderWards(item.districtid,item.wardid)
-                    //$('#update-address .province select').val(item.provinceid).trigger('change')
-                    //$('#update-address .district select').val(item.districtid).trigger('change')
-                    //$('#update-address .wards select').val(item.wardid).trigger('change')
+                $('#update-address .address input').val(item.address)
+                address_client.RenderProvinces(item.provinceid)
+                address_client.RenderDistrict(item.provinceid, item.districtid)
+                address_client.RenderWards(item.districtid, item.wardid)
+            } else {
+                var request = {
+                    "token": usr.token,
+                    "id": id
                 }
-            })
+                $.when(
+                    global_service.POST(API_URL.AddressDetail, request)
+                ).done(function (result) {
+                    if (result.is_success) {
+                        $('#update-address .err').hide()
+                        var item = result.data
+                        $('#update-address').addClass('overlay-active')
+                        $('#update-address .user input').val(item.receivername)
+                        $('#update-address .tel input').val(item.phone)
+                        $('#update-address .address input').val(item.address)
+                        address_client.RenderProvinces(item.provinceid)
+                        address_client.RenderDistrict(item.provinceid, item.districtid)
+                        address_client.RenderWards(item.districtid, item.wardid)
+                    }
+                })
+            }
+
         } else {
             $('#update-address').addClass('overlay-active')
             $('#update-address .title-popup').html('Thêm địa chỉ giao hàng mới')
@@ -213,7 +227,7 @@ var address_client = {
         $.when(
             global_service.POST(API_URL.AddressProvince, request)
         ).done(function (result) {
-            var html=''
+            var html = ''
             if (result.is_success) {
                 $(result.data).each(function (index, item) {
 
@@ -224,12 +238,7 @@ var address_client = {
                 });
             }
             $('#update-address .province select').html(html)
-            //try {
-            //    $('#update-address .province select').select2("destroy");
 
-            //} catch {
-
-            //}
             global_service.Select2WithFixedOptionAndSearch($('#update-address .province select'))
             $('#update-address .province select').val(null).trigger('change')
             if (selected_value != undefined) {
@@ -269,12 +278,7 @@ var address_client = {
                 });
             }
             $('#update-address .district select').html(html)
-            //try {
-            //    $('#update-address .district select').select2("destroy");
 
-            //} catch {
-
-            //}
             global_service.Select2WithFixedOptionAndSearch($('#update-address .district select'))
             $('#update-address .district select').val(null).trigger('change')
             if (selected_value != undefined) {
@@ -350,33 +354,51 @@ var address_client = {
             "Status": 0,
             "IsActive": 0
         }
-        sessionStorage.setItem(STORAGE_NAME.AddressClientLocal, JSON.stringify(request))
-
         var updated_item = address_client.GetUpdatedAddress()
+        var result = global_service.POSTSynchorus(API_URL.UpdateAddress, request)
+        if (result.is_success) {
+            request.Id = result.data
+        }
+        var request = {
+            "id": request.Id,
+            "token": usr.token,
+            "receivername": request.ReceiverName,
+            "phone": request.Phone,
+            "provinceid": request.ProvinceId,
+            "districtid": request.DistrictId,
+            "wardid": request.WardId,
+            "address": request.Address,
+            "status": 0,
+            "isactive": 0
+        }
         var list = sessionStorage.getItem(STORAGE_NAME.AddressClient)
         if (list) {
             var data = JSON.parse(list)
-            if (data && data[0]) {
+            if (data == undefined) data = []
+            if (data[0]) {
                 var index = data.findIndex(obj => obj.id == updated_item.id);
                 if (index >= 0) {
                     data[index] = updated_item
+                } else {
+                    data.push(request)
                 }
-                sessionStorage.setItem(STORAGE_NAME.AddressClient, data)
             }
+            else {
+                data.push[request]
+            }
+        } else {
+            var data = []
+            data.push(request)
         }
-        $.when(
-            global_service.POST(API_URL.UpdateAddress, request)
-        ).done(function (result) {
-            if (result.is_success) {
-                $('#update-address').removeClass('overlay-active')
+        sessionStorage.setItem(STORAGE_NAME.AddressClient, JSON.stringify(data))
+        $('#update-address').removeClass('overlay-active')
+        address_client.AddLoading()
+        address_client.RenderExistsAddress(data, request.Id)
+        address_client.RemoveLoading()
 
-                
-
-            }
-        })
     },
     GetSelectedAddress: function (id) {
-        var list= sessionStorage.getItem(STORAGE_NAME.AddressClient)
+        var list = sessionStorage.getItem(STORAGE_NAME.AddressClient)
         if (list) {
             var data = JSON.parse(list)
             var selected = data.filter(obj => {

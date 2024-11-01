@@ -126,7 +126,8 @@ namespace HuloToys_Front_End.Controllers.Client
 
             return Ok(new
             {
-                is_success = result
+                is_success = result!=null,
+                data=result
             });
         }
         public async Task<IActionResult> DefaultAddress(ClientAddressGeneralRequestModel request)
