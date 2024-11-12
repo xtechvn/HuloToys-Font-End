@@ -37,7 +37,7 @@ var order_history = {
         $.when(
             global_service.POST(API_URL.OrderListing, request)
         ).done(function (result) {
-            if (result.is_success && result.data) {
+            if (result.is_success && result.data && result.data.total) {
                 order_history.RenderDetail(result.data)
                 $('.list-tab .active .tab-count').html('(' + global_service.Comma(result.data.total)+')')
             }

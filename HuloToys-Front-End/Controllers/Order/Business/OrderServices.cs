@@ -117,7 +117,14 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             catch
             {
             }
-            return null;
+            return new OrderHistoryResponseModel()
+            {
+                data=new List<OrderESHistoryResponseModel>(),
+               data_order=new List<OrderDetailMongoDbModel>(),
+               page_index=1,
+               page_size=10,
+               total=0
+            };
 
         }
         public async Task<bool> InsertRaiting(ProductInsertRaitingRequestModel request)
