@@ -154,61 +154,9 @@
                 </div>
                 <div class="pay">
                     <span class="tt">Phương thức thanh toán:</span>
-                    <div class="select-option select-bank active">
+                    <div class="select-option select-bank">
                         <span class="tt">Chuyển khoản qua ngân hàng </span>
-                        <ul class="list-option">
-                            <li class="item">
-                                <div class="choose">
-                                    <div class="box-checkbox">
-                                        <input class="checkbox select-delivery-checkbox" name="select-bank" type="radio" value="2" checked>
-                                        <label for="checkbox2">
-                                            <img src="/assets/images/icon/Bank_Dou.svg" alt="" />
-                                            <nw class="option-name">Chuyển khoản qua ngân hàng</nw>
-
-
-                                        </label>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="choose">
-                                    <div class="box-checkbox">
-                                        <input class="checkbox select-delivery-checkbox" name="select-bank" type="radio" value="1" >
-                                        <label for="checkbox1">
-                                            <img src="/assets/images/icon/COD_Dou.svg" alt="" />
-                                            <nw class="option-name">Thanh toán khi nhận hàng(COD)</nw>
-                                        </label>
-                                    </div>
-                                </div>
-                            </li>
-                          
-                            <li class="item">
-                                <div class="choose">
-                                    <div class="box-checkbox">
-                                        <input class="checkbox select-delivery-checkbox" name="select-bank" type="radio" value="3">
-                                        <label for="checkbox3">
-                                            <img src="/assets/images/icon/QR_Dou.svg" alt="" />
-
-                                            <nw class="option-name">Thanh toán QR-PAY</nw>
-
-                                        </label>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="choose">
-                                    <div class="box-checkbox">
-                                        <input class="checkbox select-delivery-checkbox" name="select-bank" type="radio" value="4">
-                                        <label for="checkbox4">
-                                            <img src="/assets/images/icon/MasterCard_Dou.svg"
-                                                 alt="" />
-                                            <nw class="option-name">Thẻ Visa - Master Card</nw>
-
-                                        </label>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                      
                     </div>
                 </div>
                 <div class="total-cart">
@@ -361,20 +309,20 @@
                     <h3 class="title">Ninja van</h3>
                     <div class="answer" style="display:block;">
                         <ul>
-                            <li class="" data-shipping-type="1">
+                            <li data-shipping-type="1">
                                 <div class="box-select-ship">
                                     <div class="name">Giao nhanh</div>
                                     <div class="des">Nhận hàng trong 2-7 ngày </div>
                                 </div>
                                 <span class="price placeholder">_______________</span>
                             </li>
-                           @*  <li>
+                            <li class="force-payment-cod shipping-fee-cod" data-shipping-type="5">
                                 <div class="box-select-ship">
-                                    <div class="name">Giao hỏa tốc</div>
-                                    <div class="des">Đảm bảo nhận hàng sau 2h</div>
+                                    <div class="name">Thanh toán khi nhận hàng(COD)</div>
+                                    <div class="des">Nhận hàng trước, trả tiền sau</div>
                                 </div>
-                                <span class="price">32.900đ</span>
-                            </li> *@
+                                <span class="price">_______________</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -413,7 +361,7 @@
                 <li class="item">
                     <div class="choose">
                         <div class="box-radio">
-                            <input class="radio" id="radio1" type="radio">
+                            <input class="radio" id="radio1" name="payment_type" type="radio" value="1">
                             <label for="radio1">
                                 <img src="./assets/images/icon/COD_Dou.svg" alt="" />
                                 Thanh toán khi nhận hàng(COD)
@@ -424,7 +372,7 @@
                 <li class="item">
                     <div class="choose">
                         <div class="box-radio">
-                            <input class="radio" id="radio2" type="radio">
+                            <input class="radio" id="radio2" name="payment_type" type="radio" value="2" checked>
                             <label for="radio2">
                                 <img src="./assets/images/icon/Bank_Dou.svg" alt="" />
                                 Chuyển khoản qua ngân hàng
@@ -435,7 +383,7 @@
                 <li class="item">
                     <div class="choose">
                         <div class="box-radio">
-                            <input class="radio" id="radio3" type="radio">
+                            <input class="radio" id="radio3" name="payment_type" type="radio" value="4">
                             <label for="radio3">
                                 <img src="./assets/images/icon/QR_Dou.svg" alt="" />Thanh
                                 toán QR-PAY
@@ -446,7 +394,7 @@
                 <li class="item">
                     <div class="choose">
                         <div class="box-radio">
-                            <input class="radio" id="radio4" type="radio">
+                            <input class="radio" id="radio4" name="payment_type" type="radio" value="3">
                             <label for="radio4">
                                 <img src="./assets/images/icon/MasterCard_Dou.svg" alt="" />Thẻ
                                 Visa - Master
@@ -458,8 +406,8 @@
             </ul>
         </div>
         <div class="action">
-            <a href="" class="btn btn-back">Trở lại</a>
-            <a href="" class="btn btn-base btn-save">OK</a>
+            <a href="javascript:;" class="btn btn-back">Trở lại</a>
+            <a href="javascript:;" class="btn btn-base btn-save">Xác nhận</a>
         </div>
     </div>
 </div>
