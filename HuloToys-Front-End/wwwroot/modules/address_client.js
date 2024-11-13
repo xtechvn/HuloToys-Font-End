@@ -87,12 +87,34 @@ var address_client = {
             callback(selected_item)
 
         });
-        $("body").on('click', "#address-book .list-add .item", function () {
+        $("body").on('click', "#address-book .btn-save", function () {
             var element = $(this)
-            var id = element.attr('data-id')
-            var item = address_client.GetSelectedAddress(id)
-            callback(item)
+            var id=undefined
+            $('#address-book .box-address .item').each(function (index, item) {
+                var div = $(this)
+                if (div.hasClass('active')) {
+                    id = div.attr('data-id')
+                    return false
+                }
+
+            });
+            if (id != undefined) {
+                var item = address_client.GetSelectedAddress(id)
+                callback(item)
+            }
+            $('#address-book').removeClass('overlay-active')
+
         });
+        $("body").on('click', "#address-book .btn-save", function () {
+
+
+        });
+        //$("body").on('click', "#address-book .list-add .item", function () {
+        //    var element = $(this)
+        //    var id = element.attr('data-id')
+        //    var item = address_client.GetSelectedAddress(id)
+        //    callback(item)
+        //});
 
     },
     Detail: function (selected_id = undefined) {

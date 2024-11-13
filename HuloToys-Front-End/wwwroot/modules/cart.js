@@ -3,7 +3,7 @@
 })
 var cart = {
     Data: {
-        cancel_token:false
+        cancel_token: false
     },
     Initialization: function () {
         cart.DynamicBind()
@@ -61,7 +61,7 @@ var cart = {
         $("body").on('click', ".box-checkbox-label,.delivery .list-option label,.pay .list-option label", function () {
             var element = $(this)
             element.closest('.box-checkbox').find('input').click()
-            var check_all=true
+            var check_all = true
             $('.table-addtocart .box-checkbox').each(function (index_var, variation_item) {
                 var element_checkbox = $(this)
                 if (!element_checkbox.find('input').is(":checked")) {
@@ -116,6 +116,14 @@ var cart = {
 
 
         });
+        $("body").on('click', ".right-cart .select-bank", function () {
+            $('#phuongthucthanhtoan').addClass('overlay-active')
+        });
+        $("body").on('click', "#phuongthucthanhtoan .btn-save", function () {
+            $('#phuongthucthanhtoan').removeClass('overlay-active')
+            $('.right-cart .pay .select-bank .tt').html($('input[name="payment_type"]:checked').closest('.box-radio').find('label').text())
+        });
+       
     },
     OrderAddress: function () {
         cart.RenderDefaultAddress();
@@ -177,7 +185,7 @@ var cart = {
                     $('#main').html(HTML_CONSTANTS.Cart.Empty)
 
                 }
-                
+
             })
 
         } else {
@@ -251,13 +259,13 @@ var cart = {
             })
             sessionStorage.removeItem(STORAGE_NAME.BuyNowItem)
         }
-        
+
     },
     RenderCartNumberOfProduct: function () {
         $('.total-sp').html('(' + $('.table-addtocart .product').length + ' sản phẩm) ')
 
     },
-    ReRenderAmount: function (loading_shipping=true) {
+    ReRenderAmount: function (loading_shipping = true) {
         var total_amount_cart = 0
 
         $('.table-addtocart .product').each(function (index, item) {
@@ -266,10 +274,10 @@ var cart = {
             var quanity = parseInt(element.find('.quantity').val())
             var total_amount_product = amount * quanity
             element.find('.product-line-price').html(global_service.Comma(total_amount_product) + ' đ')
-            if (element.find('.checkbox-cart').is(":checked")){
+            if (element.find('.checkbox-cart').is(":checked")) {
                 total_amount_cart += total_amount_product
             }
-           
+
         })
         $('.total-amount .pr').html(global_service.Comma(total_amount_cart) + ' đ')
         var shipping_fee = $('.total-cart .total-shipping-fee .pr').attr('data-price')
@@ -320,13 +328,13 @@ var cart = {
 
         })
         $('#lightbox-delete-cart').removeClass('overlay-active')
-       
 
-        
+
+
     },
-    
+
     ConfirmCart: function () {
-        if ($('#address-receivername').attr('data-id') == null || $('#address-receivername').attr('data-id') == undefined || $('#address-receivername').attr('data-id').trim() =='') {
+        if ($('#address-receivername').attr('data-id') == null || $('#address-receivername').attr('data-id') == undefined || $('#address-receivername').attr('data-id').trim() == '') {
             $('#lightbox-cannot-add-cart .info-order .notification-content').html('Vui lòng thêm/chọn địa chỉ trước khi tiếp tục')
             $('#lightbox-cannot-add-cart .title-box').html('Chưa chọn địa chỉ giao hàng')
             $('#lightbox-cannot-add-cart').addClass('overlay-active')
@@ -348,7 +356,7 @@ var cart = {
                 }
             })
             var delivery_detail = {
-               
+
             }
             var default_address_json = sessionStorage.getItem(STORAGE_NAME.CartAddress)
             if (default_address_json) {
@@ -376,14 +384,14 @@ var cart = {
 
                 })
             }
-           
+
             if (carts.length > 0) {
-              
+
                 var request = {
                     "carts": carts,
                     "token": usr.token,
-                    "payment_type": $('input[name="select-bank"]:checked').val(),
-                    "address": JSON.parse(sessionStorage.getItem(STORAGE_NAME.CartAddress)) ,
+                    "payment_type": $('input[name="payment_type"]:checked').val(),
+                    "address": JSON.parse(sessionStorage.getItem(STORAGE_NAME.CartAddress)),
                     "address_id": $('#address-receivername').attr('data-id'),
                     "delivery_detail": delivery_detail
                 }
@@ -410,14 +418,14 @@ var cart = {
 
                 })
             }
-           
+
 
         } else {
             $('.mainheader .client-login').click()
             $('.btn-confirm-cart').removeClass('button-disabled')
             return
         }
-       
+
     },
     ChangeCartQuanity: function (element) {
 
@@ -483,23 +491,23 @@ var cart = {
                     $('.shopping-cart .table-addtocart .product').each(function (index, item) {
                         var element_cart = $(this)
                         if (element_cart.find('.checkbox-cart').is(':checked')) {
-                           request.carts.push({
-                                    "id": element_cart.attr('data-cart-id'),
-                                    "product_id": element_cart.attr('data-product-id'),
-                                    "quanity": parseInt(element_cart.find('.number-input').find('.quantity').val())
-                           })
+                            request.carts.push({
+                                "id": element_cart.attr('data-cart-id'),
+                                "product_id": element_cart.attr('data-product-id'),
+                                "quanity": parseInt(element_cart.find('.number-input').find('.quantity').val())
+                            })
                         }
-                       
+
                     })
                     var result = global_service.POSTSynchorus(API_URL.CartGetShippingFee, request)
-                    if (result.is_success && result.data != undefined && result.data.total_shipping_fee != undefined && result.data.total_shipping_fee>=0) {
+                    if (result.is_success && result.data != undefined && result.data.total_shipping_fee != undefined && result.data.total_shipping_fee >= 0) {
                         element_li.find('.price').html(global_service.Comma(result.data.total_shipping_fee) + 'đ')
                         element_li.attr('data-price', result.data.total_shipping_fee)
                         element_li.removeClass('disabled')
                         element_li.css('color', '')
                         element_li.find('.name').css('color', '')
                         element_li.find('.des').css('color', '')
-                       
+
                     } else {
                         element_li.attr('data-price', '0')
                         if (element_li.attr('data-shipping-type') != undefined && element_li.attr('data-shipping-type').trim() == '2') {
@@ -515,7 +523,7 @@ var cart = {
                     element_li.find('.price').removeClass('placeholder')
 
                 })
-                
+
             } else {
                 $('#hinhthucgiaohang .item li').each(function (index, item) {
                     var element_li = $(this)
@@ -535,13 +543,13 @@ var cart = {
                 })
 
             }
-          
+
         })
-        var activated=false
+        var activated = false
         $('#hinhthucgiaohang li').each(function (index, item) {
             var element_li = $(this)
             if (!element_li.hasClass('disabled') && !activated) {
-                activated=true
+                activated = true
                 element_li.addClass('active-delivery')
                 element_li.addClass('active')
                 element_li.closest('.item').find('h3').addClass('active')
@@ -574,11 +582,11 @@ var cart = {
             $('#delivery-carrier').show()
 
         }
-        $('#delivery-shippingtype .select-delivery .tt').text(selected.find('.name').html() )
+        $('#delivery-shippingtype .select-delivery .tt').text(selected.find('.name').html())
         $('#delivery-carrier .select-delivery .tt').text(selected.closest('.item').find('h3').html())
         var total_price = parseInt(selected.attr('data-price'))
         $('.total-cart .total-shipping-fee .pr').attr('data-price', total_price)
-        $('.total-cart .total-shipping-fee .pr').html(global_service.Comma(total_price) +' đ')
+        $('.total-cart .total-shipping-fee .pr').html(global_service.Comma(total_price) + ' đ')
         cart.ReRenderAmount(false)
 
     }
