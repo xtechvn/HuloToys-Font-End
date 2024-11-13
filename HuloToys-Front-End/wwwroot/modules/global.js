@@ -302,11 +302,14 @@ var global_service = {
                 $.when.apply($, productPromises).done(function () {
                     var html = global_service.RenderSlideProductItem(products, HTML_CONSTANTS.Home.SlideProductItem)
                     element.html(html)
-                    element.removeClass('placeholder')
-                    element.removeClass('box-placeholder')
-                    element.css('height', 'auto')
+                    
                 })
+            } else {
+                element.html('')
             }
+            element.removeClass('placeholder')
+            element.removeClass('box-placeholder')
+            element.css('height', 'auto')
         })
     },
     GotoCart: function () {
