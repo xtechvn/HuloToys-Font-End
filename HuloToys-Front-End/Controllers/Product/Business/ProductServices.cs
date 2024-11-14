@@ -4,6 +4,8 @@ using Newtonsoft.Json;
 using HuloToys_Front_End.Utilities.Contants;
 using HuloToys_Front_End.Models.Products;
 using HuloToys_Front_End.Models.Raiting;
+using System.Reflection;
+using HuloToys_Service.Utilities.Lib;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
 {
@@ -46,8 +48,10 @@ namespace HuloToys_Front_End.Controllers.Client.Business
                     return JsonConvert.DeserializeObject<ProductListResponseModel>(jsonData["data"].ToString());
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                string error_msg = Assembly.GetExecutingAssembly().GetName().Name + "->" + MethodBase.GetCurrentMethod().Name + "=>" + ex.Message;
+                LogHelper.InsertLogTelegramByUrl(_configuration["telegram:log_try_catch:bot_token"], _configuration["telegram:log_try_catch:group_id"], error_msg);
             }
             return null;
 
