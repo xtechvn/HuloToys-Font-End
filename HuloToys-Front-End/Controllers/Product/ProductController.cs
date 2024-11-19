@@ -1,12 +1,12 @@
-﻿using Azure.Core;
-using HuloToys_Front_End.Controllers.Client.Business;
-using HuloToys_Front_End.Models.Client;
+﻿using HuloToys_Front_End.Controllers.Client.Business;
 using HuloToys_Front_End.Models.Products;
 using HuloToys_Front_End.Models.Raiting;
+using HuloToys_Front_End.Utilities.contants;
+using HuloToys_Front_End.Utilities.Lib;
 using HuloToys_Front_End.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
-using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
+using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
 
 namespace HuloToys_Front_End.Controllers.Product
 {
@@ -15,11 +15,13 @@ namespace HuloToys_Front_End.Controllers.Product
     {
         private readonly IConfiguration _configuration;
         private readonly ProductServices _productServices;
+        private readonly IMemoryCache _cache;
 
-        public ProductController(IConfiguration configuration) {
+        public ProductController(IConfiguration configuration, IMemoryCache cache) {
 
             _configuration= configuration;
             _productServices = new ProductServices(configuration);
+            _cache = cache;
 
         }
         public ActionResult Detail(string product_code, string title)
@@ -37,7 +39,27 @@ namespace HuloToys_Front_End.Controllers.Product
       
         public async Task<IActionResult> ProductDetail(ProductDetailRequestModel request)
         {
-            var result = await _productServices.GetProductDetail(request);
+            //-- memory_cache:
+
+            ProductDetailResponseModel result = null;
+            try
+            {
+                //-- memory_cache:
+                var cacheKey = CacheKeys.ProductGetList + EncodeHelpers.MD5Hash(JsonConvert.SerializeObject(request)); // Đặt khóa cho cache
+                if (!_cache.TryGetValue(cacheKey, out result)) // Kiểm tra xem có trong cache không
+                {
+                    result = await _productServices.GetProductDetail(request);
+                    if (result != null)
+                    {
+                        // Lưu vào cache với thời gian hết hạn 
+                        _cache.Set(cacheKey, result, TimeSpan.FromSeconds(120));
+                    }
+                }
+            }
+            catch
+            {
+                result = await _productServices.GetProductDetail(request);
+            }
 
             return Ok(new
             {
@@ -48,7 +70,25 @@ namespace HuloToys_Front_End.Controllers.Product
        
         public async Task<IActionResult> GetList(ProductListRequestModel request)
         {
-            var result = await _productServices.GetProductList(request);
+            ProductListResponseModel result = null;
+            try
+            {
+                //-- memory_cache:
+                var cacheKey = CacheKeys.ProductGetList + EncodeHelpers.MD5Hash(JsonConvert.SerializeObject(request)); // Đặt khóa cho cache
+                if (!_cache.TryGetValue(cacheKey, out result)) // Kiểm tra xem có trong cache không
+                {
+                    result = await _productServices.GetProductList(request);
+                    if (result != null)
+                    {
+                        // Lưu vào cache với thời gian hết hạn 
+                        _cache.Set(cacheKey, result, TimeSpan.FromSeconds(120));
+                    }
+                }
+            }
+            catch
+            {
+                result = await _productServices.GetProductList(request);
+            }
             if (result != null && result.items != null && result.items.Count > 0)
             {
                 return Ok(new
@@ -84,7 +124,26 @@ namespace HuloToys_Front_End.Controllers.Product
         }
         public async Task<IActionResult> RaitingCount(ProductRaitingRequestModel request)
         {
-            var result = await _productServices.RaitingCount(request);
+            //-- memory_cache:
+            ProductRaitingResponseModel result = null;
+            try
+            {
+                //-- memory_cache:
+                var cacheKey = CacheKeys.ProductGetList + EncodeHelpers.MD5Hash(JsonConvert.SerializeObject(request)); // Đặt khóa cho cache
+                if (!_cache.TryGetValue(cacheKey, out result)) // Kiểm tra xem có trong cache không
+                {
+                    result = await _productServices.RaitingCount(request);
+                    if (result != null)
+                    {
+                        // Lưu vào cache với thời gian hết hạn 
+                        _cache.Set(cacheKey, result, TimeSpan.FromSeconds(300));
+                    }
+                }
+            }
+            catch
+            {
+                result = await _productServices.RaitingCount(request);
+            }
 
             return Ok(new
             {

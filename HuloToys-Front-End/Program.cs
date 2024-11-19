@@ -1,9 +1,11 @@
-using Microsoft.AspNetCore.Http.Features;
+﻿using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddResponseCaching(); // Cho phép sử dụng Response Caching
+builder.Services.AddMemoryCache(); // Đăng ký Memory Cache
 // Increase UploadSize to 100MB
 builder.Services.Configure<FormOptions>(options =>
 {
