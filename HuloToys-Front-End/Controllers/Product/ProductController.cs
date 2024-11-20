@@ -39,27 +39,8 @@ namespace HuloToys_Front_End.Controllers.Product
       
         public async Task<IActionResult> ProductDetail(ProductDetailRequestModel request)
         {
-            //-- memory_cache:
-
-            ProductDetailResponseModel result = null;
-            try
-            {
-                //-- memory_cache:
-                var cacheKey = CacheKeys.ProductGetList + EncodeHelpers.MD5Hash(JsonConvert.SerializeObject(request)); // Đặt khóa cho cache
-                if (!_cache.TryGetValue(cacheKey, out result)) // Kiểm tra xem có trong cache không
-                {
-                    result = await _productServices.GetProductDetail(request);
-                    if (result != null)
-                    {
-                        // Lưu vào cache với thời gian hết hạn 
-                        _cache.Set(cacheKey, result, TimeSpan.FromSeconds(120));
-                    }
-                }
-            }
-            catch
-            {
-                result = await _productServices.GetProductDetail(request);
-            }
+            ProductDetailResponseModel result = await _productServices.GetProductDetail(request);
+           
 
             return Ok(new
             {
@@ -70,25 +51,8 @@ namespace HuloToys_Front_End.Controllers.Product
        
         public async Task<IActionResult> GetList(ProductListRequestModel request)
         {
-            ProductListResponseModel result = null;
-            try
-            {
-                //-- memory_cache:
-                var cacheKey = CacheKeys.ProductGetList + EncodeHelpers.MD5Hash(JsonConvert.SerializeObject(request)); // Đặt khóa cho cache
-                if (!_cache.TryGetValue(cacheKey, out result)) // Kiểm tra xem có trong cache không
-                {
-                    result = await _productServices.GetProductList(request);
-                    if (result != null)
-                    {
-                        // Lưu vào cache với thời gian hết hạn 
-                        _cache.Set(cacheKey, result, TimeSpan.FromSeconds(120));
-                    }
-                }
-            }
-            catch
-            {
-                result = await _productServices.GetProductList(request);
-            }
+            ProductListResponseModel result = await _productServices.GetProductList(request);
+
             if (result != null && result.items != null && result.items.Count > 0)
             {
                 return Ok(new
