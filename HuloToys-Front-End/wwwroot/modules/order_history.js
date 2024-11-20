@@ -43,7 +43,7 @@ var order_history = {
             }
             else {
                 debugger
-                window.location.href = '/Home/NotFound'
+                $('.box-quanlytaikhoan .content-left-user').hide()
             }
         })
     },
