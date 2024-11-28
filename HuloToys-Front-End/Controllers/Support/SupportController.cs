@@ -3,7 +3,7 @@ using HuloToys_Front_End.Controllers.Support.Business;
 using HuloToys_Front_End.Models.Comments;
 using HuloToys_Front_End.Models.News;
 using HuloToys_Front_End.Utilities.Contants;
-using HuloToys_Service.Utilities.Lib;
+using HuloToys_Front_End.Utilities.Lib;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HuloToys_Front_End.Controllers.Support

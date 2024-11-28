@@ -2,12 +2,9 @@
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using HuloToys_Front_End.Utilities.Contants;
-using HuloToys_Front_End.Models.Cart;
 using Models.MongoDb;
 using Models.APIRequest;
-using HuloToys_Front_End.Models.Products;
 using HuloToys_Front_End.Models.Orders;
-using HuloToys_Service.Models.Orders;
 using HuloToys_Front_End.Models.Raiting;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
@@ -119,7 +116,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
             }
             return new OrderHistoryResponseModel()
             {
-                data=new List<OrderESHistoryResponseModel>(),
+                data=new List<OrderESModel>(),
                data_order=new List<OrderDetailMongoDbModel>(),
                page_index=1,
                page_size=10,

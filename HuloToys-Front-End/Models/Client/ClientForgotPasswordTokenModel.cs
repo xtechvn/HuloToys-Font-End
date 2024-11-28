@@ -1,4 +1,4 @@
-﻿namespace HuloToys_Service.Models.Client
+﻿namespace HuloToys_Front_End.Models.Client
 {
     public class ClientForgotPasswordTokenModel
     {

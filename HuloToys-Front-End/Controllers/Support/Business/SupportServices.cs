@@ -2,7 +2,7 @@
 using HuloToys_Front_End.Models.News;
 using HuloToys_Front_End.Utilities.Contants;
 using HuloToys_Front_End.Utilities.Lib;
-using HuloToys_Service.Utilities.Lib;
+using HuloToys_Front_End.Utilities.Lib;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

@@ -2,8 +2,8 @@
 using HuloToys_Front_End.Models.Client;
 using HuloToys_Front_End.Models.Products;
 using HuloToys_Front_End.Utilities.Contants;
-using HuloToys_Service.Models;
-using HuloToys_Service.Utilities.Lib;
+using HuloToys_Front_End.Models;
+using HuloToys_Front_End.Utilities.Lib;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

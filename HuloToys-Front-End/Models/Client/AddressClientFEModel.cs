@@ -1,8 +1,8 @@
-﻿using HuloToys_Service.Models.Location;
+﻿using HuloToys_Front_End.Models.Location;
 using System;
 using System.Collections.Generic;
 
-namespace HuloToys_Service.Models.Client
+namespace HuloToys_Front_End.Models.Client
 {
     public partial class AddressClientFEModel : AddressClientESModel
     {

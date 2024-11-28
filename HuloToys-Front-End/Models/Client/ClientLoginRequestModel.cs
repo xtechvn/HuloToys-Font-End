@@ -11,9 +11,8 @@ namespace HuloToys_Front_End.Models.Client
         public string user_name { get; set; }
 
         public string password { get; set; }
-        public bool remember_me { get; set; }
         public string token { get; set; }
+        public bool remember_me { get; set; }
         public int type { get; set; }
-
     }
 }

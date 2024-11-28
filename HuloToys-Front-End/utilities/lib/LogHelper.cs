@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace HuloToys_Service.Utilities.Lib
+namespace HuloToys_Front_End.Utilities.Lib
 {
     public static class LogHelper
     {

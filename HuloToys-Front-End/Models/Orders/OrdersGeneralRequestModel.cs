@@ -1,4 +1,4 @@
-﻿namespace HuloToys_Front_End.Models.Cart
+﻿namespace HuloToys_Front_End.Models.Orders
 {
     public class OrdersGeneralRequestModel
     {

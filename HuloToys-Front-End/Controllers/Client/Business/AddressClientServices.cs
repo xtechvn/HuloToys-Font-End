@@ -2,8 +2,8 @@
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using HuloToys_Front_End.Utilities.Contants;
-using HuloToys_Service.Models.Client;
-using HuloToys_Service.Models.Address;
+using HuloToys_Front_End.Models.Client;
+using HuloToys_Front_End.Models.Address;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
 {
