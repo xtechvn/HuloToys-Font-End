@@ -159,8 +159,8 @@ var address_client = {
             html += HTML_CONSTANTS.Address.GridItem
                 .replaceAll('{active}', (selected_id != undefined && selected_id == item.id) ? 'active' : '')
                 .replaceAll('{id}', item.id)
-                .replaceAll('{default-address-style}', item.isactive == true ? 'display:none;' : '')
-                .replaceAll('{name}', item.receivername)
+                .replaceAll('{default-address-style}', item.districtId == true ? 'display:none;' : '')
+                .replaceAll('{name}', item.receiverName)
                 .replaceAll('{address}', address_client.RenderDetailAddress(item))
                 .replaceAll('{tel}', item.phone.trim())
         });
