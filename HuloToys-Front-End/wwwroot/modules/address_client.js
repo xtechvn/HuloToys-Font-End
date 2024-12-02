@@ -212,7 +212,7 @@ var address_client = {
                 $('#update-address .address input').val(item.address)
                 address_client.RenderProvinces(item.provinceId)
                 address_client.RenderDistrict(item.provinceId, item.districtId)
-                address_client.RenderWards(item.districtId, item.districtid)
+                address_client.RenderWards(item.districtId, item.wardId)
             } else {
                 var request = {
                     "token": usr.token,
@@ -230,7 +230,7 @@ var address_client = {
                         $('#update-address .address input').val(item.address)
                         address_client.RenderProvinces(item.provinceId)
                         address_client.RenderDistrict(item.provinceId, item.districtId)
-                        address_client.RenderWards(item.districtid, item.districtid)
+                        address_client.RenderWards(item.districtid, item.wardId)
                     }
                 })
             }
