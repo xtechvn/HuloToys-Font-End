@@ -206,7 +206,7 @@ var address_client = {
                 })
                 var item = selected[0]
                 $('#update-address').addClass('overlay-active')
-                $('#update-address .user input').val(item.receivername)
+                $('#update-address .user input').val(item.receiverName)
                 $('#update-address .tel input').val(item.phone)
 
                 $('#update-address .address input').val(item.address)
@@ -225,7 +225,7 @@ var address_client = {
                         $('#update-address .err').hide()
                         var item = result.data
                         $('#update-address').addClass('overlay-active')
-                        $('#update-address .user input').val(item.receivername)
+                        $('#update-address .user input').val(item.receiverName)
                         $('#update-address .tel input').val(item.phone)
                         $('#update-address .address input').val(item.address)
                         address_client.RenderProvinces(item.provinceid)
