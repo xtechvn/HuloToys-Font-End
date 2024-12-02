@@ -210,9 +210,9 @@ var address_client = {
                 $('#update-address .tel input').val(item.phone)
 
                 $('#update-address .address input').val(item.address)
-                address_client.RenderProvinces(item.provinceid)
-                address_client.RenderDistrict(item.provinceid, item.districtid)
-                address_client.RenderWards(item.districtid, item.wardid)
+                address_client.RenderProvinces(item.provinceId)
+                address_client.RenderDistrict(item.provinceId, item.districtId)
+                address_client.RenderWards(item.districtId, item.districtid)
             } else {
                 var request = {
                     "token": usr.token,
@@ -228,9 +228,9 @@ var address_client = {
                         $('#update-address .user input').val(item.receiverName)
                         $('#update-address .tel input').val(item.phone)
                         $('#update-address .address input').val(item.address)
-                        address_client.RenderProvinces(item.provinceid)
-                        address_client.RenderDistrict(item.provinceid, item.districtid)
-                        address_client.RenderWards(item.districtid, item.wardid)
+                        address_client.RenderProvinces(item.provinceId)
+                        address_client.RenderDistrict(item.provinceId, item.districtId)
+                        address_client.RenderWards(item.districtid, item.districtid)
                     }
                 })
             }
