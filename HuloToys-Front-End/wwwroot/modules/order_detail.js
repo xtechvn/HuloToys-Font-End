@@ -189,7 +189,7 @@ var order_detail = {
     ConfirmOrderAddress: function (data) {
         if (data != undefined && data.id != undefined) {
             $('#address-receivername').attr('data-id', data.id)
-            $('#address-receivername').html(data.receivername)
+            $('#address-receivername').html(data.receiverName)
             $('#address-phone').html(data.phone)
             var address = data.address
             var address_select = '<br /> '
