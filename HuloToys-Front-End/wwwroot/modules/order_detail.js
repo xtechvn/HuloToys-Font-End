@@ -156,6 +156,14 @@ var order_detail = {
             $('.btn-review').prop('disabled', true)
             $('.btn-review').removeClass('btn-review')
         }
+        $('.box-info-address .name-user').html(order.receiverName)
+        $('.box-info-address .add').html(order.address
+            + '<br />'
+            + (order.ward != null && order.ward != undefined ? order.ward.name+', ' : '')
+            + (order.district != null && order.district != undefined ? order.district.name+', ' : '')
+            + (order.province != null && order.province != undefined ? order.province.name + ', ' : '')
+        )
+        $('.box-info-address .tel').html('Điện thoại: '+order.phone)
     },
     RenderOrderProduct: function ( order_detail_object) {
         var html_products = ''
