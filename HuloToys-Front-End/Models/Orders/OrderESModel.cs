@@ -4,6 +4,7 @@
     {
        
 
+        public long Id { get; set; }
         public long OrderId { get; set; }
       
 

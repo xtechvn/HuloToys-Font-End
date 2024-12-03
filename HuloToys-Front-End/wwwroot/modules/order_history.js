@@ -52,10 +52,10 @@ var order_history = {
 
         $(result.data).each(function (index, item) {
             var order_data = result.data_order.filter(obj => {
-                return obj.order_id == item.orderid
+                return obj.order_id == item.id
             })
             var status_name = GLOBAL_CONSTANTS.OrderStatus.filter(obj => {
-                return obj.id == item.orderstatus
+                return obj.id == item.orderStatus
             })
             var html_products = ''
             $(order_data[0].carts).each(function (index_cart, cart_item) {
@@ -70,13 +70,13 @@ var order_history = {
 
             });
             html += HTML_CONSTANTS.OrderHistory.Item
-                .replaceAll('{order_id}', item.orderid)
-                .replaceAll('{order_no}', item.orderno)
+                .replaceAll('{order_id}', item.id)
+                .replaceAll('{order_no}', item.orderNo)
                 .replaceAll('{status}', status_name[0].name)
                 .replaceAll('{confirm_cancel}', item.status < 2 ? '' :'button-disabled')
                 .replaceAll('{confirm_display}', item.status == 2 ? '' : 'button-disabled')
                 .replaceAll('{total_amount}', global_service.Comma(item.amount) + ' đ')
-                .replaceAll('{create_date}', global_service.DateTimeDotNetToString(item.createddate,true))
+                .replaceAll('{create_date}', global_service.DateTimeDotNetToString(item.createdDate,true))
                 .replaceAll('{product_detail}', html_products)
 
         });
