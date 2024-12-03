@@ -54,21 +54,27 @@ var order_history = {
             var order_data = result.data_order.filter(obj => {
                 return obj.order_id == item.id
             })
+            if (order_data == undefined || order_data.length <= 0) {
+                order_data = result.data_order.filter(obj => {
+                    return obj.order_no.trim() == item.orderNo
+                })
+            }
             var status_name = GLOBAL_CONSTANTS.OrderStatus.filter(obj => {
                 return obj.id == item.orderStatus
             })
             var html_products = ''
-            $(order_data[0].carts).each(function (index_cart, cart_item) {
-                html_products += HTML_CONSTANTS.OrderHistory.ItemProduct
-                    .replaceAll('{src}', global_service.CorrectImage(cart_item.product.avatar))
-                    .replaceAll('{name}', cart_item.product.name)
-                    .replaceAll('{attributes}', order_history.RenderVariationDetail(cart_item))
-                    .replaceAll('{price}', global_service.Comma(cart_item.product.amount) + ' đ')
-                    .replaceAll('{quanity}', global_service.Comma(cart_item.quanity))
-                    .replaceAll('{amount}', global_service.Comma(cart_item.total_amount) + ' đ' )
-
-
-            });
+            if (order_data.length > 0) {
+                $(order_data[0].carts).each(function (index_cart, cart_item) {
+                    html_products += HTML_CONSTANTS.OrderHistory.ItemProduct
+                        .replaceAll('{src}', global_service.CorrectImage(cart_item.product.avatar))
+                        .replaceAll('{name}', cart_item.product.name)
+                        .replaceAll('{attributes}', order_history.RenderVariationDetail(cart_item))
+                        .replaceAll('{price}', global_service.Comma(cart_item.product.amount) + ' đ')
+                        .replaceAll('{quanity}', global_service.Comma(cart_item.quanity))
+                        .replaceAll('{amount}', global_service.Comma(cart_item.total_amount) + ' đ')
+                });
+            }
+            
             html += HTML_CONSTANTS.OrderHistory.Item
                 .replaceAll('{order_id}', item.id)
                 .replaceAll('{order_no}', item.orderNo)
