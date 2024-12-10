@@ -384,11 +384,11 @@ var address_client = {
         var request = {
             "id": request.Id,
             "token": usr.token,
-            "receivername": request.ReceiverName,
+            "receiverName": request.ReceiverName,
             "phone": request.Phone,
-            "provinceid": request.ProvinceId,
-            "districtid": request.DistrictId,
-            "wardid": request.WardId,
+            "provinceId": request.ProvinceId,
+            "districtId": request.DistrictId,
+            "wardId": request.WardId,
             "address": request.Address,
             "status": 0,
             "isactive": 0
