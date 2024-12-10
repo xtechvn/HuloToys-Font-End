@@ -169,14 +169,14 @@ var address_client = {
     },
     RenderDetailAddress: function (data) {
         var address_select = ''
-        if (data.ward_detail != null && data.ward_detail != undefined && data.ward_detail.id != undefined) {
+        if (data.ward_detail != null && data.ward_detail != undefined) {
             address_select += data.ward_detail.name
         }
-        if (data.district_detail != null && data.district_detail != undefined && data.district_detail.id != undefined) {
+        if (data.district_detail != null && data.district_detail != undefined) {
             if (address_select.trim() != '') address_select += ', '
             address_select += data.district_detail.name
         }
-        if (data.province_detail != null && data.province_detail != undefined && data.province_detail.id != undefined) {
+        if (data.province_detail != null && data.province_detail != undefined) {
             if (address_select.trim() != '') address_select += ', '
             address_select += data.province_detail.name
         }
@@ -391,7 +391,17 @@ var address_client = {
             "wardId": request.WardId,
             "address": request.Address,
             "status": 0,
-            "isactive": 0
+            "isactive": 0,
+            "province_detail": {
+                name: $('#update-address .province select').find(':selected').text()
+            },
+            "district_detail": {
+                name: $('#update-address .district select').find(':selected').text()
+            },
+            "ward_detail": {
+                name: $('#update-address .wards select').find(':selected').text()
+            },
+
         }
         var list = sessionStorage.getItem(STORAGE_NAME.AddressClient)
         if (list) {
