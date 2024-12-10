@@ -55,8 +55,11 @@
                             if (Model != null && Model.data != null && Model.data.items != null && Model.data.items.Count > 0)
                             {
                                 var list = Model.data.items.Where(x => x.amount_min!=null && x.amount_min > 0).Select(x => (double)x.amount_min).ToList();
-                                list.AddRange(Model.data.items.Where(x => x.amount_min == 0).Select(x => x.amount));
-                                max = list.OrderByDescending(x => x).First();
+                                if(list!=null && list.Count > 0)
+                                {
+                                    list.AddRange(Model.data.items.Where(x => x.amount_min == 0).Select(x => x.amount));
+                                    max = list.OrderByDescending(x => x).First();
+                                }
 
                             }
                         }
