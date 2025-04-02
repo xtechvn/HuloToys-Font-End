@@ -50,16 +50,16 @@ namespace HuloToys_Front_End.Utilities.Lib
         {
             try
             {
-                if(TOKEN==null || TOKEN.Trim()=="" ) TOKEN = await GetToken();
+                //if(TOKEN==null || TOKEN.Trim()=="" ) TOKEN = await GetToken();
                 string token = EncodeHelpers.Encode(JsonConvert.SerializeObject(request), _ApiSecretKey);
                 var request_message = new HttpRequestMessage(HttpMethod.Post, endpoint);
-                request_message.Headers.Add("Authorization", "Bearer " + TOKEN);
+               // request_message.Headers.Add("Authorization", "Bearer " + TOKEN);
                 var content = new StringContent("{\"token\":\""+token+"\"}", Encoding.UTF8, "application/json");
                 request_message.Content = content;
                 var response = await _HttpClient.SendAsync(request_message);
                 return await response.Content.ReadAsStringAsync();
             }
-            catch
+            catch(Exception ex)
             {
                 return null;
             }
