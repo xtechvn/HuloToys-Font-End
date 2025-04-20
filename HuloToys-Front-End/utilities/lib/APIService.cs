@@ -11,6 +11,7 @@ using System.Security.AccessControl;
 using System.Text;
 using Utilities.Contants;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using HuloToys_Front_End.Service.Redis;
 
 namespace HuloToys_Front_End.Utilities.Lib
 {
@@ -50,16 +51,16 @@ namespace HuloToys_Front_End.Utilities.Lib
         {
             try
             {
-                //if(TOKEN==null || TOKEN.Trim()=="" ) TOKEN = await GetToken();
+                if (TOKEN == null || TOKEN.Trim() == "") TOKEN = await GetToken();
                 string token = EncodeHelpers.Encode(JsonConvert.SerializeObject(request), _ApiSecretKey);
                 var request_message = new HttpRequestMessage(HttpMethod.Post, endpoint);
-               // request_message.Headers.Add("Authorization", "Bearer " + TOKEN);
-                var content = new StringContent("{\"token\":\""+token+"\"}", Encoding.UTF8, "application/json");
+                request_message.Headers.Add("Authorization", "Bearer " + TOKEN);
+                var content = new StringContent("{\"token\":\"" + token + "\"}", Encoding.UTF8, "application/json");
                 request_message.Content = content;
                 var response = await _HttpClient.SendAsync(request_message);
                 return await response.Content.ReadAsStringAsync();
             }
-            catch(Exception ex)
+            catch
             {
                 return null;
             }
@@ -89,7 +90,7 @@ namespace HuloToys_Front_End.Utilities.Lib
                 var request = new UserLoginModel()
                 {
                     Username = USER_NAME,
-                    Password= PASSWORD
+                    Password = PASSWORD
                 };
                 var request_message = new HttpRequestMessage(HttpMethod.Post, API_GET_TOKEN);
                 var content = new StringContent(JsonConvert.SerializeObject(request), null, "application/json");
@@ -126,7 +127,7 @@ namespace HuloToys_Front_End.Utilities.Lib
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogHelper.InsertLogTelegramByUrl(_configuration["BotSetting:bot_token"], _configuration["BotSetting:bot_group_id"], "GetToken - APIService:" + ex.ToString());
 

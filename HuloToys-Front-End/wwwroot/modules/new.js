@@ -5,7 +5,27 @@
         if (e.key === 'Enter' || e.keyCode === 13) {
             _new.GetFindArticleByTitle();
         }
-    });   
+    });
+    var category_id2 = parseInt($(".category_id").data("categoryid"));
+
+    const query_string = window.location.search;
+    // Khởi tạo URLSearchParams để xử lý query string
+    const url_params = new URLSearchParams(query_string);
+    // Lấy giá trị của tham số 'page'
+    const page = url_params.get('page') == null ? 1 : url_params.get('page');
+    // Load tin trên trang chủ NEWS
+    _new.bin_news_home(category_id2, page);
+
+
+    //if (category_id <= 0) {
+    //    // Bin theo tin mới nhất của các chuyên mục
+    //    news.bin_news_top(category_id, "top_story", page);
+    //    news.bin_news_left(category_id, "top_left", page);
+    //} else {
+    //    news.bin_news_top(category_id, "category_top", page);
+    //    news.bin_news_left(category_id, "category_left", page);
+    //}    
+
 })
 let category_id = 22;
 let category_id_menu = 22;
@@ -24,10 +44,27 @@ var _new = {
 
         _new.NewsCategory(category_id_menu);
         _new.getNewsMostViewedArticle(1, 3, category_id_menu);
-        
+
     },
- 
- 
+    bin_news_home: function (category_id, page) {
+
+        $.ajax({
+            dataType: 'html',
+            type: 'POST',
+            url: '/news/home/get-article-list.json',
+            data: { category_id: category_id, page: page, view_name: "~/Views/Shared/Components/News/Home.cshtml" },
+            success: function (data) {
+                $('.list-news-home').html(data);
+            },
+            error: function (xhr, status, error) {
+                console.log("Error: " + error); // Thay đổi từ 'failure' sang 'error'
+            }
+        });
+
+    },
+
+
+
     NewsCategory: function (category_id) {
         var requestObj = {
             category_id: category_id,
@@ -39,7 +76,7 @@ var _new = {
             success: function (data) {
                 $("#news-category").html(data);
             },
-           
+
         });
     },
     getNewsPinned1: function (page, size, category_id) {
@@ -51,15 +88,15 @@ var _new = {
             Pinned: 1
         };
         $.ajax({
-            url: "/News/NewsPinned",           
+            url: "/News/NewsPinned",
             type: 'post',
             data: { requestObj: requestObj },
             success: function (data) {
-               
+
                 $("#article").html(data);
-                
+
             },
-           
+
         });
     },
     getNewsByTag: function (page, size, category_id, page_url) {
@@ -68,7 +105,7 @@ var _new = {
         $('#article-3').show();
         _new.getNewsPinned1(page == 1 ? 0 : page, size, category_id);
         category_id = category_id;
-  
+
         var requestObj = {
             skip: page,
             take: size,
@@ -77,21 +114,21 @@ var _new = {
         sessionStorage.setItem('NewsCategoryId', Number(category_id));
         var id = parseFloat(category_id);
         $.ajax({
-            url: "/News/NewsByTag",           
+            url: "/News/NewsByTag",
             type: 'post',
             data: { requestObj: requestObj },
             success: function (data) {
-               
+
                 $("#section-article-paginate").html(data);
                 $('.list-news-top').show();
                 $('.cat-tag').removeClass('active');
                 $('.tag_' + id).addClass('active');
                 $(".paging_" + page).addClass("active")
-                if (page_url != null && page_url!="")
-                window.history.pushState('string', '', page_url)
+                if (page_url != null && page_url != "")
+                    window.history.pushState('string', '', page_url)
                 $(window).scrollTop(0);
             },
-           
+
         });
     },
 
@@ -141,7 +178,7 @@ var _new = {
             _new.getNewsByTag(page, 10, parseFloat(categoryIdSession))
             _new.getNewsPinned1(page, 10, parseFloat(categoryIdSession));
         }
-       
+
     },
     next: function (max) {
         var page = $('.pagination .active').attr('data-page');
@@ -151,7 +188,7 @@ var _new = {
             _new.getNewsByTag(page, 10, parseFloat(categoryIdSession))
             _new.getNewsPinned1(page, 10, parseFloat(categoryIdSession));
         }
-       
+
     },
     GetFindArticleByTitle: function () {
         $('#article-1').hide();
@@ -170,7 +207,7 @@ var _new = {
             success: function (data) {
                 $('#section-article-paginate').show();
                 $("#section-article-paginate").html(data);
-               
+
             },
 
         });
@@ -180,7 +217,7 @@ var _home_product = {
     Initialization: function () {
         //--Product Sale Slide:
         _home_product.LoadHomeProductSlide($('.list-product-sale .swiper_wrapper'), GLOBAL_CONSTANTS.GroupProduct.FlashSale, GLOBAL_CONSTANTS.Size)
-  
+
     },
     ProductSaleList: function () {
     },
@@ -216,6 +253,6 @@ var _home_product = {
 
         })
     },
-   
+
 
 }
