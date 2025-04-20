@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.Features;
+﻿using HuloToys_Front_End.Service.Redis;
+using Microsoft.AspNetCore.Http.Features;
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddResponseCaching(); // Cho phép sử dụng Response Caching
 builder.Services.AddMemoryCache(); // Đăng ký Memory Cache
+builder.Services.AddSingleton<RedisConn>();
+
 // Increase UploadSize to 100MB
 builder.Services.Configure<FormOptions>(options =>
 {
@@ -19,6 +22,9 @@ builder.Services.AddControllers()
     });
 
 var app = builder.Build();
+// GỌI CONNECT Ở ĐÂY 👇
+var redisService = app.Services.GetRequiredService<RedisConn>();
+redisService.Connect(); // 👈 Gọi sớm khi app khởi động
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
