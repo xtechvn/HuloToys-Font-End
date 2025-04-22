@@ -234,6 +234,32 @@ namespace HuloToys_Front_End.Controllers.News.Business
             }
             return null;
         }
+
+        public async Task<List<ArticleRelationModel>> FindArticleByTitle(FindArticleModel requestObj)
+        {
+            try
+            {
+                var result = await POST(configuration["API:find_article"], requestObj);
+                var jsonData = JObject.Parse(result);
+                var status = int.Parse(jsonData["status"].ToString());
+
+                if (status == (int)ResponseType.SUCCESS)
+                {
+                    return JsonConvert.DeserializeObject<List<ArticleRelationModel>>(jsonData["data_list"].ToString());
+                }
+                else
+                {
+                    var msg = int.Parse(jsonData["msg"].ToString());
+                    Utilities.LogHelper.InsertLogTelegramByUrl(configuration["BotSetting:bot_token"], configuration["BotSetting:bot_group_id"], "GetNewsDetail-NewServices:" + msg.ToString());
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Utilities.LogHelper.InsertLogTelegramByUrl(configuration["BotSetting:bot_token"], configuration["BotSetting:bot_group_id"], "GetNewsDetail-NewServices:" + ex.ToString());
+            }
+            return null;
+        }
         public async Task<List<GetCategoryResponse>> GetNewsCategory(GetListByCategoryIdRequest requestObj)
         {
             try

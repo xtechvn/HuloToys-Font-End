@@ -99,6 +99,23 @@ namespace HuloToys_Front_End.Controllers.News
                 return StatusCode(500); // Trả về lỗi 500 nếu có lỗi
             }
         }
+        public async Task<IActionResult> GetFindArticleByTitle(FindArticleModel requestObj)
+        {
+            try
+            {
+                var data = await _newServices.FindArticleByTitle(requestObj);
+                return PartialView(data);
+
+            }
+            catch (Exception ex)
+            {
+                LogHelper.InsertLogTelegramByUrl(configuration["BotSetting:bot_token"], configuration["BotSetting:bot_group_id"], "FindArticleByTitle-NewsController:" + ex.ToString());
+
+                return PartialView();
+            }
+
+
+        }
 
         public async Task<IActionResult> NewsMostViewedArticle(GetListByCategoryIdRequest requestObj)
         {
