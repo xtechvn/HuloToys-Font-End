@@ -1,15 +1,17 @@
 ﻿@using HuloToys_Front_End.Models.News;
 @using HuloToys_Front_End.Utilities.Lib;
+@using HuloToys_Front_End.Utilities;
 @model List<ArticleResponse>
 @if (Model != null)
 {
     foreach (var item in Model)
     {
+        string link = @Html.GetStaticUrlNews(item.title, item.id);
         <div class="item-news">
             <div class="box-news">
                 <div class="thumb-art">
                     <div class="thumb thumb-news">
-                        <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))"><img src="@item.image_169" alt=""> </a>
+                        <a href="@link"><img src="@item.image_169" alt=""> </a>
                     </div>
                 </div>
                 <div class="right-content">
@@ -21,14 +23,14 @@
                         </span>
                     </div>
                     <h2 class="title-news">
-                        <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))">
+                        <a href="@link">
                             @item.title
                         </a>
                     </h2>
                     <p class="description">
                         @item.lead
                     </p>
-                    <a href="@("/tin-tuc"+CommonHelper.genLinkNewsV2(item.title,item.id.ToString()))" class="xemthem">Đọc tiếp</a>
+                    <a href="@link">Đọc tiếp</a>
                 </div>
             </div>
         </div>

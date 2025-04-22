@@ -41,8 +41,10 @@ namespace WEB.CMS.ViewComponents
 
                     if (cached_view != null)
                     {
-                        // Lưu vào cache với thời gian hết hạn dc set. 
-                        _cache.Set(cacheKey, cached_view, TimeSpan.FromSeconds(1));
+                        _cache.Set(cacheKey, cached_view, new MemoryCacheEntryOptions
+                    {
+                        SlidingExpiration = TimeSpan.FromMinutes(2)
+                    });
                     }
                 }
                 return cached_view != null ? View(_zone_info.view_name, cached_view) : Content("");

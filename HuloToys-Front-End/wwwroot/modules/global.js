@@ -382,6 +382,7 @@ var global_service = {
         return value.trim();
     },
     RenderSearchBox: function () {
+        debugger
         var usr = global_service.CheckLogin()
         var token = ''
         if (usr) {
@@ -395,6 +396,7 @@ var global_service = {
         $.when(
             global_service.POST(API_URL.GlobalSearch, request)
         ).done(function (result) {
+            debugger
             if (result.is_success && result.data && result.data.items) {
                 if (result.data.items.length > 0) {
                     var html = `<div class="list-product-recomment">` + global_service.RenderSearchProductItem(result.data.items) + `</div>`
