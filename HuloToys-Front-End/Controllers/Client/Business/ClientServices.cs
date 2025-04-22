@@ -32,7 +32,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
                     return JsonConvert.DeserializeObject<ClientLoginResponseModel>(jsonData["data"].ToString());
                 }
             }
-            catch
+            catch(Exception e)
             {
             }
             return null;

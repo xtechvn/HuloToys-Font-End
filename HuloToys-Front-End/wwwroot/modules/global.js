@@ -19,6 +19,7 @@ var global_service = {
         $('#dangnhap').removeClass('overlay-active')
         $('#dangky').removeClass('overlay-active')
         $('#quenmk').removeClass('overlay-active')
+        $('#global-search-loading').hide()
     },
     DynamicBind: function () {
         $("body").on('click', ".client-login", function (event) {
@@ -44,16 +45,29 @@ var global_service = {
         //    }
             
         //});
-        $("body").on('keyup', ".global-search", global_service.DelayEventBinding(function (e) {
+        $("body").on('keyup', ".global-search", function () {
+            if (!$('#global-search-loading').is(':hidden')) {
+                return
+            }
+            $('#global-search-loading').show()
             var element = $(this)
-            global_service.RenderSearchBoxLoading()
+            //global_service.RenderSearchBoxLoading()
             if (element.val() != undefined && element.val().trim() != '') {
                 $('.box-search-list').fadeIn()
                 global_service.RenderSearchBox()
             } else {
                 $('.box-search-list').fadeOut()
+                $('#global-search-loading').hide()
+
             }
-        }, 800));
+        });
+        $(document).on('click', function (event) {
+            // Kiểm tra nếu click không nằm trong div.form-search
+            if (!$(event.target).closest('.form-search').length) {
+                $('.form-search .box-search-list').hide();
+                $('#global-search-loading').hide()
+            }
+        });
     },
     LoadPolicy: function () {
         $.ajax({
@@ -383,12 +397,15 @@ var global_service = {
         ).done(function (result) {
             if (result.is_success && result.data && result.data.items) {
                 if (result.data.items.length > 0) {
-                    var html = `<div class="list-product-recomment">` + global_service.RenderSearchProductItem(result.data.items) +`</div>`
+                    var html = `<div class="list-product-recomment">` + global_service.RenderSearchProductItem(result.data.items) + `</div>`
                     $('.box-search-list').html(html)
-                    return
-                } 
+                } else {
+                    $('.box-search-list').html('Không tìm thấy kết quả')
+                }
+            } else {
+                $('.box-search-list').html('Không tìm thấy kết quả')
             }
-            $('.box-search-list').html('Không tìm thấy kết quả')
+            $('#global-search-loading').hide()
 
         })
      
@@ -443,12 +460,13 @@ var global_service = {
         return html
     },
     RenderSearchProductItem: function (list) {
+        
         var html = ''
         var template = HTML_CONSTANTS.Home.GlobalSearchByKeyword
         var keyword = global_service.GetGlobalSearchKeyword()
-        html += template
-            .replaceAll('{url}', '/tim-kiem/' + keyword)
-            .replaceAll('{name}', 'Tìm kiếm "' + keyword + '"')
+        //html += template
+        //    .replaceAll('{url}', '/tim-kiem/' + keyword)
+        //    .replaceAll('{name}', 'Tìm kiếm "' + keyword + '"')
 
         $(list).each(function (index, item) {
             html += template
