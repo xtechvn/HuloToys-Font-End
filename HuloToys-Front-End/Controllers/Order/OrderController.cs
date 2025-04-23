@@ -1,7 +1,7 @@
 ﻿using HuloToys_Front_End.Controllers.Client.Business;
 using HuloToys_Front_End.Models.Cart;
 using HuloToys_Front_End.Models.Raiting;
-using HuloToys_Service.Models.Orders;
+using HuloToys_Front_End.Models.Orders;
 using Microsoft.AspNetCore.Mvc;
 using Models.APIRequest;
 using Models.MongoDb;

@@ -19,6 +19,7 @@ var global_service = {
         $('#dangnhap').removeClass('overlay-active')
         $('#dangky').removeClass('overlay-active')
         $('#quenmk').removeClass('overlay-active')
+        $('#global-search-loading').hide()
     },
     DynamicBind: function () {
         $("body").on('click', ".client-login", function (event) {
@@ -44,16 +45,29 @@ var global_service = {
         //    }
             
         //});
-        $("body").on('keyup', ".global-search", global_service.DelayEventBinding(function (e) {
+        $("body").on('keyup', ".global-search", function () {
+            if (!$('#global-search-loading').is(':hidden')) {
+                return
+            }
+            $('#global-search-loading').show()
             var element = $(this)
-            global_service.RenderSearchBoxLoading()
+            //global_service.RenderSearchBoxLoading()
             if (element.val() != undefined && element.val().trim() != '') {
                 $('.box-search-list').fadeIn()
                 global_service.RenderSearchBox()
             } else {
                 $('.box-search-list').fadeOut()
+                $('#global-search-loading').hide()
+
             }
-        }, 800));
+        });
+        $(document).on('click', function (event) {
+            // Kiểm tra nếu click không nằm trong div.form-search
+            if (!$(event.target).closest('.form-search').length) {
+                $('.form-search .box-search-list').hide();
+                $('#global-search-loading').hide()
+            }
+        });
     },
     LoadPolicy: function () {
         $.ajax({
@@ -297,16 +311,19 @@ var global_service = {
                         })
                     productPromises.push(productPromise)
                 })
-                //console.log(products)
-
                 $.when.apply($, productPromises).done(function () {
                     var html = global_service.RenderSlideProductItem(products, HTML_CONSTANTS.Home.SlideProductItem)
                     element.html(html)
-                    element.removeClass('placeholder')
-                    element.removeClass('box-placeholder')
-                    element.css('height', 'auto')
+                    
                 })
+                //var html = global_service.RenderSlideProductItem(products, HTML_CONSTANTS.Home.SlideProductItem)
+                //element.html(html)
+            } else {
+                element.html('')
             }
+            element.removeClass('placeholder')
+            element.removeClass('box-placeholder')
+            element.css('height', 'auto')
         })
     },
     GotoCart: function () {
@@ -360,11 +377,14 @@ var global_service = {
         return value.trim();
     },
     GetGlobalSearchKeyword: function () {
+        debugger
         var value = $('.global-search').val()
-        value = value.replace(/[^a-zA-Z0-9àáạảãâầấậẩẫăắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơớờợởỡùúụủũưừứựửữỳýỵỷỹđ+-_@* ]/g, '');
+        // Giữ mọi chữ cái (bao gồm có dấu), số và vài ký tự đặc biệt hợp lệ
+        value = value.replace(/[^\p{L}0-9+-_@* ]/gu, '');
         return value.trim();
     },
     RenderSearchBox: function () {
+        debugger
         var usr = global_service.CheckLogin()
         var token = ''
         if (usr) {
@@ -378,14 +398,18 @@ var global_service = {
         $.when(
             global_service.POST(API_URL.GlobalSearch, request)
         ).done(function (result) {
+            debugger
             if (result.is_success && result.data && result.data.items) {
                 if (result.data.items.length > 0) {
-                    var html = `<div class="list-product-recomment">` + global_service.RenderSearchProductItem(result.data.items) +`</div>`
+                    var html = `<div class="list-product-recomment">` + global_service.RenderSearchProductItem(result.data.items) + `</div>`
                     $('.box-search-list').html(html)
-                    return
-                } 
+                } else {
+                    $('.box-search-list').html('Không tìm thấy kết quả')
+                }
+            } else {
+                $('.box-search-list').html('Không tìm thấy kết quả')
             }
-            $('.box-search-list').html('Không tìm thấy kết quả')
+            $('#global-search-loading').hide()
 
         })
      
@@ -440,12 +464,13 @@ var global_service = {
         return html
     },
     RenderSearchProductItem: function (list) {
+        
         var html = ''
         var template = HTML_CONSTANTS.Home.GlobalSearchByKeyword
         var keyword = global_service.GetGlobalSearchKeyword()
-        html += template
-            .replaceAll('{url}', '/tim-kiem/' + keyword)
-            .replaceAll('{name}', 'Tìm kiếm "' + keyword + '"')
+        //html += template
+        //    .replaceAll('{url}', '/tim-kiem/' + keyword)
+        //    .replaceAll('{name}', 'Tìm kiếm "' + keyword + '"')
 
         $(list).each(function (index, item) {
             html += template

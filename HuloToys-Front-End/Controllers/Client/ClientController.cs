@@ -1,9 +1,9 @@
 ﻿using HuloToys_Front_End.Controllers.Client.Business;
 using HuloToys_Front_End.Models.Client;
 using HuloToys_Front_End.Utilities.Lib;
-using HuloToys_Service.Models.Address;
-using HuloToys_Service.Models.Client;
-using HuloToys_Service.Models.Location;
+using HuloToys_Front_End.Models.Address;
+using HuloToys_Front_End.Models.Client;
+using HuloToys_Front_End.Models.Location;
 using LIB.Models.APIRequest;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -86,7 +86,7 @@ namespace HuloToys_Front_End.Controllers.Client
 
             return Ok(new
             {
-                is_success = (result != null &&  result.id>0),
+                is_success = (result != null &&  result.Id >0),
                 data = result
             });
         }

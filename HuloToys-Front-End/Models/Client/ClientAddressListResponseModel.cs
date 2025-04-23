@@ -1,4 +1,6 @@
-﻿namespace HuloToys_Service.Models.Client
+﻿using HuloToys_Front_End.Models.Client;
+
+namespace HuloToys_Front_End.Models.Client
 {
     public class ClientAddressListResponseModel
     {

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.APIRequest
+namespace HuloToys_Front_End.Models.Orders
 {
     public class OrderHistoryRequestModel
     {
-        public string  token { get; set; }
+        public string token { get; set; }
         public string order_no { get; set; }
         public string status { get; set; }
         public int page_index { get; set; }

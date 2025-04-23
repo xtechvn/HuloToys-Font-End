@@ -1,4 +1,4 @@
-﻿namespace HuloToys_Service.Models.Orders
+﻿namespace HuloToys_Front_End.Models.Orders
 {
     public class OrderHistoryDetailRequestModel
     {

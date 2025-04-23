@@ -67,12 +67,12 @@ var order_detail = {
 
         $('.btn-buy-again').hide()
         //$('.btn-review').hide()
-        $('#order-no').html(order.orderno)
+        $('#order-no').html(order.orderNo)
         var status_name = GLOBAL_CONSTANTS.OrderStatus.filter(obj => {
-            return obj.id == order.orderstatus
+            return obj.id == order.orderStatus
         })
         $('.status-name').html(status_name[0].name)
-        $('.created-time').html(global_service.DateTimeDotNetToString(order.createddate, true))
+        $('.created-time').html(global_service.DateTimeDotNetToString(order.createdDate, true))
         $('.amount-before-discount').html(global_service.Comma(order.amount + order.discount))
         $('.delivery-fee').html('')
         $('.discount-fee').html(global_service.Comma(order.discount))
@@ -130,7 +130,7 @@ var order_detail = {
                 $('#process-step-refund').show()
                 $('#process-step-order').hide()
 
-                switch (order.paymentstatus) {
+                switch (order.paymentStatus) {
                     case 2: {
                         $('.progress-start-refund').addClass('active')
 
@@ -144,7 +144,7 @@ var order_detail = {
         }
         order_detail.RenderOrderProduct(order_detail_object)
         $('.date-time').hide()
-        $('.progress-confirmed').find('.date-time').html(global_service.DateTimeDotNetToString(order.createddate, true))
+        $('.progress-confirmed').find('.date-time').html(global_service.DateTimeDotNetToString(order.createdDate, true))
         $('.progress-confirmed').find('.date-time').show()
 
         $('.content-left-user').removeClass('placeholder')
@@ -156,6 +156,14 @@ var order_detail = {
             $('.btn-review').prop('disabled', true)
             $('.btn-review').removeClass('btn-review')
         }
+        $('.box-info-address .name-user').html(order.receiverName)
+        $('.box-info-address .add').html(order.address
+            + '<br />'
+            + (order.ward != null && order.ward != undefined ? order.ward.name+', ' : '')
+            + (order.district != null && order.district != undefined ? order.district.name+', ' : '')
+            + (order.province != null && order.province != undefined ? order.province.name + ', ' : '')
+        )
+        $('.box-info-address .tel').html('Điện thoại: '+order.phone)
     },
     RenderOrderProduct: function ( order_detail_object) {
         var html_products = ''
@@ -189,7 +197,7 @@ var order_detail = {
     ConfirmOrderAddress: function (data) {
         if (data != undefined && data.id != undefined) {
             $('#address-receivername').attr('data-id', data.id)
-            $('#address-receivername').html(data.receivername)
+            $('#address-receivername').html(data.receiverName)
             $('#address-phone').html(data.phone)
             var address = data.address
             var address_select = '<br /> '

@@ -1,6 +1,6 @@
-﻿using HuloToys_Service.Models.Client;
+﻿using HuloToys_Front_End.Models.Client;
 
-namespace HuloToys_Service.Models.Address
+namespace HuloToys_Front_End.Models.Address
 {
     public class AddressUpdateRequestModel: ClientAddressGeneralRequestModel
     {

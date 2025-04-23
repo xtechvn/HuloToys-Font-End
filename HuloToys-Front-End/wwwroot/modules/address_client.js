@@ -134,7 +134,7 @@ var address_client = {
                 sessionStorage.setItem(STORAGE_NAME.AddressClient, JSON.stringify(result.data.list))
                 address_client.RenderExistsAddress(result.data.list, selected_id)
             }
-            /*$('#address-book .list-add').html(html)*/
+            $('#address-book .list-add').html(html)
             address_client.RemoveLoading()
 
         }).fail(function (jqXHR, textStatus) {
@@ -159,8 +159,8 @@ var address_client = {
             html += HTML_CONSTANTS.Address.GridItem
                 .replaceAll('{active}', (selected_id != undefined && selected_id == item.id) ? 'active' : '')
                 .replaceAll('{id}', item.id)
-                .replaceAll('{default-address-style}', item.isactive == true ? 'display:none;' : '')
-                .replaceAll('{name}', item.receivername)
+                .replaceAll('{default-address-style}', item.districtId == true ? 'display:none;' : '')
+                .replaceAll('{name}', item.receiverName)
                 .replaceAll('{address}', address_client.RenderDetailAddress(item))
                 .replaceAll('{tel}', item.phone.trim())
         });
@@ -169,14 +169,14 @@ var address_client = {
     },
     RenderDetailAddress: function (data) {
         var address_select = ''
-        if (data.ward_detail != null && data.ward_detail != undefined && data.ward_detail.id != undefined) {
+        if (data.ward_detail != null && data.ward_detail != undefined) {
             address_select += data.ward_detail.name
         }
-        if (data.district_detail != null && data.district_detail != undefined && data.district_detail.id != undefined) {
+        if (data.district_detail != null && data.district_detail != undefined) {
             if (address_select.trim() != '') address_select += ', '
             address_select += data.district_detail.name
         }
-        if (data.province_detail != null && data.province_detail != undefined && data.province_detail.id != undefined) {
+        if (data.province_detail != null && data.province_detail != undefined) {
             if (address_select.trim() != '') address_select += ', '
             address_select += data.province_detail.name
         }
@@ -206,13 +206,13 @@ var address_client = {
                 })
                 var item = selected[0]
                 $('#update-address').addClass('overlay-active')
-                $('#update-address .user input').val(item.receivername)
+                $('#update-address .user input').val(item.receiverName)
                 $('#update-address .tel input').val(item.phone)
 
                 $('#update-address .address input').val(item.address)
-                address_client.RenderProvinces(item.provinceid)
-                address_client.RenderDistrict(item.provinceid, item.districtid)
-                address_client.RenderWards(item.districtid, item.wardid)
+                address_client.RenderProvinces(item.provinceId)
+                address_client.RenderDistrict(item.provinceId, item.districtId)
+                address_client.RenderWards(item.districtId, item.wardId)
             } else {
                 var request = {
                     "token": usr.token,
@@ -225,12 +225,12 @@ var address_client = {
                         $('#update-address .err').hide()
                         var item = result.data
                         $('#update-address').addClass('overlay-active')
-                        $('#update-address .user input').val(item.receivername)
+                        $('#update-address .user input').val(item.receiverName)
                         $('#update-address .tel input').val(item.phone)
                         $('#update-address .address input').val(item.address)
-                        address_client.RenderProvinces(item.provinceid)
-                        address_client.RenderDistrict(item.provinceid, item.districtid)
-                        address_client.RenderWards(item.districtid, item.wardid)
+                        address_client.RenderProvinces(item.provinceId)
+                        address_client.RenderDistrict(item.provinceId, item.districtId)
+                        address_client.RenderWards(item.districtid, item.wardId)
                     }
                 })
             }
@@ -384,14 +384,24 @@ var address_client = {
         var request = {
             "id": request.Id,
             "token": usr.token,
-            "receivername": request.ReceiverName,
+            "receiverName": request.ReceiverName,
             "phone": request.Phone,
-            "provinceid": request.ProvinceId,
-            "districtid": request.DistrictId,
-            "wardid": request.WardId,
+            "provinceId": request.ProvinceId,
+            "districtId": request.DistrictId,
+            "wardId": request.WardId,
             "address": request.Address,
             "status": 0,
-            "isactive": 0
+            "isactive": 0,
+            "province_detail": {
+                name: $('#update-address .province select').find(':selected').text()
+            },
+            "district_detail": {
+                name: $('#update-address .district select').find(':selected').text()
+            },
+            "ward_detail": {
+                name: $('#update-address .wards select').find(':selected').text()
+            },
+
         }
         var list = sessionStorage.getItem(STORAGE_NAME.AddressClient)
         if (list) {

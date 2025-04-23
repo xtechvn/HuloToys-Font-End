@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HuloToys_Service.Models.Client
+namespace HuloToys_Front_End.Models.Client
 {
     public class ClientForgotPasswordRequestModel
     {

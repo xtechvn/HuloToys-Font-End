@@ -2,8 +2,10 @@
 using HuloToys_Front_End.Controllers.Support.Business;
 using HuloToys_Front_End.Models.Comments;
 using HuloToys_Front_End.Models.News;
+using HuloToys_Front_End.Service.Redis;
+using HuloToys_Front_End.Utilities;
 using HuloToys_Front_End.Utilities.Contants;
-using HuloToys_Service.Utilities.Lib;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace HuloToys_Front_End.Controllers.Support
@@ -12,12 +14,14 @@ namespace HuloToys_Front_End.Controllers.Support
     {
         private readonly IConfiguration _configuration;
         private readonly SupportServices _supportServices;
-        private readonly NewServices _newsService;
-        public SupportController(IConfiguration configuration)
+        private readonly NewsService _newsService;
+        private readonly RedisConn redisService;
+        public SupportController(IConfiguration configuration, RedisConn _redisService)
         {
             _configuration = configuration;
-            _newsService = new NewServices(configuration);
+            _newsService = new NewsService(configuration, _redisService);
             _supportServices = new SupportServices(configuration);
+            this.redisService = redisService;
         }
         public async Task<IActionResult> Index()
         {

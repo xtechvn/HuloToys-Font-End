@@ -1,7 +1,7 @@
-﻿namespace HuloToys_Service.Models.Client
+﻿namespace HuloToys_Front_End.Models.Client
 {
     public class ClientAddressGeneralRequestModel
     {
-        public string token { get; set; }
+        public string token { get; set; }   
     }
 }

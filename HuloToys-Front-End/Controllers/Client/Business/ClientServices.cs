@@ -1,5 +1,5 @@
 ﻿using HuloToys_Front_End.Utilities.Lib;
-using HuloToys_Service.Models;
+using HuloToys_Front_End.Models;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -8,6 +8,7 @@ using System.Reflection;
 using HuloToys_Front_End.Models.Client;
 using HuloToys_Front_End.Utilities.Contants;
 using LIB.Models.APIRequest;
+using HuloToys_Front_End.Models.Client;
 
 namespace HuloToys_Front_End.Controllers.Client.Business
 {
@@ -31,7 +32,7 @@ namespace HuloToys_Front_End.Controllers.Client.Business
                     return JsonConvert.DeserializeObject<ClientLoginResponseModel>(jsonData["data"].ToString());
                 }
             }
-            catch
+            catch(Exception e)
             {
             }
             return null;

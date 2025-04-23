@@ -1,4 +1,4 @@
-﻿namespace HuloToys_Service.Models
+﻿namespace HuloToys_Front_End.Models
 {
     public class UserLoginModel
     {
