@@ -377,8 +377,10 @@ var global_service = {
         return value.trim();
     },
     GetGlobalSearchKeyword: function () {
+        debugger
         var value = $('.global-search').val()
-        value = value.replace(/[^a-zA-Z0-9àáạảãâầấậẩẫăắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơớờợởỡùúụủũưừứựửữỳýỵỷỹđ+-_@* ]/g, '');
+        // Giữ mọi chữ cái (bao gồm có dấu), số và vài ký tự đặc biệt hợp lệ
+        value = value.replace(/[^\p{L}0-9+-_@* ]/gu, '');
         return value.trim();
     },
     RenderSearchBox: function () {
