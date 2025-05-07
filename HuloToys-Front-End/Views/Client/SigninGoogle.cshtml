@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đang xử lý đăng nhập Google...</title>
+</head>
+<body>
+    <script>
+        // Lấy mã xác thực từ query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+
+        if (code) {
+            // Gửi mã xác thực về cửa sổ cha
+            window.opener.postMessage({ gg_code: code }, window.location.origin);
+        } else {
+            // Xử lý trường hợp không có mã xác thực (lỗi, người dùng hủy, ...)
+            console.error('Không nhận được mã xác thực từ Google.');
+            window.opener.postMessage({ error: 'Đăng nhập Google không thành công.' }, window.location.origin);
+        }
+
+        // Tự đóng cửa sổ popup sau khi gửi tin nhắn
+        window.close();
+    </script>
+</body>
+</html>
